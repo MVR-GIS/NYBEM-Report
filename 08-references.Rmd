@@ -1,0 +1,74 @@
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+Clough J.S., Polaczyk A.L., and Propato M. 2016. Modelling the potential effects of sea-level rise on the coast of New York: Integrating mechanistic accretion and stochastic uncertainty. Environmental Modelling & Software, 84, 349-362.
+
+Cowardin L.M., Carter V., Golet F.C., and LaRoe E.T. 1979. Classification of wetlands and deepwater habitats of the United States. U.S. Fish and Wildlife Service, Washington, D.C.
+
+Dugan, J.E., Emery, K.A., Alber, M., Alexander, C.R., Byers, J.E., Gehman, A.M., McLenaghan, N. and Sojka, S.E., 2018. Generalizing ecological effects of shoreline armoring across soft sediment environments. Estuaries and coasts, 41(1), pp.180-196.
+
+Fischbach, J.R., Knopman, D., Smith, H., Orton, P., Sanderson, E.W., Fisher, K., Moray, N., Friedberg, A. and Parris, A., 2018. Building Resilience in an Urban Coastal Environment: Integrated, Science-Based Planning in Jamaica Bay, New York.
+
+Fischenich J.C. 2008. The application of conceptual models to ecosystem restoration. ERDC TN-EBA-TN-08-1. U.S. Army Engineer Research and Development Center, Vicksburg, Mississippi.
+
+Gardner, G. and Johnston, R.J., 2021. Is shoreline armoring a response to marsh migration? Modeling relationships between coastal marshes and private adaptation decisions. Water Resources and Economics, 36, p.100187.
+
+Grant W.E. and Swannack T.M. 2008. Ecological modeling: A common-sense approach to theory and practice. Malden, MA: Blackwell Publishing.
+
+Gray, S., Paolisso, M., Jordan, R. and S. Gray. (2017). Environmental Modeling with Stakeholders, Theory, Methods, and Applications. Springer International Publishing, Switzerland.
+
+Hall D.M., Lazarus E.D., and Thompson J.L. 2019. Mediated modeling and participatory modeling. Encyclopedia of Ecology (2nd Edition, Vol. 1). doi: 10.1016/B978-0-12-409548-9.10574-3.
+
+Herman B.D., McKay S.K., Altman S., Richards N.S., Reif M., Piercy C.D., and Swannack T.M. 2019. Unpacking the black box: Demystifying ecological models through mediated modeling and hands-on learning. Frontiers in Environmental Science, 7 (122), doi: 10.3389/fenvs.2019.00122.
+
+Hijmans R.J. and Ghosh A. 2019. Spatial data analysis with R. https://rspatial.org/.
+
+Jackson, N.L., Smith, D.R. and Nordstrom, K.F., 2008. Physical and chemical changes in the foreshore of an estuarine beach: implications for viability and development of horseshoe crab Limulus polyphemus eggs. Marine Ecology Progress Series, 355, pp.209-218.
+
+Kittinger, J.N. and Ayers, A.L., 2010. Shoreline armoring, risk management, and coastal resilience under rising seas. Coastal Management, 38(6), pp.634-653.
+
+Morley, S.A., Toft, J.D. and Hanson, K.M., 2012. Ecological effects of shoreline armoring on intertidal habitats of a Puget Sound urban estuary. Estuaries and coasts, 35(3), pp.774-784.
+
+McAlpin J. and Ross C. Draft. Analysis of proposed storm protection structures on the hydrodynamics and salinity in New Jersey Back Bays (NJBB). In preparation for ERDC/CHL Technical Report. U.S. Army Engineer Research and Development Center, Vicksburg, Mississippi.
+
+McKay S.K., Cooper A., Diebel M., Elkins D., Oldford G., Roghair C., and Wieferich D. 2017. Informing watershed connectivity barrier prioritization decisions: A synthesis. River Research and Applications, 33 (6), 847-862, doi: 10.1002/rra.3021.
+
+McKay S.K., Richards N., and Swannack T. 2019. Aligning ecological model development with restoration project planning. ERDC EMRRP-SR-89. U.S. Army Engineer Research and Development Center, Vicksburg, Mississippi.
+
+McKay S.K., Hernandez-Abrams D.D., Allen S., Miller J., Weppler P., and Swannack T. 2021. Developing a multi-ecosystem conceptual model for the New York Bight. ERDC TN-EMRRP (in press). U.S. Army Engineer Research and Development Center, Vicksburg, Mississippi.
+
+McKay S.K., Richards N., and Swannack T. 2021b. Ecological model evaluation: Testing system quality. ERDC TN-EMRRP (in press). U.S. Army Engineer Research and Development Center, Vicksburg, Mississippi.
+McKinney, R.A., Charpentier, M.A. and Wigand, C., 2009a. Assessing the wildlife habitat value of New England salt marshes: I. Model and application. Environmental monitoring and assessment, 154(1-4), p.29.
+
+McKinney, R.A., Charpentier, M.A. and Wigand, C., 2009b. Assessing the wildlife habitat value of New England salt marshes: II. Model testing and validation. Environmental monitoring and assessment, 154(1-4), p.361.
+
+Montagna P.A. et al. 2013. Conceptual model of estuary ecosystems. Chapter 2 in Hydrological Changes and Estuarine Dynamics. Springer Briefs in Environmental Science, doi: 10.1007/978-1-4614-5833-3_2.
+
+Morris J.T., Sundareshwar P.V., Nietch C.T., Kjerfve B. and Cahoon D.R., 2002. Responses of coastal wetlands to rising sea level. Ecology, 83(10), pp.2869-2877.
+
+Pringle C.M. 2001. Hydrologic connectivity and the management of biological reserves: A global perspective. Ecological Applications, 11 (4), 981-998.
+
+Propato M., Clough J.S., and Polaczyk A. 2018. Evaluating the costs and benefits of marsh-management strategies while accounting for uncertain sea level rise and ecosystem response. PLoS ONE, doi: 10.1371/journal.pone.0200368.
+
+Raposa K.B., Wasson K., Smith E., Crooks J.A., Delgado P., Fernald S.H., Ferner M.C., Helms A., Hice L.A., Mora J.W. and Puckett B., 2016. Assessing tidal marsh resilience to sea-level rise at broad geographic scales with multi-metric indices. Biological Conservation, 204, pp.263-275.
+
+Savant G., Berger R.C., McAlpin T.O., and Trahan C.J. 2014. Three-Dimensional Shallow Water Adaptive Hydraulics (AdH-SW3): Hydrodynamic Verification and Validation. ERDC/CHL TR-14-7. Vicksburg, MS: U.S. Army Engineer Research and Development Center.
+
+Savant G. and Berger R.C. 2015. Three-Dimensional Shallow Water Adaptive Hydraulics (AdH-SW3) Validation: Galveston Bay Hydrodynamics and Salinity Transport. ERDC/CHL TR-15-3. Vicksburg, MS: U.S. Army Engineer Research and Development Center.
+
+Schmolke, A., P. Thorbek, D. L. DeAngelis, and V. Grimm. 2010. Ecological models supporting environmental decision making: A strategy for the future. Trends in Ecology and Evolution 25:479–486.
+
+Swannack T.M., Fischenich J.C., and Tazik D.J. 2012. Ecological modeling guide for ecosystem restoration and management. ERDC/EL TR-12-18. Vicksburg, MS: U.S. Army Engineer Research and Development Center.
+
+Twilley R.R. 2004. Chapter C.1 Conceptual ecological models for planning and evaluation. Appendix C – Hydrodynamic and Ecological Modeling, Ecosystem Restoration Study, Louisiana Coastal Area.
+
+U.S. Army Corps of Engineers (USACE). 2011. Assuring quality of planning models. EC-1105-2-412. Washington, DC. U.S. Army Corps of Engineers.
+
+U.S. Fish and Wildlife Service (USFWS). 1997. Significant habitats and habitat complexes of the New York Bight region. Southern New England - New York Bight Coastal Ecosystems Program. https://nctc.fws.gov/pubs5/begin.htm.
+
+Van den Belt M. 2004. Mediated Modeling: A system dynamics approach to environmental consensus building. Island Press, USA.
+
+Van den Belt, M., Bainciotto, O.A., Costanza, R., Demers, S., Diaz, S., Ferreyra, G.A., Koch, E.W., Momo, F.R. and M. Vernet. (2006). Mediated Modeling of the impacts of enhanced UV-B Radiation on Ecosystem Services. Photochemistry and Photobiology, 82:865-877.
+
+Vionov A. and Bousquet F. 2010. Modeling with stakeholders. Environmental Modeling and Software, 25:1268-1281.
+

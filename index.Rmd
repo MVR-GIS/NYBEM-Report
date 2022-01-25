@@ -1,0 +1,100 @@
+--- 
+title: 'New York Bight Ecological Model (NYBEM)'
+author: "S. Kyle McKay, Vanessa Mahan, Michael Dougherty, Toddd Swannack, Candice Hall, Christina Saltus, Molly Reif, Steve Allen"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+- book.bib
+- packages.bib
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  set in the _output.yml file.
+  The HTML output format for this example is bookdown::gitbook,
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# Front Matter {-}
+
+## Point of Contact {-}
+
+S. Kyle McKay, Ph.D., P.E.  
+kyle.mckay at usace.army.mil  
+Phone: 970-980-9747  
+Environmental Laboratory  
+New York, NY 10278
+
+<span style="color: red;">AUTHOR NOTE: All chapters or sections marked with an (I) are incomplete and sections marked with an (i) require minor edits!</span>
+
+
+## Abstract {-}
+
+The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, specifically: the New Jersey Back Bays, the New York-New Jersey Harbor & Tributaries Study, and the Nassau County Back Bays. In these study areas, the USACE is considering a diversity of measures for mitigating flood risks, including: structural actions (e.g., levees, floodwalls, storm surge barriers), non-structural measures (e.g., buy-outs, elevation of structures, flood-proofing), and natural and nature-based features (e.g., wetland creation, reefs for breakwaters). Environmental outcomes and acceptability are important constraints on plan selection, and the studies are applying a “tiered” approach to compliance with the National Environmental Policy Act. The New York Bight Ecological Model (NYBEM) is being developed as a tool for partially assessing the direct and indirect effects of agency actions on regional ecosystems. The NYBEM currently assesses changes in habitat quantity associated with changing hydrodynamics, although future versions will include assessment of habitat quality and changes in aquatic connectivity. This report documents ecological model development processes to date, including information on model scoping, the development process, conceptualization, quantification, and evaluation. The NYBEM is then applied to the New Jersey Back Bays study to assess the extent of potential changes in habitat quantity associated with six alignments of inlet and bay closure structures. The direct, “footprint” effects of this infrastructure range from 71 to 182 acres of aquatic ecosystems. The indirect, “offsite” effects of this infrastructure lead to habitat switching from estuarine-intertidal and freshwater ecosystems to estuarine-subtidal and upland ecosystems. The magnitude of switching varies based on the six alternative alignments from 418 ac to as much as 938 acres. These estimates do not currently incorporate changes in habitat quality, but instead only account for tidal ranges and salinity thresholds.
+
+## Acknowledgements {-}
+
+Model development was funded by the U.S. Army Corps of Engineers through the New Jersey Back Bays ([NJBB](https://www.nap.usace.army.mil/Missions/Civil-Works/New-Jersey-Back-Bays-Coastal-Storm-Risk-Management/)) and NY/NJ Harbor and Tributaries Study ([HATS](https://www.nan.usace.army.mil/Missions/Civil-Works/Projects-in-New-York/New-York-New-Jersey-Harbor-Tributaries-Focus-Area-Feasibility-Study/)). The U.S. Army Corps of Engineers also partially funded research aspects of this work through the Ecosystem Management and Restoration Research Program. The authors are grateful to the USACE project team members and workshop attendees for their generous contributions of time, energy, and ideas. In particular, Bryce Wisemiller and JB Smith managed the larger USACE studies; Rob Hampson, Tate McAlpin, Jennifer McAlpin, and Anthony Emiren coordinated and conducted all hydrodynamic modeling; Cheryl Alkemeyer led environmental impact assessment for the HATS; and Jess Miller provided input and contributions throughout model development. Opinions expressed here are those of the authors and not necessarily those of the agencies they represent.
+
+
+## Glossary and Acronymns {-}
+
+
+* _[ADCIRC](https://adcirc.org/)_: "a system of computer programs for solving time dependent, free surface circulation and transport problems in two and three dimensions. These programs utilize the finite element method in space allowing the use of highly flexible, unstructured grids." For this study, ADCIRC was used to predict storm surge.
+* _[AdH](https://www.erdc.usace.army.mil/Media/Fact-Sheets/Fact-Sheet-Article-View/Article/476708/ada/)_: Adaptive Hydraulics (AdH) numerical code is "a modular, parallel, adaptive finite-element model for one-, two- and three-dimensional (2D, and 3D) flow and transport." For this study, AdH was used to predict changes in local hydrodynamics.
+* _ADM_: USACE Agency Decision Milestone.
+* _AMM_: USACE Alternatives Milestone.
+* _Deepwater Ecosystems_: Coastal ecosystems with bed elevation between -2m and -20m below Mean Sea Level (MSL).
+* _EIS_: Environmental Impact Statement.
+* _ERDC_: U.S. Army Engineer Research and Development Center.  
+* _Estuarine Ecosystems_: Coastal ecosystems with salinity from 0.5 to 30 ppt.
+* _Freshwater Ecosystems_: Coastal ecosystems with salinity < 0.5 ppt.
+* _FWOP_: Future WithOut Project Conditions.
+* _HATS_: New York / New Jersey Harbor and Tributaries storm risk management study led by the USACE New York District.  
+* _Intertidal Ecosystems_: Coastal ecosystems with bed elevation between Mean Higher High Water (MHHW) and Mean Lower Low Water (MLLW).
+* _Marine Ecosystems_: Coastal ecosystems with salinity >= 30 ppt.
+* _Mean Higher High Water (MHHW)_: A tidal datum. The average of the higher high water height each tidal day observed over AdH simulation period ([NOAA 2019](https://shoreline.noaa.gov/glossary.html)).
+* _Mean Lower Low Water (MLLW)_: A tidal datum. The average of the lower low water height each tidal day observed over AdH simulation period ([NOAA 2019](https://shoreline.noaa.gov/glossary.html)).
+* _MSL_: Mean Sea Level.
+* _NAB_: U.S. Army Corps of Engineers Baltimore District.  
+* _NAN_: U.S. Army Corps of Engineers New York District.  
+* _NAP_: U.S. Army Corps of Engineers Philadelphia District.  
+* _NEPA_: National Environmental Policy Act.
+* _NLCD_: National Land Cover Dataset  
+* _NCBB_: Nassau County Back Bays coastal storm risk management study led by the USACE Philadelphia District.  
+* _NJBB_: New Jersey Back Bays coastal storm risk management study led by the USACE Philadelphia District.  
+* _NYBEM_: New York Bight Ecological Model ("nigh-bem").  
+* _PED_: Pre-construction Engineering and Design.
+* _Subtidal Ecosystems_: Coastal ecosystems with bed elevation between Mean Lower Low Water (MLLW) and -2m below Mean Sea Level (MSL).
+* _TSP_: Tentatively Selected Plan.
+* _USACE_: U.S. Army Corps of Engineers.  
+* _USFWS_: U.S. Fish and Wildlife Service.  
+
+
+```{r, echo=FALSE, include=FALSE}
+#Markdown options
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message = FALSE) 
+
+#Clear local memory
+rm(list=ls(all=TRUE))
+
+##########
+#Load all necessary R packages
+library(viridis)    #Contains color-blind friendly color schemes
+library(kableExtra) #Contains formatting for markdown
+library(ecorest)    #Habitat modeling functions
+library(sp)         #Geospatial functions
+library(spData)     #Geographic data
+library(raster)     #Geospatial functions
+library(rgdal)      #Geospatial functions
+library(cartography)#Mapping functions
+library(rgeos)      #Geospatial functions
+
+#library(sf)         #Geospatial functions
+#library(dismo)      #Geospatial functions - interpolation
+#library(dplyr)      #Data management functions
+#library(gstat)      #Geospatial functions - interpolation
+#library(spatstat)   #Geospatial interpolation functions
+#library(maptools)   #Geospatial functions
+#library(spatial)    #Geospatial functions
+```

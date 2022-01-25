@@ -1,0 +1,40 @@
+# Summary
+
+This report has presented the development status for the New York Bight Ecological Model (NYBEM). The models are being developed in a transparent manner following a mediated modeling process (Herman et al. 2019). The phased development of these models is designed to incorporate information and data as they are developed. The models have been applied in the context of the New Jersey Back Bays (NJBB) coastal storm risk management study, and some preliminary observations are made regarding the relative effects of alternatives (Section 6 of this report).
+As of this writing, the NYBEM only assesses habitat quantity, although future development will expand this scope. The following items represent key priorities for additional expansion of both the model and its application.
+
+* Habitat quality modules should be incorporated based on the workshop-based suitability index curves.
+
+* The system-wide connectivity model can be developed and executed, potentially to include multiple organisms or groups of organisms.
+
+* The models should be submitted and reviewed through the USACE Model Certification process.
+
+* Additional model evaluation should occur, including issues such as: verification of habitat assessment relative to field observations and sensitivity analysis of the underlying model structure.
+
+* Applications should be expanded to incorporate more tidal years (including storm periods), alternative operational closure scenarios, more sea level rise conditions, and other project-relevant factors.
+
+
+## Future Model Development
+
+
+Currently, only habitat quantity is included in assessments. Model development is underway relative to habitat quality modules, system connectivity, and aggregation of quantity, quality, and connectivity into an overarching environmental effects index. These assessments will be included in the NJBB Final Feasibility Report.
+
+
+### Habitat Quality Modules
+
+
+Ecosystem quality may be differentially assessed for each of the six habitat types shown in Table 3, which we refer to as sub-models or modules. An index-based model is being developed for each ecosystem based on existing data and models. A consistent set of methods was used to develop each sub-model. First, candidate variables were identified at workshops and augemented with taxa-specific habitat suitability models (i.e., “blue books”), relevant tools (e.g., New England Marsh Model), and literature search. Second, system-wide data sets were compiled from national data layers, hydrodynamic models, and other data sources (e.g., Mid-Atlantic Ocean Data Portal, [MARCO](https://portal.midatlanticocean.org/)). Third, potential variables were compiled and rationale was developed supporting the inclusion or exclusion of each. Fourth, an ecosystem-specific conceptual model was compiled to highlight key variables used in numerical model development. Fifth, "suitability" curves were developed for each variable based on existing suitability indices (e.g., from USFWS habitat models), published ecological thresholds/responses, and professional judgment / qualitative responses. These suitability curves represent the relative quality of a given patch on a 0 to 1 scale, where 0 is poor and 1 is ideal. Sixth, all suitability curves are arithmetically averaged to obtain an overall metric of ecosystem quality. Finally, all sub-models were vetted with interagency partners at a November 2019 workshop and refined accordingly.
+
+
+For example, Figures 4 and 5 present a general summary of the development of the estuarine, subtidal sub-model. Key references and existing tools are noted along with transient or construction impacts and critical uncertainties. An ecosystem-specific conceptual model is presented. Potential variables are compiled along with specific metrics, assessment methods, and rationale for inclusion or exclusion in NYBEM. Finally, suitability curves are presented for this sub-model (Figure 5). Each sub-model will be presented in a similar detailed format prior to application. All index-based model calculations will be conducted with the `ecorest` R-package (McKay and Hernandez-Abrams 2020). [`ecorest`](https://cran.r-project.org/web/packages/ecorest/index.html) is a generic software for conducting suitability index calculations, which will be submitted for USACE National Certification in Summer 2021. 
+
+### System-Scale, Connectivity Model
+
+
+The index models described above focus on patch-scale outcomes in each of the six nearshore and estuarine ecosystem types, and a broader connectivity model will also be developed to assess outcomes at a system-scale. This analysis will focus on relative changes in hydrologic connectivity between ecosystems, which is defined as the “water-mediated transfer of matter, energy, and/or organisms within or between elements of the hydrologic cycle” (Pringle 2001). For the purpose of NYBEM, we will focus on connectivity relative to organismal outcomes; for instance, closure gates and storm surge barriers have the potential to disrupt animal movement between different habitat patches required during an organism’s life cycle. An analytical approach has not been finalized, but analogous freshwater connectivity models have included issues such as the quantity and quality of habitat patches scaled by movement rates around structures (McKay et al. 2017). For instance, the “passability” of a structure could be used to scale the total amount of upstream habitat for a migratory fish such as river herring. These methods could potentially be adapted for multi-directional movement in the context of estuarine connectivity. 
+
+
+### Aggregated Model Outcomes
+
+
+Model outcomes from both the patch- and system-scales will need to be aggregated into a small number of summary metrics for USACE decision-makers. All ecological outcomes will estimated at discrete points in time (e.g., 2030, 2080), and a time-averaged assessment of ecological condition (i.e., an “annualized” outcome) will provide a consistent means of comparing alternatives over long planning horizons (e.g., 50-years). Furthermore, a given ecosystem type may decline under sea level rise without an agency action, and proposed alternatives should be considered relative to background rates of change. 

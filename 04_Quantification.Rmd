@@ -1,0 +1,34 @@
+# Quantification (I)
+
+<span style="color: red;">McKay to edit text.</span>
+
+Describe overarching model architecture.
+
+
+Steps in Developing Sub-Models:  
+
+* Preliminary variables identified at workshops with additional variables added from taxa-specific habitat suitability models (i.e., “blue books”), relevant tools (e.g., New England Marsh Model), and literature search.  
+
+* Known system-wide data sets compiled for each ecosystem (e.g., national data layers, hydrodynamic models, prior studies)  
+
+* Compilation of potential variables and rationale for inclusion or  exclusion.  
+
+* Development of conceptual model for each ecosystem and key variables used in numerical model development.  
+
+* Development of numerical suitability indices for each sub-model based on existing suitability indices, published thresholds/responses, and professional judgment / qualitative responses.
+
+
+
+Each section describes a different function used in NYBEM. 
+
+List all functions here with descriptions of each.  
+
+* Ecosystem type mapper (hab.mapper): Description.  
+* Freshwater, Tidal Submodel (fresh.tid): Description.  
+* Estuarine, Intertidal Submodel (est.int): Description.  
+* Estuarine, Subtidal Submodel (est.sub): Description.  
+* Marine, Intertidal Submodel (mar.int): Description.  
+* Marine, Subtidal Submodel (mar.sub) Description.  
+* Freshwater, Tidal Submodel (fresh.tid): Description.  
+
+

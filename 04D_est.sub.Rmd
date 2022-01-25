@@ -1,0 +1,62 @@
+## Estuarine, Subtidal Submodel (est.sub) (I)
+
+<span style="color: red;">Swannack, Reif, and Saltus to write.</span>
+
+
+1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
+
+Present and describe the conceptual model for this system.
+
+**FIGURE**
+
+
+Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
+
+**TABLE**
+
+**FIGURE WITH SUITABILITY CURVES**
+
+Present the overarching habitat suitability index equation.
+
+**EQUATION**
+
+
+### Variable-1
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+**EQUATION**
+
+### Variable-2
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+**EQUATION**
+
+
+### est.sub Code
+
+Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)
+
+
+```{r echo=TRUE}
+#Function for assessing habitat quality
+est.sub <- function(x, y){
+  est.sub.HSI <- x + y
+
+  #Send output
+  est.sub.HSI
+}
+```
