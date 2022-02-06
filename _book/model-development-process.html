@@ -5,32 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Model Development Process | New York Bight Ecological Model (NYBEM)</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Model Development Process | New York Bight Ecological Model (NYBEM)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 2 Model Development Process | New York Bight Ecological Model (NYBEM)" />
   
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
   
 
 <meta name="author" content="S. Kyle McKay, Vanessa Mahan, Michael Dougherty, Toddd Swannack, Candice Hall, Christina Saltus, Molly Reif, Steve Allen" />
 
 
-<meta name="date" content="2022-01-25" />
+<meta name="date" content="2022-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -211,7 +205,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="summary.html"><a href="summary.html#aggregated-model-outcomes"><i class="fa fa-check"></i><b>7.1.3</b> Aggregated Model Outcomes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="model-development-workshops.html"><a href="model-development-workshops.html"><i class="fa fa-check"></i><b>A</b> Model Development Workshops</a></li>
 <li class="chapter" data-level="B" data-path="usace-model-certification-review.html"><a href="usace-model-certification-review.html"><i class="fa fa-check"></i><b>B</b> USACE Model Certification Review</a></li>
@@ -249,8 +242,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="model-development-process" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Model Development Process</h1>
-<p>When used in the context of complex management decisions with many partners, environmental and ecological modeling often benefit from approaches that emphasize transparency, increase user input during development, and clearly communicate model assumptions and limitations (van den Belt 2004, Voinov and Bousquet 2010, Herman et al. 2019). Here, a general five-step modeling process is followed that applies best practices in ecological model development (Grant and Swannack 2008). First, general relationships among essential ecosystem components are formally <em>conceptualized</em> to tell the story of “how the system works” (Fischenich 2008). Second, the model is <em>quantified</em> using a formal structure of functional relationships, algorithms, and parameters. Third, models are <em>evaluated</em> relative to underlying scientific theory, numerical accuracy, and usability, which often entails techniques such as code checking, testing, verification, and sensitivity analyses. Fourth, a model is <em>applied</em> to a given management question, scenario, or assessment. Fifth, a strategy is developed and executed to <em>communicate</em> model development and application to technical and non-technical audiences. This process has been applied numerous times to select, adapt, or develop ecological models for USACE and non-USACE studies (e.g., McKay et al. 2019; Herman et al. 2019), and the framework is intended to draw heavily from existing knowledge, data, and tools.</p>
-<p>USACE policy (EC-1105-2-412) defines a model as “a representation of a system for a purpose,” and thus, specifying a modeling objective is often a foundational step in the modeling process. <strong>Here, our modeling objective is to articulate the mechanisms and magnitude of environmental effects of proposed coastal storm risk management actions in the New York Bight Ecosystem</strong>. However, this model (like all models) is being developed in a constrained environment with limited time and resources. Three key issues constrained and guided NYBEM development, each of which is addressed in subsequent sections:</p>
+<p>When used in the context of complex management decisions with many partners, environmental and ecological modeling often benefit from approaches that emphasize transparency, increase user input during development, and clearly communicate model assumptions and limitations <span class="citation">(Van den Belt <a href="#ref-van_den_belt_mediated_2004" role="doc-biblioref">2004</a>)</span>, <span class="citation">(Voinov and Bousquet <a href="#ref-voinov_modelling_2010" role="doc-biblioref">2010</a>)</span>, <span class="citation">(Herman et al. <a href="#ref-herman_unpacking_2019" role="doc-biblioref">2019</a>)</span>. Here, a general five-step modeling process is followed that applies best practices in ecological model development <span class="citation">(Grant and Swannack <a href="#ref-grant_ecological_2008" role="doc-biblioref">2008</a>)</span>. First, general relationships among essential ecosystem components are formally <em>conceptualized</em> to tell the story of “how the system works” <span class="citation">(Fischenich <a href="#ref-fischenich_application_2008" role="doc-biblioref">2008</a>)</span>. Second, the model is <em>quantified</em> using a formal structure of functional relationships, algorithms, and parameters. Third, models are <em>evaluated</em> relative to underlying scientific theory, numerical accuracy, and usability, which often entails techniques such as code checking, testing, verification, and sensitivity analyses. Fourth, a model is <em>applied</em> to a given management question, scenario, or assessment. Fifth, a strategy is developed and executed to <em>communicate</em> model development and application to technical and non-technical audiences. This process has been applied numerous times to select, adapt, or develop ecological models for USACE and non-USACE studies (e.g., <span class="citation">(McKay, Richards, and Swannack <a href="#ref-mckay_aligning_2019" role="doc-biblioref">2019</a>)</span>;<span class="citation">(Herman et al. <a href="#ref-herman_unpacking_2019" role="doc-biblioref">2019</a>)</span>, and the framework is intended to draw heavily from existing knowledge, data, and tools.</p>
+<p>USACE policy <span class="citation">(USACE <a href="#ref-us_army_corps_of_engineers_assuring_2011" role="doc-biblioref">2011</a>)</span> defines a model as “a representation of a system for a purpose,” and thus, specifying a modeling objective is often a foundational step in the modeling process. <strong>Here, our modeling objective is to articulate the mechanisms and magnitude of environmental effects of proposed coastal storm risk management actions in the New York Bight Ecosystem</strong>. However, this model (like all models) is being developed in a constrained environment with limited time and resources. Three key issues constrained and guided NYBEM development, each of which is addressed in subsequent sections:</p>
 <ul>
 <li><p>The model domain is limited to the spatial extent of the focal USACE studies.</p></li>
 <li><p>Model development is phased to align with USACE project planning milestones.</p></li>
@@ -260,7 +253,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.1</span> Spatial Extent</h2>
 <p>The cumulative project area of the ongoing CSRM studies exceeds 3,000 mi<sup>2</sup> and covers multiple states. The spatial extent of model application was defined by a sequence of four sequentially smaller filters (Figure 2):</p>
 <ul>
-<li><p><em>New York Bight</em>: The USFWS (1997) defines the ecosystems of the New York Bight as the “open ocean region south of Long Island and east of New Jersey, known as the New York Bight proper” and all associated upstream estuaries, waters, and lands. This large spatial domain covers 31,276 mi<sup>2</sup> (10,206 mi<sup>2</sup> upland watershed and 21,070 mi<sup>2</sup> estuarine or marine). Specifically, the watershed is defined based on ten 8-digit Hydrologic Unit Code (HUC) watersheds (02020006, 02020007, 02020008, 02030101, 02030103, 02030104, 02030105, 02030202, 02040301, and 02040302). The USFWS Bight definition includes all marine ecosystems offshore. However, given the nearshore scope of USACE’s studies, seaward extent is limited to ecosystems above a 20m depth contour (i.e., the USFWS definition of “nearshore”). This watershed boundary and seaward limit have a total area of 13,420 mi<sup>2</sup>.</p></li>
+<li><em>New York Bight</em>: The USFWS defined the ecosystems of the New York Bight in 1997 as the “open ocean region south of Long Island and east of New Jersey, known as the New York Bight proper” and all associated upstream estuaries, waters, and lands. This large spatial domain covers 31,276 mi<sup>2</sup> (10,206 mi<sup>2</sup> upland watershed and 21,070 mi<sup>2</sup> estuarine or marine). Specifically, the watershed is defined based on ten 8-digit Hydrologic Unit Code (HUC) watersheds (02020006, 02020007, 02020008, 02030101, 02030103, 02030104, 02030105, 02030202, 02040301, and 02040302). The USFWS Bight definition includes all marine ecosystems offshore. However, given the nearshore scope of USACE’s studies, seaward extent is limited to ecosystems above a 20m depth contour (i.e., the USFWS definition of “nearshore”). This watershed boundary and seaward limit have a total area of 13,420 mi<sup>2</sup>.</li>
+</ul>
+<p><span class="citation">(USFWS) (<a href="#ref-us_fish_and_wildlife_service_usfws_significant_1997" role="doc-biblioref">1997</a>)</span></p>
+<ul>
 <li><p><em>Project Boundaries</em>: The Bight ecosystem includes many upland and coastal ecosystems beyond the project boundaries (e.g., Eastern Long Island). The USACE study boundaries provide a second filter on the spatial limits of the NYBEM. The New York Bight ecosystem contained within the project boundaries has an area of 2,930 mi<sup>2</sup>.</p></li>
 <li><p><em>Undeveloped Areas</em>: USACE projects are required to account and mitigate for detrimental environmental effects associated with any recommended actions. However, the region is highly developed, and USACE should not be penalized for existing ecological impacts. As such, developed areas are removed from the domain as these represent impacts not attributable to USACE projects. Developed areas were assessed via the 2016 National Land Cover Dataset (NLCD) as open space, low intensity, medium intensity, and high intensity classes (Codes 21, 22, 23, and 24). The reduced model domain is 1,720 mi<sup>2</sup>, which includes all areas potentially assessed for impacts.</p></li>
 <li><p><em>Aquatic Ecosystems</em>: A key focus of the NYBEM is assessment of indirect effects of proposed actions. Currently, upland and shoreline ecosystems above mean higher high water (MHHW) are not included in the models. Impact assessments from these systems (e.g., dunes, scrub-shrub, riparian zones) are better understood from prior impact analyses. Additionally, these systems are likely to experience fewer indirect impacts, and methods are generally available for assessing direct impacts. Upland ecosystems are not explicitly removed from the spatial domain at this phase, but are removed below through the absence of any patch-scale models at elevations above MHHW.</p></li>
@@ -398,8 +394,8 @@ Footprint + Tidal Range + Salinity + Hydrodynamics + Sediment + Temperature + Wa
 </div>
 <div id="mediated-modeling" class="section level2">
 <h2><span class="header-section-number">2.3</span> Mediated Modeling</h2>
-<p>The NYBEM intends to assess ecological consequences of alternative infrastructure options in a large, diverse ecosystem. There are many types of stakeholder-based model development processes that overlap in approach and emphasize collaboration: Model Prototyping, Participatory Modeling, Group Model Building, Companion Modeling and Mediated Model Development (See reviews by Voinov and Bousquet 2010, Gray et al. 2017, and Hall et al. 2019). These processes are generally well-suited to environmental management problems that are politically and publicly-sensitive, complex, and engage diverse audiences (van den Belt et al. 2006). “Mediated modeling” is used here to describe the family of techniques for building consensus among multiple partners and producing credible and defensible ecological models in a transparent way (van den Belt 2004).
-For NYBEM, a suite of workshop-based model development methods are adapted from Herman et al. (2019). These workshops utilize a lecture-exercise format, where participants are led through the theory of a particular aspect of modeling (e.g., conceptual modeling) and then apply said theory to a focal ecosystem (i.e., the New York Bight). A series of workshops and reviews are structuring the iterative development of NYBEM with subsequent research and synthesis between meetings (See McKay et al. 2021 for additional detail). Appendix B summarizes workshop logistics and focal topics. Key milestones in model development are briefly described below, but the overarching strategy is to engage larger audiences and more formal forms of model evaluation as the toolkit develops.</p>
+<p>The NYBEM intends to assess ecological consequences of alternative infrastructure options in a large, diverse ecosystem. There are many types of stakeholder-based model development processes that overlap in approach and emphasize collaboration: Model Prototyping, Participatory Modeling, Group Model Building, Companion Modeling and Mediated Model Development (See reviews by <span class="citation">Voinov and Bousquet (<a href="#ref-voinov_modelling_2010" role="doc-biblioref">2010</a>)</span>, <span class="citation">Gray et al. (<a href="#ref-gray_environmental_2017" role="doc-biblioref">2017</a>)</span>, and <span class="citation">Hall, Lazarus, and Thompson (<a href="#ref-hall_mediated_2019" role="doc-biblioref">2019</a>)</span>). These processes are generally well-suited to environmental management problems that are politically and publicly-sensitive, complex, and engage diverse audiences <span class="citation">(Belt et al. <a href="#ref-van_den_belt_mediated_2006" role="doc-biblioref">2006</a>)</span>. “Mediated modeling” is used here to describe the family of techniques for building consensus among multiple partners and producing credible and defensible ecological models in a transparent way <span class="citation">(Belt et al. <a href="#ref-van_den_belt_mediated_2006" role="doc-biblioref">2006</a>)</span>.
+For NYBEM, a suite of workshop-based model development methods are adapted from <span class="citation">Herman et al. (<a href="#ref-herman_unpacking_2019" role="doc-biblioref">2019</a>)</span>. These workshops utilize a lecture-exercise format, where participants are led through the theory of a particular aspect of modeling (e.g., conceptual modeling) and then apply said theory to a focal ecosystem (i.e., the New York Bight). A series of workshops and reviews are structuring the iterative development of NYBEM with subsequent research and synthesis between meetings (See McKay et al. 2021 for additional detail). Appendix B summarizes workshop logistics and focal topics. Key milestones in model development are briefly described below, but the overarching strategy is to engage larger audiences and more formal forms of model evaluation as the toolkit develops.</p>
 <ul>
 <li><p><em>Preliminary workshop with Philadelphia District</em> (January 2019): A preliminary conceptual model was developed with USACE Philadelphia District team members, which focused generally on issues potentially relevant for environment compliance at the broadest level.</p></li>
 <li><p><em>USACE workshop with Philadelphia and New York Districts</em> (March 2019): A joint team from multiple USACE Districts was convened, and a strategy was proposed to develop NYBEM around key ecosystem types to reduce the dimensionality and complexity of the modeling problem and structure the path forward for model development.</p></li>
@@ -410,6 +406,42 @@ For NYBEM, a suite of workshop-based model development methods are adapted from 
 </ul>
 <p>Rapid timelines and iterative development encourage a transparent approach for model documentation. We adopt a growing family of methods for “<a href="https://ropensci.github.io/reproducibility-guide/sections/introduction/">reproducible research</a>,” which embrace code and data sharing, enable review processes, and facilitate use of methods and results. Specifically, <a href="https://rmarkdown.rstudio.com/">R Markdown</a> is applied to development and document models, which are coded in the <a href="https://cran.r-project.org/">R Statistical Software</a>. These tools minimize data transfer errors and facilitate internal inspect of code as it is developed.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-van_den_belt_mediated_2006">
+<p>Belt, Marjan van den, Oscar A. Bianciotto, Robert Costanza, Serge Demers, Susana Diaz, Gustavo A. Ferreyra, Evamaria W. Koch, Fernando R. Momo, and Maria Vernet. 2006. “Mediated Modeling of the Impacts of Enhanced UV-B Radiation on Ecosystem Services.” <em>Photochemistry and Photobiology</em> 82 (4): 865. <a href="https://doi.org/10.1562/2005-10-19-IR-722">https://doi.org/10.1562/2005-10-19-IR-722</a>.</p>
+</div>
+<div id="ref-fischenich_application_2008">
+<p>Fischenich, Craig. 2008. “The Application of Conceptual Models to Ecosystem Restoration.” ERDC TN-EBA-TN-08-1. Vicksburg, Mississippi: ENGINEER RESEARCH AND DEVELOPMENT CENTER VICKSBURG MS COASTAL AND HYDRAULICS LAB. <a href="https://apps.dtic.mil/sti/pdfs/ADA477865.pdf">https://apps.dtic.mil/sti/pdfs/ADA477865.pdf</a>.</p>
+</div>
+<div id="ref-grant_ecological_2008">
+<p>Grant, William Edward, and Todd M. Swannack. 2008. <em>Ecological Modeling: A Common-Sense Approach to Theory and Practice</em>. Malden (Mass.): Blackwell.</p>
+</div>
+<div id="ref-gray_environmental_2017">
+<p>Gray, Steven, Michael Paolisso, Rebecca Jordan, Stefan Gray, and Springer International Publishing. 2017. <em>Environmental Modeling with Stakeholders Theory, Methods, and Applications</em>. <a href="https://doi.org/10.1007/978-3-319-25053-3">https://doi.org/10.1007/978-3-319-25053-3</a>.</p>
+</div>
+<div id="ref-hall_mediated_2019">
+<p>Hall, Damon M., Eli D. Lazarus, and Jessica L. Thompson. 2019. “Mediated Modeling and Participatory Modeling.” In <em>Encyclopedia of Ecology</em>, 129–35. Elsevier. <a href="https://doi.org/10.1016/B978-0-12-409548-9.10574-3">https://doi.org/10.1016/B978-0-12-409548-9.10574-3</a>.</p>
+</div>
+<div id="ref-herman_unpacking_2019">
+<p>Herman, Brook D., S. Kyle McKay, Safra Altman, Nathan S. Richards, Molly Reif, Candice D. Piercy, and Todd M. Swannack. 2019. “Unpacking the Black Box: Demystifying Ecological Models Through Interactive Workshops and Hands-on Learning.” <em>Frontiers in Environmental Science</em> 7 (October): 122. <a href="https://doi.org/10.3389/fenvs.2019.00122">https://doi.org/10.3389/fenvs.2019.00122</a>.</p>
+</div>
+<div id="ref-mckay_aligning_2019">
+<p>McKay, S. Kyle, Nate Richards, and Todd S. Swannack. 2019. “Aligning Ecological Model Development with Restoration Project Planning.” ERDC/TN EMRRP-SR-89. Vicksburg, Mississippi: Army Engineer Research; Development Center.</p>
+</div>
+<div id="ref-us_army_corps_of_engineers_assuring_2011">
+<p>USACE. 2011. “ASSURING QUALITY OF PLANNING MODELS.” EC 1105-2-412. Washington, D.C.: DEPARTMENT OF THE ARMY. <a href="https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf">https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf</a>.</p>
+</div>
+<div id="ref-us_fish_and_wildlife_service_usfws_significant_1997">
+<p>(USFWS), U. S. Fish and Wildlife Service. 1997. “Significant Habitats and Habitat Complexes of the New York Bight Watershed.” Charlestown, Rhode Island: Southern New England - New York Bight Coastal Ecosystems Program. <a href="https://nctc.fws.gov/pubs5/web_link/text/toc.htm">https://nctc.fws.gov/pubs5/web_link/text/toc.htm</a>.</p>
+</div>
+<div id="ref-van_den_belt_mediated_2004">
+<p>Van den Belt, Marjan. 2004. <em>Mediated Modeling: A System Dynamics Approach to Environmental Consensus Building</em>. Washington, D.C: Island.</p>
+</div>
+<div id="ref-voinov_modelling_2010">
+<p>Voinov, Alexey, and Francois Bousquet. 2010. “Modelling with Stakeholders☆.” <em>Environmental Modelling &amp; Software</em> 25 (11): 1268–81. <a href="https://doi.org/10.1016/j.envsoft.2010.03.007">https://doi.org/10.1016/j.envsoft.2010.03.007</a>.</p>
 </div>
 </div>
             </section>
