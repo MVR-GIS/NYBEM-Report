@@ -20,8 +20,7 @@ Present the overarching habitat suitability index equation.
 
 **EQUATION**
 
-
-### Variable-1
+### Salinity
 
 2-5 paragraphs presenting three main ideas.
 
@@ -33,7 +32,55 @@ Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-### Variable-2
+### Edge Erosion
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+**EQUATION**
+
+### Vegetation Cover
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+**EQUATION**
+
+### Episodic Sediment Deposition
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+**EQUATION**
+
+### Developement of Adjacent Upland
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+**EQUATION**
+
+### Shoreline Armoring 
 
 2-5 paragraphs presenting three main ideas.
 

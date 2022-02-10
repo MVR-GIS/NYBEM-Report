@@ -20,21 +20,18 @@ Present the overarching habitat suitability index equation.
 
 **EQUATION**
 
-
-### Chemical Environment
-
 Salinity and dissolved oxygen are two primary indicators of water quality and ecosystem function, condition and resilience [Smit et al. 2021].
 
-#### Salinity
+### Salinity
 
-Salinity, often used as a proxy for the total concentration of all dissolved salts in the water, is a key factor in water density that controls the vertical mixing of nutrients and chemicals throughout the water column. Salinity constraints dissolved oxygen concentration and limits speciation of marine zones to euryhaline taxa that are physiological adapted to tolerate hypoosmotic processes (are able to maintain a lower internal ionic concentration than seawater).  
+Salinity, often used as a proxy for the total concentration of all dissolved salts in the water, is a key factor in water density that controls the vertical mixing of nutrients and chemicals throughout the water column. Salinity constrains dissolved oxygen concentration and limits speciation of marine zones to euryhaline taxa that are physiological adapted to tolerate hypoosmotic processes (are able to maintain a lower internal ionic concentration than seawater).  
 Depth-averaged salinity (mean, 0-100 % exceeded by 10 %), sourced from AdH summary statistics (bottom and surface salinity may be available for HATS in future analyses), are assessed within the NYBEM. 
 
 Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-#### Dissolved Oxygen Processes
+### Dissolved Oxygen Processes
 
 Dissolved oxygen concentration, a key element for the survival of marine species, limits speciation of marine zones through hypoxia, where low oxygen levels may cause die-offs in marine species. Dissolved oxygen concentrations act as a proxy for pelagic, demersal and benthic fauna biomass (abundance/diversity of phytoplankton, zooplankton, fish, marine turtles, birds and mammals) that indicate the productivity of the zone permanent monitoring stations, as supported by NYC DEP Monitoring Stations (2018), Jamaica Bay Eutrophication Model (Fischbach et al. 2018), Chesapeake Bay model (Cerco and Cole 1993) and the EPA Long Island Sound integrated model (underway), are assessed within the NYBEM.
 
@@ -42,11 +39,9 @@ Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-### Physical Environment
-
 Water temperature, the wave environment, current velocity, light, depth, substrate, suspended solids, and nutrient loading. Depth is not specifically modeled within the NYBEM, but is inherent within model input variables, such as the AdH hydrodynamic model. 
 
-#### Water Temperature
+### Water Temperature
 
 Water temperature acts as a control for the majority of the chemical (dissolved nutrients, pH, density, and photosynthesis), biological (respiration and metabolic rates, taxa development, and migrations) and physical (ice formation and thermal stratification of the water column) properties of a marine ecosystem.   
 MARACOOS Monthly Sea Surface Temperature from the MARCO Mid-Atlantic Ocean Data Portal and seasonal temperature thresholds for winter flounder, as identified in changes in temperature regimes that are based on AdH model outputs, are assessed within the NYBEM. The AdH model outputs are supported by the Winter flounder habitat suitability model (USFWS) 2001 and VIMS 2018 habitat suitability models and the USACE Harbor monitoring (USACE 2013).
@@ -55,7 +50,7 @@ Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-#### Wave Environment
+### Wave Environment
 
 The wave environment affects many variables with the NYB: vertical and horizontal mixing and flushing of the physical and chemical properties of the water, suspended sediment and solids, substrate settlement of taxa, and commercial and recreational vessel traffic.   
 Wave height and wave refraction from STWAVE are assessed within the NYBEM, as supported by Byrnes et al. (2004).
@@ -64,7 +59,7 @@ Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-#### Current Velocity
+### Current Velocity
 
 The marine deepwater environment is subjected to velocity effects from ocean currents and tides that affect vertical and horizontal mixing and flushing of the system, suspended sediment and solids, substrate settlement of taxa, and small and recreational vessel traffic. Low flow conditions allow for the settlement of sediment, possibly burying viable habitat, reduce mixing and flushing, and potentially facilitate hypoxic conditions. Conversely, high velocities scour the benthic environment, prohibiting settling in the substrate by benthic taxa.
 
@@ -74,7 +69,7 @@ Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-#### Derived Metrics- Light
+### Derived Metrics- Light
 
 The depth that light reaches within the water column acts as a proxy for the viability of water column turbidity, nutrient loading and chlorophyll-a production, the essential building block for ocean productivity. 
 
@@ -85,7 +80,7 @@ Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-#### Functional Variables/ Development Pressures
+### Vessel Traffic and Development Pressures
 
 Vessel traffic density provides an index for development pressures, both commercial and recreational fishing pressure on the pelagic, demersal and benthic systems, as well as commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution).    
 
