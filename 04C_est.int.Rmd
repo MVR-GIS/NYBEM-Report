@@ -2,8 +2,11 @@
 
 <span style="color: red;">Mahan and McKay to write.</span>
 
+Estuarine environments include marine water that has been diluted by freshwater runoff from the land [@prosser_impacts_2018]. Due to tidal influence, intertidal ecosystems are found between high and low tide, experiencing varying land and sea influences, whereas subtidal ecosystems are constantly submerged. The estuarine intertidal ecosystem considers areas with salinity values greater than 0.5 ppt to 30 ppt and elevation from MHHW to MLLW. Plant, animal, and microorganism populations, as well as their nonliving surroundings, interact as a working unit in intertidal ecosystems, which are exposed at low tides (Citation). Within the estuarine intertidal ecosystem, ecological processes are linked to physical and chemical characteristics. These characteristics can experience change under anthropogenic and climatic pressures that deviate from the homeostasis, or baseline, habitat condition. This can result in reduced habitat suitability across the estuarine intertidal ecosystem.   
 
-1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
+Tidal marshes are vegetated intertidal ecosystems found at the land-sea interface that serve as crucial transition zones for marine, freshwater, and terrestrial processes [@colombano_climate_2021]. Tidal marshes originated in a range of coastal and estuarine environments, and their location exposes them to a number of environmental factors (e.g., ocean currents, watershed hydrology) and environmental gradients (e.g., salinity)(Lauchlan and Nagelkerken 2020). Broad-scale climatic changes are already affecting the timing, size, and duration of naturally varying environmental variables in estuarine, and freshwater settings. Understanding the changes in environmental stressors from climate change and sea level rise (SLR) on the tidal marsh ecosystem is critical to evaluate changes after the addition of storm surge barriers. 
+
+The following variables are accessible to the estuarine intertidal submodel portion of the NYBEM: salinity, episodic sediment deposition, edge erosion, vegetative cover, development of adjacent uplands, and the presence/absence of shoreline armoring.
 
 Present and describe the conceptual model for this system.
 
@@ -22,11 +25,12 @@ Present the overarching habitat suitability index equation.
 
 ### Salinity
 
-2-5 paragraphs presenting three main ideas.
+Salinity affects physical and chemical processes such as flocculation and the amount of dissolved oxygen (DO) in the water column, as well as the types of organisms that may exist in an estuary (Citation). Estuarine organisms have evolved to cope with salinity fluctuations. Those that prefer fresher water at the upstream river end of the estuary to species that prefer saltier water at the downstream sea end usually form a gradient. Estuarine plants and animals suffer when extremely high salinities persist for lengthy periods of time. During instances of heavy freshwater inflows from rivers, harm might also occur. Extreme events are the issue in both scenarios.
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+Higher salinity, lower nutrient intake, and lower sediment inputs associated with extremely low river inflow can stress or kill plants and animals, limit productivity owing to nutritional deficiency, and destroy marshes due to low sediment input. Low estuary salinity kills marine creatures when river inflow is extremely high; excessive nutrient inputs contribute to algae blooms; and increased sediment input suffocates sea grasses and oysters [@hopkinson_lateral_2018]. 
 
-Describe how this variable is assessed and quantified in NYBEM.
+The NYBEM estuarine intertidal submodel relies on a percent in deviation of salinity regime to represent change in tidal inundation and freshwater flow input across the ecosystem.  As the percentage of deviation from the baseline salinity regime increases, habitat suitability for taxa within the estuarine intertidal ecosystem will decrease.
+
 
 Present the equation for assessing the suitability index.
 
@@ -34,11 +38,10 @@ Present the equation for assessing the suitability index.
 
 ### Edge Erosion
 
-2-5 paragraphs presenting three main ideas.
+Climate change, pollution, and other anthropogenic effects are putting more pressure on terrestrial and marine ecosystems. Coastal flooding and shoreline erosion will likely become more common as sea levels rise and storm surges shift as a result of climate change. There is fear that tidal wetlands will drown as sea levels rise and sediment supplies to the shore decline across the world. Marsh sediment budgets are a geographically integrated measure of opposing constructive and destructive forces: a surplus of sediment can lead to vertical growth and/or lateral expansion, while a shortfall can lead to drowning and/or lateral contraction [@ganju_spatially_2017]. Many estuarine marshes face sediment deficits along the shoreline as a result of increased edge erosion. Edge degradation causes morphological changes that make it easier for waves to propagate to the marsh borders and promote the resuspension and export of sediments from the estuary [@li_wave-driven_2019].
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+ The percent change in edge erosion throughout the estuarine intertidal ecosystem is used to represent habitat suitability. When the percentage of shear stress for erosion is 10% or greater, erosion occurs, resulting in a reduction in total marsh area and an increase in open water area. At a rate of 30% shear stress from erosion, the habitat will no longer be suitable (habitat suitability equals zero.
 
-Describe how this variable is assessed and quantified in NYBEM.
 
 Present the equation for assessing the suitability index.
 
@@ -46,11 +49,11 @@ Present the equation for assessing the suitability index.
 
 ### Vegetation Cover
 
-2-5 paragraphs presenting three main ideas.
+Vegetation provides various ecological services within the estuarine intertidal ecosystem, including providing a fish nursery environment, feed for migratory birds, nutrient cycling, carbon storage, and sediment stability, therefore reductions of vegetative cover can have a significant impact on shallow marine ecosystems. Seagrass meadows are disappearing at an alarming rate in shallow coastal and estuary marine environments, with losses similar to tropical rainforests, mangroves, and coral reefs due to anthropogenic and climate stress [@walter_large-scale_2020]. 
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+The loss of vegetative cover changes the dynamics near the seabed in locations where there was formerly vegetation, and transforms huge areas of the estuary from a deposition and accretion-friendly environment to one that favors suspension and erosion. For estuaries, such high amounts of suspended particles and sediment-associated nutrients create a variety of environmental management issues. These include alterations in invertebrate and macrophyte populations as well as a general deterioration of aquatic environments [@cotton_effects_2006]. 
 
-Describe how this variable is assessed and quantified in NYBEM.
+For the NYBEM, habitat suitability increases as the percentage of vegetative cover increases throughout the habitat. When vegetative cover is equal to 100 percent, the estuarine intertidal ecosystem will have a high suitability value (greater than 90%).
 
 Present the equation for assessing the suitability index.
 
@@ -58,11 +61,14 @@ Present the equation for assessing the suitability index.
 
 ### Episodic Sediment Deposition
 
-2-5 paragraphs presenting three main ideas.
+Estuaries are efficient sediment traps where near-bottom circulation causes sediment flow convergence during the transition from brackish to fresh water, resulting in local maxima in suspended sediment concentration (SSC) and deposition rates. Marine materials are deposited from the continental shelf into estuarine habitats. Due to disparities in tidal currents (ebb versus flood tide), sediments are carried to supply sediment on varying timeframes. In the estuarine intertidal ecosystem, sediment transport capacity is mostly determined by river discharge and by the timing of discharge events in relation to the spring–neap cycle and subtidal oscillations in sea level [@prosser_impacts_2018]. 
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+Due to the retreat of the salinity intrusion and increasing bed pressures, sediment deposition episodes can induce considerable bed resuspension in the estuary. These periodic flood and storm events are major drivers in sediment dynamics and contribute disproportionately to the total sediment discharge [@ralston_sediment_2013]. The duration of high-discharge episodes in relation to the estuarine reaction time, a feature that fluctuates seasonally with discharge and estuarine length, also affects sediment transport capacity [@palinkas_sediment_2014]. These short-term events can cause changes in the local biological community and affect seabed stability and strength. 
 
-Describe how this variable is assessed and quantified in NYBEM.
+In coastal and estuary environments across the world, harmful algal blooms (HABs) have substantial economic, public health, and ecological consequences. The influx of additional nutrients following an episode of sediment deposition have been known to cause harmful algal blooms (HABs)[@ralston_temperature_2014]. Further, the frequent upturn of sediment can displace biological organisms. The most significant foreshore processes for the horseshoe crab are episodic storms, which impact erosion and accretion cycles, swash and wave processes, which affect sediment mixing and activation, and tides, which affect water infiltration and exfiltration through the sediment [@nancy_jackson_armoring_2010]. During storms, erosion of the shoreline can result in the removal of material from the upper foreshore and deposition on the lower foreshore, or the foreshore moving horizontally landward.
+
+The NYBEM estuarine intertidal submodel utilizes a depth threshold that represents optimal episodic sediment deposit levels. Sediment supply is a key determinant of long-term marsh stability. The percent of time the estuarine depth is greater than MHHW is an indicator of habitat suitability. 
+
 
 Present the equation for assessing the suitability index.
 
@@ -70,11 +76,11 @@ Present the equation for assessing the suitability index.
 
 ### Developement of Adjacent Upland
 
-2-5 paragraphs presenting three main ideas.
+The development of uplands within a watershed can have a direct and indirect impact on a variety of essential aspects in estuarine intertidal ecosystems. The combination of coastal erosion and upland development causes a "coastal squeeze," in which low-lying, intertidal regions that would usually recede inland in the face of sea-level rise are diminished because man-made structures (e.g. shoreline armoring) prevent such retreat [@prosser_impacts_2018]. This means that tidal marshes will need to shift upslope onto nearby uplands to survive in a period of rapid sea-level rise. Further, the top boundary of this migratory zone's tidal inundation is very unpredictable over time and may be rising faster than mean sea level. Land management methods on the tidal marsh's upland border can help or hinder ecosystem migration in response to increasing sea levels [@anisfeld_upslope_2017].
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+Both developed and undeveloped uplands can experience ecological stress as a result of climate change and land use changes (e.g. addition of storm surge barriers, shoreline armoring). Climate change's effects on ocean and watershed systems are intertwined and set to interact. This is especially true in tidal marshes, which are biogenic environments that are sculpted by tidal and fluvial processes and are dynamic and architecturally complex [@colombano_climate_2021]. Multiple stressors can affect the development of adjacent uplands such as low-flows, flooding, and reduced stream continuity [@talke_changing_2020]. 
 
-Describe how this variable is assessed and quantified in NYBEM.
+For the NYBEM, habitat suitability is modeled for an increase in development for adjacent uplands. When the percentage of developed adjacent uplands is greater than 10%, habitat suitability in the estuarine intertidal ecosystem declines. When the development of adjacent upland reaches 100% of the estuarine intertidal ecosystem, the habitat will no longer be considered suitable. 
 
 Present the equation for assessing the suitability index.
 
@@ -82,11 +88,12 @@ Present the equation for assessing the suitability index.
 
 ### Shoreline Armoring 
 
-2-5 paragraphs presenting three main ideas.
+Natural biological processes and human-induced changes to the estuarine intertidal shoreline boundary are considered as components to a complex ecological system. The mean high-tide line is commonly used to determine shoreline boundaries and extent [@kittinger_shoreline_2010]. Shoreline modification called armoring has resulted in a considerable loss of coastal ecosystems from erosion, as well as a reduction in the resilience of these systems to disturbance [@kittinger_shoreline_2010]. Shoreline armoring involves placing hardened structures like bulkheads and revetments along the shoreline and as sea levels rise, these structures can prevent coastal marshes from spreading upland over time [@gardner_is_2021]. 
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+Armoring is widespread throughout the United States, with the most extensive armoring being found near urban areas [@morley_ecological_2012].  Shoreline armoring occupies 50-70% of shorelines along urban coastal areas [@dugan_generalizing_2018]. Increasing shoreline development pressure and predicted sea-level rise suggest that the demand for shoreline armoring will continue to rise and expand throughout the future [@gardner_is_2021]. Shoreline armoring is correlated with decreased habitat complexity and a reduction in connectivity to adjacent habitats [@morley_ecological_2012].
 
-Describe how this variable is assessed and quantified in NYBEM.
+The environmental consequences of armoring are context dependent, relying on characteristics of the environment and armoring structural factors [@dugan_generalizing_2018]. The type of structure placed (e.g., seawalls, bulkheads, revetments) and its relative placement on the coast profile will influence the biological reactions to armoring. Estuarine intertidal habitats that lack shoreline armoring have increased habitat suitability. For the NYBEM, the presence and absence of shoreline armoring will be utilized to derive information about the ability for multiple taxa to use the shoreline as migratory pathways. 
+
 
 Present the equation for assessing the suitability index.
 

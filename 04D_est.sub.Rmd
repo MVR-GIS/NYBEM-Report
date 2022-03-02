@@ -2,15 +2,33 @@
 
 <span style="color: red;">Swannack, Reif, and Saltus to write.</span>
 
+This section presents development of the Estuarine Subtidal Model (ESM). Estuarine subtidal habitat was defined as areas with elevations between MLLW and -2m (-6ft) with salinities ranging from 0.5 to 30. In general, the ESM seeks to capture the general condition and trajectory of the estuarine subtidal habitat using three different taxa (oysters, seagrass, and clams) as indicators of ecosystem quality. Each taxa provides critical contributions to the overall quality of the estuarine subtidal habitat yet does so independently from the other two indicators. Given that, we quantified habitat quality independently for each taxon. Each taxa is represented conceptually as part of the overall ecosystem, but quantified as an independent submodel.  
 
-1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
+Habitat quality was modeling using a multivariate index-based approach. Each variable received a suitability score ranging from 0 to 1 inclusive. For each taxa, Suitability scores were integrated into an overall habitat quality using a geometric mean. 
 
-Present and describe the conceptual model for this system.
+A conceptual model of the estuarine subtidal habitat was developed at a __mediated modeling workshop__ This conceptual model represented the major components affecting the quality of the ESH (Figure XX). Three main categories of drivers were identified: physical (water quality, velocity, sedimentation), anthropogenic (vessel traffic and development stress), and biological (SAV, benthic organisms and fish) with interactions were among the categories (Figure 1). 
 
 **FIGURE**
 
+_Figure 1. Conceptual model of the overall drivers of ecosystem quality in estuarine subtidal habitat_
 
-Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
+Further meetings with the PDT led to refinements in the conceptual model as follows:
+
+1. It was assumed that essential fish habitat would be present if oysters, SAV, and clams were present, so this variable was removed. 
+
+2. Depth and light are not expected to change based on projects and were removed. However, light availability, which is necessary for SAV growth, can be impacted by turbidity, so this was used as a proxy for light. 
+
+3. Substrate type is a major driver of SAV, oysters, and clams. Each taxa requires different substrates, so this variable was reconceptualized into three categories. 
+
+4. Salinity is a critical variable for oysters and was added to the conceptual model. 
+
+5. Water quality is an important measure, but data is unavailable at the current time, so this was removed from the model. Turbidity is being used as a proxy. 
+
+6. Vessel traffic can be used as a proxy for variable development stress, under the assumption that more vessel traffic correlates to larger development pressures. 
+
+**FIGURE**
+
+_Figure 2. Updated conceptual model_
 
 **TABLE**
 
@@ -20,30 +38,81 @@ Present the overarching habitat suitability index equation.
 
 **EQUATION**
 
+The quantification phase of ecological model development formalizes the conceptual model in terms of mathematical relationships, model parameters, and a numerical algorithm (Grant and Swannack 2008). This section describes the ESM structure and provides justification for the inclusion of the variables. The overall model consists of five parameters (substrate, development stress, water temperature, salinity, and shear stress) that apply to one or more of the taxa modeled (Figure 2). 
 
-### Variable-1
+### Oysters
 
-2-5 paragraphs presenting three main ideas.
+The oyster submodel is represented by the Oyster Habitat Suitability Index Model (OHSIM; Swannack et al., 2014), an EcoPCX-certified model for the Eastern oyster (Crassostrea virginica). OHSIM is a spatially-explicit, grid-based index model that uses a series of linear equations to calculate habitat suitability for C. virginica. The model consists of four variables: substrate, and three measure of salinity—mean salinity during spawning season, in which spawning and spat set have a higher optimal salinity than for survival of adults, annual mean salinity, which is  the expected range over which adult oysters are viable, and minimum annual salinity, which defines the impacts of high mortality events resulting from lower salinities resulting freshwater influxes (Soniat 2012). Variables are briefly described below. For more details, refer to Swannack et al. 2014 and EcoPCX documentation. The functional forms of each variable type are presented in Figure 3. 
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+#### _Oyster Substrate_
 
-Describe how this variable is assessed and quantified in NYBEM.
+Substrate is represented as the percent of the bottom covered with hard substrate, such as existing reefs, or other hard surfaces. We assume that oyster habitat suitability increases linearly from 0 to 100% clutch cover (Equation 1, Figure 3A).
+
+
+**EQUATION**
+
+
+#### _Salinity_
+
+Mean Salinity during Spawning Season (MSSS) represents the mean monthly salinity from May through September. MSSS reflects the higher optimal salinities required for spawning and larval stages (Butler 1954, Cake 1983). The relationship between MSSS and its HSI value is formulated as a linear step-function (Figure 3B) as follows:
+
+Minimum Annual Salinity (MAS) is the minimum value of the 12 monthly mean salinities. This variable is essential to describe freshwater impacts (e.g., freshets, high rainfall years, or freshwater diversions) on oysters and is analogous to the frequency of killing floods variable used by Cake (1983). The relationship between MAS and its suitability index is formulated as a linear step-function (Figure 3C) as follows:
+
+Annual mean salinity (AS) represents the range of salinities over which adult oysters are viable (Cake 1983). The relationship between AS and its suitability index is formulated as a linear step-function (Figure 3D) as follows:
 
 Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-### Variable-2
+#### _Overall Oyster Suitability_
 
-2-5 paragraphs presenting three main ideas.
+Overall oyster suitability index (OSI) is determined as the geometric mean of the SI values for the four component variables. If any component suitability is 0 (unsuitable), OSI is 0. OSI is calculated as:
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+Where HSIi  represents the HSI value per cell for each environmental variable i and n represents the number of variables included in the model. OSI results should be categorized as 0 – 0.25 (low), 0.25 – 0.55 (low/medium), 0.55 – 0.85 medium/high, and 0.85 – 1 (high), similar to the categories described by Soniat and Brody (1988) and Brooks (1997). 
 
-Describe how this variable is assessed and quantified in NYBEM.
+_Figure 3. Relationships between Oyster Suitability Indices (OSI) and (A) percentage of area covered with hard substrate (% Hard Substrate), (B) Mean salinity during spawning season from May through September (MSSS), (C) Minimum Annual Salinity (MAS), and (D) Mean Annual Salinity (AS). % Hard substrate was measured as the percentage of each grid cell covered in hard substrate. Figure was modified from Swannack et al. (2014)._
 
-Present the equation for assessing the suitability index.
+### Submerged aquatic vegetation (SAV)
 
-**EQUATION**
+The SAV submodel is represented by four variables critical for growth and reproduction of seagrass, (1) substrate, (2) water temperature, (3) light availability and (4) development stress (Figure 2). Suitability scores are represented either as discrete categories or as step functions with linear interpolations between the steps. 
+
+#### _Seagrass Substrate_
+
+Substrate is represented as the presence of soft-bottom sediments conducive for seagrass growth. Optimal conditions for the seagrass growth in the study region were identified as non-cobble substrates with less than 70% fine sediment. Soft-bottom, non-cobble substrates with greater than 70% fine sediment were considered suboptimal/adequate. Suitability scores for seagrass substrate are represented in Figure 4 and are quantified as follows:
+
+#### _Temperature_
+
+Like all vascular plants, temperature is a major driver for seagrass viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr and Borman, 2011). At temperatures above optimal range for seagrass, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation (Atkin and Tjoelker, 2003; Jensen, 2000).  The functional form for the seagrass-temperature functional form was based on the following empirical studies. 
+
+- Peak biomass and shoot density occur in late spring as water temperatures rise to 25 °C, (Orth et al., 2007)
+
+- Shoot production rapidly declines and leaf senescence occurs when water temperature exceed 25°C (Orth et al., 2007)
+
+- Subsequent shoot production occurs when temperatures drop below 25 °C and continues until a dormancy phase is reached when water temperature drops below 10 °C (Orth et al., 2007)
+
+- Photosynthesis decreases dramatically when temperatures exceeded 19 °C in Chesapeake Bay (Evans et al., 1986).  Additionally, the presence of eelgrass in the Gulf of California as an annual winter species is determined by the average water temperatures which range between 17°C and 25°C (Meling-Lopez and Ibarra-Obando, 1999). 
+
+The relationship between Temperature and its suitability index for submerged aquatic vegetation represented in Figure 5 and is formulated as a linear step-function (Figure 5) as follows
+
+**Figure**
+
+_Figure 5. Suitability index curve for seagrass and temperature relationship_
+
+#### _Light_
+
+Light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the ESM, light availability depends on depth and TSS and is calculated algorithmically, then converted into a suitability index. Light availability (Iz) at the plant surface is estimated based on van Nes et al., (2003) is calculated as:
+
+where PAR represents the photosynthetically active radiation at the surface, Kd is the light attenuation coefficient for water clarity matching the conditions of the study site, and z is water depth. Light at the plant surface is converted to a percent of light at the plant (following equation 35), which is used to calculate a suitability score. The relationship between Percent light available (PLA) and its suitability index for submerged aquatic vegetation is represented in Figure 6 and is formulated as a linear step-function as follows:
+
+**Figure**
+
+_Figure 6. Suitability score for the relationship between percent light available (PLA) in the water column and habitat suitability for SAV_
+
+#### _Development Stress_
+
+Human-mediated disturbances (e.g., urban development, increased boat traffic, etc) can negatively impact SAV abundance. We represent these disturbances as an aggregated categorical variable development stress, which is quantified through a proxy of boater traffic per grid cell. Boater traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per cell) is optimal and the suitability decreases with increasing boater traffic. Suitability scores for development stress are represented in Figure 7 and are quantified as follows:
+
+### Clams
 
 
 ### est.sub Code

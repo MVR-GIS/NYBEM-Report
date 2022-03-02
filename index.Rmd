@@ -4,7 +4,7 @@ author: "S. Kyle McKay, Vanessa Mahan, Michael Dougherty, Toddd Swannack, Candic
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: ["Draftbook.bib", "packages.bib"]
+bibliography: ["Draftbooksubmodel.bib", "packages.bib"]
 biblio-style: "apalike"
 link-citations: true
 description:
