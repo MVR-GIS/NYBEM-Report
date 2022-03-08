@@ -42,7 +42,3 @@ This report presents development and application of the New York Bight Ecologica
 * _Application and Communication_: Describes application of models and communication of outcomes for the existing condition in the New Jersey Back Bays (NJBB).
 
 
-## IRRELEVANT CHANGE
-
-Kyle is horsing around with GitHub
-
