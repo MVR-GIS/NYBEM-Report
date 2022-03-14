@@ -1,4 +1,28 @@
-## Habitat Type Mapper (hab.mapper) (I)
+## Pre-Processing Functions (I)
+
+
+<span style="color: red;">Need Dougherty's help on this one.</span>
+
+Insert pre-amble text. This chapter describes each function in detail, but they can be summarized briefly as:  
+
+
+### Define Model Domain
+
+`nybem.domain`: This function defines the model domain based on regional extent of the New York Bight watersheds, a user-specified focal area, a downstream extent of a 20m ocean depth contour, and an upstream extent based on bed elevations less than MHHW.
+
+
+```{r echo=TRUE}
+#Functions for rasterizing habitat types
+nybem.domain <- function(NYBightWatersheds, Ocean20mDepth, bedelev, MHHW){
+  #Insert code
+}
+```
+
+
+### Map Habitat Extent and Type
+
+`patch.mapper`: This function maps the extent of NYBEM's six major ecosystem types (Table 3.2) based on user-specified data layers for bed elevation, MLLW, MTL, MHHW, and salinity.  
+
 
 In NYBEM, the quantity and quality of each ecosystem type may be assessed separately. For instance, ecosystems could be rapidly delineated from empirical data for the existing condition (e.g., field or tide gauge) or modeled hydrodynamic data for future conditions or proposed management actions. These delineated ecosystems can be summarized as an overarching habitat quantity in acres. Ecosystem quality may then be assessed based on patch-specific data and known thresholds in ecological response (e.g., on a normalized 0 to 1 scale indicating ecological quality or function). The product of habitat quality and quantity provides a consistent metric across ecosystem types (i.e., “habitat units”). Here, the terms "habitat" and "ecosystem" are used synonymously to indicate a given patch.
 
@@ -58,5 +82,18 @@ set.habitat.zone <- function(tidalzone, salinityzone){
           ifelse(salinityzone == 3 & tidalzone == 1 | tidalzone == 2 | tidalzone == 3, 7, NA)))))))
   #Send output
   habitatzone
+}
+```
+
+
+### Rasterize Habitat Patches
+
+`patch.rasterizer`: This function rasterizes the output of `patch.mapper` based on a specified grid resolution and aligns that layer with a specified spatial coordinate system. 
+
+
+```{r echo=TRUE}
+#Functions for rasterizing habitat types
+patch.rasterizer <- function(patch.mapper.output, grid.resolution, my.coordinate.system){
+  #Insert code
 }
 ```
