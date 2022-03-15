@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Evaluation | New York Bight Ecological Model (NYBEM)</title>
+  <title>Chapter 3 Conceptualization | New York Bight Ecological Model (NYBEM)</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Evaluation | New York Bight Ecological Model (NYBEM)" />
+  <meta property="og:title" content="Chapter 3 Conceptualization | New York Bight Ecological Model (NYBEM)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Evaluation | New York Bight Ecological Model (NYBEM)" />
+  <meta name="twitter:title" content="Chapter 3 Conceptualization | New York Bight Ecological Model (NYBEM)" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="quantification.html"/>
-<link rel="next" href="application-and-communication-i.html"/>
+<link rel="prev" href="model-development-process.html"/>
+<link rel="next" href="quantification.html"/>
 <script src="libs/header-attrs-2.12/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -295,38 +295,222 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="evaluation" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Evaluation<a href="evaluation.html#evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Ecological models such as NYBEM, typically rely on multiple variables, ecological processes, and in many cases present a variety of ecological outcomes. As such, models can quickly become complex system representations with many components, inputs, assumptions, and modules. Model evaluation is the process for ensuring that numerical tools are scientifically defensible and transparently developed. Evaluation is often referred to as verification or validation, but it in fact includes a family of methods ranging from peer review to model testing to error checking (Schmolke et al. 2010). In this more general sense, evaluation should include the following (Grant and Swannack 2008): (1) assessing the reasonableness of model structure, (2) assessing functional relationships and verifying code, (3) evaluating model behavior relative to expected patterns, (4) comparing outcomes to empirical data, if possible, and (5) analyzing uncertainty in predictions. The USACE has established an ecological model certification process to ensure that planning models are sound and functional. These generally consist of evaluating tools relative to the three following categories: system quality, technical quality, and usability (EC 1105-2-412).</p>
-<div id="system-quality" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> System Quality<a href="evaluation.html#system-quality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Ecological models must not only maintain an appropriate theoretical and technical basis, but also must be computationally accurate (McKay et al. 2021b). System quality refers to the computational integrity of a model (or modeling system). For instance, is the tool appropriately programmed, has it been verified or stress-tested, and do outcomes behave in expected ways? NYBEM’s system quality was evaluated in a variety of ways, including the following:</p>
-<ul>
-<li><p><em>Code checking:</em> All code was error-checked during development by the primary programmer, and team members and interagency partners will be encouraged to inspect models as well. To date, quality assurance activities have included consistent variable naming, investigation of outputs from each individual line of code, and blocks of code (e.g., functions and loops).</p></li>
-<li><p><em>Function Testing:</em> Spatial zonation functions were tested with 100 randomized input sets of salinity, bed elevation, MHHW, and MLLW (Table 4). All outputs produced the anticipated outcomes based on manual inspection of the data.</p></li>
-</ul>
-<p><em>Table 4. Testing functions for habitat zonation.</em></p>
+<div id="conceptualization" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Conceptualization<a href="conceptualization.html#conceptualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The foundation of ecological modeling is a clear conceptualization of the ecosystem and an approach for translating the conceptual model into a numerical representation. This chapter describes an overarching conceptual model for the ecosystems of the New York Bight. A strategy is then presented for assessing these ecosystems relative to a habitat-style modeling approach, where the quantity and quality of each ecosystem type are computed separately and combined into an index of ecosystem integrity (i.e., a “habitat unit”).</p>
+<div id="conceptual-model" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Conceptual Model<a href="conceptualization.html#conceptual-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Conceptual ecological models are required for all USACE ecosystem restoration projects due to their utility to increase understanding, identify potential alternatives, and facilitate team dialog <span class="citation">(<a href="#ref-fischenich_application_2008" role="doc-biblioref"><strong>fischenich_application_2008?</strong></a>; <a href="#ref-us_army_corps_of_engineers_assuring_2011" role="doc-biblioref">Engineers 2011</a>)</span>. These same benefits apply for assessing environmental effects of proposed coastal storm risk management actions. Additionally, conceptual models also inform and structure the development of quantitative ecological models <span class="citation">(<a href="#ref-grant_ecological_2008" role="doc-biblioref">Grant and Swannack 2008</a>; <a href="#ref-swannack_ecological_2012" role="doc-biblioref">Swannack, Fischbach, and Tazik 2012</a>)</span> such as the NYBEM. Conceptual models of the New York Bight were iteratively developed through the mediated workshops described in Section 2.3. Workshop ideas and content were synthesized with available literature, conceptual models of similar ecosystems (e.g., wetland function in Coastal Louisiana; <span class="citation">Twilley and Barras (<a href="#ref-twilley_formulation_nodate" role="doc-biblioref">n.d.</a>)</span>), and existing regional conceptual models <span class="citation">(e.g., <a href="#ref-montagna_conceptual_2013" role="doc-biblioref">Montagna, Palmer, and Beseres Pollack 2013</a>)</span>. A seven step conceptual model development process was iteratively applied as workshops proceeded [<span class="citation">(<a href="#ref-fischenich_application_2008" role="doc-biblioref"><strong>fischenich_application_2008?</strong></a>)</span>; Table 3.1].</p>
+<table class="table table-striped table-hover table" style="margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 3.1: </span>Stepwise development of the overarching NYBEM conceptual model (following steps in Fischenich 2008).
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Step
+</th>
+<th style="text-align:left;">
+NYBEM Application
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 10em; ">
+<ol style="list-style-type: decimal">
+<li>State the model objectives.
+</td>
+<td style="text-align:left;">
+Our numerical modeling objective is to articulate the mechanisms and magnitude of environmental effects of proposed coastal storm risk management actions in the New York Bight Ecosystem. This conceptual model is intended to communicate the overarching scope of model development to a broad audience.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+<ol start="2" style="list-style-type: decimal">
+<li>Bound the system of interest.
+</td>
+<td style="text-align:left;">
+NYBEM is limited to the New York Bight Watershed with a seaward limit of a 20m depth contour. The models are further limited to aquatic ecosystems within the NJBB and HATS project areas. The NYBEM focuses only on effects to regional ecosystem, and other forms of environmental impacts (e.g., air quality, historic preservation) are addressed elsewhere in NEPA documentation.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+<ol start="3" style="list-style-type: decimal">
+<li>Identify critical model components within the system.
+</td>
+<td style="text-align:left;">
+This overarching conceptual model focuses on key ecosystem types and system-wide connectivity. Patch-scale models are defined from a combined classification based on Cowardin et al. (1979), USFWS (1997), and Montagna et al. (2013). A series of workshops and literature search were then used to identify ecosystem-specific model components associated with habitat quality (Chapter 4).
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+<ol start="4" style="list-style-type: decimal">
+<li>Articulate relationships among model components.
+</td>
+<td style="text-align:left;">
+Only ecosystem types are presented, given the communication-driven purpose of this overarching model. More mechanistic conceptual models are presented for each ecosystem type ub Chapter 4, which show connections between drivers and stressors, ecosystem states, and ecological outcomes.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+<ol start="5" style="list-style-type: decimal">
+<li>Represent the conceptual model.
+</td>
+<td style="text-align:left;">
+A simple graphic representation of the conceptual model (Figure 3.1) was developed to facilitate communication between project team members, sponsors, partner agencies, and other interested parties.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+<ol start="6" style="list-style-type: decimal">
+<li>Describe the expected pattern of behavior.
+</td>
+<td style="text-align:left;">
+The team qualitatively assessed the model along with potential gaps in ecosystem types and environmental impacts.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+<ol start="7" style="list-style-type: decimal">
+<li>Test, review, and revise.
+</td>
+<td style="text-align:left;">
+This overarching conceptual model was developed, presented, and refined based on a series of modeling workshops over a three year timeframe.
+</td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<p>Ultimately, multiple conceptual models were developed of the New York Bight with different purposes. We first developed an overarching conceptual model communicating how a mosaic of regional ecosystems function together at a system-scale, which is intended for broad use including both technical and non-technical audiences (Figure 3.1). Three overarching systems were identified to frame model development: (1) nearshore / marine ecosystems, (2) estuarine ecosystems, and (3) system connectivity between multiple ecosystem types. These systems were distinguished based on differences in ecosystem processes such as wave energy and salinity dynamics, likely effects of proposed management alternatives, and potential differences in modeling philosophy (e.g., habitat models for nearshore and estuarine systems and a network approach to connectivity). Cumulatively, these three categories provide a means of assessing nearshore and estuarine ecosystems at a patch-scale as well as a means of assessing system-scale outcomes associated with connectivity. The ecosystem types were adopted from a combination of two existing classifications <span class="citation">(<a href="#ref-cowardin_classification_1979" role="doc-biblioref">Cowardin et al. 1979</a>; <a href="#ref-us_fish_and_wildlife_service_usfws_significant_1997" role="doc-biblioref">(USFWS) 1997</a>)</span>. In addition to this overarching model, mechanistic conceptual models were developed for each ecosystem type to guide quantitative model development (see Chapter 4), which are intended for technical audiences focused on the scientific details of ecological assessments.</p>
+<div class="figure">
+<img src="ZZ_Fig03_NYBEM.ConModel.jpg" alt="" />
+<p class="caption"><em>Overarching conceptual model for the New York Bight.</em></p>
 </div>
-<div id="technical-quality" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Technical Quality<a href="evaluation.html#technical-quality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The technical quality of a model is assessed relative to its reliance on contemporary theory, consistency with design objectives, and degree of documentation and testing. NYBEM is being developed with a variety of ecological modeling methods for analyzing coastal ecosystems. The patch-scale quantity/quality framework has been applied extensively to assess outcomes ranging from the species to ecosystem levels of hierarchy (e.g., habitat evaluation procedures and the hydrogeomorphic methods, respectively). Furthermore, each sub-model is being developed with existing models and supported by peer reviewed methods developed elsewhere. System-scale connectivity models will do the same as well. To date, technical quality has been informally assessed through multiple development workshops.</p>
-<p>Future evaluations of technical quality will include:</p>
-<ul>
-<li><p>Habitat zones will be compared to existing condition habitat maps through the National Wetlands Inventory and analogous state data sets (e.g., submerged aquatic vegetation and shellfish data sets).</p></li>
-<li><p>Informal review of model structure will continue with the interagency partners involved in development to date.</p></li>
-<li><p>Sensitivity analyses will be conducted to evaluate the relative importance of variables.</p></li>
-</ul>
 </div>
-<div id="usability" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Usability<a href="evaluation.html#usability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The usability of a model can influence the repeatable and transparent application of a tool. This type of evaluation typically examines the ease of use, availability of inputs, transparency, error potential, and education of the user. As such, defining the intended user(s) is a crucial component of assessing usability. The NYBEM was developed for application by the USACE technical team of the NJBB and HATS studies. The tool is not currently intended for broader application by local sponsors, other regional teams, or by other USACE Districts. As such, there is currently no graphical user interface for the model beyond the script itself. To date, the primary mechanism for maintaining usability is development in Rmarkdown which allows for transparent sharing of code within model documentation.
-Future evaluations of usability will include:</p>
+<div id="major-ecosystem-types" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Major Ecosystem Types<a href="conceptualization.html#major-ecosystem-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Patch-scale assessments were developed for both the marine and estuarine ecosystems. Models were developed for each of six major ecosystem types (Table 3.2). These ecosystems are defined from a combined classification based on <span class="citation">Cowardin et al. (<a href="#ref-cowardin_classification_1979" role="doc-biblioref">1979</a>)</span> and <span class="citation">(USFWS) (<a href="#ref-us_fish_and_wildlife_service_usfws_significant_1997" role="doc-biblioref">1997</a>)</span>. Salinity and tidal range differentiate these ecosystems, both of which can change under futures with and without agency projects. Other analyses have developed ecosystem-scale assessments and models based on similar or more refined divisions in physical properties (e.g., <span class="citation">Clough, Polaczyk, and Propato (<a href="#ref-clough_modeling_2016" role="doc-biblioref">2016</a>)</span>, <span class="citation">Fischbach et al. (<a href="#ref-fischbach_building_2018" role="doc-biblioref">2018</a>)</span>), and the current criteria represent a compromise between the need for detailed assessment of the type and location of infrastructure impacts and the need for a readily implementable rule set applicable at the broad spatial scale of the NYBEM.</p>
+<table class="table table-striped table-hover table" style="margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-5">Table 3.2: </span>Definition of NYBEM ecosystem types.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Tidal Limits
+</th>
+<th style="text-align:left;">
+Marine (Salinity &gt;= 30ppt)
+</th>
+<th style="text-align:left;">
+Estuarine (Salinity = 0.5 to 30ppt)
+</th>
+<th style="text-align:left;">
+Freshwater (Salinity &lt;= 0.5ppt)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Deepwater (-2m to -20m)
+</td>
+<td style="text-align:left;">
+Marine, Deep
+</td>
+<td style="text-align:left;">
+Estuarine, Subtidal
+</td>
+<td style="text-align:left;">
+Freshwater
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Subtidal (MLLW to -2m)
+</td>
+<td style="text-align:left;">
+Marine, Subtitdal
+</td>
+<td style="text-align:left;">
+Estuarine, Subtidal
+</td>
+<td style="text-align:left;">
+Freshwater
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Intertidal (MHHW to MLLW)
+</td>
+<td style="text-align:left;">
+Marine, Intertidal
+</td>
+<td style="text-align:left;">
+Estuarine, Intertidal
+</td>
+<td style="text-align:left;">
+Freshwater
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="habitat-style-modeling-philosophy" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Habitat-Style Modeling Philosophy<a href="conceptualization.html#habitat-style-modeling-philosophy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dozens of ecological modeling tools focus on coastal ecosystems. These models vary based on factors such as the disciplinary perspective (e.g., hydrologic, geomorphic, ecological), the level of ecological hierarchy addressed (e.g., individuals, populations, communities, ecosystems), the basic approach to modeling (e.g., statistical, theoretical), input requirements (e.g., few parameters vs. extensive geospatial layers), the treatment of time and space (e.g., lumped vs. distributed), and the degree of development (e.g., long history vs. ad hoc). However, multiple gaps in these these tools are the driving motivation for developing the New York Bight Ecological Model (NYBEM).</p>
 <ul>
-<li><p>Open data sharing of all site-specific inputs and outputs for interrogation by internal and external partners.</p></li>
-<li><p>Training of project team members on the use of NYBEM.</p></li>
-<li><p>Archival and sharing of code with the ERDC ecological modeling team and the USACE Ecosystem Restoration Planning Center of Expertise.</p></li>
+<li><em>Comprehensive view of regional ecosystems</em>: Many existing ecological models focus on a subset of regional ecosystems (e.g., estuarine subtidal, but not marine subtidal) or focal taxa (e.g., fish, but not seagrass). The large spatial scope of the USACE studies requires seamless landscape coverage of the study areas as well as a consistent approach for assessing multiple ecosystem types simultaneously.<br />
+</li>
+<li><em>Connection to USACE management actions</em>: Existing tools often emphasize important physical forcings on ecosystems without a direct connection to USACE’s proposed project action. For instance, a model may include marsh response to sea level rise, but be unable to incorporate marsh response to sea level rise in the presence of a storm surge barrier.<br />
+</li>
+<li><em>Indirect effects</em>: Models often emphasize direct changes at a site-scale rather than indirect effects of off-site change. For instance, a model may assess habitat quality associated with substrate, but be unable to link to changes in substrate as a result of distant infrastructure (e.g., a storm surge barrier).<br />
+</li>
+<li><em>System-wide data</em>: Many valuable ecological tools have been developed at small spatial scales based on detailed site data (e.g., vegetation surveys or field assessment procedures). However, the extremely large scale of these projects precludes field data collection, and NYBEM inputs must be available for the entire model extent.<br />
+</li>
+<li><em>Rapid and phased application</em>: The USACE studies are assessing project outcomes within limited timeframes, and some tools that might be applicable on longer time horizons are not feasible in these short periods. Additionally, the projects require an evolving set of tools that mirror the needs of a tiered NEPA assessment.</li>
 </ul>
+<p>Given these challenges, the NYBEM seeks to build from the wide breadth of existing knowledge and models to develop a comprehensive set of tools directly applicable to the unique needs of planning USACE coastal storm risk management projects. The NYBEM draws from two distinct modeling approaches applicable at different scales. First, six patch-scale models were developed, which use an index-based modeling philosophy assessing the quantity and quality of a given ecosystem type. Second, system-scale models will be developed in the future, which apply network-analytic methods to assess organismal connectivity. This report documents only the patch-scale models applicable in the six ecosystems shown in Table 3.2.</p>
+<p>The NYBEM takes a common approach to ecological modeling based on quantity and quality of habitat. “Index” models <span class="citation">(<a href="#ref-swannack_ecological_2012" role="doc-biblioref">Swannack, Fischbach, and Tazik 2012</a>)</span> were originally developed for species-specific habitat applications (e.g., slider turtles), but the general approach has also been adapted to guilds (e.g., salmonids), communities (e.g., floodplain vegetation), and ecosystem processes (e.g., the Hydrogeomorphic Method). An index-based modeling approach is used for multiple reasons. First, index models directly respond to changes in physical properties and provide a clear link to changes in ecosystem quantity and quality resulting from future conditions with and without proposed actions. Second, index-based models align well with a phased model development approach. For instance, an initial model could use three critical variables influencing habitat quality, and future model versions could include more variables as data becomes available. Third, index-based models are familiar to USACE decision-makers from diverse applications in other regions such as Louisiana coastal restoration (i.e., the Wetland Value Assessment), California bay restoration (i.e., East San Pedro Bay), and Gulf Coast harbor expansion (i.e., Mobile Bay). Notably, these examples each assess multiple habitat types (e.g., oyster, seagrass) and aggregate outcomes into an overall metric of ecological impacts or benefits.</p>
+<p>In NYBEM, the quantity and quality of each ecosystem type are assessed separately. For instance, ecosystem extent and habitat quantity is rapidly delineated from modeled hydrodynamic conditions. Ecosystem quality is then assessed based on patch-specific data and known thresholds in ecological response (e.g., on a normalized 0 to 1 scale indicating ecological quality or function). The product of habitat quality and quantity provides a consistent metric across ecosystem types (i.e., “habitat units”). Here, the terms “habitat” and “ecosystem” are used synonymously to indicate a given patch.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-clough_modeling_2016" class="csl-entry">
+Clough, Jonathan, Amy Polaczyk, and Marco Propato. 2016. <span>“Modeling the Potential Effects of Sea-Level Rise on the Coast of <span>New</span> <span>York</span>: <span>Integrating</span> Mechanistic Accretion and Stochastic Uncertainty.”</span> <em>Environmental Modelling &amp; Software</em> 84 (October): 349–62. <a href="https://doi.org/10.1016/j.envsoft.2016.06.023">https://doi.org/10.1016/j.envsoft.2016.06.023</a>.
+</div>
+<div id="ref-cowardin_classification_1979" class="csl-entry">
+Cowardin, Lewis M., Virginia Carter, Francis C. Golet, and Edward T. LaRoe. 1979. <em>Classification of Wetlands and Deepwater Habitats of the <span>United</span> <span>States</span></em>. Washington, D.C.: U.S. Department of the Interior, Fish; Wildlife Service. <a href="https://www.fws.gov/wetlands/documents/classwet/index.html">https://www.fws.gov/wetlands/documents/classwet/index.html</a>.
+</div>
+<div id="ref-us_army_corps_of_engineers_assuring_2011" class="csl-entry">
+Engineers, U. S. Army Corps of. 2011. <span>“<span>ASSURING</span> <span>QUALITY</span> <span>OF</span> <span>PLANNING</span> <span>MODELS</span>.”</span> EC 1105-2-412. Washington, D.C.: DEPARTMENT OF THE ARMY. <a href="https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf">https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf</a>.
+</div>
+<div id="ref-fischbach_building_2018" class="csl-entry">
+Fischbach, Jordan, Debra Knopman, Heather Smith, Philip Orton, Eric Sanderson, Kim Fisher, Nerissa Moray, Adam Friedberg, and Adam Parris. 2018. <em>Building <span>Resilience</span> in an <span>Urban</span> <span>Coastal</span> <span>Environment</span>: <span>Integrated</span>, <span>Science</span>-<span>Based</span> <span>Planning</span> in <span>Jamaica</span> <span>Bay</span>, <span>New</span> <span>York</span></em>. RAND Corporation. <a href="https://doi.org/10.7249/RR2193">https://doi.org/10.7249/RR2193</a>.
+</div>
+<div id="ref-grant_ecological_2008" class="csl-entry">
+Grant, William Edward, and Todd M. Swannack. 2008. <em>Ecological Modeling: A Common-Sense Approach to Theory and Practice</em>. Malden (Mass.): Blackwell.
+</div>
+<div id="ref-montagna_conceptual_2013" class="csl-entry">
+Montagna, Paul A., Terence A. Palmer, and Jennifer Beseres Pollack. 2013. <span>“Conceptual <span>Model</span> of <span>Estuary</span> <span>Ecosystems</span>.”</span> In <em>Hydrological <span>Changes</span> and <span>Estuarine</span> <span>Dynamics</span></em>, 8:5–21. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-1-4614-5833-3_2">https://doi.org/10.1007/978-1-4614-5833-3_2</a>.
+</div>
+<div id="ref-swannack_ecological_2012" class="csl-entry">
+Swannack, Todd M., Jordan Fischbach, and David J. Tazik. 2012. <span>“Ecological <span>Modeling</span> <span>Guide</span> for <span>Ecosystem</span> <span>Restoration</span> and <span>Management</span>.”</span> Technical {Report} ERDC/EL TR-12-18. Vicksburg, Mississippi: Army Engineer Research; Development Center. <a href="https://apps.dtic.mil/sti/citations/ADA572123">https://apps.dtic.mil/sti/citations/ADA572123</a>.
+</div>
+<div id="ref-twilley_formulation_nodate" class="csl-entry">
+Twilley, Robert, and John Barras. n.d. <span>“Formulation of the <span>LCA</span> Ecosystem Model, in <span>Hydrodynamic</span> and Ecological Modeling, <span>Louisiana</span> <span>Coastal</span> <span>Area</span> (<span>LCA</span>)—<span>Louisiana</span> Ecosystem Restoration Plan <span>Appendix</span> <span>C</span>. <span>Chapter</span> 2.”</span> In <em>Louisiana <span>Coastal</span> <span>Area</span> <span>Study</span></em>. Vol. 4.
+</div>
+<div id="ref-us_fish_and_wildlife_service_usfws_significant_1997" class="csl-entry">
+(USFWS), U. S. Fish and Wildlife Service. 1997. <span>“Significant <span>Habitats</span> and <span>Habitat</span> <span>Complexes</span> of the <span>New</span> <span>York</span> <span>Bight</span> <span>Watershed</span>.”</span> Charlestown, Rhode Island: Southern New England - New York Bight Coastal Ecosystems Program. <a href="https://nctc.fws.gov/pubs5/web_link/text/toc.htm">https://nctc.fws.gov/pubs5/web_link/text/toc.htm</a>.
 </div>
 </div>
             </section>
@@ -334,8 +518,8 @@ Future evaluations of usability will include:</p>
           </div>
         </div>
       </div>
-<a href="quantification.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="application-and-communication-i.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="model-development-process.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="quantification.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -366,7 +550,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05_Evaluation.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03_ModelStructure.Rmd",
 "text": "Edit"
 },
 "history": {
