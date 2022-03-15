@@ -24,7 +24,7 @@
 <meta name="author" content="S. Kyle McKay, Vanessa Mahan, Michael Dougherty, Toddd Swannack, Candice Hall, Christina Saltus, Molly Reif, Steve Allen" />
 
 
-<meta name="date" content="2022-03-02" />
+<meta name="date" content="2022-03-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,8 @@
   
   
 <link rel="prev" href="background.html"/>
-<link rel="next" href="conceptualization-i.html"/>
+<link rel="next" href="conceptualization.html"/>
+<script src="libs/header-attrs-2.12/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,26 +51,26 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -89,7 +90,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -122,6 +123,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -139,98 +162,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">New York Bight Ecological Model</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Front Matter</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#point-of-contact"><i class="fa fa-check"></i>Point of Contact</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#glossary-and-acronymns"><i class="fa fa-check"></i>Glossary and Acronymns</a></li>
+<li><a href="index.html#front-matter">Front Matter<span></span></a>
+<ul>
+<li><a href="index.html#point-of-contact">Point of Contact<span></span></a></li>
+<li><a href="index.html#abstract">Abstract<span></span></a></li>
+<li><a href="index.html#acknowledgements">Acknowledgements<span></span></a></li>
+<li><a href="index.html#glossary-and-acronymns">Glossary and Acronymns<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>1</b> Background</a><ul>
-<li class="chapter" data-level="1.1" data-path="background.html"><a href="background.html#problem-statement"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
-<li class="chapter" data-level="1.2" data-path="background.html"><a href="background.html#report-overview"><i class="fa fa-check"></i><b>1.2</b> Report Overview</a></li>
+<li class="chapter" data-level="1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>1</b> Background<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="background.html"><a href="background.html#problem-statement"><i class="fa fa-check"></i><b>1.1</b> Problem Statement<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="background.html"><a href="background.html#report-overview"><i class="fa fa-check"></i><b>1.2</b> Report Overview<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="model-development-process.html"><a href="model-development-process.html"><i class="fa fa-check"></i><b>2</b> Model Development Process</a><ul>
-<li class="chapter" data-level="2.1" data-path="model-development-process.html"><a href="model-development-process.html#spatial-extent"><i class="fa fa-check"></i><b>2.1</b> Spatial Extent</a></li>
-<li class="chapter" data-level="2.2" data-path="model-development-process.html"><a href="model-development-process.html#phased-approach"><i class="fa fa-check"></i><b>2.2</b> Phased Approach</a></li>
-<li class="chapter" data-level="2.3" data-path="model-development-process.html"><a href="model-development-process.html#mediated-modeling"><i class="fa fa-check"></i><b>2.3</b> Mediated Modeling</a></li>
+<li class="chapter" data-level="2" data-path="model-development-process.html"><a href="model-development-process.html"><i class="fa fa-check"></i><b>2</b> Model Development Process<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="model-development-process.html"><a href="model-development-process.html#spatial-extent"><i class="fa fa-check"></i><b>2.1</b> Spatial Extent<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="model-development-process.html"><a href="model-development-process.html#phased-approach"><i class="fa fa-check"></i><b>2.2</b> Phased Approach<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="model-development-process.html"><a href="model-development-process.html#mediated-modeling"><i class="fa fa-check"></i><b>2.3</b> Mediated Modeling<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="conceptualization-i.html"><a href="conceptualization-i.html"><i class="fa fa-check"></i><b>3</b> Conceptualization (I)</a><ul>
-<li class="chapter" data-level="3.1" data-path="conceptualization-i.html"><a href="conceptualization-i.html#conceptual-model"><i class="fa fa-check"></i><b>3.1</b> Conceptual Model</a></li>
-<li class="chapter" data-level="3.2" data-path="conceptualization-i.html"><a href="conceptualization-i.html#habitat-style-modeling-approach"><i class="fa fa-check"></i><b>3.2</b> Habitat-Style Modeling Approach</a></li>
+<li class="chapter" data-level="3" data-path="conceptualization.html"><a href="conceptualization.html"><i class="fa fa-check"></i><b>3</b> Conceptualization<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="conceptualization.html"><a href="conceptualization.html#conceptual-model"><i class="fa fa-check"></i><b>3.1</b> Conceptual Model<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="conceptualization.html"><a href="conceptualization.html#major-ecosystem-types"><i class="fa fa-check"></i><b>3.2</b> Major Ecosystem Types<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="conceptualization.html"><a href="conceptualization.html#habitat-style-modeling-philosophy"><i class="fa fa-check"></i><b>3.3</b> Habitat-Style Modeling Philosophy<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="quantification-i.html"><a href="quantification-i.html"><i class="fa fa-check"></i><b>4</b> Quantification (I)</a><ul>
-<li class="chapter" data-level="4.1" data-path="quantification-i.html"><a href="quantification-i.html#habitat-type-mapper-hab.mapper-i"><i class="fa fa-check"></i><b>4.1</b> Habitat Type Mapper (hab.mapper) (I)</a></li>
-<li class="chapter" data-level="4.2" data-path="quantification-i.html"><a href="quantification-i.html#freshwater-tidal-submodel-fresh.tid-i"><i class="fa fa-check"></i><b>4.2</b> Freshwater, Tidal Submodel (fresh.tid) (I)</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="quantification-i.html"><a href="quantification-i.html#variable-1"><i class="fa fa-check"></i><b>4.2.1</b> Variable-1</a></li>
-<li class="chapter" data-level="4.2.2" data-path="quantification-i.html"><a href="quantification-i.html#variable-1-1"><i class="fa fa-check"></i><b>4.2.2</b> Variable-1</a></li>
-<li class="chapter" data-level="4.2.3" data-path="quantification-i.html"><a href="quantification-i.html#fresh.int-code"><i class="fa fa-check"></i><b>4.2.3</b> fresh.int Code</a></li>
+<li class="chapter" data-level="4" data-path="quantification.html"><a href="quantification.html"><i class="fa fa-check"></i><b>4</b> Quantification<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="quantification.html"><a href="quantification.html#pre-processing-functions-i"><i class="fa fa-check"></i><b>4.1</b> Pre-Processing Functions (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="quantification.html"><a href="quantification.html#define-model-domain"><i class="fa fa-check"></i><b>4.1.1</b> Define Model Domain<span></span></a></li>
+<li class="chapter" data-level="4.1.2" data-path="quantification.html"><a href="quantification.html#map-habitat-extent-and-type"><i class="fa fa-check"></i><b>4.1.2</b> Map Habitat Extent and Type<span></span></a></li>
+<li class="chapter" data-level="4.1.3" data-path="quantification.html"><a href="quantification.html#rasterize-habitat-patches"><i class="fa fa-check"></i><b>4.1.3</b> Rasterize Habitat Patches<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="quantification-i.html"><a href="quantification-i.html#estuarine-intertidal-submodel-est.int-i"><i class="fa fa-check"></i><b>4.3</b> Estuarine, Intertidal Submodel (est.int) (I)</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="quantification-i.html"><a href="quantification-i.html#salinity"><i class="fa fa-check"></i><b>4.3.1</b> Salinity</a></li>
-<li class="chapter" data-level="4.3.2" data-path="quantification-i.html"><a href="quantification-i.html#edge-erosion"><i class="fa fa-check"></i><b>4.3.2</b> Edge Erosion</a></li>
-<li class="chapter" data-level="4.3.3" data-path="quantification-i.html"><a href="quantification-i.html#vegetation-cover"><i class="fa fa-check"></i><b>4.3.3</b> Vegetation Cover</a></li>
-<li class="chapter" data-level="4.3.4" data-path="quantification-i.html"><a href="quantification-i.html#episodic-sediment-deposition"><i class="fa fa-check"></i><b>4.3.4</b> Episodic Sediment Deposition</a></li>
-<li class="chapter" data-level="4.3.5" data-path="quantification-i.html"><a href="quantification-i.html#developement-of-adjacent-upland"><i class="fa fa-check"></i><b>4.3.5</b> Developement of Adjacent Upland</a></li>
-<li class="chapter" data-level="4.3.6" data-path="quantification-i.html"><a href="quantification-i.html#shoreline-armoring"><i class="fa fa-check"></i><b>4.3.6</b> Shoreline Armoring</a></li>
-<li class="chapter" data-level="4.3.7" data-path="quantification-i.html"><a href="quantification-i.html#est.int-code"><i class="fa fa-check"></i><b>4.3.7</b> est.int Code</a></li>
+<li class="chapter" data-level="4.2" data-path="quantification.html"><a href="quantification.html#freshwater-tidal-submodel-fresh.tid-i"><i class="fa fa-check"></i><b>4.2</b> Freshwater, Tidal Submodel (fresh.tid) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="quantification.html"><a href="quantification.html#variable-1"><i class="fa fa-check"></i><b>4.2.1</b> Variable-1<span></span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="quantification.html"><a href="quantification.html#variable-1-1"><i class="fa fa-check"></i><b>4.2.2</b> Variable-1<span></span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="quantification.html"><a href="quantification.html#fresh.int-code"><i class="fa fa-check"></i><b>4.2.3</b> fresh.int Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="quantification-i.html"><a href="quantification-i.html#estuarine-subtidal-submodel-est.sub-i"><i class="fa fa-check"></i><b>4.4</b> Estuarine, Subtidal Submodel (est.sub) (I)</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="quantification-i.html"><a href="quantification-i.html#oysters"><i class="fa fa-check"></i><b>4.4.1</b> Oysters</a></li>
-<li class="chapter" data-level="4.4.2" data-path="quantification-i.html"><a href="quantification-i.html#submerged-aquatic-vegetation-sav"><i class="fa fa-check"></i><b>4.4.2</b> Submerged aquatic vegetation (SAV)</a></li>
-<li class="chapter" data-level="4.4.3" data-path="quantification-i.html"><a href="quantification-i.html#clams"><i class="fa fa-check"></i><b>4.4.3</b> Clams</a></li>
-<li class="chapter" data-level="4.4.4" data-path="quantification-i.html"><a href="quantification-i.html#est.sub-code"><i class="fa fa-check"></i><b>4.4.4</b> est.sub Code</a></li>
+<li class="chapter" data-level="4.3" data-path="quantification.html"><a href="quantification.html#estuarine-intertidal-submodel-est.int-i"><i class="fa fa-check"></i><b>4.3</b> Estuarine, Intertidal Submodel (est.int) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="quantification.html"><a href="quantification.html#salinity"><i class="fa fa-check"></i><b>4.3.1</b> Salinity<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="quantification.html"><a href="quantification.html#edge-erosion"><i class="fa fa-check"></i><b>4.3.2</b> Edge Erosion<span></span></a></li>
+<li class="chapter" data-level="4.3.3" data-path="quantification.html"><a href="quantification.html#vegetation-cover"><i class="fa fa-check"></i><b>4.3.3</b> Vegetation Cover<span></span></a></li>
+<li class="chapter" data-level="4.3.4" data-path="quantification.html"><a href="quantification.html#episodic-sediment-deposition"><i class="fa fa-check"></i><b>4.3.4</b> Episodic Sediment Deposition<span></span></a></li>
+<li class="chapter" data-level="4.3.5" data-path="quantification.html"><a href="quantification.html#developement-of-adjacent-upland"><i class="fa fa-check"></i><b>4.3.5</b> Developement of Adjacent Upland<span></span></a></li>
+<li class="chapter" data-level="4.3.6" data-path="quantification.html"><a href="quantification.html#shoreline-armoring"><i class="fa fa-check"></i><b>4.3.6</b> Shoreline Armoring<span></span></a></li>
+<li class="chapter" data-level="4.3.7" data-path="quantification.html"><a href="quantification.html#est.int-code"><i class="fa fa-check"></i><b>4.3.7</b> est.int Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="quantification-i.html"><a href="quantification-i.html#marine-intertidal-submodel-mar.int-i"><i class="fa fa-check"></i><b>4.5</b> Marine, Intertidal Submodel (mar.int) (I)</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="quantification-i.html"><a href="quantification-i.html#variable-1-2"><i class="fa fa-check"></i><b>4.5.1</b> Variable-1</a></li>
-<li class="chapter" data-level="4.5.2" data-path="quantification-i.html"><a href="quantification-i.html#variable-2"><i class="fa fa-check"></i><b>4.5.2</b> Variable-2</a></li>
-<li class="chapter" data-level="4.5.3" data-path="quantification-i.html"><a href="quantification-i.html#mar.int-code"><i class="fa fa-check"></i><b>4.5.3</b> mar.int Code</a></li>
+<li class="chapter" data-level="4.4" data-path="quantification.html"><a href="quantification.html#estuarine-subtidal-submodel-est.sub-i"><i class="fa fa-check"></i><b>4.4</b> Estuarine, Subtidal Submodel (est.sub) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="quantification.html"><a href="quantification.html#oysters"><i class="fa fa-check"></i><b>4.4.1</b> Oysters<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="quantification.html"><a href="quantification.html#submerged-aquatic-vegetation-sav"><i class="fa fa-check"></i><b>4.4.2</b> Submerged aquatic vegetation (SAV)<span></span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="quantification.html"><a href="quantification.html#clams"><i class="fa fa-check"></i><b>4.4.3</b> Clams<span></span></a></li>
+<li class="chapter" data-level="4.4.4" data-path="quantification.html"><a href="quantification.html#est.sub-code"><i class="fa fa-check"></i><b>4.4.4</b> est.sub Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="quantification-i.html"><a href="quantification-i.html#marine-subtidal-submodel-mar.sub-i"><i class="fa fa-check"></i><b>4.6</b> Marine, Subtidal Submodel (mar.sub) (I)</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="quantification-i.html"><a href="quantification-i.html#variable-1-3"><i class="fa fa-check"></i><b>4.6.1</b> Variable-1</a></li>
-<li class="chapter" data-level="4.6.2" data-path="quantification-i.html"><a href="quantification-i.html#variable-2-1"><i class="fa fa-check"></i><b>4.6.2</b> Variable-2</a></li>
-<li class="chapter" data-level="4.6.3" data-path="quantification-i.html"><a href="quantification-i.html#mar.sub-code"><i class="fa fa-check"></i><b>4.6.3</b> mar.sub Code</a></li>
+<li class="chapter" data-level="4.5" data-path="quantification.html"><a href="quantification.html#marine-intertidal-submodel-mar.int-i"><i class="fa fa-check"></i><b>4.5</b> Marine, Intertidal Submodel (mar.int) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="quantification.html"><a href="quantification.html#variable-1-2"><i class="fa fa-check"></i><b>4.5.1</b> Variable-1<span></span></a></li>
+<li class="chapter" data-level="4.5.2" data-path="quantification.html"><a href="quantification.html#variable-2"><i class="fa fa-check"></i><b>4.5.2</b> Variable-2<span></span></a></li>
+<li class="chapter" data-level="4.5.3" data-path="quantification.html"><a href="quantification.html#mar.int-code"><i class="fa fa-check"></i><b>4.5.3</b> mar.int Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="quantification-i.html"><a href="quantification-i.html#marine-deepwater-submodel-mar.deep-i"><i class="fa fa-check"></i><b>4.7</b> Marine, Deepwater Submodel (mar.deep) (I)</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="quantification-i.html"><a href="quantification-i.html#salinity-2"><i class="fa fa-check"></i><b>4.7.1</b> Salinity</a></li>
-<li class="chapter" data-level="4.7.2" data-path="quantification-i.html"><a href="quantification-i.html#dissolved-oxygen-processes"><i class="fa fa-check"></i><b>4.7.2</b> Dissolved Oxygen Processes</a></li>
-<li class="chapter" data-level="4.7.3" data-path="quantification-i.html"><a href="quantification-i.html#water-temperature"><i class="fa fa-check"></i><b>4.7.3</b> Water Temperature</a></li>
-<li class="chapter" data-level="4.7.4" data-path="quantification-i.html"><a href="quantification-i.html#wave-environment"><i class="fa fa-check"></i><b>4.7.4</b> Wave Environment</a></li>
-<li class="chapter" data-level="4.7.5" data-path="quantification-i.html"><a href="quantification-i.html#current-velocity"><i class="fa fa-check"></i><b>4.7.5</b> Current Velocity</a></li>
-<li class="chapter" data-level="4.7.6" data-path="quantification-i.html"><a href="quantification-i.html#derived-metrics--light"><i class="fa fa-check"></i><b>4.7.6</b> Derived Metrics- Light</a></li>
-<li class="chapter" data-level="4.7.7" data-path="quantification-i.html"><a href="quantification-i.html#vessel-traffic-and-development-pressures"><i class="fa fa-check"></i><b>4.7.7</b> Vessel Traffic and Development Pressures</a></li>
-<li class="chapter" data-level="4.7.8" data-path="quantification-i.html"><a href="quantification-i.html#mar.deep-code"><i class="fa fa-check"></i><b>4.7.8</b> mar.deep Code</a></li>
+<li class="chapter" data-level="4.6" data-path="quantification.html"><a href="quantification.html#marine-subtidal-submodel-mar.sub-i"><i class="fa fa-check"></i><b>4.6</b> Marine, Subtidal Submodel (mar.sub) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="quantification.html"><a href="quantification.html#variable-1-3"><i class="fa fa-check"></i><b>4.6.1</b> Variable-1<span></span></a></li>
+<li class="chapter" data-level="4.6.2" data-path="quantification.html"><a href="quantification.html#variable-2-1"><i class="fa fa-check"></i><b>4.6.2</b> Variable-2<span></span></a></li>
+<li class="chapter" data-level="4.6.3" data-path="quantification.html"><a href="quantification.html#mar.sub-code"><i class="fa fa-check"></i><b>4.6.3</b> mar.sub Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="quantification-i.html"><a href="quantification-i.html#new-york-bight-overarching-model-nybem.wrapper-i"><i class="fa fa-check"></i><b>4.8</b> New York Bight Overarching Model (NYBEM.wrapper) (I)</a></li>
+<li class="chapter" data-level="4.7" data-path="quantification.html"><a href="quantification.html#marine-deepwater-submodel-mar.deep-i"><i class="fa fa-check"></i><b>4.7</b> Marine, Deepwater Submodel (mar.deep) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="quantification.html"><a href="quantification.html#salinity-2"><i class="fa fa-check"></i><b>4.7.1</b> Salinity<span></span></a></li>
+<li class="chapter" data-level="4.7.2" data-path="quantification.html"><a href="quantification.html#dissolved-oxygen-processes"><i class="fa fa-check"></i><b>4.7.2</b> Dissolved Oxygen Processes<span></span></a></li>
+<li class="chapter" data-level="4.7.3" data-path="quantification.html"><a href="quantification.html#water-temperature"><i class="fa fa-check"></i><b>4.7.3</b> Water Temperature<span></span></a></li>
+<li class="chapter" data-level="4.7.4" data-path="quantification.html"><a href="quantification.html#wave-environment"><i class="fa fa-check"></i><b>4.7.4</b> Wave Environment<span></span></a></li>
+<li class="chapter" data-level="4.7.5" data-path="quantification.html"><a href="quantification.html#current-velocity"><i class="fa fa-check"></i><b>4.7.5</b> Current Velocity<span></span></a></li>
+<li class="chapter" data-level="4.7.6" data-path="quantification.html"><a href="quantification.html#derived-metrics--light"><i class="fa fa-check"></i><b>4.7.6</b> Derived Metrics- Light<span></span></a></li>
+<li class="chapter" data-level="4.7.7" data-path="quantification.html"><a href="quantification.html#vessel-traffic-and-development-pressures"><i class="fa fa-check"></i><b>4.7.7</b> Vessel Traffic and Development Pressures<span></span></a></li>
+<li class="chapter" data-level="4.7.8" data-path="quantification.html"><a href="quantification.html#mar.deep-code"><i class="fa fa-check"></i><b>4.7.8</b> mar.deep Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>5</b> Evaluation</a><ul>
-<li class="chapter" data-level="5.1" data-path="evaluation.html"><a href="evaluation.html#system-quality"><i class="fa fa-check"></i><b>5.1</b> System Quality</a></li>
-<li class="chapter" data-level="5.2" data-path="evaluation.html"><a href="evaluation.html#technical-quality"><i class="fa fa-check"></i><b>5.2</b> Technical Quality</a></li>
-<li class="chapter" data-level="5.3" data-path="evaluation.html"><a href="evaluation.html#usability"><i class="fa fa-check"></i><b>5.3</b> Usability</a></li>
+<li class="chapter" data-level="4.8" data-path="quantification.html"><a href="quantification.html#new-york-bight-overarching-model-nybem.wrapper-i"><i class="fa fa-check"></i><b>4.8</b> New York Bight Overarching Model (NYBEM.wrapper) (I)<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="application-and-communication-i.html"><a href="application-and-communication-i.html"><i class="fa fa-check"></i><b>6</b> Application and Communication (I)</a></li>
-<li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Summary</a><ul>
-<li class="chapter" data-level="7.1" data-path="summary.html"><a href="summary.html#future-model-development"><i class="fa fa-check"></i><b>7.1</b> Future Model Development</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="summary.html"><a href="summary.html#habitat-quality-modules"><i class="fa fa-check"></i><b>7.1.1</b> Habitat Quality Modules</a></li>
-<li class="chapter" data-level="7.1.2" data-path="summary.html"><a href="summary.html#system-scale-connectivity-model"><i class="fa fa-check"></i><b>7.1.2</b> System-Scale, Connectivity Model</a></li>
-<li class="chapter" data-level="7.1.3" data-path="summary.html"><a href="summary.html#aggregated-model-outcomes"><i class="fa fa-check"></i><b>7.1.3</b> Aggregated Model Outcomes</a></li>
+<li class="chapter" data-level="5" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>5</b> Evaluation<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evaluation.html"><a href="evaluation.html#system-quality"><i class="fa fa-check"></i><b>5.1</b> System Quality<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="evaluation.html"><a href="evaluation.html#technical-quality"><i class="fa fa-check"></i><b>5.2</b> Technical Quality<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="evaluation.html"><a href="evaluation.html#usability"><i class="fa fa-check"></i><b>5.3</b> Usability<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="application-and-communication-i.html"><a href="application-and-communication-i.html"><i class="fa fa-check"></i><b>6</b> Application and Communication (I)<span></span></a></li>
+<li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Summary<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="summary.html"><a href="summary.html#future-model-development"><i class="fa fa-check"></i><b>7.1</b> Future Model Development<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="summary.html"><a href="summary.html#habitat-quality-modules"><i class="fa fa-check"></i><b>7.1.1</b> Habitat Quality Modules<span></span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="summary.html"><a href="summary.html#system-scale-connectivity-model"><i class="fa fa-check"></i><b>7.1.2</b> System-Scale, Connectivity Model<span></span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="summary.html"><a href="summary.html#aggregated-model-outcomes"><i class="fa fa-check"></i><b>7.1.3</b> Aggregated Model Outcomes<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="model-development-workshops.html"><a href="model-development-workshops.html"><i class="fa fa-check"></i><b>A</b> Model Development Workshops</a></li>
-<li class="chapter" data-level="B" data-path="usace-model-certification-review.html"><a href="usace-model-certification-review.html"><i class="fa fa-check"></i><b>B</b> USACE Model Certification Review</a></li>
-<li class="chapter" data-level="C" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html"><i class="fa fa-check"></i><b>C</b> New Jersey Back Bays (NJBB)</a><ul>
-<li class="chapter" data-level="C.1" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#background-1"><i class="fa fa-check"></i><b>C.1</b> Background</a></li>
-<li class="chapter" data-level="C.2" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#decision-alternatives"><i class="fa fa-check"></i><b>C.2</b> Decision Alternatives</a></li>
-<li class="chapter" data-level="C.3" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#model-parameterization"><i class="fa fa-check"></i><b>C.3</b> Model Parameterization</a></li>
-<li class="chapter" data-level="C.4" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#results"><i class="fa fa-check"></i><b>C.4</b> Results</a></li>
+<li class="appendix"><span><b>Appendices<span></span></b></span></li>
+<li class="chapter" data-level="A" data-path="model-development-workshops.html"><a href="model-development-workshops.html"><i class="fa fa-check"></i><b>A</b> Model Development Workshops<span></span></a></li>
+<li class="chapter" data-level="B" data-path="usace-model-certification-review.html"><a href="usace-model-certification-review.html"><i class="fa fa-check"></i><b>B</b> USACE Model Certification Review<span></span></a></li>
+<li class="chapter" data-level="C" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html"><i class="fa fa-check"></i><b>C</b> New Jersey Back Bays (NJBB)<span></span></a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#background-1"><i class="fa fa-check"></i><b>C.1</b> Background<span></span></a></li>
+<li class="chapter" data-level="C.2" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#decision-alternatives"><i class="fa fa-check"></i><b>C.2</b> Decision Alternatives<span></span></a></li>
+<li class="chapter" data-level="C.3" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#model-parameterization"><i class="fa fa-check"></i><b>C.3</b> Model Parameterization<span></span></a></li>
+<li class="chapter" data-level="C.4" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#results"><i class="fa fa-check"></i><b>C.4</b> Results<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><i class="fa fa-check"></i><b>D</b> New York / New Jersey Harbor and Tributaries Study (HATS)</a><ul>
-<li class="chapter" data-level="D.1" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#background-2"><i class="fa fa-check"></i><b>D.1</b> Background</a></li>
-<li class="chapter" data-level="D.2" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#decision-alternatives-1"><i class="fa fa-check"></i><b>D.2</b> Decision Alternatives</a></li>
-<li class="chapter" data-level="D.3" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#model-parameterization-1"><i class="fa fa-check"></i><b>D.3</b> Model Parameterization</a></li>
-<li class="chapter" data-level="D.4" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#results-1"><i class="fa fa-check"></i><b>D.4</b> Results</a></li>
-<li class="chapter" data-level="D.5" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#r-markdown"><i class="fa fa-check"></i><b>D.5</b> R Markdown</a></li>
-<li class="chapter" data-level="D.6" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#including-plots"><i class="fa fa-check"></i><b>D.6</b> Including Plots</a></li>
+<li class="chapter" data-level="D" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><i class="fa fa-check"></i><b>D</b> New York / New Jersey Harbor and Tributaries Study (HATS)<span></span></a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#background-2"><i class="fa fa-check"></i><b>D.1</b> Background<span></span></a></li>
+<li class="chapter" data-level="D.2" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#decision-alternatives-1"><i class="fa fa-check"></i><b>D.2</b> Decision Alternatives<span></span></a></li>
+<li class="chapter" data-level="D.3" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#model-parameterization-1"><i class="fa fa-check"></i><b>D.3</b> Model Parameterization<span></span></a></li>
+<li class="chapter" data-level="D.4" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#results-1"><i class="fa fa-check"></i><b>D.4</b> Results<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -252,17 +295,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="model-development-process" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Model Development Process</h1>
-<p>When used in the context of complex management decisions with many partners, environmental and ecological modeling often benefit from approaches that emphasize transparency, increase user input during development, and clearly communicate model assumptions and limitations <span class="citation">(Van den Belt <a href="#ref-van_den_belt_mediated_2004" role="doc-biblioref">2004</a>)</span>, <span class="citation">(Voinov and Bousquet <a href="#ref-voinov_modelling_2010" role="doc-biblioref">2010</a>)</span>, <span class="citation">(Herman et al. <a href="#ref-herman_unpacking_2019" role="doc-biblioref">2019</a>)</span>. Here, a general five-step modeling process is followed that applies best practices in ecological model development <span class="citation">(Grant and Swannack <a href="#ref-grant_ecological_2008" role="doc-biblioref">2008</a>)</span>. First, general relationships among essential ecosystem components are formally <em>conceptualized</em> to tell the story of “how the system works” <span class="citation">(<span class="citeproc-not-found" data-reference-id="fischenich_application_2008"><strong>???</strong></span>)</span>. Second, the model is <em>quantified</em> using a formal structure of functional relationships, algorithms, and parameters. Third, models are <em>evaluated</em> relative to underlying scientific theory, numerical accuracy, and usability, which often entails techniques such as code checking, testing, verification, and sensitivity analyses. Fourth, a model is <em>applied</em> to a given management question, scenario, or assessment. Fifth, a strategy is developed and executed to <em>communicate</em> model development and application to technical and non-technical audiences. This process has been applied numerous times to select, adapt, or develop ecological models for USACE and non-USACE studies (e.g., <span class="citation">(McKay, Richards, and Swannack <a href="#ref-mckay_aligning_2019" role="doc-biblioref">2019</a>)</span>;<span class="citation">(Herman et al. <a href="#ref-herman_unpacking_2019" role="doc-biblioref">2019</a>)</span>, and the framework is intended to draw heavily from existing knowledge, data, and tools.</p>
-<p>USACE policy <span class="citation">(Engineers <a href="#ref-us_army_corps_of_engineers_assuring_2011" role="doc-biblioref">2011</a>)</span> defines a model as “a representation of a system for a purpose,” and thus, specifying a modeling objective is often a foundational step in the modeling process. <strong>Here, our modeling objective is to articulate the mechanisms and magnitude of environmental effects of proposed coastal storm risk management actions in the New York Bight Ecosystem</strong>. However, this model (like all models) is being developed in a constrained environment with limited time and resources. Three key issues constrained and guided NYBEM development, each of which is addressed in subsequent sections:</p>
+<div id="model-development-process" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Model Development Process<a href="model-development-process.html#model-development-process" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>When used in the context of complex management decisions with many partners, environmental and ecological modeling often benefit from approaches that emphasize transparency, increase user input during development, and clearly communicate model assumptions and limitations <span class="citation">(<a href="#ref-van_den_belt_mediated_2004" role="doc-biblioref">Van den Belt 2004</a>; <a href="#ref-voinov_modelling_2010" role="doc-biblioref">Voinov and Bousquet 2010</a>; <a href="#ref-herman_unpacking_2019" role="doc-biblioref">Herman et al. 2019</a>)</span>. Here, a general five-step modeling process is followed that applies best practices in ecological model development <span class="citation">(<a href="#ref-grant_ecological_2008" role="doc-biblioref">Grant and Swannack 2008</a>)</span>. First, general relationships among essential ecosystem components are formally <em>conceptualized</em> to tell the story of “how the system works” <span class="citation">(<a href="#ref-fischenich_application_2008" role="doc-biblioref"><strong>fischenich_application_2008?</strong></a>)</span>. Second, the model is <em>quantified</em> using a formal structure of functional relationships, algorithms, and parameters. Third, models are <em>evaluated</em> relative to underlying scientific theory, numerical accuracy, and usability, which often entails techniques such as code checking, testing, verification, and sensitivity analyses. Fourth, a model is <em>applied</em> to a given management question, scenario, or assessment. Fifth, a strategy is developed and executed to <em>communicate</em> model development and application to technical and non-technical audiences. This process has been applied numerous times to select, adapt, or develop ecological models for USACE and non-USACE studies <span class="citation">(e.g., <a href="#ref-mckay_aligning_2019" role="doc-biblioref">McKay, Richards, and Swannack 2019</a>; <a href="#ref-herman_unpacking_2019" role="doc-biblioref">Herman et al. 2019</a>)</span>, and the framework is intended to draw heavily from existing knowledge, data, and tools.</p>
+<p>USACE policy <span class="citation">(<a href="#ref-us_army_corps_of_engineers_assuring_2011" role="doc-biblioref">Engineers 2011</a>)</span> defines a model as “a representation of a system for a purpose,” and thus, specifying a modeling objective is often a foundational step in the modeling process. <strong>Here, our modeling objective is to articulate the mechanisms and magnitude of environmental effects of proposed coastal storm risk management actions in the New York Bight Ecosystem</strong>. However, this model (like all models) is being developed in a constrained environment with limited time and resources. Three key issues constrained and guided NYBEM development, each of which is addressed in subsequent sections:</p>
 <ul>
 <li><p>The model domain is limited to the spatial extent of the focal USACE studies.</p></li>
 <li><p>Model development is phased to align with USACE project planning milestones.</p></li>
 <li><p>Transparency in model development and input from stakeholders and partners were actively embraced to increase the adoption and acceptance of the tools, given the high-profile nature of the studies.</p></li>
 </ul>
-<div id="spatial-extent" class="section level2">
-<h2><span class="header-section-number">2.1</span> Spatial Extent</h2>
+<div id="spatial-extent" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Spatial Extent<a href="model-development-process.html#spatial-extent" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The cumulative project area of the ongoing CSRM studies exceeds 3,000 mi<sup>2</sup> and covers multiple states. The spatial extent of model application was defined by a sequence of four sequentially smaller filters (Figure 2):</p>
 <ul>
 <li><em>New York Bight</em>: The USFWS defined the ecosystems of the New York Bight in 1997 as the “open ocean region south of Long Island and east of New Jersey, known as the New York Bight proper” and all associated upstream estuaries, waters, and lands. This large spatial domain covers 31,276 mi<sup>2</sup> (10,206 mi<sup>2</sup> upland watershed and 21,070 mi<sup>2</sup> estuarine or marine). Specifically, the watershed is defined based on ten 8-digit Hydrologic Unit Code (HUC) watersheds (02020006, 02020007, 02020008, 02030101, 02030103, 02030104, 02030105, 02030202, 02040301, and 02040302). The USFWS Bight definition includes all marine ecosystems offshore. However, given the nearshore scope of USACE’s studies, seaward extent is limited to ecosystems above a 20m depth contour (i.e., the USFWS definition of “nearshore”). This watershed boundary and seaward limit have a total area of 13,420 mi<sup>2</sup>.</li>
@@ -278,8 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption"><em>Figure 2. NYBEM model domain: (left) Components of model domain, (right) NYBEM domain.</em></p>
 </div>
 </div>
-<div id="phased-approach" class="section level2">
-<h2><span class="header-section-number">2.2</span> Phased Approach</h2>
+<div id="phased-approach" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Phased Approach<a href="model-development-process.html#phased-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>USACE planning studies sequentially make decisions about potential actions and buy-down risk and uncertainty to inform the next level of decision and narrow in on a recommended alternative. Furthermore, the USACE studies have proposed a “tiered” NEPA assessment, which is designed to gather more data and refine outcomes as a project proceeds. The NYBEM toolkit must be capable of responding to evolving project planning needs and data availability as these studies develop. As such, model development is explicitly being conducted in “phases,” and NYBEM tools and methods will evolve alongside project planning. In each phase, development will proceed iteratively through the cycle described above of conceptualization, quantification, evaluation, application, and communication. Table 1 presents key aspects of this phased approach to development.</p>
 <p>Importantly, a phased development approach applies the best available information at the moment of application. However, this inherently leads to “interim” or “draft” models that are sequentially applied, reviewed, and improved. In this report, Phase 1 of model development is documented, while presenting the planned path forward for future phases. Development plans are subject to change.</p>
 <table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
@@ -404,9 +447,9 @@ Footprint + Tidal Range + Salinity + Hydrodynamics + Sediment + Temperature + Wa
 </tbody>
 </table>
 </div>
-<div id="mediated-modeling" class="section level2">
-<h2><span class="header-section-number">2.3</span> Mediated Modeling</h2>
-<p>The NYBEM intends to assess ecological consequences of alternative infrastructure options in a large, diverse ecosystem. There are many types of stakeholder-based model development processes that overlap in approach and emphasize collaboration: Model Prototyping, Participatory Modeling, Group Model Building, Companion Modeling and Mediated Model Development (See reviews by <span class="citation">Voinov and Bousquet (<a href="#ref-voinov_modelling_2010" role="doc-biblioref">2010</a>)</span>, <span class="citation">Gray et al. (<a href="#ref-gray_environmental_2017" role="doc-biblioref">2017</a>)</span>, and <span class="citation">Hall, Lazarus, and Thompson (<a href="#ref-hall_mediated_2019" role="doc-biblioref">2019</a>)</span>). These processes are generally well-suited to environmental management problems that are politically and publicly-sensitive, complex, and engage diverse audiences <span class="citation">(Belt et al. <a href="#ref-van_den_belt_mediated_2006" role="doc-biblioref">2006</a>)</span>. “Mediated modeling” is used here to describe the family of techniques for building consensus among multiple partners and producing credible and defensible ecological models in a transparent way <span class="citation">(Belt et al. <a href="#ref-van_den_belt_mediated_2006" role="doc-biblioref">2006</a>)</span>.
+<div id="mediated-modeling" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Mediated Modeling<a href="model-development-process.html#mediated-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The NYBEM intends to assess ecological consequences of alternative infrastructure options in a large, diverse ecosystem. There are many types of stakeholder-based model development processes that overlap in approach and emphasize collaboration: Model Prototyping, Participatory Modeling, Group Model Building, Companion Modeling and Mediated Model Development <span class="citation">(See reviews by <a href="#ref-voinov_modelling_2010" role="doc-biblioref">Voinov and Bousquet 2010</a>; <a href="#ref-gray_environmental_2017" role="doc-biblioref">Gray et al. 2017</a>; and <a href="#ref-hall_mediated_2019" role="doc-biblioref">Hall, Lazarus, and Thompson 2019</a>)</span>. These processes are generally well-suited to environmental management problems that are politically and publicly-sensitive, complex, and engage diverse audiences <span class="citation">(<a href="#ref-van_den_belt_mediated_2006" role="doc-biblioref">Belt et al. 2006</a>)</span>. “Mediated modeling” is used here to describe the family of techniques for building consensus among multiple partners and producing credible and defensible ecological models in a transparent way <span class="citation">(<a href="#ref-van_den_belt_mediated_2006" role="doc-biblioref">Belt et al. 2006</a>)</span>.
 For NYBEM, a suite of workshop-based model development methods are adapted from <span class="citation">Herman et al. (<a href="#ref-herman_unpacking_2019" role="doc-biblioref">2019</a>)</span>. These workshops utilize a lecture-exercise format, where participants are led through the theory of a particular aspect of modeling (e.g., conceptual modeling) and then apply said theory to a focal ecosystem (i.e., the New York Bight). A series of workshops and reviews are structuring the iterative development of NYBEM with subsequent research and synthesis between meetings (See McKay et al. 2021 for additional detail). Appendix B summarizes workshop logistics and focal topics. Key milestones in model development are briefly described below, but the overarching strategy is to engage larger audiences and more formal forms of model evaluation as the toolkit develops.</p>
 <ul>
 <li><p><em>Preliminary workshop with Philadelphia District</em> (January 2019): A preliminary conceptual model was developed with USACE Philadelphia District team members, which focused generally on issues potentially relevant for environment compliance at the broadest level.</p></li>
@@ -421,36 +464,36 @@ For NYBEM, a suite of workshop-based model development methods are adapted from 
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-van_den_belt_mediated_2006">
-<p>Belt, Marjan van den, Oscar A. Bianciotto, Robert Costanza, Serge Demers, Susana Diaz, Gustavo A. Ferreyra, Evamaria W. Koch, Fernando R. Momo, and Maria Vernet. 2006. “Mediated Modeling of the Impacts of Enhanced UV-B Radiation on Ecosystem Services.” <em>Photochemistry and Photobiology</em> 82 (4): 865. <a href="https://doi.org/10.1562/2005-10-19-IR-722">https://doi.org/10.1562/2005-10-19-IR-722</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-van_den_belt_mediated_2006" class="csl-entry">
+Belt, Marjan van den, Oscar A. Bianciotto, Robert Costanza, Serge Demers, Susana Diaz, Gustavo A. Ferreyra, Evamaria W. Koch, Fernando R. Momo, and Maria Vernet. 2006. <span>“Mediated <span>Modeling</span> of the <span>Impacts</span> of <span>Enhanced</span> <span>UV</span>-<span>B</span> <span>Radiation</span> on <span>Ecosystem</span> <span>Services</span>.”</span> <em>Photochemistry and Photobiology</em> 82 (4): 865. <a href="https://doi.org/10.1562/2005-10-19-IR-722">https://doi.org/10.1562/2005-10-19-IR-722</a>.
 </div>
-<div id="ref-us_army_corps_of_engineers_assuring_2011">
-<p>Engineers, U. S. Army Corps of. 2011. “ASSURING QUALITY OF PLANNING MODELS.” EC 1105-2-412. Washington, D.C.: DEPARTMENT OF THE ARMY. <a href="https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf">https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf</a>.</p>
+<div id="ref-us_army_corps_of_engineers_assuring_2011" class="csl-entry">
+Engineers, U. S. Army Corps of. 2011. <span>“<span>ASSURING</span> <span>QUALITY</span> <span>OF</span> <span>PLANNING</span> <span>MODELS</span>.”</span> EC 1105-2-412. Washington, D.C.: DEPARTMENT OF THE ARMY. <a href="https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf">https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf</a>.
 </div>
-<div id="ref-grant_ecological_2008">
-<p>Grant, William Edward, and Todd M. Swannack. 2008. <em>Ecological Modeling: A Common-Sense Approach to Theory and Practice</em>. Malden (Mass.): Blackwell.</p>
+<div id="ref-grant_ecological_2008" class="csl-entry">
+Grant, William Edward, and Todd M. Swannack. 2008. <em>Ecological Modeling: A Common-Sense Approach to Theory and Practice</em>. Malden (Mass.): Blackwell.
 </div>
-<div id="ref-gray_environmental_2017">
-<p>Gray, Steven, Michael Paolisso, Rebecca Jordan, Stefan Gray, and Springer International Publishing. 2017. <em>Environmental Modeling with Stakeholders Theory, Methods, and Applications</em>. <a href="https://doi.org/10.1007/978-3-319-25053-3">https://doi.org/10.1007/978-3-319-25053-3</a>.</p>
+<div id="ref-gray_environmental_2017" class="csl-entry">
+Gray, Steven, Michael Paolisso, Rebecca Jordan, Stefan Gray, and Springer International Publishing. 2017. <em>Environmental <span>Modeling</span> with <span>Stakeholders</span> <span>Theory</span>, <span>Methods</span>, and <span>Applications</span></em>. <a href="https://doi.org/10.1007/978-3-319-25053-3">https://doi.org/10.1007/978-3-319-25053-3</a>.
 </div>
-<div id="ref-hall_mediated_2019">
-<p>Hall, Damon M., Eli D. Lazarus, and Jessica L. Thompson. 2019. “Mediated Modeling and Participatory Modeling.” In <em>Encyclopedia of Ecology</em>, 129–35. Elsevier. <a href="https://doi.org/10.1016/B978-0-12-409548-9.10574-3">https://doi.org/10.1016/B978-0-12-409548-9.10574-3</a>.</p>
+<div id="ref-hall_mediated_2019" class="csl-entry">
+Hall, Damon M., Eli D. Lazarus, and Jessica L. Thompson. 2019. <span>“Mediated <span>Modeling</span> and <span>Participatory</span> <span>Modeling</span>.”</span> In <em>Encyclopedia of <span>Ecology</span></em>, 129–35. Elsevier. <a href="https://doi.org/10.1016/B978-0-12-409548-9.10574-3">https://doi.org/10.1016/B978-0-12-409548-9.10574-3</a>.
 </div>
-<div id="ref-herman_unpacking_2019">
-<p>Herman, Brook D., S. Kyle McKay, Safra Altman, Nathan S. Richards, Molly Reif, Candice D. Piercy, and Todd M. Swannack. 2019. “Unpacking the Black Box: Demystifying Ecological Models Through Interactive Workshops and Hands-on Learning.” <em>Frontiers in Environmental Science</em> 7 (October): 122. <a href="https://doi.org/10.3389/fenvs.2019.00122">https://doi.org/10.3389/fenvs.2019.00122</a>.</p>
+<div id="ref-herman_unpacking_2019" class="csl-entry">
+Herman, Brook D., S. Kyle McKay, Safra Altman, Nathan S. Richards, Molly Reif, Candice D. Piercy, and Todd M. Swannack. 2019. <span>“Unpacking the <span>Black</span> <span>Box</span>: <span>Demystifying</span> <span>Ecological</span> <span>Models</span> <span>Through</span> <span>Interactive</span> <span>Workshops</span> and <span>Hands</span>-<span>On</span> <span>Learning</span>.”</span> <em>Frontiers in Environmental Science</em> 7 (October): 122. <a href="https://doi.org/10.3389/fenvs.2019.00122">https://doi.org/10.3389/fenvs.2019.00122</a>.
 </div>
-<div id="ref-mckay_aligning_2019">
-<p>McKay, S. Kyle, Nate Richards, and Todd S. Swannack. 2019. “Aligning Ecological Model Development with Restoration Project Planning.” ERDC/TN EMRRP-SR-89. Vicksburg, Mississippi: Army Engineer Research; Development Center.</p>
+<div id="ref-mckay_aligning_2019" class="csl-entry">
+McKay, S. Kyle, Nate Richards, and Todd S. Swannack. 2019. <span>“Aligning <span>Ecological</span> <span>Model</span> <span>Development</span> with <span>Restoration</span> <span>Project</span> <span>Planning</span>.”</span> ERDC/TN EMRRP-SR-89. Vicksburg, Mississippi: Army Engineer Research; Development Center.
 </div>
-<div id="ref-us_fish_and_wildlife_service_usfws_significant_1997">
-<p>(USFWS), U. S. Fish and Wildlife Service. 1997. “Significant Habitats and Habitat Complexes of the New York Bight Watershed.” Charlestown, Rhode Island: Southern New England - New York Bight Coastal Ecosystems Program. <a href="https://nctc.fws.gov/pubs5/web_link/text/toc.htm">https://nctc.fws.gov/pubs5/web_link/text/toc.htm</a>.</p>
+<div id="ref-us_fish_and_wildlife_service_usfws_significant_1997" class="csl-entry">
+(USFWS), U. S. Fish and Wildlife Service. 1997. <span>“Significant <span>Habitats</span> and <span>Habitat</span> <span>Complexes</span> of the <span>New</span> <span>York</span> <span>Bight</span> <span>Watershed</span>.”</span> Charlestown, Rhode Island: Southern New England - New York Bight Coastal Ecosystems Program. <a href="https://nctc.fws.gov/pubs5/web_link/text/toc.htm">https://nctc.fws.gov/pubs5/web_link/text/toc.htm</a>.
 </div>
-<div id="ref-van_den_belt_mediated_2004">
-<p>Van den Belt, Marjan. 2004. <em>Mediated Modeling: A System Dynamics Approach to Environmental Consensus Building</em>. Washington, D.C: Island.</p>
+<div id="ref-van_den_belt_mediated_2004" class="csl-entry">
+Van den Belt, Marjan. 2004. <em>Mediated Modeling: A System Dynamics Approach to Environmental Consensus Building</em>. Washington, D.C: Island.
 </div>
-<div id="ref-voinov_modelling_2010">
-<p>Voinov, Alexey, and Francois Bousquet. 2010. “Modelling with Stakeholders☆.” <em>Environmental Modelling &amp; Software</em> 25 (11): 1268–81. <a href="https://doi.org/10.1016/j.envsoft.2010.03.007">https://doi.org/10.1016/j.envsoft.2010.03.007</a>.</p>
+<div id="ref-voinov_modelling_2010" class="csl-entry">
+Voinov, Alexey, and Francois Bousquet. 2010. <span>“Modelling with Stakeholders☆.”</span> <em>Environmental Modelling &amp; Software</em> 25 (11): 1268–81. <a href="https://doi.org/10.1016/j.envsoft.2010.03.007">https://doi.org/10.1016/j.envsoft.2010.03.007</a>.
 </div>
 </div>
             </section>
@@ -459,7 +502,7 @@ For NYBEM, a suite of workshop-based model development methods are adapted from 
         </div>
       </div>
 <a href="background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conceptualization-i.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conceptualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

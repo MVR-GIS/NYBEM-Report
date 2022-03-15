@@ -1,21 +1,22 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
 ]{book}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -37,9 +38,9 @@
 \hypersetup{
   pdftitle={New York Bight Ecological Model (NYBEM)},
   pdfauthor={S. Kyle McKay, Vanessa Mahan, Michael Dougherty, Toddd Swannack, Candice Hall, Christina Saltus, Molly Reif, Steve Allen},
-  pdfborder={0 0 0},
-  breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -80,11 +81,17 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -93,25 +100,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-  \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-  \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -127,12 +123,15 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
-\bibliographystyle{plainnat}
+\bibliographystyle{apalike}
 
 \title{New York Bight Ecological Model (NYBEM)}
 \author{S. Kyle McKay, Vanessa Mahan, Michael Dougherty, Toddd Swannack, Candice Hall, Christina Saltus, Molly Reif, Steve Allen}
-\date{2022-01-24}
+\date{2022-03-15}
 
 \begin{document}
 \maketitle
@@ -200,7 +199,7 @@ Model development was funded by the U.S. Army Corps of Engineers through the New
 \item
   \emph{Intertidal Ecosystems}: Coastal ecosystems with bed elevation between Mean Higher High Water (MHHW) and Mean Lower Low Water (MLLW).
 \item
-  \emph{Marine Ecosystems}: Coastal ecosystems with salinity \textgreater{}= 30 ppt.
+  \emph{Marine Ecosystems}: Coastal ecosystems with salinity \textgreater= 30 ppt.
 \item
   \emph{Mean Higher High Water (MHHW)}: A tidal datum. The average of the higher high water height each tidal day observed over AdH simulation period (\href{https://shoreline.noaa.gov/glossary.html}{NOAA 2019}).
 \item
@@ -289,9 +288,9 @@ This report presents development and application of the New York Bight Ecologica
 \hypertarget{model-development-process}{%
 \chapter{Model Development Process}\label{model-development-process}}
 
-When used in the context of complex management decisions with many partners, environmental and ecological modeling often benefit from approaches that emphasize transparency, increase user input during development, and clearly communicate model assumptions and limitations (van den Belt 2004, Voinov and Bousquet 2010, Herman et al.~2019). Here, a general five-step modeling process is followed that applies best practices in ecological model development (Grant and Swannack 2008). First, general relationships among essential ecosystem components are formally \emph{conceptualized} to tell the story of ``how the system works'' (Fischenich 2008). Second, the model is \emph{quantified} using a formal structure of functional relationships, algorithms, and parameters. Third, models are \emph{evaluated} relative to underlying scientific theory, numerical accuracy, and usability, which often entails techniques such as code checking, testing, verification, and sensitivity analyses. Fourth, a model is \emph{applied} to a given management question, scenario, or assessment. Fifth, a strategy is developed and executed to \emph{communicate} model development and application to technical and non-technical audiences. This process has been applied numerous times to select, adapt, or develop ecological models for USACE and non-USACE studies (e.g., McKay et al.~2019; Herman et al.~2019), and the framework is intended to draw heavily from existing knowledge, data, and tools.
+When used in the context of complex management decisions with many partners, environmental and ecological modeling often benefit from approaches that emphasize transparency, increase user input during development, and clearly communicate model assumptions and limitations \citep{van_den_belt_mediated_2004, voinov_modelling_2010, herman_unpacking_2019}. Here, a general five-step modeling process is followed that applies best practices in ecological model development \citep{grant_ecological_2008}. First, general relationships among essential ecosystem components are formally \emph{conceptualized} to tell the story of ``how the system works'' \citep{fischenich_application_2008}. Second, the model is \emph{quantified} using a formal structure of functional relationships, algorithms, and parameters. Third, models are \emph{evaluated} relative to underlying scientific theory, numerical accuracy, and usability, which often entails techniques such as code checking, testing, verification, and sensitivity analyses. Fourth, a model is \emph{applied} to a given management question, scenario, or assessment. Fifth, a strategy is developed and executed to \emph{communicate} model development and application to technical and non-technical audiences. This process has been applied numerous times to select, adapt, or develop ecological models for USACE and non-USACE studies \citep[e.g.,][]{mckay_aligning_2019, herman_unpacking_2019}, and the framework is intended to draw heavily from existing knowledge, data, and tools.
 
-USACE policy (EC-1105-2-412) defines a model as ``a representation of a system for a purpose,'' and thus, specifying a modeling objective is often a foundational step in the modeling process. \textbf{Here, our modeling objective is to articulate the mechanisms and magnitude of environmental effects of proposed coastal storm risk management actions in the New York Bight Ecosystem}. However, this model (like all models) is being developed in a constrained environment with limited time and resources. Three key issues constrained and guided NYBEM development, each of which is addressed in subsequent sections:
+USACE policy \citep{us_army_corps_of_engineers_assuring_2011} defines a model as ``a representation of a system for a purpose,'' and thus, specifying a modeling objective is often a foundational step in the modeling process. \textbf{Here, our modeling objective is to articulate the mechanisms and magnitude of environmental effects of proposed coastal storm risk management actions in the New York Bight Ecosystem}. However, this model (like all models) is being developed in a constrained environment with limited time and resources. Three key issues constrained and guided NYBEM development, each of which is addressed in subsequent sections:
 
 \begin{itemize}
 \item
@@ -308,8 +307,14 @@ USACE policy (EC-1105-2-412) defines a model as ``a representation of a system f
 The cumulative project area of the ongoing CSRM studies exceeds 3,000 mi\textsuperscript{2} and covers multiple states. The spatial extent of model application was defined by a sequence of four sequentially smaller filters (Figure 2):
 
 \begin{itemize}
+\tightlist
 \item
-  \emph{New York Bight}: The USFWS (1997) defines the ecosystems of the New York Bight as the ``open ocean region south of Long Island and east of New Jersey, known as the New York Bight proper'' and all associated upstream estuaries, waters, and lands. This large spatial domain covers 31,276 mi\textsuperscript{2} (10,206 mi\textsuperscript{2} upland watershed and 21,070 mi\textsuperscript{2} estuarine or marine). Specifically, the watershed is defined based on ten 8-digit Hydrologic Unit Code (HUC) watersheds (02020006, 02020007, 02020008, 02030101, 02030103, 02030104, 02030105, 02030202, 02040301, and 02040302). The USFWS Bight definition includes all marine ecosystems offshore. However, given the nearshore scope of USACE's studies, seaward extent is limited to ecosystems above a 20m depth contour (i.e., the USFWS definition of ``nearshore''). This watershed boundary and seaward limit have a total area of 13,420 mi\textsuperscript{2}.
+  \emph{New York Bight}: The USFWS defined the ecosystems of the New York Bight in 1997 as the ``open ocean region south of Long Island and east of New Jersey, known as the New York Bight proper'' and all associated upstream estuaries, waters, and lands. This large spatial domain covers 31,276 mi\textsuperscript{2} (10,206 mi\textsuperscript{2} upland watershed and 21,070 mi\textsuperscript{2} estuarine or marine). Specifically, the watershed is defined based on ten 8-digit Hydrologic Unit Code (HUC) watersheds (02020006, 02020007, 02020008, 02030101, 02030103, 02030104, 02030105, 02030202, 02040301, and 02040302). The USFWS Bight definition includes all marine ecosystems offshore. However, given the nearshore scope of USACE's studies, seaward extent is limited to ecosystems above a 20m depth contour (i.e., the USFWS definition of ``nearshore''). This watershed boundary and seaward limit have a total area of 13,420 mi\textsuperscript{2}.
+\end{itemize}
+
+\citet{us_fish_and_wildlife_service_usfws_significant_1997}
+
+\begin{itemize}
 \item
   \emph{Project Boundaries}: The Bight ecosystem includes many upland and coastal ecosystems beyond the project boundaries (e.g., Eastern Long Island). The USACE study boundaries provide a second filter on the spatial limits of the NYBEM. The New York Bight ecosystem contained within the project boundaries has an area of 2,930 mi\textsuperscript{2}.
 \item
@@ -359,8 +364,8 @@ Model Inputs & Footprint & Footprint + Tidal Range + Salinity & Footprint + Tida
 \hypertarget{mediated-modeling}{%
 \section{Mediated Modeling}\label{mediated-modeling}}
 
-The NYBEM intends to assess ecological consequences of alternative infrastructure options in a large, diverse ecosystem. There are many types of stakeholder-based model development processes that overlap in approach and emphasize collaboration: Model Prototyping, Participatory Modeling, Group Model Building, Companion Modeling and Mediated Model Development (See reviews by Voinov and Bousquet 2010, Gray et al.~2017, and Hall et al.~2019). These processes are generally well-suited to environmental management problems that are politically and publicly-sensitive, complex, and engage diverse audiences (van den Belt et al.~2006). ``Mediated modeling'' is used here to describe the family of techniques for building consensus among multiple partners and producing credible and defensible ecological models in a transparent way (van den Belt 2004).
-For NYBEM, a suite of workshop-based model development methods are adapted from Herman et al.~(2019). These workshops utilize a lecture-exercise format, where participants are led through the theory of a particular aspect of modeling (e.g., conceptual modeling) and then apply said theory to a focal ecosystem (i.e., the New York Bight). A series of workshops and reviews are structuring the iterative development of NYBEM with subsequent research and synthesis between meetings (See McKay et al.~2021 for additional detail). Appendix B summarizes workshop logistics and focal topics. Key milestones in model development are briefly described below, but the overarching strategy is to engage larger audiences and more formal forms of model evaluation as the toolkit develops.
+The NYBEM intends to assess ecological consequences of alternative infrastructure options in a large, diverse ecosystem. There are many types of stakeholder-based model development processes that overlap in approach and emphasize collaboration: Model Prototyping, Participatory Modeling, Group Model Building, Companion Modeling and Mediated Model Development \citetext{\citealp[See reviews by][]{voinov_modelling_2010}; \citealp{gray_environmental_2017}; \citealp[and][]{hall_mediated_2019}}. These processes are generally well-suited to environmental management problems that are politically and publicly-sensitive, complex, and engage diverse audiences \citep{van_den_belt_mediated_2006}. ``Mediated modeling'' is used here to describe the family of techniques for building consensus among multiple partners and producing credible and defensible ecological models in a transparent way \citep{van_den_belt_mediated_2006}.
+For NYBEM, a suite of workshop-based model development methods are adapted from \citet{herman_unpacking_2019}. These workshops utilize a lecture-exercise format, where participants are led through the theory of a particular aspect of modeling (e.g., conceptual modeling) and then apply said theory to a focal ecosystem (i.e., the New York Bight). A series of workshops and reviews are structuring the iterative development of NYBEM with subsequent research and synthesis between meetings (See McKay et al.~2021 for additional detail). Appendix B summarizes workshop logistics and focal topics. Key milestones in model development are briefly described below, but the overarching strategy is to engage larger audiences and more formal forms of model evaluation as the toolkit develops.
 
 \begin{itemize}
 \item
@@ -379,53 +384,73 @@ For NYBEM, a suite of workshop-based model development methods are adapted from 
 
 Rapid timelines and iterative development encourage a transparent approach for model documentation. We adopt a growing family of methods for ``\href{https://ropensci.github.io/reproducibility-guide/sections/introduction/}{reproducible research},'' which embrace code and data sharing, enable review processes, and facilitate use of methods and results. Specifically, \href{https://rmarkdown.rstudio.com/}{R Markdown} is applied to development and document models, which are coded in the \href{https://cran.r-project.org/}{R Statistical Software}. These tools minimize data transfer errors and facilitate internal inspect of code as it is developed.
 
-\hypertarget{conceptualization-i}{%
-\chapter{Conceptualization (I)}\label{conceptualization-i}}
+\hypertarget{conceptualization}{%
+\chapter{Conceptualization}\label{conceptualization}}
 
-{McKay to edit text.}
+The foundation of ecological modeling is a clear conceptualization of the ecosystem and an approach for translating the conceptual model into a numerical representation. This chapter describes an overarching conceptual model for the ecosystems of the New York Bight. A strategy is then presented for assessing these ecosystems relative to a habitat-style modeling approach, where the quantity and quality of each ecosystem type are computed separately and combined into an index of ecosystem integrity (i.e., a ``habitat unit'').
 
 \hypertarget{conceptual-model}{%
 \section{Conceptual Model}\label{conceptual-model}}
 
-Conceptual ecological models are required for all USACE ecosystem restoration projects due to their utility to increase understanding, identify potential alternatives, and facilitate team dialog (Fischenich 2008, USACE 2011). These same benefits apply for assessing environmental effects of proposed coastal storm risk management actions. Additionally, conceptual models also inform and structure the development of quantitative ecological models (Grant and Swannack 2008, Swannack et al.~2012) such as the NYBEM. Conceptual models of the New York Bight were iteratively developed through the mediated workshops described above. Workshop ideas and content were synthesized with available literature, conceptual models of similar ecosystems (e.g., wetland function in Coastal Louisiana; e.g., Twilley 2004), and existing regional conceptual models (e.g., Montagna et al.~2013). A seven step conceptual model development process was iteratively applied as workshops proceeded (Fischenich 2008; Table 2).
+Conceptual ecological models are required for all USACE ecosystem restoration projects due to their utility to increase understanding, identify potential alternatives, and facilitate team dialog \citep{fischenich_application_2008, us_army_corps_of_engineers_assuring_2011}. These same benefits apply for assessing environmental effects of proposed coastal storm risk management actions. Additionally, conceptual models also inform and structure the development of quantitative ecological models \citep{grant_ecological_2008, swannack_ecological_2012} such as the NYBEM. Conceptual models of the New York Bight were iteratively developed through the mediated workshops described in Section 2.3. Workshop ideas and content were synthesized with available literature, conceptual models of similar ecosystems (e.g., wetland function in Coastal Louisiana; \citet{twilley_formulation_nodate}), and existing regional conceptual models \citep[e.g.,][]{montagna_conceptual_2013}. A seven step conceptual model development process was iteratively applied as workshops proceeded {[}\citet{fischenich_application_2008}; Table 3.1{]}.
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-4}Table 2. Stepwise development of the overarching NYBEM conceptual model (following steps in Fischenich 2008).}
+\caption{\label{tab:unnamed-chunk-4}Stepwise development of the overarching NYBEM conceptual model (following steps in Fischenich 2008).}
 \centering
-\begin{tabular}[t]{l|l}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
 \hline
 Step & NYBEM Application\\
 \hline
 1. State the model objectives. & Our numerical modeling objective is to articulate the mechanisms and magnitude of environmental effects of proposed coastal storm risk management actions in the New York Bight Ecosystem. This conceptual model is intended to communicate the overarching scope of model development to a broad audience.\\
 \hline
-2. Bound the system of interest. & NYBEM is limited to the New York Bight Watershed with a seaward limit of a 20m depth contour. The models are further limited to aquatic ecosystems in the National Hydrography Dataset within the NJBB project area. The NYBEM focuses only on effects to regional ecosystem, and other forms of environmental impacts (e.g., air quality, historic preservation) are addressed elsewhere in NEPA documentation.\\
+2. Bound the system of interest. & NYBEM is limited to the New York Bight Watershed with a seaward limit of a 20m depth contour. The models are further limited to aquatic ecosystems within the NJBB and HATS project areas. The NYBEM focuses only on effects to regional ecosystem, and other forms of environmental impacts (e.g., air quality, historic preservation) are addressed elsewhere in NEPA documentation.\\
 \hline
-3. Identify critical model components within the system. & This overarching conceptual model focuses on key ecosystem types and system-wide connectivity. Patch-scale models are defined from a combined classification based on Cowardin et al. (1979), USFWS (1997), and Montagna et al. (2013). A series of workshops and literature search will be used to identify ecosystem-specific model components associated with habitat quality.\\
+3. Identify critical model components within the system. & This overarching conceptual model focuses on key ecosystem types and system-wide connectivity. Patch-scale models are defined from a combined classification based on Cowardin et al. (1979), USFWS (1997), and Montagna et al. (2013). A series of workshops and literature search were then used to identify ecosystem-specific model components associated with habitat quality (Chapter 4).\\
 \hline
-4. Articulate relationships among model components. & Only ecosystem types are presented, given the communication-driven purpose of this overarching model. More mechanistic conceptual models are being developed for each ecosystem type, which show connections between drivers and stressors, ecosystem states, and ecological outcomes.\\
+4. Articulate relationships among model components. & Only ecosystem types are presented, given the communication-driven purpose of this overarching model. More mechanistic conceptual models are presented for each ecosystem type ub Chapter 4, which show connections between drivers and stressors, ecosystem states, and ecological outcomes.\\
 \hline
-5. Represent the conceptual model. & A simple graphic representation of the conceptual model (Figure 3) was developed to facilitate communication between project team members, sponsors, partner agencies, and other interested parties.\\
+5. Represent the conceptual model. & A simple graphic representation of the conceptual model (Figure 3.1) was developed to facilitate communication between project team members, sponsors, partner agencies, and other interested parties.\\
 \hline
 6. Describe the expected pattern of behavior. & The team qualitatively assessed the model along with potential gaps in ecosystem types and environmental impacts.\\
 \hline
-7. Test, review, and revise. & This overarching conceptual model was developed, presented, and refined based on a series of modeling workshops (Appendix B).\\
+7. Test, review, and revise. & This overarching conceptual model was developed, presented, and refined based on a series of modeling workshops over a three year timeframe.\\
 \hline
-\end{tabular}
+\end{tabu}
 \end{table}
 
-Ultimately, multiple conceptual models were developed of the New York Bight with different purposes. We first developed an overarching conceptual model communicating how a mosaic of regional ecosystems function together at a system-scale, which is intended for broad use including both technical and non-technical audiences (Figure 3). Three overarching systems were identified to frame model development: (1) nearshore/marine ecosystems, (2) estuarine ecosystems, and (3) system connectivity between multiple ecosystem types. These systems were distinguished based on differences in ecosystem processes such as wave energy and surge exposure, likely effects of proposed management alternatives, and potential differences in modeling philosophy (e.g., habitat models for nearshore and estuarine systems and a network approach to connectivity). Cumulatively, these three categories provide a means of assessing nearshore and estuarine ecosystems at a patch-scale as well as a means of assessing system-scale outcomes associated with connectivity. The ecosystem types were adopted from a combination of two existing classifications (Cowardin et al.~1979, USFWS 1997). In addition to this overarching model, mechanistic models are being developed for each ecosystem type to guide quantitative model development (see Quantification section below), which are intended for technical audiences focused on the scientific details of ecological assessments.
+Ultimately, multiple conceptual models were developed of the New York Bight with different purposes. We first developed an overarching conceptual model communicating how a mosaic of regional ecosystems function together at a system-scale, which is intended for broad use including both technical and non-technical audiences (Figure 3.1). Three overarching systems were identified to frame model development: (1) nearshore / marine ecosystems, (2) estuarine ecosystems, and (3) system connectivity between multiple ecosystem types. These systems were distinguished based on differences in ecosystem processes such as wave energy and salinity dynamics, likely effects of proposed management alternatives, and potential differences in modeling philosophy (e.g., habitat models for nearshore and estuarine systems and a network approach to connectivity). Cumulatively, these three categories provide a means of assessing nearshore and estuarine ecosystems at a patch-scale as well as a means of assessing system-scale outcomes associated with connectivity. The ecosystem types were adopted from a combination of two existing classifications \citep{cowardin_classification_1979, us_fish_and_wildlife_service_usfws_significant_1997}. In addition to this overarching model, mechanistic conceptual models were developed for each ecosystem type to guide quantitative model development (see Chapter 4), which are intended for technical audiences focused on the scientific details of ecological assessments.
 
 \begin{figure}
 \centering
 \includegraphics{ZZ_Fig03_NYBEM.ConModel.jpg}
-\caption{\emph{Figure 3. Overarching conceptual model for the New York Bight.}}
+\caption{\emph{Overarching conceptual model for the New York Bight.}}
 \end{figure}
 
-{McKay to add text describing the overarching use of different ecosystem types by imperiled spp, which builds from Jesse Miller's table and provides context for the EIS.}
+\hypertarget{major-ecosystem-types}{%
+\section{Major Ecosystem Types}\label{major-ecosystem-types}}
 
-\hypertarget{habitat-style-modeling-approach}{%
-\section{Habitat-Style Modeling Approach}\label{habitat-style-modeling-approach}}
+Patch-scale assessments were developed for both the marine and estuarine ecosystems. Models were developed for each of six major ecosystem types (Table 3.2). These ecosystems are defined from a combined classification based on \citet{cowardin_classification_1979} and \citet{us_fish_and_wildlife_service_usfws_significant_1997}. Salinity and tidal range differentiate these ecosystems, both of which can change under futures with and without agency projects. Other analyses have developed ecosystem-scale assessments and models based on similar or more refined divisions in physical properties (e.g., \citet{clough_modeling_2016}, \citet{fischbach_building_2018}), and the current criteria represent a compromise between the need for detailed assessment of the type and location of infrastructure impacts and the need for a readily implementable rule set applicable at the broad spatial scale of the NYBEM.
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-5}Definition of NYBEM ecosystem types.}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\hline
+Tidal Limits & Marine (Salinity >= 30ppt) & Estuarine (Salinity = 0.5 to 30ppt) & Freshwater (Salinity <= 0.5ppt)\\
+\hline
+Deepwater (-2m to -20m) & Marine, Deep & Estuarine, Subtidal & Freshwater\\
+\hline
+Subtidal (MLLW to -2m) & Marine, Subtitdal & Estuarine, Subtidal & Freshwater\\
+\hline
+Intertidal (MHHW to MLLW) & Marine, Intertidal & Estuarine, Intertidal & Freshwater\\
+\hline
+\end{tabu}
+\end{table}
+
+\hypertarget{habitat-style-modeling-philosophy}{%
+\section{Habitat-Style Modeling Philosophy}\label{habitat-style-modeling-philosophy}}
 
 Dozens of ecological modeling tools focus on coastal ecosystems. These models vary based on factors such as the disciplinary perspective (e.g., hydrologic, geomorphic, ecological), the level of ecological hierarchy addressed (e.g., individuals, populations, communities, ecosystems), the basic approach to modeling (e.g., statistical, theoretical), input requirements (e.g., few parameters vs.~extensive geospatial layers), the treatment of time and space (e.g., lumped vs.~distributed), and the degree of development (e.g., long history vs.~ad hoc). However, multiple gaps in these these tools are the driving motivation for developing the New York Bight Ecological Model (NYBEM).
 
@@ -436,84 +461,85 @@ Dozens of ecological modeling tools focus on coastal ecosystems. These models va
 \item
   \emph{Connection to USACE management actions}: Existing tools often emphasize important physical forcings on ecosystems without a direct connection to USACE's proposed project action. For instance, a model may include marsh response to sea level rise, but be unable to incorporate marsh response to sea level rise in the presence of a storm surge barrier.\\
 \item
-  \emph{Indirect effects}: Models often emphasize direct changes at a site-scale rather than indirect effects of off-site change. For instance, a model may assess habitat quality associated substrate, but be unable to link to changes in substrate as a result of distant infrastructure (e.g., a storm surge barrier).\\
+  \emph{Indirect effects}: Models often emphasize direct changes at a site-scale rather than indirect effects of off-site change. For instance, a model may assess habitat quality associated with substrate, but be unable to link to changes in substrate as a result of distant infrastructure (e.g., a storm surge barrier).\\
 \item
-  \emph{System-wide data}: Many valuable ecological tools have been developed at small spatial scales based on detailed site data (e.g., vegetation surveys). However, the extremely large scale of these projects precludes field data collection, and NYBEM inputs must be available for the entire model extent.\\
+  \emph{System-wide data}: Many valuable ecological tools have been developed at small spatial scales based on detailed site data (e.g., vegetation surveys or field assessment procedures). However, the extremely large scale of these projects precludes field data collection, and NYBEM inputs must be available for the entire model extent.\\
 \item
-  \emph{Rapid and phased application}: The USACE studies are assessing project outcomes on aggresive schedules, and some tools that might be applicable on longer time horizons are not feasible in these short periods. Additionally, the projects require an evolving set of tools that mirror the needs of a tiered NEPA assessment.
+  \emph{Rapid and phased application}: The USACE studies are assessing project outcomes within limited timeframes, and some tools that might be applicable on longer time horizons are not feasible in these short periods. Additionally, the projects require an evolving set of tools that mirror the needs of a tiered NEPA assessment.
 \end{itemize}
 
-Given these challenges, the NYBEM seeks to build from the wide breadth of existing knowledge and models to develop a comprehensive set of tools directly applicable to the unique needs of planning USACE coastal storm risk management projects. The NYBEM will draw from two distinct modeling approaches applicable at different scales. First, six patch-scale models will be developed, which use an index-based modeling philosophy assessing the quantity and quality of a given ecosystem type. Second, system-scale models will be proposed, which apply network-analytic methods to assess organismal connectivity. The following sections describe preliminary versions of the patch-scale models and plans for future model development after the release of the NJBB Draft Feasibility Report.
+Given these challenges, the NYBEM seeks to build from the wide breadth of existing knowledge and models to develop a comprehensive set of tools directly applicable to the unique needs of planning USACE coastal storm risk management projects. The NYBEM draws from two distinct modeling approaches applicable at different scales. First, six patch-scale models were developed, which use an index-based modeling philosophy assessing the quantity and quality of a given ecosystem type. Second, system-scale models will be developed in the future, which apply network-analytic methods to assess organismal connectivity. This report documents only the patch-scale models applicable in the six ecosystems shown in Table 3.2.
 
-This model takes a common approach to ecological modeling based on quantity and quality of habitat. ``Index'' models (Swannack et al.~2012) were originally developed for species-specific habitat applications (e.g., slider turtles), but the general approach has also been adapted to guilds (e.g., salmonids), communities (e.g., floodplain vegetation), and ecosystem processes (e.g., the Hydrogeomorphic Method). An index-based modeling approach is used for multiple reasons. First, index models directly respond to changes in physical properties and provide a clear link to changes in ecosystem quantity and quality resulting from future conditions with and without proposed actions. Second, index-based models align well with a phased model development approach. For instance, an initial model could use three critical variables influencing habitat quality, and future model versions could include more variables as data becomes available. Third, index-based models are familiar to USACE decision-makers from diverse applications in other regions such as Louisiana coastal restoration (i.e., the Wetland Value Assessment), California bay restoration (i.e., East San Pedro Bay), and gulf cost harbor expansion (i.e., Mobile Bay). Notably, these examples each assess multiple habitat types (e.g., oyster, seagrass) and aggregate outcomes into an overall metric of ecological impacts or benefits.
+The NYBEM takes a common approach to ecological modeling based on quantity and quality of habitat. ``Index'' models \citep{swannack_ecological_2012} were originally developed for species-specific habitat applications (e.g., slider turtles), but the general approach has also been adapted to guilds (e.g., salmonids), communities (e.g., floodplain vegetation), and ecosystem processes (e.g., the Hydrogeomorphic Method). An index-based modeling approach is used for multiple reasons. First, index models directly respond to changes in physical properties and provide a clear link to changes in ecosystem quantity and quality resulting from future conditions with and without proposed actions. Second, index-based models align well with a phased model development approach. For instance, an initial model could use three critical variables influencing habitat quality, and future model versions could include more variables as data becomes available. Third, index-based models are familiar to USACE decision-makers from diverse applications in other regions such as Louisiana coastal restoration (i.e., the Wetland Value Assessment), California bay restoration (i.e., East San Pedro Bay), and Gulf Coast harbor expansion (i.e., Mobile Bay). Notably, these examples each assess multiple habitat types (e.g., oyster, seagrass) and aggregate outcomes into an overall metric of ecological impacts or benefits.
 
-Index models are developed for each of six major ecosystem types (Table 3). These ecosystems are defined from a combined classification based on Cowardin et al.~(1979) and USFWS (1997). Salinity and tidal range differentiate these ecosystems, both of which can change under futures with and without agency projects. Other analyses have developed ecosystem-scale assessments and models based on similar or more refined divisions in physical properties (e.g., Clough et al.~2016, Fischbach et al.~2018), and the current criteria represent a compromise between the need for detailed assessment of the type and location of infrastructure impacts and the need for a readily implementable rule set applicable at the broad spatial scale of the NYBEM.
+In NYBEM, the quantity and quality of each ecosystem type are assessed separately. For instance, ecosystem extent and habitat quantity is rapidly delineated from modeled hydrodynamic conditions. Ecosystem quality is then assessed based on patch-specific data and known thresholds in ecological response (e.g., on a normalized 0 to 1 scale indicating ecological quality or function). The product of habitat quality and quantity provides a consistent metric across ecosystem types (i.e., ``habitat units''). Here, the terms ``habitat'' and ``ecosystem'' are used synonymously to indicate a given patch.
 
-\begin{table}
+\hypertarget{quantification}{%
+\chapter{Quantification}\label{quantification}}
 
-\caption{\label{tab:unnamed-chunk-5}Table 3. Definition of NYBEM ecosystem types.}
+The quantification phase of ecological model development formalizes a conceptual model in terms of mathematical relationships, model parameters, and a numerical algorithm (Grant and Swannack 2008). This chapter describes the NYBEM relative to model structure, associated numerical tools, and the theoretical underpinnings of the sub-models. In general, the overarching quantitative architecture of the NYBEM can be summarized in three major elements (Figure 4.1). First, model inputs are assembled in a geospatial database. Second, the model code is prepared as a ``package'' in the \href{https://cran.r-project.org/}{R Statistical Software}. Finally, the model outputs habitat quantity and quality as well as habitat units for each patch in the model domain.
+
+\begin{figure}
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
-Tidal Limits & Marine (Salinity >= 30ppt) & Estuarine (Salinity = 0.5 to 30ppt) & Freshwater (Salinity <= 0.5ppt)\\
-\hline
-Deepwater (-2m to -20m) & Marine, Deep & Estuarine, Subtidal & Freshwater\\
-\hline
-Subtidal (MLLW to -2m) & Marine, Subtitdal & Estuarine, Subtidal & Freshwater\\
-\hline
-Intertidal (MHHW to MLLW) & Marine, Intertidal & Estuarine, Intertidal & Freshwater\\
-\hline
-\end{tabular}
-\end{table}
+\includegraphics{ZZ_Fig04_NYBEM.Architecture.png}
+\caption{\emph{Quantitative architecture of the NYBEM.}}
+\end{figure}
 
-In NYBEM, the quantity and quality of each ecosystem type may be assessed separately. For instance, ecosystems could be rapidly delineated from empirical data for the existing condition (e.g., field or tide gauge) or modeled hydrodynamic data for future conditions or proposed management actions. These delineated ecosystems can be summarized as an overarching habitat quantity in acres. Ecosystem quality may then be assessed based on patch-specific data and known thresholds in ecological response (e.g., on a normalized 0 to 1 scale indicating ecological quality or function). The product of habitat quality and quantity provides a consistent metric across ecosystem types (i.e., ``habitat units''). Here, the terms ``habitat'' and ``ecosystem'' are used synonymously to indicate a given patch.
+Input variables to NYBEM consist of three major groups of data layers. First, the spatial extent of a given model run must be defined. The NYBEM is constrained to applications within the region of the New York Bight watersheds (Section 2.1). Within that region, a focal area for the simulation must be specified, which can consist of a particular project boundary (e.g., NJBB or HATS) or a user-specified domain (e.g., a particular back bay). Within that focal area, the downstream and upstream extents of the model are specified based on the 20m ocean depth contour and Mean Higher High Water (MHHW), respectively. The second major group of variables consists of hydrodynamic inputs. These inputs may be computed for varying temporal windows (e.g., a month, a year, or a decade) depending on the project focus, and the inputs could be provided by a variety of hydrodynamic models or empirical data sources. Hydrodynamic variables characterize the bed elevation, water surface, salinity, and velocity distributed throughout the project area. Third, a variety of other environmental variables are compiled from national and regional data sets to inform habitat quality calculations.
 
-\hypertarget{quantification-i}{%
-\chapter{Quantification (I)}\label{quantification-i}}
-
-{McKay to edit text.}
-
-Describe overarching model architecture.
-
-Steps in Developing Sub-Models:
-
-\begin{itemize}
-\item
-  Preliminary variables identified at workshops with additional variables added from taxa-specific habitat suitability models (i.e., ``blue books''), relevant tools (e.g., New England Marsh Model), and literature search.
-\item
-  Known system-wide data sets compiled for each ecosystem (e.g., national data layers, hydrodynamic models, prior studies)
-\item
-  Compilation of potential variables and rationale for inclusion or exclusion.
-\item
-  Development of conceptual model for each ecosystem and key variables used in numerical model development.
-\item
-  Development of numerical suitability indices for each sub-model based on existing suitability indices, published thresholds/responses, and professional judgment / qualitative responses.
-\end{itemize}
-
-Each section describes a different function used in NYBEM.
-
-List all functions here with descriptions of each.
+All model code for the NYBEM is contained within an R-package (\texttt{nybem}, \href{https://github.com/MVR-GIS}{available via github}). Generally speaking, a package can be thought of as a fundamental unit of code that can include functions, data, documentation, and tests (\href{https://r-pkgs.org/}{Wickham and Bryan 2019}). Packages then provide a transportable and reproducible mechanism for code sharing and publication. The \texttt{nybem} package contains nine functions and associated testing trials. This chapter describes each function in detail, but they can be summarized briefly as:
 
 \begin{itemize}
 \tightlist
 \item
-  Ecosystem type mapper (hab.mapper): Description.\\
+  \texttt{nybem.domain}: This function defines the model domain based on regional extent of the New York Bight watersheds, a user-specified focal area, a downstream extent of a 20m ocean depth contour, and an upstream extent based on bed elevations less than MHHW.\\
 \item
-  Freshwater, Tidal Submodel (fresh.tid): Description.\\
+  \texttt{patch.mapper}: This function maps the extent of NYBEM's six major ecosystem types (Table 3.2) based on user-specified data layers for bed elevation, MLLW, MTL, MHHW, and salinity.\\
 \item
-  Estuarine, Intertidal Submodel (est.int): Description.\\
+  \texttt{patch.rasterizer}: This function rasterizes the output of \texttt{patch.mapper} based on a specified grid resolution and aligns that layer with a specified spatial coordinate system.\\
 \item
-  Estuarine, Subtidal Submodel (est.sub): Description.\\
+  \texttt{fre.tid}: This function computes habitat quality for any freshwater, tidal patches.\\
 \item
-  Marine, Intertidal Submodel (mar.int): Description.\\
+  \texttt{est.int}: This function computes habitat quality for any estuarine, intertidal patches.\\
 \item
-  Marine, Subtidal Submodel (mar.sub) Description.\\
+  \texttt{est.sub}: This function computes habitat quality for any estuarine, subtidal patches.\\
 \item
-  Freshwater, Tidal Submodel (fresh.tid): Description.
+  \texttt{mar.int}: This function computes habitat quality for any marine, intertidal patches.\\
+\item
+  \texttt{mar.sub}: This function computes habitat quality for any marine, subtidal patches.\\
+\item
+  \texttt{mar.deep}: This function computes habitat quality for any marine, deepwater patches.
 \end{itemize}
 
-\hypertarget{habitat-type-mapper-hab.mapper-i}{%
-\section{Habitat Type Mapper (hab.mapper) (I)}\label{habitat-type-mapper-hab.mapper-i}}
+The first three functions can largely be thought of as pre-processing fundamental input data and mapping the extent of the six ecosystem types. For purposes of model development, these are relatively straight-forward and will be documented collectively. The latter six functions each compute a 0 to 1 metric of ecosystem condition (i.e., habitat quality) based on a unique set of input variables, equations, and parameters. Each of these habitat quality sub-models followed a consistent set of development steps, which are documented throughout this chapter and briefly describe here. Preliminary variables were identified at a series of interagency workshops through a series of conceptual modeling exercises (Appendix A). Additional variables were added based on taxa-specific habitat suitability models (i.e., USFWS ``blue books''), relevant tools (e.g., New England Marsh Model), and literature search. A conceptual model was then developed for each ecosystem type to better understand how key variables related an influenced each other. An overarching list of regional and national data sets were also compiled to assure that model variables could be assessed throughout the broad spatial extent of the New York Bight. Potential model variables were compiled along with the rationale for inclusion or exclusion. Finally, a numerical ``suitability index'' was developed for each variable remaining in the sub-model based on existing suitability indices, published thresholds / responses, and professional judgment.
+
+Ultimately, the \texttt{nybem} allows users to assess the extent and integrity of the six major ecosystem types represented in the NYBEM. The size and quality of a given habitat patch can provide useful metrics in their own right, or they may be summarized as an overarching ``habitat unit'' (i.e., the quantity of habitat in acres * patch quality assessed on a 0 to 1 scale).
+
+\hypertarget{pre-processing-functions-i}{%
+\section{Pre-Processing Functions (I)}\label{pre-processing-functions-i}}
+
+{Need Dougherty's help on this one.}
+
+Insert pre-amble text. This chapter describes each function in detail, but they can be summarized briefly as:
+
+\hypertarget{define-model-domain}{%
+\subsection{Define Model Domain}\label{define-model-domain}}
+
+\texttt{nybem.domain}: This function defines the model domain based on regional extent of the New York Bight watersheds, a user-specified focal area, a downstream extent of a 20m ocean depth contour, and an upstream extent based on bed elevations less than MHHW.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Functions for rasterizing habitat types}
+\NormalTok{nybem.domain }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(NYBightWatersheds, Ocean20mDepth, bedelev, MHHW)\{}
+  \CommentTok{\#Insert code}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{map-habitat-extent-and-type}{%
+\subsection{Map Habitat Extent and Type}\label{map-habitat-extent-and-type}}
+
+\texttt{patch.mapper}: This function maps the extent of NYBEM's six major ecosystem types (Table 3.2) based on user-specified data layers for bed elevation, MLLW, MTL, MHHW, and salinity.
 
 In NYBEM, the quantity and quality of each ecosystem type may be assessed separately. For instance, ecosystems could be rapidly delineated from empirical data for the existing condition (e.g., field or tide gauge) or modeled hydrodynamic data for future conditions or proposed management actions. These delineated ecosystems can be summarized as an overarching habitat quantity in acres. Ecosystem quality may then be assessed based on patch-specific data and known thresholds in ecological response (e.g., on a normalized 0 to 1 scale indicating ecological quality or function). The product of habitat quality and quantity provides a consistent metric across ecosystem types (i.e., ``habitat units''). Here, the terms ``habitat'' and ``ecosystem'' are used synonymously to indicate a given patch.
 
@@ -531,53 +557,67 @@ The criteria for delineating ecosystems (Table 3) were subsequently programmed a
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#Functions for isolating habitat types}
+\CommentTok{\#Functions for isolating habitat types}
 
-\CommentTok{##########}
-\CommentTok{#Labels for tidal zones}
-\NormalTok{ZoneTidal <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Deep"}\NormalTok{, }\StringTok{"Subtidal"}\NormalTok{, }\StringTok{"Intertidal"}\NormalTok{, }\StringTok{"Upland"}\NormalTok{)}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\#Labels for tidal zones}
+\NormalTok{ZoneTidal }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Deep"}\NormalTok{, }\StringTok{"Subtidal"}\NormalTok{, }\StringTok{"Intertidal"}\NormalTok{, }\StringTok{"Upland"}\NormalTok{)}
 
-\CommentTok{#Create function for isolating tidal zones}
-\NormalTok{set.tidal.zone <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(bedelev, MLLW, MHHW)\{}
-  \CommentTok{#Assign zone}
-\NormalTok{  tidalzone <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(bedelev }\OperatorTok{<=}\StringTok{ }\DecValTok{-2}\NormalTok{, }\DecValTok{1}\NormalTok{,}
-          \KeywordTok{ifelse}\NormalTok{(bedelev }\OperatorTok{<=}\StringTok{ }\NormalTok{MLLW, }\DecValTok{2}\NormalTok{,}
-          \KeywordTok{ifelse}\NormalTok{(bedelev }\OperatorTok{<=}\StringTok{ }\NormalTok{MHHW, }\DecValTok{3}\NormalTok{, }
-          \KeywordTok{ifelse}\NormalTok{(bedelev }\OperatorTok{>}\StringTok{ }\NormalTok{MHHW, }\DecValTok{4}\NormalTok{, }\OtherTok{NA}\NormalTok{))))}
-  \CommentTok{#Send output}
+\CommentTok{\#Create function for isolating tidal zones}
+\NormalTok{set.tidal.zone }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(bedelev, MLLW, MHHW)\{}
+  \CommentTok{\#Assign zone}
+\NormalTok{  tidalzone }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(bedelev }\SpecialCharTok{\textless{}=} \SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{,}
+          \FunctionTok{ifelse}\NormalTok{(bedelev }\SpecialCharTok{\textless{}=}\NormalTok{ MLLW, }\DecValTok{2}\NormalTok{,}
+          \FunctionTok{ifelse}\NormalTok{(bedelev }\SpecialCharTok{\textless{}=}\NormalTok{ MHHW, }\DecValTok{3}\NormalTok{, }
+          \FunctionTok{ifelse}\NormalTok{(bedelev }\SpecialCharTok{\textgreater{}}\NormalTok{ MHHW, }\DecValTok{4}\NormalTok{, }\ConstantTok{NA}\NormalTok{))))}
+  \CommentTok{\#Send output}
 \NormalTok{  tidalzone}
 \NormalTok{\}}
 
-\CommentTok{##########}
-\CommentTok{#Labels for salinity zones}
-\NormalTok{ZoneSalinity <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Marine"}\NormalTok{, }\StringTok{"Estuarine"}\NormalTok{, }\StringTok{"Fresh"}\NormalTok{)}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\#Labels for salinity zones}
+\NormalTok{ZoneSalinity }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Marine"}\NormalTok{, }\StringTok{"Estuarine"}\NormalTok{, }\StringTok{"Fresh"}\NormalTok{)}
 
-\CommentTok{#Create function for isolating salinity zones}
-\NormalTok{set.salinity.zone <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(salinity)\{}
-  \CommentTok{#Assign zone}
-\NormalTok{  salinityzone <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(salinity }\OperatorTok{>=}\DecValTok{30}\NormalTok{, }\DecValTok{1}\NormalTok{, }
-                  \KeywordTok{ifelse}\NormalTok{(salinity }\OperatorTok{<}\StringTok{ }\DecValTok{30} \OperatorTok{&}\StringTok{ }\NormalTok{salinity }\OperatorTok{>=}\StringTok{ }\FloatTok{0.5}\NormalTok{, }\DecValTok{2}\NormalTok{, }
-                  \KeywordTok{ifelse}\NormalTok{(salinity }\OperatorTok{<}\StringTok{ }\FloatTok{0.5} \OperatorTok{&}\StringTok{ }\NormalTok{salinity }\OperatorTok{>=}\StringTok{ }\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\OtherTok{NA}\NormalTok{)))}
-  \CommentTok{#Send output}
+\CommentTok{\#Create function for isolating salinity zones}
+\NormalTok{set.salinity.zone }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(salinity)\{}
+  \CommentTok{\#Assign zone}
+\NormalTok{  salinityzone }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(salinity }\SpecialCharTok{\textgreater{}=}\DecValTok{30}\NormalTok{, }\DecValTok{1}\NormalTok{, }
+                  \FunctionTok{ifelse}\NormalTok{(salinity }\SpecialCharTok{\textless{}} \DecValTok{30} \SpecialCharTok{\&}\NormalTok{ salinity }\SpecialCharTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{, }\DecValTok{2}\NormalTok{, }
+                  \FunctionTok{ifelse}\NormalTok{(salinity }\SpecialCharTok{\textless{}} \FloatTok{0.5} \SpecialCharTok{\&}\NormalTok{ salinity }\SpecialCharTok{\textgreater{}=} \DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\ConstantTok{NA}\NormalTok{)))}
+  \CommentTok{\#Send output}
 \NormalTok{  salinityzone}
 \NormalTok{\}}
 
-\CommentTok{##########}
-\CommentTok{#Labels for habitat zones}
-\NormalTok{ZoneHabitat <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Upland"}\NormalTok{, }\StringTok{"Marine.Deep"}\NormalTok{, }\StringTok{"Marine.Subtidal"}\NormalTok{, }\StringTok{"Marine.Intertidal"}\NormalTok{, }\StringTok{"Estuarine.Subtidal"}\NormalTok{, }\StringTok{"Estuarine.Intertidal"}\NormalTok{, }\StringTok{"Freshwater"}\NormalTok{)}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\#Labels for habitat zones}
+\NormalTok{ZoneHabitat }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Upland"}\NormalTok{, }\StringTok{"Marine.Deep"}\NormalTok{, }\StringTok{"Marine.Subtidal"}\NormalTok{, }\StringTok{"Marine.Intertidal"}\NormalTok{, }\StringTok{"Estuarine.Subtidal"}\NormalTok{, }\StringTok{"Estuarine.Intertidal"}\NormalTok{, }\StringTok{"Freshwater"}\NormalTok{)}
 
-\CommentTok{#Create function for isolating habitat zones}
-\NormalTok{set.habitat.zone <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(tidalzone, salinityzone)\{}
-  \CommentTok{#Assign zone}
-\NormalTok{  habitatzone <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{,}
-          \KeywordTok{ifelse}\NormalTok{(salinityzone }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{&}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{,}
-          \KeywordTok{ifelse}\NormalTok{(salinityzone }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{&}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{,}
-          \KeywordTok{ifelse}\NormalTok{(salinityzone }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{&}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{,}
-          \KeywordTok{ifelse}\NormalTok{(salinityzone }\OperatorTok{==}\StringTok{ }\DecValTok{2} \OperatorTok{&}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{|}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{,}
-          \KeywordTok{ifelse}\NormalTok{(salinityzone }\OperatorTok{==}\StringTok{ }\DecValTok{2} \OperatorTok{&}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{,}
-          \KeywordTok{ifelse}\NormalTok{(salinityzone }\OperatorTok{==}\StringTok{ }\DecValTok{3} \OperatorTok{&}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{|}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{2} \OperatorTok{|}\StringTok{ }\NormalTok{tidalzone }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{, }\OtherTok{NA}\NormalTok{)))))))}
-  \CommentTok{#Send output}
+\CommentTok{\#Create function for isolating habitat zones}
+\NormalTok{set.habitat.zone }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(tidalzone, salinityzone)\{}
+  \CommentTok{\#Assign zone}
+\NormalTok{  habitatzone }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(tidalzone }\SpecialCharTok{==} \DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{,}
+          \FunctionTok{ifelse}\NormalTok{(salinityzone }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{,}
+          \FunctionTok{ifelse}\NormalTok{(salinityzone }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{,}
+          \FunctionTok{ifelse}\NormalTok{(salinityzone }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{,}
+          \FunctionTok{ifelse}\NormalTok{(salinityzone }\SpecialCharTok{==} \DecValTok{2} \SpecialCharTok{\&}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{|}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{,}
+          \FunctionTok{ifelse}\NormalTok{(salinityzone }\SpecialCharTok{==} \DecValTok{2} \SpecialCharTok{\&}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{,}
+          \FunctionTok{ifelse}\NormalTok{(salinityzone }\SpecialCharTok{==} \DecValTok{3} \SpecialCharTok{\&}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{|}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{2} \SpecialCharTok{|}\NormalTok{ tidalzone }\SpecialCharTok{==} \DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{, }\ConstantTok{NA}\NormalTok{)))))))}
+  \CommentTok{\#Send output}
 \NormalTok{  habitatzone}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{rasterize-habitat-patches}{%
+\subsection{Rasterize Habitat Patches}\label{rasterize-habitat-patches}}
+
+\texttt{patch.rasterizer}: This function rasterizes the output of \texttt{patch.mapper} based on a specified grid resolution and aligns that layer with a specified spatial coordinate system.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Functions for rasterizing habitat types}
+\NormalTok{patch.rasterizer }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(patch.mapper.output, grid.resolution, my.coordinate.system)\{}
+  \CommentTok{\#Insert code}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -590,6 +630,8 @@ The criteria for delineating ecosystems (Table 3) were subsequently programmed a
 1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
 
 Present and describe the conceptual model for this system.
+
+\emph{START PARAGRAPH HERE}
 
 \textbf{FIGURE}
 
@@ -636,11 +678,11 @@ Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#Function for assessing habitat quality}
-\NormalTok{fresh.tid <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y)\{}
-\NormalTok{  fresh.tid.HSI <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
+\CommentTok{\#Function for assessing habitat quality}
+\NormalTok{fresh.tid }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  fresh.tid.HSI }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
 
-  \CommentTok{#Send output}
+  \CommentTok{\#Send output}
 \NormalTok{  fresh.tid.HSI}
 \NormalTok{\}}
 \end{Highlighting}
@@ -650,6 +692,275 @@ Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
 \section{Estuarine, Intertidal Submodel (est.int) (I)}\label{estuarine-intertidal-submodel-est.int-i}}
 
 {Mahan and McKay to write.}
+
+Estuarine environments include marine water that has been diluted by freshwater runoff from the land \citep{prosser_impacts_2018}. Due to tidal influence, intertidal ecosystems are found between high and low tide, experiencing varying land and sea influences, whereas subtidal ecosystems are constantly submerged. The estuarine intertidal ecosystem considers areas with salinity values greater than 0.5 ppt to 30 ppt and elevation from MHHW to MLLW. Plant, animal, and microorganism populations, as well as their nonliving surroundings, interact as a working unit in intertidal ecosystems, which are exposed at low tides (Citation). Within the estuarine intertidal ecosystem, ecological processes are linked to physical and chemical characteristics. These characteristics can experience change under anthropogenic and climatic pressures that deviate from the homeostasis, or baseline, habitat condition. This can result in reduced habitat suitability across the estuarine intertidal ecosystem.
+
+Tidal marshes are vegetated intertidal ecosystems found at the land-sea interface that serve as crucial transition zones for marine, freshwater, and terrestrial processes \citep{colombano_climate_2021}. Tidal marshes originated in a range of coastal and estuarine environments, and their location exposes them to a number of environmental factors (e.g., ocean currents, watershed hydrology) and environmental gradients (e.g., salinity)(Lauchlan and Nagelkerken 2020). Broad-scale climatic changes are already affecting the timing, size, and duration of naturally varying environmental variables in estuarine, and freshwater settings. Understanding the changes in environmental stressors from climate change and sea level rise (SLR) on the tidal marsh ecosystem is critical to evaluate changes after the addition of storm surge barriers.
+
+The following variables are accessible to the estuarine intertidal submodel portion of the NYBEM: salinity, episodic sediment deposition, edge erosion, vegetative cover, development of adjacent uplands, and the presence/absence of shoreline armoring.
+
+Present and describe the conceptual model for this system.
+
+\textbf{FIGURE}
+
+Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
+
+\textbf{TABLE}
+
+\textbf{FIGURE WITH SUITABILITY CURVES}
+
+Present the overarching habitat suitability index equation.
+
+\textbf{EQUATION}
+
+\hypertarget{salinity}{%
+\subsection{Salinity}\label{salinity}}
+
+Salinity affects physical and chemical processes such as flocculation and the amount of dissolved oxygen (DO) in the water column, as well as the types of organisms that may exist in an estuary (Citation). Estuarine organisms have evolved to cope with salinity fluctuations. Those that prefer fresher water at the upstream river end of the estuary to species that prefer saltier water at the downstream sea end usually form a gradient. Estuarine plants and animals suffer when extremely high salinities persist for lengthy periods of time. During instances of heavy freshwater inflows from rivers, harm might also occur. Extreme events are the issue in both scenarios.
+
+Higher salinity, lower nutrient intake, and lower sediment inputs associated with extremely low river inflow can stress or kill plants and animals, limit productivity owing to nutritional deficiency, and destroy marshes due to low sediment input. Low estuary salinity kills marine creatures when river inflow is extremely high; excessive nutrient inputs contribute to algae blooms; and increased sediment input suffocates sea grasses and oysters \citep{hopkinson_lateral_2018}.
+
+The NYBEM estuarine intertidal submodel relies on a percent in deviation of salinity regime to represent change in tidal inundation and freshwater flow input across the ecosystem. As the percentage of deviation from the baseline salinity regime increases, habitat suitability for taxa within the estuarine intertidal ecosystem will decrease.
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{edge-erosion}{%
+\subsection{Edge Erosion}\label{edge-erosion}}
+
+Climate change, pollution, and other anthropogenic effects are putting more pressure on terrestrial and marine ecosystems. Coastal flooding and shoreline erosion will likely become more common as sea levels rise and storm surges shift as a result of climate change. There is fear that tidal wetlands will drown as sea levels rise and sediment supplies to the shore decline across the world. Marsh sediment budgets are a geographically integrated measure of opposing constructive and destructive forces: a surplus of sediment can lead to vertical growth and/or lateral expansion, while a shortfall can lead to drowning and/or lateral contraction \citep{ganju_spatially_2017}. Many estuarine marshes face sediment deficits along the shoreline as a result of increased edge erosion. Edge degradation causes morphological changes that make it easier for waves to propagate to the marsh borders and promote the resuspension and export of sediments from the estuary \citep{li_wave-driven_2019}.
+
+The percent change in edge erosion throughout the estuarine intertidal ecosystem is used to represent habitat suitability. When the percentage of shear stress for erosion is 10\% or greater, erosion occurs, resulting in a reduction in total marsh area and an increase in open water area. At a rate of 30\% shear stress from erosion, the habitat will no longer be suitable (habitat suitability equals zero.
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{vegetation-cover}{%
+\subsection{Vegetation Cover}\label{vegetation-cover}}
+
+Vegetation provides various ecological services within the estuarine intertidal ecosystem, including providing a fish nursery environment, feed for migratory birds, nutrient cycling, carbon storage, and sediment stability, therefore reductions of vegetative cover can have a significant impact on shallow marine ecosystems. Seagrass meadows are disappearing at an alarming rate in shallow coastal and estuary marine environments, with losses similar to tropical rainforests, mangroves, and coral reefs due to anthropogenic and climate stress \citep{walter_large-scale_2020}.
+
+The loss of vegetative cover changes the dynamics near the seabed in locations where there was formerly vegetation, and transforms huge areas of the estuary from a deposition and accretion-friendly environment to one that favors suspension and erosion. For estuaries, such high amounts of suspended particles and sediment-associated nutrients create a variety of environmental management issues. These include alterations in invertebrate and macrophyte populations as well as a general deterioration of aquatic environments \citep{cotton_effects_2006}.
+
+For the NYBEM, habitat suitability increases as the percentage of vegetative cover increases throughout the habitat. When vegetative cover is equal to 100 percent, the estuarine intertidal ecosystem will have a high suitability value (greater than 90\%).
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{episodic-sediment-deposition}{%
+\subsection{Episodic Sediment Deposition}\label{episodic-sediment-deposition}}
+
+Estuaries are efficient sediment traps where near-bottom circulation causes sediment flow convergence during the transition from brackish to fresh water, resulting in local maxima in suspended sediment concentration (SSC) and deposition rates. Marine materials are deposited from the continental shelf into estuarine habitats. Due to disparities in tidal currents (ebb versus flood tide), sediments are carried to supply sediment on varying timeframes. In the estuarine intertidal ecosystem, sediment transport capacity is mostly determined by river discharge and by the timing of discharge events in relation to the spring--neap cycle and subtidal oscillations in sea level \citep{prosser_impacts_2018}.
+
+Due to the retreat of the salinity intrusion and increasing bed pressures, sediment deposition episodes can induce considerable bed resuspension in the estuary. These periodic flood and storm events are major drivers in sediment dynamics and contribute disproportionately to the total sediment discharge \citep{ralston_sediment_2013}. The duration of high-discharge episodes in relation to the estuarine reaction time, a feature that fluctuates seasonally with discharge and estuarine length, also affects sediment transport capacity \citep{palinkas_sediment_2014}. These short-term events can cause changes in the local biological community and affect seabed stability and strength.
+
+In coastal and estuary environments across the world, harmful algal blooms (HABs) have substantial economic, public health, and ecological consequences. The influx of additional nutrients following an episode of sediment deposition have been known to cause harmful algal blooms (HABs)\citep{ralston_temperature_2014}. Further, the frequent upturn of sediment can displace biological organisms. The most significant foreshore processes for the horseshoe crab are episodic storms, which impact erosion and accretion cycles, swash and wave processes, which affect sediment mixing and activation, and tides, which affect water infiltration and exfiltration through the sediment \citep{nancy_jackson_armoring_2010}. During storms, erosion of the shoreline can result in the removal of material from the upper foreshore and deposition on the lower foreshore, or the foreshore moving horizontally landward.
+
+The NYBEM estuarine intertidal submodel utilizes a depth threshold that represents optimal episodic sediment deposit levels. Sediment supply is a key determinant of long-term marsh stability. The percent of time the estuarine depth is greater than MHHW is an indicator of habitat suitability.
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{developement-of-adjacent-upland}{%
+\subsection{Developement of Adjacent Upland}\label{developement-of-adjacent-upland}}
+
+The development of uplands within a watershed can have a direct and indirect impact on a variety of essential aspects in estuarine intertidal ecosystems. The combination of coastal erosion and upland development causes a ``coastal squeeze,'' in which low-lying, intertidal regions that would usually recede inland in the face of sea-level rise are diminished because man-made structures (e.g.~shoreline armoring) prevent such retreat \citep{prosser_impacts_2018}. This means that tidal marshes will need to shift upslope onto nearby uplands to survive in a period of rapid sea-level rise. Further, the top boundary of this migratory zone's tidal inundation is very unpredictable over time and may be rising faster than mean sea level. Land management methods on the tidal marsh's upland border can help or hinder ecosystem migration in response to increasing sea levels \citep{anisfeld_upslope_2017}.
+
+Both developed and undeveloped uplands can experience ecological stress as a result of climate change and land use changes (e.g.~addition of storm surge barriers, shoreline armoring). Climate change's effects on ocean and watershed systems are intertwined and set to interact. This is especially true in tidal marshes, which are biogenic environments that are sculpted by tidal and fluvial processes and are dynamic and architecturally complex \citep{colombano_climate_2021}. Multiple stressors can affect the development of adjacent uplands such as low-flows, flooding, and reduced stream continuity \citep{talke_changing_2020}.
+
+For the NYBEM, habitat suitability is modeled for an increase in development for adjacent uplands. When the percentage of developed adjacent uplands is greater than 10\%, habitat suitability in the estuarine intertidal ecosystem declines. When the development of adjacent upland reaches 100\% of the estuarine intertidal ecosystem, the habitat will no longer be considered suitable.
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{shoreline-armoring}{%
+\subsection{Shoreline Armoring}\label{shoreline-armoring}}
+
+Natural biological processes and human-induced changes to the estuarine intertidal shoreline boundary are considered as components to a complex ecological system. The mean high-tide line is commonly used to determine shoreline boundaries and extent \citep{kittinger_shoreline_2010}. Shoreline modification called armoring has resulted in a considerable loss of coastal ecosystems from erosion, as well as a reduction in the resilience of these systems to disturbance \citep{kittinger_shoreline_2010}. Shoreline armoring involves placing hardened structures like bulkheads and revetments along the shoreline and as sea levels rise, these structures can prevent coastal marshes from spreading upland over time \citep{gardner_is_2021}.
+
+Armoring is widespread throughout the United States, with the most extensive armoring being found near urban areas \citep{morley_ecological_2012}. Shoreline armoring occupies 50-70\% of shorelines along urban coastal areas \citep{dugan_generalizing_2018}. Increasing shoreline development pressure and predicted sea-level rise suggest that the demand for shoreline armoring will continue to rise and expand throughout the future \citep{gardner_is_2021}. Shoreline armoring is correlated with decreased habitat complexity and a reduction in connectivity to adjacent habitats \citep{morley_ecological_2012}.
+
+The environmental consequences of armoring are context dependent, relying on characteristics of the environment and armoring structural factors \citep{dugan_generalizing_2018}. The type of structure placed (e.g., seawalls, bulkheads, revetments) and its relative placement on the coast profile will influence the biological reactions to armoring. Estuarine intertidal habitats that lack shoreline armoring have increased habitat suitability. For the NYBEM, the presence and absence of shoreline armoring will be utilized to derive information about the ability for multiple taxa to use the shoreline as migratory pathways.
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{est.int-code}{%
+\subsection{est.int Code}\label{est.int-code}}
+
+Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Function for assessing habitat quality}
+\NormalTok{est.int }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  est.int.HSI }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
+
+  \CommentTok{\#Send output}
+\NormalTok{  est.int.HSI}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{estuarine-subtidal-submodel-est.sub-i}{%
+\section{Estuarine, Subtidal Submodel (est.sub) (I)}\label{estuarine-subtidal-submodel-est.sub-i}}
+
+{Swannack, Reif, and Saltus to write.}
+
+This section presents development of the Estuarine Subtidal Model (ESM). Estuarine subtidal habitat was defined as areas with elevations between MLLW and -2m (-6ft) with salinities ranging from 0.5 to 30. In general, the ESM seeks to capture the general condition and trajectory of the estuarine subtidal habitat using three different taxa (oysters, seagrass, and clams) as indicators of ecosystem quality. Each taxa provides critical contributions to the overall quality of the estuarine subtidal habitat yet does so independently from the other two indicators. Given that, we quantified habitat quality independently for each taxon. Each taxa is represented conceptually as part of the overall ecosystem, but quantified as an independent submodel.
+
+Habitat quality was modeling using a multivariate index-based approach. Each variable received a suitability score ranging from 0 to 1 inclusive. For each taxa, Suitability scores were integrated into an overall habitat quality using a geometric mean.
+
+A conceptual model of the estuarine subtidal habitat was developed at a \textbf{mediated modeling workshop} This conceptual model represented the major components affecting the quality of the ESH (Figure XX). Three main categories of drivers were identified: physical (water quality, velocity, sedimentation), anthropogenic (vessel traffic and development stress), and biological (SAV, benthic organisms and fish) with interactions were among the categories (Figure 1).
+
+\textbf{FIGURE}
+
+\emph{Figure 1. Conceptual model of the overall drivers of ecosystem quality in estuarine subtidal habitat}
+
+Further meetings with the PDT led to refinements in the conceptual model as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  It was assumed that essential fish habitat would be present if oysters, SAV, and clams were present, so this variable was removed.
+\item
+  Depth and light are not expected to change based on projects and were removed. However, light availability, which is necessary for SAV growth, can be impacted by turbidity, so this was used as a proxy for light.
+\item
+  Substrate type is a major driver of SAV, oysters, and clams. Each taxa requires different substrates, so this variable was reconceptualized into three categories.
+\item
+  Salinity is a critical variable for oysters and was added to the conceptual model.
+\item
+  Water quality is an important measure, but data is unavailable at the current time, so this was removed from the model. Turbidity is being used as a proxy.
+\item
+  Vessel traffic can be used as a proxy for variable development stress, under the assumption that more vessel traffic correlates to larger development pressures.
+\end{enumerate}
+
+\textbf{FIGURE}
+
+\emph{Figure 2. Updated conceptual model}
+
+\textbf{TABLE}
+
+\textbf{FIGURE WITH SUITABILITY CURVES}
+
+Present the overarching habitat suitability index equation.
+
+\textbf{EQUATION}
+
+The quantification phase of ecological model development formalizes the conceptual model in terms of mathematical relationships, model parameters, and a numerical algorithm (Grant and Swannack 2008). This section describes the ESM structure and provides justification for the inclusion of the variables. The overall model consists of five parameters (substrate, development stress, water temperature, salinity, and shear stress) that apply to one or more of the taxa modeled (Figure 2).
+
+\hypertarget{oysters}{%
+\subsection{Oysters}\label{oysters}}
+
+The oyster submodel is represented by the Oyster Habitat Suitability Index Model (OHSIM; Swannack et al., 2014), an EcoPCX-certified model for the Eastern oyster (Crassostrea virginica). OHSIM is a spatially-explicit, grid-based index model that uses a series of linear equations to calculate habitat suitability for C. virginica. The model consists of four variables: substrate, and three measure of salinity---mean salinity during spawning season, in which spawning and spat set have a higher optimal salinity than for survival of adults, annual mean salinity, which is the expected range over which adult oysters are viable, and minimum annual salinity, which defines the impacts of high mortality events resulting from lower salinities resulting freshwater influxes (Soniat 2012). Variables are briefly described below. For more details, refer to Swannack et al.~2014 and EcoPCX documentation. The functional forms of each variable type are presented in Figure 3.
+
+\hypertarget{oyster-substrate}{%
+\subsubsection{\texorpdfstring{\emph{Oyster Substrate}}{Oyster Substrate}}\label{oyster-substrate}}
+
+Substrate is represented as the percent of the bottom covered with hard substrate, such as existing reefs, or other hard surfaces. We assume that oyster habitat suitability increases linearly from 0 to 100\% clutch cover (Equation 1, Figure 3A).
+
+\textbf{EQUATION}
+
+\hypertarget{salinity-1}{%
+\subsubsection{\texorpdfstring{\emph{Salinity}}{Salinity}}\label{salinity-1}}
+
+Mean Salinity during Spawning Season (MSSS) represents the mean monthly salinity from May through September. MSSS reflects the higher optimal salinities required for spawning and larval stages (Butler 1954, Cake 1983). The relationship between MSSS and its HSI value is formulated as a linear step-function (Figure 3B) as follows:
+
+Minimum Annual Salinity (MAS) is the minimum value of the 12 monthly mean salinities. This variable is essential to describe freshwater impacts (e.g., freshets, high rainfall years, or freshwater diversions) on oysters and is analogous to the frequency of killing floods variable used by Cake (1983). The relationship between MAS and its suitability index is formulated as a linear step-function (Figure 3C) as follows:
+
+Annual mean salinity (AS) represents the range of salinities over which adult oysters are viable (Cake 1983). The relationship between AS and its suitability index is formulated as a linear step-function (Figure 3D) as follows:
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{overall-oyster-suitability}{%
+\subsubsection{\texorpdfstring{\emph{Overall Oyster Suitability}}{Overall Oyster Suitability}}\label{overall-oyster-suitability}}
+
+Overall oyster suitability index (OSI) is determined as the geometric mean of the SI values for the four component variables. If any component suitability is 0 (unsuitable), OSI is 0. OSI is calculated as:
+
+Where HSIi represents the HSI value per cell for each environmental variable i and n represents the number of variables included in the model. OSI results should be categorized as 0 -- 0.25 (low), 0.25 -- 0.55 (low/medium), 0.55 -- 0.85 medium/high, and 0.85 -- 1 (high), similar to the categories described by Soniat and Brody (1988) and Brooks (1997).
+
+\emph{Figure 3. Relationships between Oyster Suitability Indices (OSI) and (A) percentage of area covered with hard substrate (\% Hard Substrate), (B) Mean salinity during spawning season from May through September (MSSS), (C) Minimum Annual Salinity (MAS), and (D) Mean Annual Salinity (AS). \% Hard substrate was measured as the percentage of each grid cell covered in hard substrate. Figure was modified from Swannack et al.~(2014).}
+
+\hypertarget{submerged-aquatic-vegetation-sav}{%
+\subsection{Submerged aquatic vegetation (SAV)}\label{submerged-aquatic-vegetation-sav}}
+
+The SAV submodel is represented by four variables critical for growth and reproduction of seagrass, (1) substrate, (2) water temperature, (3) light availability and (4) development stress (Figure 2). Suitability scores are represented either as discrete categories or as step functions with linear interpolations between the steps.
+
+\hypertarget{seagrass-substrate}{%
+\subsubsection{\texorpdfstring{\emph{Seagrass Substrate}}{Seagrass Substrate}}\label{seagrass-substrate}}
+
+Substrate is represented as the presence of soft-bottom sediments conducive for seagrass growth. Optimal conditions for the seagrass growth in the study region were identified as non-cobble substrates with less than 70\% fine sediment. Soft-bottom, non-cobble substrates with greater than 70\% fine sediment were considered suboptimal/adequate. Suitability scores for seagrass substrate are represented in Figure 4 and are quantified as follows:
+
+\hypertarget{temperature}{%
+\subsubsection{\texorpdfstring{\emph{Temperature}}{Temperature}}\label{temperature}}
+
+Like all vascular plants, temperature is a major driver for seagrass viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr and Borman, 2011). At temperatures above optimal range for seagrass, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation (Atkin and Tjoelker, 2003; Jensen, 2000). The functional form for the seagrass-temperature functional form was based on the following empirical studies.
+
+\begin{itemize}
+\item
+  Peak biomass and shoot density occur in late spring as water temperatures rise to 25 °C, (Orth et al., 2007)
+\item
+  Shoot production rapidly declines and leaf senescence occurs when water temperature exceed 25°C (Orth et al., 2007)
+\item
+  Subsequent shoot production occurs when temperatures drop below 25 °C and continues until a dormancy phase is reached when water temperature drops below 10 °C (Orth et al., 2007)
+\item
+  Photosynthesis decreases dramatically when temperatures exceeded 19 °C in Chesapeake Bay (Evans et al., 1986). Additionally, the presence of eelgrass in the Gulf of California as an annual winter species is determined by the average water temperatures which range between 17°C and 25°C (Meling-Lopez and Ibarra-Obando, 1999).
+\end{itemize}
+
+The relationship between Temperature and its suitability index for submerged aquatic vegetation represented in Figure 5 and is formulated as a linear step-function (Figure 5) as follows
+
+\textbf{Figure}
+
+\emph{Figure 5. Suitability index curve for seagrass and temperature relationship}
+
+\hypertarget{light}{%
+\subsubsection{\texorpdfstring{\emph{Light}}{Light}}\label{light}}
+
+Light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the ESM, light availability depends on depth and TSS and is calculated algorithmically, then converted into a suitability index. Light availability (Iz) at the plant surface is estimated based on van Nes et al., (2003) is calculated as:
+
+where PAR represents the photosynthetically active radiation at the surface, Kd is the light attenuation coefficient for water clarity matching the conditions of the study site, and z is water depth. Light at the plant surface is converted to a percent of light at the plant (following equation 35), which is used to calculate a suitability score. The relationship between Percent light available (PLA) and its suitability index for submerged aquatic vegetation is represented in Figure 6 and is formulated as a linear step-function as follows:
+
+\textbf{Figure}
+
+\emph{Figure 6. Suitability score for the relationship between percent light available (PLA) in the water column and habitat suitability for SAV}
+
+\hypertarget{development-stress}{%
+\subsubsection{\texorpdfstring{\emph{Development Stress}}{Development Stress}}\label{development-stress}}
+
+Human-mediated disturbances (e.g., urban development, increased boat traffic, etc) can negatively impact SAV abundance. We represent these disturbances as an aggregated categorical variable development stress, which is quantified through a proxy of boater traffic per grid cell. Boater traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per cell) is optimal and the suitability decreases with increasing boater traffic. Suitability scores for development stress are represented in Figure 7 and are quantified as follows:
+
+\hypertarget{clams}{%
+\subsection{Clams}\label{clams}}
+
+\hypertarget{est.sub-code}{%
+\subsection{est.sub Code}\label{est.sub-code}}
+
+Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Function for assessing habitat quality}
+\NormalTok{est.sub }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  est.sub.HSI }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
+
+  \CommentTok{\#Send output}
+\NormalTok{  est.sub.HSI}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{marine-intertidal-submodel-mar.int-i}{%
+\section{Marine, Intertidal Submodel (mar.int) (I)}\label{marine-intertidal-submodel-mar.int-i}}
+
+{McKay and Mahan to write.}
 
 1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
 
@@ -693,27 +1004,27 @@ Present the equation for assessing the suitability index.
 
 \textbf{EQUATION}
 
-\hypertarget{est.int-code}{%
-\subsection{est.int Code}\label{est.int-code}}
+\hypertarget{mar.int-code}{%
+\subsection{mar.int Code}\label{mar.int-code}}
 
 Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#Function for assessing habitat quality}
-\NormalTok{est.int <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y)\{}
-\NormalTok{  est.int.HSI <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
+\CommentTok{\#Function for assessing habitat quality}
+\NormalTok{mar.int }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  mar.int.HSI }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
 
-  \CommentTok{#Send output}
-\NormalTok{  est.int.HSI}
+  \CommentTok{\#Send output}
+\NormalTok{  mar.int.HSI}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{estuarine-subtidal-submodel-est.sub-i}{%
-\section{Estuarine, Subtidal Submodel (est.sub) (I)}\label{estuarine-subtidal-submodel-est.sub-i}}
+\hypertarget{marine-subtidal-submodel-mar.sub-i}{%
+\section{Marine, Subtidal Submodel (mar.sub) (I)}\label{marine-subtidal-submodel-mar.sub-i}}
 
-{Swannack, Reif, and Saltus to write.}
+{McKay and Hall to write.}
 
 1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
 
@@ -757,134 +1068,6 @@ Present the equation for assessing the suitability index.
 
 \textbf{EQUATION}
 
-\hypertarget{est.sub-code}{%
-\subsection{est.sub Code}\label{est.sub-code}}
-
-Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#Function for assessing habitat quality}
-\NormalTok{est.sub <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y)\{}
-\NormalTok{  est.sub.HSI <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
-
-  \CommentTok{#Send output}
-\NormalTok{  est.sub.HSI}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{marine-intertidal-submodel-mar.int-i}{%
-\section{Marine, Intertidal Submodel (mar.int) (I)}\label{marine-intertidal-submodel-mar.int-i}}
-
-{McKay and Mahan to write.}
-
-1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
-
-Present and describe the conceptual model for this system.
-
-\textbf{FIGURE}
-
-Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
-
-\textbf{TABLE}
-
-\textbf{FIGURE WITH SUITABILITY CURVES}
-
-Present the overarching habitat suitability index equation.
-
-\textbf{EQUATION}
-
-\hypertarget{variable-1-4}{%
-\subsection{Variable-1}\label{variable-1-4}}
-
-2-5 paragraphs presenting three main ideas.
-
-Provide some general context for this variable's role in ecosystem function and condition.
-
-Describe how this variable is assessed and quantified in NYBEM.
-
-Present the equation for assessing the suitability index.
-
-\textbf{EQUATION}
-
-\hypertarget{variable-2-2}{%
-\subsection{Variable-2}\label{variable-2-2}}
-
-2-5 paragraphs presenting three main ideas.
-
-Provide some general context for this variable's role in ecosystem function and condition.
-
-Describe how this variable is assessed and quantified in NYBEM.
-
-Present the equation for assessing the suitability index.
-
-\textbf{EQUATION}
-
-\hypertarget{mar.int-code}{%
-\subsection{mar.int Code}\label{mar.int-code}}
-
-Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#Function for assessing habitat quality}
-\NormalTok{mar.int <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y)\{}
-\NormalTok{  mar.int.HSI <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
-
-  \CommentTok{#Send output}
-\NormalTok{  mar.int.HSI}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{marine-subtidal-submodel-mar.sub-i}{%
-\section{Marine, Subtidal Submodel (mar.sub) (I)}\label{marine-subtidal-submodel-mar.sub-i}}
-
-{McKay and Hall to write.}
-
-1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
-
-Present and describe the conceptual model for this system.
-
-\textbf{FIGURE}
-
-Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
-
-\textbf{TABLE}
-
-\textbf{FIGURE WITH SUITABILITY CURVES}
-
-Present the overarching habitat suitability index equation.
-
-\textbf{EQUATION}
-
-\hypertarget{variable-1-5}{%
-\subsection{Variable-1}\label{variable-1-5}}
-
-2-5 paragraphs presenting three main ideas.
-
-Provide some general context for this variable's role in ecosystem function and condition.
-
-Describe how this variable is assessed and quantified in NYBEM.
-
-Present the equation for assessing the suitability index.
-
-\textbf{EQUATION}
-
-\hypertarget{variable-2-3}{%
-\subsection{Variable-2}\label{variable-2-3}}
-
-2-5 paragraphs presenting three main ideas.
-
-Provide some general context for this variable's role in ecosystem function and condition.
-
-Describe how this variable is assessed and quantified in NYBEM.
-
-Present the equation for assessing the suitability index.
-
-\textbf{EQUATION}
-
 \hypertarget{mar.sub-code}{%
 \subsection{mar.sub Code}\label{mar.sub-code}}
 
@@ -892,11 +1075,11 @@ Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#Function for assessing habitat quality}
-\NormalTok{mar.sub <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y)\{}
-\NormalTok{  mar.sub.HSI <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
+\CommentTok{\#Function for assessing habitat quality}
+\NormalTok{mar.sub }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  mar.sub.HSI }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
 
-  \CommentTok{#Send output}
+  \CommentTok{\#Send output}
 \NormalTok{  mar.sub.HSI}
 \NormalTok{\}}
 \end{Highlighting}
@@ -907,9 +1090,9 @@ Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
 
 {Hall and McKay to write.}
 
-1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
+Marine deepwater ecosystem considers areas with salinity values greater or equal to 30 ppt and depths between 2 -- 20 m. Physical, biological and chemical variables effect may be compounded by anthropogenic and climatic pressures to develop an ecosystem that deviates from the baseline condition, reducing the habitat suitability of the system for multiple dependents.
 
-Present and describe the conceptual model for this system.
+The following variables are available to assess the marine deepwater submodel portion of the NYBEM: water temperature, salinity, wave environment, suspended solids, velocity and currents, and vessel traffic. Water temperature and salinity act as proxies for vertical mixing of the water column, dissolved oxygen availability, and productivity of algal, pelagic, demersal and benthic systems. The wave environment and current velocities represent mixing and flushing of the system, sediment suspension and benthic scouring. Light penetration depths within the water column indicate water column turbidity, nutrient loading and chlorophyll-a production levels, another productivity control. Finally, vessel traffic provides an index for development pressures, both commercial and recreational fishing pressure on the pelagic, demersal and benthic systems, as well as commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution).
 
 \textbf{FIGURE}
 
@@ -923,27 +1106,78 @@ Present the overarching habitat suitability index equation.
 
 \textbf{EQUATION}
 
-\hypertarget{variable-1-6}{%
-\subsection{Variable-1}\label{variable-1-6}}
+Salinity and dissolved oxygen are two primary indicators of water quality and ecosystem function, condition and resilience \citep{smit_assessing_2021}.
 
-2-5 paragraphs presenting three main ideas.
+\hypertarget{salinity-2}{%
+\subsection{Salinity}\label{salinity-2}}
 
-Provide some general context for this variable's role in ecosystem function and condition.
-
-Describe how this variable is assessed and quantified in NYBEM.
+Salinity, often used as a proxy for the total concentration of all dissolved salts in the water, is a key factor in water density that controls the vertical mixing of nutrients and chemicals throughout the water column. Salinity constrains dissolved oxygen concentration and limits speciation of marine zones to euryhaline taxa that are physiological adapted to tolerate hypoosmotic processes (are able to maintain a lower internal ionic concentration than seawater).\\
+Depth-averaged salinity (mean, 0-100 \% exceeded by 10 \%), sourced from AdH summary statistics (bottom and surface salinity may be available for HATS in future analyses), are assessed within the NYBEM.
 
 Present the equation for assessing the suitability index.
 
 \textbf{EQUATION}
 
-\hypertarget{variable-2-4}{%
-\subsection{Variable-2}\label{variable-2-4}}
+\hypertarget{dissolved-oxygen-processes}{%
+\subsection{Dissolved Oxygen Processes}\label{dissolved-oxygen-processes}}
 
-2-5 paragraphs presenting three main ideas.
+Dissolved oxygen concentration, a key element for the survival of marine species, limits speciation of marine zones through hypoxia, where low oxygen levels may cause die-offs in marine species. Dissolved oxygen concentrations act as a proxy for pelagic, demersal and benthic fauna biomass (abundance/diversity of phytoplankton, zooplankton, fish, marine turtles, birds and mammals) that indicate the productivity of the zone permanent monitoring stations, as supported by NYC DEP Monitoring Stations (2018), Jamaica Bay Eutrophication Model \citep{fischbach_building_2018}, Chesapeake Bay model \citep{cerco_threedimensional_1993} and the EPA Long Island Sound integrated model (underway), are assessed within the NYBEM.
 
-Provide some general context for this variable's role in ecosystem function and condition.
+Present the equation for assessing the suitability index.
 
-Describe how this variable is assessed and quantified in NYBEM.
+\textbf{EQUATION}
+
+Water temperature, the wave environment, current velocity, light, depth, substrate, suspended solids, and nutrient loading. Depth is not specifically modeled within the NYBEM, but is inherent within model input variables, such as the AdH hydrodynamic model.
+
+\hypertarget{water-temperature}{%
+\subsection{Water Temperature}\label{water-temperature}}
+
+Water temperature acts as a control for the majority of the chemical (dissolved nutrients, pH, density, and photosynthesis), biological (respiration and metabolic rates, taxa development, and migrations) and physical (ice formation and thermal stratification of the water column) properties of a marine ecosystem.\\
+MARACOOS Monthly Sea Surface Temperature from the MARCO Mid-Atlantic Ocean Data Portal and seasonal temperature thresholds for winter flounder, as identified in changes in temperature regimes that are based on AdH model outputs, are assessed within the NYBEM. The AdH model outputs are supported by the Winter flounder habitat suitability model \citep{banner_usfws_2001} and VIMS 2018 habitat suitability models and the USACE Harbor monitoring (USACE 2013).
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{wave-environment}{%
+\subsection{Wave Environment}\label{wave-environment}}
+
+The wave environment affects many variables with the NYB: vertical and horizontal mixing and flushing of the physical and chemical properties of the water, suspended sediment and solids, substrate settlement of taxa, and commercial and recreational vessel traffic.\\
+Wave height and wave refraction from STWAVE are assessed within the NYBEM, as supported by (\citet{byrnes_effects_2004}).
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{current-velocity}{%
+\subsection{Current Velocity}\label{current-velocity}}
+
+The marine deepwater environment is subjected to velocity effects from ocean currents and tides that affect vertical and horizontal mixing and flushing of the system, suspended sediment and solids, substrate settlement of taxa, and small and recreational vessel traffic. Low flow conditions allow for the settlement of sediment, possibly burying viable habitat, reduce mixing and flushing, and potentially facilitate hypoxic conditions. Conversely, high velocities scour the benthic environment, prohibiting settling in the substrate by benthic taxa.
+
+Change in velocity, particularly in low flow conditions when flushing is of concern (i.e., 0 -- 100 \% exceedance by 10 \%) are assessed within the NYBEM via mean and exceedance by 10 \% velocity (depth-averaged), as sourced from AdH summary statistics. A recent EWN workshop supports these AdH hydrodynamic summary statistics as a proxy for velocity.
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{derived-metrics--light}{%
+\subsection{Derived Metrics- Light}\label{derived-metrics--light}}
+
+The depth that light reaches within the water column acts as a proxy for the viability of water column turbidity, nutrient loading and chlorophyll-a production, the essential building block for ocean productivity.
+
+As light controls chlorophyll-a production, it may be seen as a limiting factor for algal and particulate organic matter (POM) densities, and ultimately the development of harmful algal blooms (HAB), and therefore used as a variable that represents the biological environment within the NYBEM.
+Within the NYBEM, percentages of light through the Water (PLW) are derived from AdH depth outputs and empirical data on Secchi depth following methods of Kemp et al.~(2004).
+
+Present the equation for assessing the suitability index.
+
+\textbf{EQUATION}
+
+\hypertarget{vessel-traffic-and-development-pressures}{%
+\subsection{Vessel Traffic and Development Pressures}\label{vessel-traffic-and-development-pressures}}
+
+Vessel traffic density provides an index for development pressures, both commercial and recreational fishing pressure on the pelagic, demersal and benthic systems, as well as commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution).
+
+Vessel use density from the historical Automatic Identification System (AIS) vessel data from the MARCOS portal are assessed within the NYBEM to identify the general use of waterways. These data also indicate frequently visited fishing locations and offshore structures.
 
 Present the equation for assessing the suitability index.
 
@@ -956,11 +1190,11 @@ Numerical code for assessing habitat quality ({Dougherty and McKay to write.})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#Function for assessing habitat quality}
-\NormalTok{mar.deep <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y)\{}
-\NormalTok{  mar.deep.HSI <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
+\CommentTok{\#Function for assessing habitat quality}
+\NormalTok{mar.deep }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  mar.deep.HSI }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
 
-  \CommentTok{#Send output}
+  \CommentTok{\#Send output}
 \NormalTok{  mar.deep.HSI}
 \NormalTok{\}}
 \end{Highlighting}
@@ -975,11 +1209,11 @@ Numerical code for running the entire model suite
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#Function }
-\NormalTok{NYBEM.wrapper <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y)\{}
-\NormalTok{  NYBEM.out <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
+\CommentTok{\#Function }
+\NormalTok{NYBEM.wrapper }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  NYBEM.out }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
 
-  \CommentTok{#Send output}
+  \CommentTok{\#Send output}
 \NormalTok{  NYBEM.out}
 \NormalTok{\}}
 \end{Highlighting}
@@ -1418,8 +1652,8 @@ Insert
 
 Insert
 
-\hypertarget{new-jersey-back-bays-njbb-1}{%
-\chapter{New Jersey Back Bays (NJBB)}\label{new-jersey-back-bays-njbb-1}}
+\hypertarget{new-york-new-jersey-harbor-and-tributaries-study-hats}{%
+\chapter{New York / New Jersey Harbor and Tributaries Study (HATS)}\label{new-york-new-jersey-harbor-and-tributaries-study-hats}}
 
 Insert
 
@@ -1443,6 +1677,6 @@ Insert
 
 Insert
 
-  \bibliography{book.bib,packages.bib}
+  \bibliography{Draftbooksubmodel.bib,packages.bib}
 
 \end{document}

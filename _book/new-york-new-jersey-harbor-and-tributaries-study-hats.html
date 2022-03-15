@@ -24,7 +24,7 @@
 <meta name="author" content="S. Kyle McKay, Vanessa Mahan, Michael Dougherty, Toddd Swannack, Candice Hall, Christina Saltus, Molly Reif, Steve Allen" />
 
 
-<meta name="date" content="2022-03-02" />
+<meta name="date" content="2022-03-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="new-jersey-back-bays-njbb.html"/>
 
+<script src="libs/header-attrs-2.12/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,26 +51,26 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -89,7 +90,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -122,6 +123,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -139,98 +162,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">New York Bight Ecological Model</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Front Matter</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#point-of-contact"><i class="fa fa-check"></i>Point of Contact</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#glossary-and-acronymns"><i class="fa fa-check"></i>Glossary and Acronymns</a></li>
+<li><a href="index.html#front-matter">Front Matter<span></span></a>
+<ul>
+<li><a href="index.html#point-of-contact">Point of Contact<span></span></a></li>
+<li><a href="index.html#abstract">Abstract<span></span></a></li>
+<li><a href="index.html#acknowledgements">Acknowledgements<span></span></a></li>
+<li><a href="index.html#glossary-and-acronymns">Glossary and Acronymns<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>1</b> Background</a><ul>
-<li class="chapter" data-level="1.1" data-path="background.html"><a href="background.html#problem-statement"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
-<li class="chapter" data-level="1.2" data-path="background.html"><a href="background.html#report-overview"><i class="fa fa-check"></i><b>1.2</b> Report Overview</a></li>
+<li class="chapter" data-level="1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>1</b> Background<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="background.html"><a href="background.html#problem-statement"><i class="fa fa-check"></i><b>1.1</b> Problem Statement<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="background.html"><a href="background.html#report-overview"><i class="fa fa-check"></i><b>1.2</b> Report Overview<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="model-development-process.html"><a href="model-development-process.html"><i class="fa fa-check"></i><b>2</b> Model Development Process</a><ul>
-<li class="chapter" data-level="2.1" data-path="model-development-process.html"><a href="model-development-process.html#spatial-extent"><i class="fa fa-check"></i><b>2.1</b> Spatial Extent</a></li>
-<li class="chapter" data-level="2.2" data-path="model-development-process.html"><a href="model-development-process.html#phased-approach"><i class="fa fa-check"></i><b>2.2</b> Phased Approach</a></li>
-<li class="chapter" data-level="2.3" data-path="model-development-process.html"><a href="model-development-process.html#mediated-modeling"><i class="fa fa-check"></i><b>2.3</b> Mediated Modeling</a></li>
+<li class="chapter" data-level="2" data-path="model-development-process.html"><a href="model-development-process.html"><i class="fa fa-check"></i><b>2</b> Model Development Process<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="model-development-process.html"><a href="model-development-process.html#spatial-extent"><i class="fa fa-check"></i><b>2.1</b> Spatial Extent<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="model-development-process.html"><a href="model-development-process.html#phased-approach"><i class="fa fa-check"></i><b>2.2</b> Phased Approach<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="model-development-process.html"><a href="model-development-process.html#mediated-modeling"><i class="fa fa-check"></i><b>2.3</b> Mediated Modeling<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="conceptualization-i.html"><a href="conceptualization-i.html"><i class="fa fa-check"></i><b>3</b> Conceptualization (I)</a><ul>
-<li class="chapter" data-level="3.1" data-path="conceptualization-i.html"><a href="conceptualization-i.html#conceptual-model"><i class="fa fa-check"></i><b>3.1</b> Conceptual Model</a></li>
-<li class="chapter" data-level="3.2" data-path="conceptualization-i.html"><a href="conceptualization-i.html#habitat-style-modeling-approach"><i class="fa fa-check"></i><b>3.2</b> Habitat-Style Modeling Approach</a></li>
+<li class="chapter" data-level="3" data-path="conceptualization.html"><a href="conceptualization.html"><i class="fa fa-check"></i><b>3</b> Conceptualization<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="conceptualization.html"><a href="conceptualization.html#conceptual-model"><i class="fa fa-check"></i><b>3.1</b> Conceptual Model<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="conceptualization.html"><a href="conceptualization.html#major-ecosystem-types"><i class="fa fa-check"></i><b>3.2</b> Major Ecosystem Types<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="conceptualization.html"><a href="conceptualization.html#habitat-style-modeling-philosophy"><i class="fa fa-check"></i><b>3.3</b> Habitat-Style Modeling Philosophy<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="quantification-i.html"><a href="quantification-i.html"><i class="fa fa-check"></i><b>4</b> Quantification (I)</a><ul>
-<li class="chapter" data-level="4.1" data-path="quantification-i.html"><a href="quantification-i.html#habitat-type-mapper-hab.mapper-i"><i class="fa fa-check"></i><b>4.1</b> Habitat Type Mapper (hab.mapper) (I)</a></li>
-<li class="chapter" data-level="4.2" data-path="quantification-i.html"><a href="quantification-i.html#freshwater-tidal-submodel-fresh.tid-i"><i class="fa fa-check"></i><b>4.2</b> Freshwater, Tidal Submodel (fresh.tid) (I)</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="quantification-i.html"><a href="quantification-i.html#variable-1"><i class="fa fa-check"></i><b>4.2.1</b> Variable-1</a></li>
-<li class="chapter" data-level="4.2.2" data-path="quantification-i.html"><a href="quantification-i.html#variable-1-1"><i class="fa fa-check"></i><b>4.2.2</b> Variable-1</a></li>
-<li class="chapter" data-level="4.2.3" data-path="quantification-i.html"><a href="quantification-i.html#fresh.int-code"><i class="fa fa-check"></i><b>4.2.3</b> fresh.int Code</a></li>
+<li class="chapter" data-level="4" data-path="quantification.html"><a href="quantification.html"><i class="fa fa-check"></i><b>4</b> Quantification<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="quantification.html"><a href="quantification.html#pre-processing-functions-i"><i class="fa fa-check"></i><b>4.1</b> Pre-Processing Functions (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="quantification.html"><a href="quantification.html#define-model-domain"><i class="fa fa-check"></i><b>4.1.1</b> Define Model Domain<span></span></a></li>
+<li class="chapter" data-level="4.1.2" data-path="quantification.html"><a href="quantification.html#map-habitat-extent-and-type"><i class="fa fa-check"></i><b>4.1.2</b> Map Habitat Extent and Type<span></span></a></li>
+<li class="chapter" data-level="4.1.3" data-path="quantification.html"><a href="quantification.html#rasterize-habitat-patches"><i class="fa fa-check"></i><b>4.1.3</b> Rasterize Habitat Patches<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="quantification-i.html"><a href="quantification-i.html#estuarine-intertidal-submodel-est.int-i"><i class="fa fa-check"></i><b>4.3</b> Estuarine, Intertidal Submodel (est.int) (I)</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="quantification-i.html"><a href="quantification-i.html#salinity"><i class="fa fa-check"></i><b>4.3.1</b> Salinity</a></li>
-<li class="chapter" data-level="4.3.2" data-path="quantification-i.html"><a href="quantification-i.html#edge-erosion"><i class="fa fa-check"></i><b>4.3.2</b> Edge Erosion</a></li>
-<li class="chapter" data-level="4.3.3" data-path="quantification-i.html"><a href="quantification-i.html#vegetation-cover"><i class="fa fa-check"></i><b>4.3.3</b> Vegetation Cover</a></li>
-<li class="chapter" data-level="4.3.4" data-path="quantification-i.html"><a href="quantification-i.html#episodic-sediment-deposition"><i class="fa fa-check"></i><b>4.3.4</b> Episodic Sediment Deposition</a></li>
-<li class="chapter" data-level="4.3.5" data-path="quantification-i.html"><a href="quantification-i.html#developement-of-adjacent-upland"><i class="fa fa-check"></i><b>4.3.5</b> Developement of Adjacent Upland</a></li>
-<li class="chapter" data-level="4.3.6" data-path="quantification-i.html"><a href="quantification-i.html#shoreline-armoring"><i class="fa fa-check"></i><b>4.3.6</b> Shoreline Armoring</a></li>
-<li class="chapter" data-level="4.3.7" data-path="quantification-i.html"><a href="quantification-i.html#est.int-code"><i class="fa fa-check"></i><b>4.3.7</b> est.int Code</a></li>
+<li class="chapter" data-level="4.2" data-path="quantification.html"><a href="quantification.html#freshwater-tidal-submodel-fresh.tid-i"><i class="fa fa-check"></i><b>4.2</b> Freshwater, Tidal Submodel (fresh.tid) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="quantification.html"><a href="quantification.html#variable-1"><i class="fa fa-check"></i><b>4.2.1</b> Variable-1<span></span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="quantification.html"><a href="quantification.html#variable-1-1"><i class="fa fa-check"></i><b>4.2.2</b> Variable-1<span></span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="quantification.html"><a href="quantification.html#fresh.int-code"><i class="fa fa-check"></i><b>4.2.3</b> fresh.int Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="quantification-i.html"><a href="quantification-i.html#estuarine-subtidal-submodel-est.sub-i"><i class="fa fa-check"></i><b>4.4</b> Estuarine, Subtidal Submodel (est.sub) (I)</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="quantification-i.html"><a href="quantification-i.html#oysters"><i class="fa fa-check"></i><b>4.4.1</b> Oysters</a></li>
-<li class="chapter" data-level="4.4.2" data-path="quantification-i.html"><a href="quantification-i.html#submerged-aquatic-vegetation-sav"><i class="fa fa-check"></i><b>4.4.2</b> Submerged aquatic vegetation (SAV)</a></li>
-<li class="chapter" data-level="4.4.3" data-path="quantification-i.html"><a href="quantification-i.html#clams"><i class="fa fa-check"></i><b>4.4.3</b> Clams</a></li>
-<li class="chapter" data-level="4.4.4" data-path="quantification-i.html"><a href="quantification-i.html#est.sub-code"><i class="fa fa-check"></i><b>4.4.4</b> est.sub Code</a></li>
+<li class="chapter" data-level="4.3" data-path="quantification.html"><a href="quantification.html#estuarine-intertidal-submodel-est.int-i"><i class="fa fa-check"></i><b>4.3</b> Estuarine, Intertidal Submodel (est.int) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="quantification.html"><a href="quantification.html#salinity"><i class="fa fa-check"></i><b>4.3.1</b> Salinity<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="quantification.html"><a href="quantification.html#edge-erosion"><i class="fa fa-check"></i><b>4.3.2</b> Edge Erosion<span></span></a></li>
+<li class="chapter" data-level="4.3.3" data-path="quantification.html"><a href="quantification.html#vegetation-cover"><i class="fa fa-check"></i><b>4.3.3</b> Vegetation Cover<span></span></a></li>
+<li class="chapter" data-level="4.3.4" data-path="quantification.html"><a href="quantification.html#episodic-sediment-deposition"><i class="fa fa-check"></i><b>4.3.4</b> Episodic Sediment Deposition<span></span></a></li>
+<li class="chapter" data-level="4.3.5" data-path="quantification.html"><a href="quantification.html#developement-of-adjacent-upland"><i class="fa fa-check"></i><b>4.3.5</b> Developement of Adjacent Upland<span></span></a></li>
+<li class="chapter" data-level="4.3.6" data-path="quantification.html"><a href="quantification.html#shoreline-armoring"><i class="fa fa-check"></i><b>4.3.6</b> Shoreline Armoring<span></span></a></li>
+<li class="chapter" data-level="4.3.7" data-path="quantification.html"><a href="quantification.html#est.int-code"><i class="fa fa-check"></i><b>4.3.7</b> est.int Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="quantification-i.html"><a href="quantification-i.html#marine-intertidal-submodel-mar.int-i"><i class="fa fa-check"></i><b>4.5</b> Marine, Intertidal Submodel (mar.int) (I)</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="quantification-i.html"><a href="quantification-i.html#variable-1-2"><i class="fa fa-check"></i><b>4.5.1</b> Variable-1</a></li>
-<li class="chapter" data-level="4.5.2" data-path="quantification-i.html"><a href="quantification-i.html#variable-2"><i class="fa fa-check"></i><b>4.5.2</b> Variable-2</a></li>
-<li class="chapter" data-level="4.5.3" data-path="quantification-i.html"><a href="quantification-i.html#mar.int-code"><i class="fa fa-check"></i><b>4.5.3</b> mar.int Code</a></li>
+<li class="chapter" data-level="4.4" data-path="quantification.html"><a href="quantification.html#estuarine-subtidal-submodel-est.sub-i"><i class="fa fa-check"></i><b>4.4</b> Estuarine, Subtidal Submodel (est.sub) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="quantification.html"><a href="quantification.html#oysters"><i class="fa fa-check"></i><b>4.4.1</b> Oysters<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="quantification.html"><a href="quantification.html#submerged-aquatic-vegetation-sav"><i class="fa fa-check"></i><b>4.4.2</b> Submerged aquatic vegetation (SAV)<span></span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="quantification.html"><a href="quantification.html#clams"><i class="fa fa-check"></i><b>4.4.3</b> Clams<span></span></a></li>
+<li class="chapter" data-level="4.4.4" data-path="quantification.html"><a href="quantification.html#est.sub-code"><i class="fa fa-check"></i><b>4.4.4</b> est.sub Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="quantification-i.html"><a href="quantification-i.html#marine-subtidal-submodel-mar.sub-i"><i class="fa fa-check"></i><b>4.6</b> Marine, Subtidal Submodel (mar.sub) (I)</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="quantification-i.html"><a href="quantification-i.html#variable-1-3"><i class="fa fa-check"></i><b>4.6.1</b> Variable-1</a></li>
-<li class="chapter" data-level="4.6.2" data-path="quantification-i.html"><a href="quantification-i.html#variable-2-1"><i class="fa fa-check"></i><b>4.6.2</b> Variable-2</a></li>
-<li class="chapter" data-level="4.6.3" data-path="quantification-i.html"><a href="quantification-i.html#mar.sub-code"><i class="fa fa-check"></i><b>4.6.3</b> mar.sub Code</a></li>
+<li class="chapter" data-level="4.5" data-path="quantification.html"><a href="quantification.html#marine-intertidal-submodel-mar.int-i"><i class="fa fa-check"></i><b>4.5</b> Marine, Intertidal Submodel (mar.int) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="quantification.html"><a href="quantification.html#variable-1-2"><i class="fa fa-check"></i><b>4.5.1</b> Variable-1<span></span></a></li>
+<li class="chapter" data-level="4.5.2" data-path="quantification.html"><a href="quantification.html#variable-2"><i class="fa fa-check"></i><b>4.5.2</b> Variable-2<span></span></a></li>
+<li class="chapter" data-level="4.5.3" data-path="quantification.html"><a href="quantification.html#mar.int-code"><i class="fa fa-check"></i><b>4.5.3</b> mar.int Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="quantification-i.html"><a href="quantification-i.html#marine-deepwater-submodel-mar.deep-i"><i class="fa fa-check"></i><b>4.7</b> Marine, Deepwater Submodel (mar.deep) (I)</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="quantification-i.html"><a href="quantification-i.html#salinity-2"><i class="fa fa-check"></i><b>4.7.1</b> Salinity</a></li>
-<li class="chapter" data-level="4.7.2" data-path="quantification-i.html"><a href="quantification-i.html#dissolved-oxygen-processes"><i class="fa fa-check"></i><b>4.7.2</b> Dissolved Oxygen Processes</a></li>
-<li class="chapter" data-level="4.7.3" data-path="quantification-i.html"><a href="quantification-i.html#water-temperature"><i class="fa fa-check"></i><b>4.7.3</b> Water Temperature</a></li>
-<li class="chapter" data-level="4.7.4" data-path="quantification-i.html"><a href="quantification-i.html#wave-environment"><i class="fa fa-check"></i><b>4.7.4</b> Wave Environment</a></li>
-<li class="chapter" data-level="4.7.5" data-path="quantification-i.html"><a href="quantification-i.html#current-velocity"><i class="fa fa-check"></i><b>4.7.5</b> Current Velocity</a></li>
-<li class="chapter" data-level="4.7.6" data-path="quantification-i.html"><a href="quantification-i.html#derived-metrics--light"><i class="fa fa-check"></i><b>4.7.6</b> Derived Metrics- Light</a></li>
-<li class="chapter" data-level="4.7.7" data-path="quantification-i.html"><a href="quantification-i.html#vessel-traffic-and-development-pressures"><i class="fa fa-check"></i><b>4.7.7</b> Vessel Traffic and Development Pressures</a></li>
-<li class="chapter" data-level="4.7.8" data-path="quantification-i.html"><a href="quantification-i.html#mar.deep-code"><i class="fa fa-check"></i><b>4.7.8</b> mar.deep Code</a></li>
+<li class="chapter" data-level="4.6" data-path="quantification.html"><a href="quantification.html#marine-subtidal-submodel-mar.sub-i"><i class="fa fa-check"></i><b>4.6</b> Marine, Subtidal Submodel (mar.sub) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="quantification.html"><a href="quantification.html#variable-1-3"><i class="fa fa-check"></i><b>4.6.1</b> Variable-1<span></span></a></li>
+<li class="chapter" data-level="4.6.2" data-path="quantification.html"><a href="quantification.html#variable-2-1"><i class="fa fa-check"></i><b>4.6.2</b> Variable-2<span></span></a></li>
+<li class="chapter" data-level="4.6.3" data-path="quantification.html"><a href="quantification.html#mar.sub-code"><i class="fa fa-check"></i><b>4.6.3</b> mar.sub Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="quantification-i.html"><a href="quantification-i.html#new-york-bight-overarching-model-nybem.wrapper-i"><i class="fa fa-check"></i><b>4.8</b> New York Bight Overarching Model (NYBEM.wrapper) (I)</a></li>
+<li class="chapter" data-level="4.7" data-path="quantification.html"><a href="quantification.html#marine-deepwater-submodel-mar.deep-i"><i class="fa fa-check"></i><b>4.7</b> Marine, Deepwater Submodel (mar.deep) (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="quantification.html"><a href="quantification.html#salinity-2"><i class="fa fa-check"></i><b>4.7.1</b> Salinity<span></span></a></li>
+<li class="chapter" data-level="4.7.2" data-path="quantification.html"><a href="quantification.html#dissolved-oxygen-processes"><i class="fa fa-check"></i><b>4.7.2</b> Dissolved Oxygen Processes<span></span></a></li>
+<li class="chapter" data-level="4.7.3" data-path="quantification.html"><a href="quantification.html#water-temperature"><i class="fa fa-check"></i><b>4.7.3</b> Water Temperature<span></span></a></li>
+<li class="chapter" data-level="4.7.4" data-path="quantification.html"><a href="quantification.html#wave-environment"><i class="fa fa-check"></i><b>4.7.4</b> Wave Environment<span></span></a></li>
+<li class="chapter" data-level="4.7.5" data-path="quantification.html"><a href="quantification.html#current-velocity"><i class="fa fa-check"></i><b>4.7.5</b> Current Velocity<span></span></a></li>
+<li class="chapter" data-level="4.7.6" data-path="quantification.html"><a href="quantification.html#derived-metrics--light"><i class="fa fa-check"></i><b>4.7.6</b> Derived Metrics- Light<span></span></a></li>
+<li class="chapter" data-level="4.7.7" data-path="quantification.html"><a href="quantification.html#vessel-traffic-and-development-pressures"><i class="fa fa-check"></i><b>4.7.7</b> Vessel Traffic and Development Pressures<span></span></a></li>
+<li class="chapter" data-level="4.7.8" data-path="quantification.html"><a href="quantification.html#mar.deep-code"><i class="fa fa-check"></i><b>4.7.8</b> mar.deep Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>5</b> Evaluation</a><ul>
-<li class="chapter" data-level="5.1" data-path="evaluation.html"><a href="evaluation.html#system-quality"><i class="fa fa-check"></i><b>5.1</b> System Quality</a></li>
-<li class="chapter" data-level="5.2" data-path="evaluation.html"><a href="evaluation.html#technical-quality"><i class="fa fa-check"></i><b>5.2</b> Technical Quality</a></li>
-<li class="chapter" data-level="5.3" data-path="evaluation.html"><a href="evaluation.html#usability"><i class="fa fa-check"></i><b>5.3</b> Usability</a></li>
+<li class="chapter" data-level="4.8" data-path="quantification.html"><a href="quantification.html#new-york-bight-overarching-model-nybem.wrapper-i"><i class="fa fa-check"></i><b>4.8</b> New York Bight Overarching Model (NYBEM.wrapper) (I)<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="application-and-communication-i.html"><a href="application-and-communication-i.html"><i class="fa fa-check"></i><b>6</b> Application and Communication (I)</a></li>
-<li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Summary</a><ul>
-<li class="chapter" data-level="7.1" data-path="summary.html"><a href="summary.html#future-model-development"><i class="fa fa-check"></i><b>7.1</b> Future Model Development</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="summary.html"><a href="summary.html#habitat-quality-modules"><i class="fa fa-check"></i><b>7.1.1</b> Habitat Quality Modules</a></li>
-<li class="chapter" data-level="7.1.2" data-path="summary.html"><a href="summary.html#system-scale-connectivity-model"><i class="fa fa-check"></i><b>7.1.2</b> System-Scale, Connectivity Model</a></li>
-<li class="chapter" data-level="7.1.3" data-path="summary.html"><a href="summary.html#aggregated-model-outcomes"><i class="fa fa-check"></i><b>7.1.3</b> Aggregated Model Outcomes</a></li>
+<li class="chapter" data-level="5" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>5</b> Evaluation<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evaluation.html"><a href="evaluation.html#system-quality"><i class="fa fa-check"></i><b>5.1</b> System Quality<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="evaluation.html"><a href="evaluation.html#technical-quality"><i class="fa fa-check"></i><b>5.2</b> Technical Quality<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="evaluation.html"><a href="evaluation.html#usability"><i class="fa fa-check"></i><b>5.3</b> Usability<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="application-and-communication-i.html"><a href="application-and-communication-i.html"><i class="fa fa-check"></i><b>6</b> Application and Communication (I)<span></span></a></li>
+<li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Summary<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="summary.html"><a href="summary.html#future-model-development"><i class="fa fa-check"></i><b>7.1</b> Future Model Development<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="summary.html"><a href="summary.html#habitat-quality-modules"><i class="fa fa-check"></i><b>7.1.1</b> Habitat Quality Modules<span></span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="summary.html"><a href="summary.html#system-scale-connectivity-model"><i class="fa fa-check"></i><b>7.1.2</b> System-Scale, Connectivity Model<span></span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="summary.html"><a href="summary.html#aggregated-model-outcomes"><i class="fa fa-check"></i><b>7.1.3</b> Aggregated Model Outcomes<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="model-development-workshops.html"><a href="model-development-workshops.html"><i class="fa fa-check"></i><b>A</b> Model Development Workshops</a></li>
-<li class="chapter" data-level="B" data-path="usace-model-certification-review.html"><a href="usace-model-certification-review.html"><i class="fa fa-check"></i><b>B</b> USACE Model Certification Review</a></li>
-<li class="chapter" data-level="C" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html"><i class="fa fa-check"></i><b>C</b> New Jersey Back Bays (NJBB)</a><ul>
-<li class="chapter" data-level="C.1" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#background-1"><i class="fa fa-check"></i><b>C.1</b> Background</a></li>
-<li class="chapter" data-level="C.2" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#decision-alternatives"><i class="fa fa-check"></i><b>C.2</b> Decision Alternatives</a></li>
-<li class="chapter" data-level="C.3" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#model-parameterization"><i class="fa fa-check"></i><b>C.3</b> Model Parameterization</a></li>
-<li class="chapter" data-level="C.4" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#results"><i class="fa fa-check"></i><b>C.4</b> Results</a></li>
+<li class="appendix"><span><b>Appendices<span></span></b></span></li>
+<li class="chapter" data-level="A" data-path="model-development-workshops.html"><a href="model-development-workshops.html"><i class="fa fa-check"></i><b>A</b> Model Development Workshops<span></span></a></li>
+<li class="chapter" data-level="B" data-path="usace-model-certification-review.html"><a href="usace-model-certification-review.html"><i class="fa fa-check"></i><b>B</b> USACE Model Certification Review<span></span></a></li>
+<li class="chapter" data-level="C" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html"><i class="fa fa-check"></i><b>C</b> New Jersey Back Bays (NJBB)<span></span></a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#background-1"><i class="fa fa-check"></i><b>C.1</b> Background<span></span></a></li>
+<li class="chapter" data-level="C.2" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#decision-alternatives"><i class="fa fa-check"></i><b>C.2</b> Decision Alternatives<span></span></a></li>
+<li class="chapter" data-level="C.3" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#model-parameterization"><i class="fa fa-check"></i><b>C.3</b> Model Parameterization<span></span></a></li>
+<li class="chapter" data-level="C.4" data-path="new-jersey-back-bays-njbb.html"><a href="new-jersey-back-bays-njbb.html#results"><i class="fa fa-check"></i><b>C.4</b> Results<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><i class="fa fa-check"></i><b>D</b> New York / New Jersey Harbor and Tributaries Study (HATS)</a><ul>
-<li class="chapter" data-level="D.1" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#background-2"><i class="fa fa-check"></i><b>D.1</b> Background</a></li>
-<li class="chapter" data-level="D.2" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#decision-alternatives-1"><i class="fa fa-check"></i><b>D.2</b> Decision Alternatives</a></li>
-<li class="chapter" data-level="D.3" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#model-parameterization-1"><i class="fa fa-check"></i><b>D.3</b> Model Parameterization</a></li>
-<li class="chapter" data-level="D.4" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#results-1"><i class="fa fa-check"></i><b>D.4</b> Results</a></li>
-<li class="chapter" data-level="D.5" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#r-markdown"><i class="fa fa-check"></i><b>D.5</b> R Markdown</a></li>
-<li class="chapter" data-level="D.6" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#including-plots"><i class="fa fa-check"></i><b>D.6</b> Including Plots</a></li>
+<li class="chapter" data-level="D" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><i class="fa fa-check"></i><b>D</b> New York / New Jersey Harbor and Tributaries Study (HATS)<span></span></a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#background-2"><i class="fa fa-check"></i><b>D.1</b> Background<span></span></a></li>
+<li class="chapter" data-level="D.2" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#decision-alternatives-1"><i class="fa fa-check"></i><b>D.2</b> Decision Alternatives<span></span></a></li>
+<li class="chapter" data-level="D.3" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#model-parameterization-1"><i class="fa fa-check"></i><b>D.3</b> Model Parameterization<span></span></a></li>
+<li class="chapter" data-level="D.4" data-path="new-york-new-jersey-harbor-and-tributaries-study-hats.html"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#results-1"><i class="fa fa-check"></i><b>D.4</b> Results<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -252,157 +295,136 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="new-york-new-jersey-harbor-and-tributaries-study-hats" class="section level1">
-<h1><span class="header-section-number">D</span> New York / New Jersey Harbor and Tributaries Study (HATS)</h1>
+<div id="new-york-new-jersey-harbor-and-tributaries-study-hats" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">D</span> New York / New Jersey Harbor and Tributaries Study (HATS)<a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#new-york-new-jersey-harbor-and-tributaries-study-hats" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Insert</p>
-<div id="background-2" class="section level2">
-<h2><span class="header-section-number">D.1</span> Background</h2>
-<p>Insert</p>
-</div>
-<div id="decision-alternatives-1" class="section level2">
-<h2><span class="header-section-number">D.2</span> Decision Alternatives</h2>
+<div id="background-2" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">D.1</span> Background<a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#background-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Insert</p>
 </div>
-<div id="model-parameterization-1" class="section level2">
-<h2><span class="header-section-number">D.3</span> Model Parameterization</h2>
+<div id="decision-alternatives-1" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">D.2</span> Decision Alternatives<a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#decision-alternatives-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Insert</p>
 </div>
-<div id="results-1" class="section level2">
-<h2><span class="header-section-number">D.4</span> Results</h2>
+<div id="model-parameterization-1" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">D.3</span> Model Parameterization<a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#model-parameterization-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Insert</p>
+</div>
+<div id="results-1" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">D.4</span> Results<a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#results-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Insert</p>
 
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Anisfeld, Shimon C., Katharine R. Cooper, and Andrew C. Kemp. 2017. <span>“Upslope Development of a Tidal Marsh as a Function of Upland Land Use.”</span> <em>Global Change Biology</em> 23 (2): 755–66. <a href="https://doi.org/10.1111/gcb.13398">https://doi.org/10.1111/gcb.13398</a>.
 </div>
-<div id="r-markdown" class="section level2">
-<h2><span class="header-section-number">D.5</span> R Markdown</h2>
-<p>start paragraphs here</p>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="new-york-new-jersey-harbor-and-tributaries-study-hats.html#cb9-1"></a><span class="kw">summary</span>(cars)</span></code></pre></div>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div class="csl-entry">
+Banner, A, and S. Schaller. 2001. <span>“<span>USFWS</span> <span>Gulf</span> of <span>Maine</span> <span>Watershed</span> <span>Habitat</span> <span>Analysis</span>.”</span> Gulf of Maine Program.
 </div>
-<div id="including-plots" class="section level2">
-<h2><span class="header-section-number">D.6</span> Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="_main_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
-
-<div id="refs" class="references">
-<div>
-<p>Anisfeld, Shimon C., Katharine R. Cooper, and Andrew C. Kemp. 2017. “Upslope Development of a Tidal Marsh as a Function of Upland Land Use.” <em>Global Change Biology</em> 23 (2): 755–66. <a href="https://doi.org/10.1111/gcb.13398">https://doi.org/10.1111/gcb.13398</a>.</p>
+<div class="csl-entry">
+Belt, Marjan van den, Oscar A. Bianciotto, Robert Costanza, Serge Demers, Susana Diaz, Gustavo A. Ferreyra, Evamaria W. Koch, Fernando R. Momo, and Maria Vernet. 2006. <span>“Mediated <span>Modeling</span> of the <span>Impacts</span> of <span>Enhanced</span> <span>UV</span>-<span>B</span> <span>Radiation</span> on <span>Ecosystem</span> <span>Services</span>.”</span> <em>Photochemistry and Photobiology</em> 82 (4): 865. <a href="https://doi.org/10.1562/2005-10-19-IR-722">https://doi.org/10.1562/2005-10-19-IR-722</a>.
 </div>
-<div>
-<p>Banner, A, and S. Schaller. 2001. “USFWS Gulf of Maine Watershed Habitat Analysis.” Gulf of Maine Program.</p>
+<div class="csl-entry">
+Byrnes, Mark R., Richard M. Hammer, Tim D. Thibaut, and David B. Snyder. 2004. <span>“Effects of <span>Sand</span> <span>Mining</span> on <span>Physical</span> <span>Processes</span> and <span>Biological</span> <span>Communities</span> <span>Offshore</span> <span>New</span> <span>Jersey</span>, <span>U</span>.<span>S</span>.<span>A</span>.”</span> <em>Journal of Coastal Research</em> 201 (January): 25–43. <a href="https://doi.org/10.2112/1551-5036(2004)20[25:EOSMOP]2.0.CO;2">https://doi.org/10.2112/1551-5036(2004)20[25:EOSMOP]2.0.CO;2</a>.
 </div>
-<div>
-<p>Belt, Marjan van den, Oscar A. Bianciotto, Robert Costanza, Serge Demers, Susana Diaz, Gustavo A. Ferreyra, Evamaria W. Koch, Fernando R. Momo, and Maria Vernet. 2006. “Mediated Modeling of the Impacts of Enhanced UV-B Radiation on Ecosystem Services.” <em>Photochemistry and Photobiology</em> 82 (4): 865. <a href="https://doi.org/10.1562/2005-10-19-IR-722">https://doi.org/10.1562/2005-10-19-IR-722</a>.</p>
+<div class="csl-entry">
+Cerco, Carl F., and Thomas Cole. 1993. <span>“Three‐<span>Dimensional</span> <span>Eutrophication</span> <span>Model</span> of <span>Chesapeake</span> <span>Bay</span>.”</span> <em>Journal of Environmental Engineering</em> 119 (6): 1006–25. <a href="https://doi.org/10.1061/(ASCE)0733-9372(1993)119:6(1006)">https://doi.org/10.1061/(ASCE)0733-9372(1993)119:6(1006)</a>.
 </div>
-<div>
-<p>Byrnes, Mark R., Richard M. Hammer, Tim D. Thibaut, and David B. Snyder. 2004. “Effects of Sand Mining on Physical Processes and Biological Communities Offshore New Jersey, U.S.A.” <em>Journal of Coastal Research</em> 201 (January): 25–43. <a href="https://doi.org/10.2112/1551-5036(2004)20%5B25:EOSMOP%5D2.0.CO;2">https://doi.org/10.2112/1551-5036(2004)20[25:EOSMOP]2.0.CO;2</a>.</p>
+<div class="csl-entry">
+Clough, Jonathan, Amy Polaczyk, and Marco Propato. 2016. <span>“Modeling the Potential Effects of Sea-Level Rise on the Coast of <span>New</span> <span>York</span>: <span>Integrating</span> Mechanistic Accretion and Stochastic Uncertainty.”</span> <em>Environmental Modelling &amp; Software</em> 84 (October): 349–62. <a href="https://doi.org/10.1016/j.envsoft.2016.06.023">https://doi.org/10.1016/j.envsoft.2016.06.023</a>.
 </div>
-<div>
-<p>Cerco, Carl F., and Thomas Cole. 1993. “Three‐Dimensional Eutrophication Model of Chesapeake Bay.” <em>Journal of Environmental Engineering</em> 119 (6): 1006–25. <a href="https://doi.org/10.1061/(ASCE)0733-9372(1993)119:6(1006)">https://doi.org/10.1061/(ASCE)0733-9372(1993)119:6(1006)</a>.</p>
+<div class="csl-entry">
+Colombano, Denise D., Steven Y. Litvin, Shelby L. Ziegler, Scott B. Alford, Ronald Baker, Myriam A. Barbeau, Just Cebrián, et al. 2021. <span>“Climate <span>Change</span> <span>Implications</span> for <span>Tidal</span> <span>Marshes</span> and <span>Food</span> <span>Web</span> <span>Linkages</span> to <span>Estuarine</span> and <span>Coastal</span> <span>Nekton</span>.”</span> <em>Estuaries and Coasts</em> 44 (6): 1637–48. <a href="https://doi.org/10.1007/s12237-020-00891-1">https://doi.org/10.1007/s12237-020-00891-1</a>.
 </div>
-<div>
-<p>Clough, Jonathan, Amy Polaczyk, and Marco Propato. 2016. “Modeling the Potential Effects of Sea-Level Rise on the Coast of New York: Integrating Mechanistic Accretion and Stochastic Uncertainty.” <em>Environmental Modelling &amp; Software</em> 84 (October): 349–62. <a href="https://doi.org/10.1016/j.envsoft.2016.06.023">https://doi.org/10.1016/j.envsoft.2016.06.023</a>.</p>
+<div class="csl-entry">
+Cotton, J. A., G. Wharton, J. A. B. Bass, C. M. Heppell, and R. S. Wotton. 2006. <span>“The Effects of Seasonal Changes to in-Stream Vegetation Cover on Patterns of Flow and Accumulation of Sediment.”</span> <em>Geomorphology</em> 77 (3-4): 320–34. <a href="https://doi.org/10.1016/j.geomorph.2006.01.010">https://doi.org/10.1016/j.geomorph.2006.01.010</a>.
 </div>
-<div>
-<p>Colombano, Denise D., Steven Y. Litvin, Shelby L. Ziegler, Scott B. Alford, Ronald Baker, Myriam A. Barbeau, Just Cebrián, et al. 2021. “Climate Change Implications for Tidal Marshes and Food Web Linkages to Estuarine and Coastal Nekton.” <em>Estuaries and Coasts</em> 44 (6): 1637–48. <a href="https://doi.org/10.1007/s12237-020-00891-1">https://doi.org/10.1007/s12237-020-00891-1</a>.</p>
+<div class="csl-entry">
+Cowardin, Lewis M., Virginia Carter, Francis C. Golet, and Edward T. LaRoe. 1979. <em>Classification of Wetlands and Deepwater Habitats of the <span>United</span> <span>States</span></em>. Washington, D.C.: U.S. Department of the Interior, Fish; Wildlife Service. <a href="https://www.fws.gov/wetlands/documents/classwet/index.html">https://www.fws.gov/wetlands/documents/classwet/index.html</a>.
 </div>
-<div>
-<p>Cotton, J. A., G. Wharton, J. A. B. Bass, C. M. Heppell, and R. S. Wotton. 2006. “The Effects of Seasonal Changes to in-Stream Vegetation Cover on Patterns of Flow and Accumulation of Sediment.” <em>Geomorphology</em> 77 (3-4): 320–34. <a href="https://doi.org/10.1016/j.geomorph.2006.01.010">https://doi.org/10.1016/j.geomorph.2006.01.010</a>.</p>
+<div class="csl-entry">
+Dugan, J. E., K. A. Emery, M. Alber, C. R. Alexander, J. E. Byers, A. M. Gehman, N. McLenaghan, and S. E. Sojka. 2018. <span>“Generalizing <span>Ecological</span> <span>Effects</span> of <span>Shoreline</span> <span>Armoring</span> <span>Across</span> <span>Soft</span> <span>Sediment</span> <span>Environments</span>.”</span> <em>Estuaries and Coasts</em> 41 (S1): 180–96. <a href="https://doi.org/10.1007/s12237-017-0254-x">https://doi.org/10.1007/s12237-017-0254-x</a>.
 </div>
-<div>
-<p>Cowardin, Lewis M., Virginia Carter, Francis C. Golet, and Edward T. LaRoe. 1979. <em>Classification of Wetlands and Deepwater Habitats of the United States</em>. Washington, D.C.: U.S. Department of the Interior, Fish; Wildlife Service. <a href="https://www.fws.gov/wetlands/documents/classwet/index.html">https://www.fws.gov/wetlands/documents/classwet/index.html</a>.</p>
+<div class="csl-entry">
+Engineers, U. S. Army Corps of. 2011. <span>“<span>ASSURING</span> <span>QUALITY</span> <span>OF</span> <span>PLANNING</span> <span>MODELS</span>.”</span> EC 1105-2-412. Washington, D.C.: DEPARTMENT OF THE ARMY. <a href="https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf">https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf</a>.
 </div>
-<div>
-<p>Dugan, J. E., K. A. Emery, M. Alber, C. R. Alexander, J. E. Byers, A. M. Gehman, N. McLenaghan, and S. E. Sojka. 2018. “Generalizing Ecological Effects of Shoreline Armoring Across Soft Sediment Environments.” <em>Estuaries and Coasts</em> 41 (S1): 180–96. <a href="https://doi.org/10.1007/s12237-017-0254-x">https://doi.org/10.1007/s12237-017-0254-x</a>.</p>
+<div class="csl-entry">
+Fischbach, Jordan, Debra Knopman, Heather Smith, Philip Orton, Eric Sanderson, Kim Fisher, Nerissa Moray, Adam Friedberg, and Adam Parris. 2018. <em>Building <span>Resilience</span> in an <span>Urban</span> <span>Coastal</span> <span>Environment</span>: <span>Integrated</span>, <span>Science</span>-<span>Based</span> <span>Planning</span> in <span>Jamaica</span> <span>Bay</span>, <span>New</span> <span>York</span></em>. RAND Corporation. <a href="https://doi.org/10.7249/RR2193">https://doi.org/10.7249/RR2193</a>.
 </div>
-<div>
-<p>Engineers, U. S. Army Corps of. 2011. “ASSURING QUALITY OF PLANNING MODELS.” EC 1105-2-412. Washington, D.C.: DEPARTMENT OF THE ARMY. <a href="https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf">https://planning.erdc.dren.mil/toolbox/library/ECs/EC_1105-2-412_2011Mar.pdf</a>.</p>
+<div class="csl-entry">
+Ganju, Neil K., Zafer Defne, Matthew L. Kirwan, Sergio Fagherazzi, Andrea D’Alpaos, and Luca Carniello. 2017. <span>“Spatially Integrative Metrics Reveal Hidden Vulnerability of Microtidal Salt Marshes.”</span> <em>Nature Communications</em> 8 (1): 14156. <a href="https://doi.org/10.1038/ncomms14156">https://doi.org/10.1038/ncomms14156</a>.
 </div>
-<div>
-<p>Fischbach, Jordan, Debra Knopman, Heather Smith, Philip Orton, Eric Sanderson, Kim Fisher, Nerissa Moray, Adam Friedberg, and Adam Parris. 2018. <em>Building Resilience in an Urban Coastal Environment: Integrated, Science-Based Planning in Jamaica Bay, New York</em>. RAND Corporation. <a href="https://doi.org/10.7249/RR2193">https://doi.org/10.7249/RR2193</a>.</p>
+<div class="csl-entry">
+Gardner, George, and Robert J. Johnston. 2021. <span>“Is Shoreline Armoring a Response to Marsh Migration? <span>Modeling</span> Relationships Between Coastal Marshes and Private Adaptation Decisions.”</span> <em>Water Resources and Economics</em> 36 (October): 100187. <a href="https://doi.org/10.1016/j.wre.2021.100187">https://doi.org/10.1016/j.wre.2021.100187</a>.
 </div>
-<div>
-<p>Ganju, Neil K., Zafer Defne, Matthew L. Kirwan, Sergio Fagherazzi, Andrea D’Alpaos, and Luca Carniello. 2017. “Spatially Integrative Metrics Reveal Hidden Vulnerability of Microtidal Salt Marshes.” <em>Nature Communications</em> 8 (1): 14156. <a href="https://doi.org/10.1038/ncomms14156">https://doi.org/10.1038/ncomms14156</a>.</p>
+<div class="csl-entry">
+Grant, William Edward, and Todd M. Swannack. 2008. <em>Ecological Modeling: A Common-Sense Approach to Theory and Practice</em>. Malden (Mass.): Blackwell.
 </div>
-<div>
-<p>Gardner, George, and Robert J. Johnston. 2021. “Is Shoreline Armoring a Response to Marsh Migration? Modeling Relationships Between Coastal Marshes and Private Adaptation Decisions.” <em>Water Resources and Economics</em> 36 (October): 100187. <a href="https://doi.org/10.1016/j.wre.2021.100187">https://doi.org/10.1016/j.wre.2021.100187</a>.</p>
+<div class="csl-entry">
+Gray, Steven, Michael Paolisso, Rebecca Jordan, Stefan Gray, and Springer International Publishing. 2017. <em>Environmental <span>Modeling</span> with <span>Stakeholders</span> <span>Theory</span>, <span>Methods</span>, and <span>Applications</span></em>. <a href="https://doi.org/10.1007/978-3-319-25053-3">https://doi.org/10.1007/978-3-319-25053-3</a>.
 </div>
-<div>
-<p>Grant, William Edward, and Todd M. Swannack. 2008. <em>Ecological Modeling: A Common-Sense Approach to Theory and Practice</em>. Malden (Mass.): Blackwell.</p>
+<div class="csl-entry">
+Hall, Damon M., Eli D. Lazarus, and Jessica L. Thompson. 2019. <span>“Mediated <span>Modeling</span> and <span>Participatory</span> <span>Modeling</span>.”</span> In <em>Encyclopedia of <span>Ecology</span></em>, 129–35. Elsevier. <a href="https://doi.org/10.1016/B978-0-12-409548-9.10574-3">https://doi.org/10.1016/B978-0-12-409548-9.10574-3</a>.
 </div>
-<div>
-<p>Gray, Steven, Michael Paolisso, Rebecca Jordan, Stefan Gray, and Springer International Publishing. 2017. <em>Environmental Modeling with Stakeholders Theory, Methods, and Applications</em>. <a href="https://doi.org/10.1007/978-3-319-25053-3">https://doi.org/10.1007/978-3-319-25053-3</a>.</p>
+<div class="csl-entry">
+Herman, Brook D., S. Kyle McKay, Safra Altman, Nathan S. Richards, Molly Reif, Candice D. Piercy, and Todd M. Swannack. 2019. <span>“Unpacking the <span>Black</span> <span>Box</span>: <span>Demystifying</span> <span>Ecological</span> <span>Models</span> <span>Through</span> <span>Interactive</span> <span>Workshops</span> and <span>Hands</span>-<span>On</span> <span>Learning</span>.”</span> <em>Frontiers in Environmental Science</em> 7 (October): 122. <a href="https://doi.org/10.3389/fenvs.2019.00122">https://doi.org/10.3389/fenvs.2019.00122</a>.
 </div>
-<div>
-<p>Hall, Damon M., Eli D. Lazarus, and Jessica L. Thompson. 2019. “Mediated Modeling and Participatory Modeling.” In <em>Encyclopedia of Ecology</em>, 129–35. Elsevier. <a href="https://doi.org/10.1016/B978-0-12-409548-9.10574-3">https://doi.org/10.1016/B978-0-12-409548-9.10574-3</a>.</p>
+<div class="csl-entry">
+Hopkinson, Charles S., James T. Morris, Sergio Fagherazzi, Wilfred M. Wollheim, and Peter A. Raymond. 2018. <span>“Lateral <span>Marsh</span> <span>Edge</span> <span>Erosion</span> as a <span>Source</span> of <span>Sediments</span> for <span>Vertical</span> <span>Marsh</span> <span>Accretion</span>.”</span> <em>Journal of Geophysical Research: Biogeosciences</em> 123 (8): 2444–65. <a href="https://doi.org/10.1029/2017JG004358">https://doi.org/10.1029/2017JG004358</a>.
 </div>
-<div>
-<p>Herman, Brook D., S. Kyle McKay, Safra Altman, Nathan S. Richards, Molly Reif, Candice D. Piercy, and Todd M. Swannack. 2019. “Unpacking the Black Box: Demystifying Ecological Models Through Interactive Workshops and Hands-on Learning.” <em>Frontiers in Environmental Science</em> 7 (October): 122. <a href="https://doi.org/10.3389/fenvs.2019.00122">https://doi.org/10.3389/fenvs.2019.00122</a>.</p>
+<div class="csl-entry">
+Kittinger, John N., and Adam L. Ayers. 2010. <span>“Shoreline <span>Armoring</span>, <span>Risk</span> <span>Management</span>, and <span>Coastal</span> <span>Resilience</span> <span>Under</span> <span>Rising</span> <span>Seas</span>.”</span> <em>Coastal Management</em> 38 (6): 634–53. <a href="https://doi.org/10.1080/08920753.2010.529038">https://doi.org/10.1080/08920753.2010.529038</a>.
 </div>
-<div>
-<p>Hopkinson, Charles S., James T. Morris, Sergio Fagherazzi, Wilfred M. Wollheim, and Peter A. Raymond. 2018. “Lateral Marsh Edge Erosion as a Source of Sediments for Vertical Marsh Accretion.” <em>Journal of Geophysical Research: Biogeosciences</em> 123 (8): 2444–65. <a href="https://doi.org/10.1029/2017JG004358">https://doi.org/10.1029/2017JG004358</a>.</p>
+<div class="csl-entry">
+Li, Xiaorong, Nicoletta Leonardi, and Andrew J. Plater. 2019. <span>“Wave-Driven Sediment Resuspension and Salt Marsh Frontal Erosion Alter the Export of Sediments from Macro-Tidal Estuaries.”</span> <em>Geomorphology</em> 325 (January): 17–28. <a href="https://doi.org/10.1016/j.geomorph.2018.10.004">https://doi.org/10.1016/j.geomorph.2018.10.004</a>.
 </div>
-<div>
-<p>Kittinger, John N., and Adam L. Ayers. 2010. “Shoreline Armoring, Risk Management, and Coastal Resilience Under Rising Seas.” <em>Coastal Management</em> 38 (6): 634–53. <a href="https://doi.org/10.1080/08920753.2010.529038">https://doi.org/10.1080/08920753.2010.529038</a>.</p>
+<div class="csl-entry">
+McKay, S. Kyle, Nate Richards, and Todd S. Swannack. 2019. <span>“Aligning <span>Ecological</span> <span>Model</span> <span>Development</span> with <span>Restoration</span> <span>Project</span> <span>Planning</span>.”</span> ERDC/TN EMRRP-SR-89. Vicksburg, Mississippi: Army Engineer Research; Development Center.
 </div>
-<div>
-<p>Li, Xiaorong, Nicoletta Leonardi, and Andrew J. Plater. 2019. “Wave-Driven Sediment Resuspension and Salt Marsh Frontal Erosion Alter the Export of Sediments from Macro-Tidal Estuaries.” <em>Geomorphology</em> 325 (January): 17–28. <a href="https://doi.org/10.1016/j.geomorph.2018.10.004">https://doi.org/10.1016/j.geomorph.2018.10.004</a>.</p>
+<div class="csl-entry">
+Montagna, Paul A., Terence A. Palmer, and Jennifer Beseres Pollack. 2013. <span>“Conceptual <span>Model</span> of <span>Estuary</span> <span>Ecosystems</span>.”</span> In <em>Hydrological <span>Changes</span> and <span>Estuarine</span> <span>Dynamics</span></em>, 8:5–21. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-1-4614-5833-3_2">https://doi.org/10.1007/978-1-4614-5833-3_2</a>.
 </div>
-<div>
-<p>McKay, S. Kyle, Nate Richards, and Todd S. Swannack. 2019. “Aligning Ecological Model Development with Restoration Project Planning.” ERDC/TN EMRRP-SR-89. Vicksburg, Mississippi: Army Engineer Research; Development Center.</p>
+<div class="csl-entry">
+Morley, Sarah A., Jason D. Toft, and Karrie M. Hanson. 2012. <span>“Ecological <span>Effects</span> of <span>Shoreline</span> <span>Armoring</span> on <span>Intertidal</span> <span>Habitats</span> of a <span>Puget</span> <span>Sound</span> <span>Urban</span> <span>Estuary</span>.”</span> <em>Estuaries and Coasts</em> 35 (3): 774–84. <a href="https://doi.org/10.1007/s12237-012-9481-3">https://doi.org/10.1007/s12237-012-9481-3</a>.
 </div>
-<div>
-<p>Montagna, Paul A., Terence A. Palmer, and Jennifer Beseres Pollack. 2013. “Conceptual Model of Estuary Ecosystems.” In <em>Hydrological Changes and Estuarine Dynamics</em>, 8:5–21. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-1-4614-5833-3_2">https://doi.org/10.1007/978-1-4614-5833-3_2</a>.</p>
+<div class="csl-entry">
+Nancy Jackson, Karl Nordstorm, and David R. Smith. 2010. <span>“Armoring of <span>Estuarine</span> <span>Shorelines</span> and <span>Implications</span> for <span>Horseshoe</span> <span>Crabs</span> on <span>Developed</span> <span>Shorelines</span> in <span>Delaware</span> <span>Bay</span>.”</span> In <em>Puget <span>Sound</span> <span>Shorelines</span> and the <span>Impacts</span> of <span>Armoring</span>—<span>Proceedings</span> of a <span>State</span> of the <span>Science</span> <span>Workshop</span></em>. USGS. <a href="https://pubs.usgs.gov/sir/2010/5254/pdf/sir20105254_chap20.pdf">https://pubs.usgs.gov/sir/2010/5254/pdf/sir20105254_chap20.pdf</a>.
 </div>
-<div>
-<p>Morley, Sarah A., Jason D. Toft, and Karrie M. Hanson. 2012. “Ecological Effects of Shoreline Armoring on Intertidal Habitats of a Puget Sound Urban Estuary.” <em>Estuaries and Coasts</em> 35 (3): 774–84. <a href="https://doi.org/10.1007/s12237-012-9481-3">https://doi.org/10.1007/s12237-012-9481-3</a>.</p>
+<div class="csl-entry">
+Palinkas, Cindy M., Jeffrey P. Halka, Ming Li, Lawrence P. Sanford, and Peng Cheng. 2014. <span>“Sediment Deposition from Tropical Storms in the Upper <span>Chesapeake</span> <span>Bay</span>: <span>Field</span> Observations and Model Simulations.”</span> <em>Continental Shelf Research</em> 86 (September): 6–16. <a href="https://doi.org/10.1016/j.csr.2013.09.012">https://doi.org/10.1016/j.csr.2013.09.012</a>.
 </div>
-<div>
-<p>Nancy Jackson, Karl Nordstorm, and David R. Smith. 2010. “Armoring of Estuarine Shorelines and Implications for Horseshoe Crabs on Developed Shorelines in Delaware Bay.” In <em>Puget Sound Shorelines and the Impacts of Armoring—Proceedings of a State of the Science Workshop</em>. USGS. <a href="https://pubs.usgs.gov/sir/2010/5254/pdf/sir20105254_chap20.pdf">https://pubs.usgs.gov/sir/2010/5254/pdf/sir20105254_chap20.pdf</a>.</p>
+<div class="csl-entry">
+Prosser, Diann J., Thomas E. Jordan, Jessica L. Nagel, Rochelle D. Seitz, Donald E. Weller, and Dennis F. Whigham. 2018. <span>“Impacts of <span>Coastal</span> <span>Land</span> <span>Use</span> and <span>Shoreline</span> <span>Armoring</span> on <span>Estuarine</span> <span>Ecosystems</span>: An <span>Introduction</span> to a <span>Special</span> <span>Issue</span>.”</span> <em>Estuaries and Coasts</em> 41 (S1): 2–18. <a href="https://doi.org/10.1007/s12237-017-0331-1">https://doi.org/10.1007/s12237-017-0331-1</a>.
 </div>
-<div>
-<p>Palinkas, Cindy M., Jeffrey P. Halka, Ming Li, Lawrence P. Sanford, and Peng Cheng. 2014. “Sediment Deposition from Tropical Storms in the Upper Chesapeake Bay: Field Observations and Model Simulations.” <em>Continental Shelf Research</em> 86 (September): 6–16. <a href="https://doi.org/10.1016/j.csr.2013.09.012">https://doi.org/10.1016/j.csr.2013.09.012</a>.</p>
+<div class="csl-entry">
+Ralston, David K., Bruce A. Keafer, Michael L. Brosnahan, and Donald M. Anderson. 2014. <span>“Temperature Dependence of an Estuarine Harmful Algal Bloom: <span>Resolving</span> Interannual Variability in Bloom Dynamics Using a Degree-Day Approach.”</span> <em>Limnology and Oceanography</em> 59 (4): 1112–26. <a href="https://doi.org/10.4319/lo.2014.59.4.1112">https://doi.org/10.4319/lo.2014.59.4.1112</a>.
 </div>
-<div>
-<p>Prosser, Diann J., Thomas E. Jordan, Jessica L. Nagel, Rochelle D. Seitz, Donald E. Weller, and Dennis F. Whigham. 2018. “Impacts of Coastal Land Use and Shoreline Armoring on Estuarine Ecosystems: An Introduction to a Special Issue.” <em>Estuaries and Coasts</em> 41 (S1): 2–18. <a href="https://doi.org/10.1007/s12237-017-0331-1">https://doi.org/10.1007/s12237-017-0331-1</a>.</p>
+<div class="csl-entry">
+Ralston, David K., John C. Warner, W. Rockwell Geyer, and Gary R. Wall. 2013. <span>“Sediment Transport Due to Extreme Events: <span>The</span> <span>Hudson</span> <span>River</span> Estuary After Tropical Storms <span>Irene</span> and <span>Lee</span>: <span>RALSTON</span> <span>SEDIMENT</span> <span>TRANSPORT</span> <span>DUE</span> <span>TO</span> <span>EXTREME</span> <span>EVENTS</span>.”</span> <em>Geophysical Research Letters</em> 40 (20): 5451–55. <a href="https://doi.org/10.1002/2013GL057906">https://doi.org/10.1002/2013GL057906</a>.
 </div>
-<div>
-<p>Ralston, David K., Bruce A. Keafer, Michael L. Brosnahan, and Donald M. Anderson. 2014. “Temperature Dependence of an Estuarine Harmful Algal Bloom: Resolving Interannual Variability in Bloom Dynamics Using a Degree-Day Approach.” <em>Limnology and Oceanography</em> 59 (4): 1112–26. <a href="https://doi.org/10.4319/lo.2014.59.4.1112">https://doi.org/10.4319/lo.2014.59.4.1112</a>.</p>
+<div class="csl-entry">
+Smit, Kaylee P., Anthony T. F. Bernard, Amanda T. Lombard, and Kerry J. Sink. 2021. <span>“Assessing Marine Ecosystem Condition: <span>A</span> Review to Support Indicator Choice and Framework Development.”</span> <em>Ecological Indicators</em> 121 (February): 107148. <a href="https://doi.org/10.1016/j.ecolind.2020.107148">https://doi.org/10.1016/j.ecolind.2020.107148</a>.
 </div>
-<div>
-<p>Ralston, David K., John C. Warner, W. Rockwell Geyer, and Gary R. Wall. 2013. “Sediment Transport Due to Extreme Events: The Hudson River Estuary After Tropical Storms Irene and Lee: RALSTON SEDIMENT TRANSPORT DUE TO EXTREME EVENTS.” <em>Geophysical Research Letters</em> 40 (20): 5451–5. <a href="https://doi.org/10.1002/2013GL057906">https://doi.org/10.1002/2013GL057906</a>.</p>
+<div class="csl-entry">
+Swannack, Todd M., Jordan Fischbach, and David J. Tazik. 2012. <span>“Ecological <span>Modeling</span> <span>Guide</span> for <span>Ecosystem</span> <span>Restoration</span> and <span>Management</span>.”</span> Technical {Report} ERDC/EL TR-12-18. Vicksburg, Mississippi: Army Engineer Research; Development Center. <a href="https://apps.dtic.mil/sti/citations/ADA572123">https://apps.dtic.mil/sti/citations/ADA572123</a>.
 </div>
-<div>
-<p>Smit, Kaylee P., Anthony T. F. Bernard, Amanda T. Lombard, and Kerry J. Sink. 2021. “Assessing Marine Ecosystem Condition: A Review to Support Indicator Choice and Framework Development.” <em>Ecological Indicators</em> 121 (February): 107148. <a href="https://doi.org/10.1016/j.ecolind.2020.107148">https://doi.org/10.1016/j.ecolind.2020.107148</a>.</p>
+<div class="csl-entry">
+Talke, Stefan A., and David A. Jay. 2020. <span>“Changing <span>Tides</span>: <span>The</span> <span>Role</span> of <span>Natural</span> and <span>Anthropogenic</span> <span>Factors</span>.”</span> <em>Annual Review of Marine Science</em> 12 (1): 121–51. <a href="https://doi.org/10.1146/annurev-marine-010419-010727">https://doi.org/10.1146/annurev-marine-010419-010727</a>.
 </div>
-<div>
-<p>Swannack, Todd M., Jordan Fischbach, and David J. Tazik. 2012. “Ecological Modeling Guide for Ecosystem Restoration and Management.” Technical Report ERDC/EL TR-12-18. Vicksburg, Mississippi: Army Engineer Research; Development Center. <a href="https://apps.dtic.mil/sti/citations/ADA572123">https://apps.dtic.mil/sti/citations/ADA572123</a>.</p>
+<div class="csl-entry">
+Twilley, Robert, and John Barras. n.d. <span>“Formulation of the <span>LCA</span> Ecosystem Model, in <span>Hydrodynamic</span> and Ecological Modeling, <span>Louisiana</span> <span>Coastal</span> <span>Area</span> (<span>LCA</span>)—<span>Louisiana</span> Ecosystem Restoration Plan <span>Appendix</span> <span>C</span>. <span>Chapter</span> 2.”</span> In <em>Louisiana <span>Coastal</span> <span>Area</span> <span>Study</span></em>. Vol. 4.
 </div>
-<div>
-<p>Talke, Stefan A., and David A. Jay. 2020. “Changing Tides: The Role of Natural and Anthropogenic Factors.” <em>Annual Review of Marine Science</em> 12 (1): 121–51. <a href="https://doi.org/10.1146/annurev-marine-010419-010727">https://doi.org/10.1146/annurev-marine-010419-010727</a>.</p>
+<div class="csl-entry">
+(USFWS), U. S. Fish and Wildlife Service. 1997. <span>“Significant <span>Habitats</span> and <span>Habitat</span> <span>Complexes</span> of the <span>New</span> <span>York</span> <span>Bight</span> <span>Watershed</span>.”</span> Charlestown, Rhode Island: Southern New England - New York Bight Coastal Ecosystems Program. <a href="https://nctc.fws.gov/pubs5/web_link/text/toc.htm">https://nctc.fws.gov/pubs5/web_link/text/toc.htm</a>.
 </div>
-<div>
-<p>Twilley, Robert, and John Barras. n.d. “Formulation of the LCA Ecosystem Model, in Hydrodynamic and Ecological Modeling, Louisiana Coastal Area (LCA)—Louisiana Ecosystem Restoration Plan Appendix C. Chapter 2.” In <em>Louisiana Coastal Area Study</em>. Vol. 4.</p>
+<div class="csl-entry">
+Van den Belt, Marjan. 2004. <em>Mediated Modeling: A System Dynamics Approach to Environmental Consensus Building</em>. Washington, D.C: Island.
 </div>
-<div>
-<p>(USFWS), U. S. Fish and Wildlife Service. 1997. “Significant Habitats and Habitat Complexes of the New York Bight Watershed.” Charlestown, Rhode Island: Southern New England - New York Bight Coastal Ecosystems Program. <a href="https://nctc.fws.gov/pubs5/web_link/text/toc.htm">https://nctc.fws.gov/pubs5/web_link/text/toc.htm</a>.</p>
+<div class="csl-entry">
+Voinov, Alexey, and Francois Bousquet. 2010. <span>“Modelling with Stakeholders☆.”</span> <em>Environmental Modelling &amp; Software</em> 25 (11): 1268–81. <a href="https://doi.org/10.1016/j.envsoft.2010.03.007">https://doi.org/10.1016/j.envsoft.2010.03.007</a>.
 </div>
-<div>
-<p>Van den Belt, Marjan. 2004. <em>Mediated Modeling: A System Dynamics Approach to Environmental Consensus Building</em>. Washington, D.C: Island.</p>
-</div>
-<div>
-<p>Voinov, Alexey, and Francois Bousquet. 2010. “Modelling with Stakeholders☆.” <em>Environmental Modelling &amp; Software</em> 25 (11): 1268–81. <a href="https://doi.org/10.1016/j.envsoft.2010.03.007">https://doi.org/10.1016/j.envsoft.2010.03.007</a>.</p>
-</div>
-<div>
-<p>Walter, Ryan K., Jennifer K. O’Leary, Sean Vitousek, Mohsen Taherkhani, Carolyn Geraghty, and Ann Kitajima. 2020. “Large-Scale Erosion Driven by Intertidal Eelgrass Loss in an Estuarine Environment.” <em>Estuarine, Coastal and Shelf Science</em> 243 (September): 106910. <a href="https://doi.org/10.1016/j.ecss.2020.106910">https://doi.org/10.1016/j.ecss.2020.106910</a>.</p>
+<div class="csl-entry">
+Walter, Ryan K., Jennifer K. O’Leary, Sean Vitousek, Mohsen Taherkhani, Carolyn Geraghty, and Ann Kitajima. 2020. <span>“Large-Scale Erosion Driven by Intertidal Eelgrass Loss in an Estuarine Environment.”</span> <em>Estuarine, Coastal and Shelf Science</em> 243 (September): 106910. <a href="https://doi.org/10.1016/j.ecss.2020.106910">https://doi.org/10.1016/j.ecss.2020.106910</a>.
 </div>
 </div>
 </div>
