@@ -11,7 +11,7 @@ In response to Superstorm Sandy and associated Congressional directives ([PL 113
 
 In these study areas, the USACE is considering a diversity of measures for mitigating flood risks, including: structural actions (e.g., levees, floodwalls, storm surge barriers), non-structural measures (e.g., buy-outs, elevation of structures, flood-proofing), and natural and nature-based features (NNBF, e.g., wetland creation, reefs for breakwaters). Environmental outcomes and acceptability are important constraints on plan selection, and recommended plans must be in compliance with environmental laws and regulations. Given the large spatial scope, these USACE studies are applying a “tiered” approach to compliance with the National Environmental Policy Act (NEPA). Tiered assessment intends to provide appropriate data at key planning milestones for complex studies with diverse environmental effects. In the context of these studies, a “Tier 1” Environmental Impact Statement (EIS) will be generated at the conclusion of the USACE Planning Process (i.e., in the Feasibility Report and Chief’s Report). A “Tier 2” EIS will be developed in Pre-Construction Engineering and Design (PED). The “Tier 1” EIS is being developed with sequentially more accurate and precise information as the planning process proceed through key milestones such as the Alternatives Milestone Meeting (AMM), Tentatively Selected Plan Milestone (TSP), and Agency Decision Milestone (ADM).
 
-## Problem Statement
+## Problem Statement {-}
 
 The conceptual and numerical models presented here seek to articulate and quantify mechanisms of environmental impact of proposed coastal storm risk management alternatives. The following goals guided model development:
 
@@ -27,7 +27,7 @@ The conceptual and numerical models presented here seek to articulate and quanti
 
 * Models should provide a consistent approach for environmental assessment, which can assist with communication of cumulative effects of recommended alternatives across the region.
 
-## Report Overview
+## Report Overview {-}
 
 This report presents development and application of the New York Bight Ecological Model (NYBEM, “nigh-bem”), which will ultimately consist of two primary sub-models. First, an index-based modeling framework (i.e., a habitat-suitability-style, quantity-quality approach) is applied to assess patch-scale effects for six ecosystem types (e.g., estuarine intertidal zones). Second, a network-based model will be used to assess system-wide connectivity for migratory, aquatic organisms (e.g., anadramous fish). This report provides documentation of the technical details, use, and relevant information for USACE model certification (EC 1105-2-412, PB 2013-02). The following sections summarize the major elements of model development:
 
