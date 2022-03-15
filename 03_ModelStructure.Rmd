@@ -23,10 +23,10 @@ Table3.1[7,] <- c("7. Test, review, and revise.", "This overarching conceptual m
 
 #Send output table
 rownames(Table3.1) <- NULL
-knitr::kable(Table3.1, caption="Stepwise development of the overarching NYBEM conceptual model (following steps in Fischenich 2008).") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) %>%
-  kable_styling(full_width = TRUE) %>%
-  column_spec(1, width = "10em")
+knitr::kable(Table3.1, caption="Stepwise development of the overarching NYBEM conceptual model (following steps in Fischenich 2008).")
+#%>%  kable_styling(bootstrap_options = c("striped", "hover")) %>%
+#kable_styling(full_width = TRUE) %>%
+#column_spec(1, width = "10em")
 ```
 
 
@@ -52,9 +52,9 @@ Table3.2[3,] <- c("Intertidal (MHHW to MLLW)", "Marine, Intertidal", "Estuarine,
 
 #Send output table
 rownames(Table3.2) <- NULL
-knitr::kable(Table3.2, caption="Definition of NYBEM ecosystem types.") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) %>%
-  kable_styling(full_width = TRUE)
+knitr::kable(Table3.2, caption="Definition of NYBEM ecosystem types.") 
+#%>% kable_styling(bootstrap_options = c("striped", "hover")) 
+#%>% kable_styling(full_width = TRUE)
 ```
 
 
