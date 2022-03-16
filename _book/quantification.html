@@ -24,7 +24,7 @@
 <meta name="author" content="S. Kyle McKay, Vanessa Mahan, Michael Dougherty, Toddd Swannack, Candice Hall, Christina Saltus, Molly Reif, Steve Allen" />
 
 
-<meta name="date" content="2022-03-15" />
+<meta name="date" content="2022-03-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,10 +328,10 @@ div.csl-indent {
 <div id="define-model-domain" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Define Model Domain<a href="quantification.html#define-model-domain" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>nybem.domain</code>: This function defines the model domain based on regional extent of the New York Bight watersheds, a user-specified focal area, a downstream extent of a 20m ocean depth contour, and an upstream extent based on bed elevations less than MHHW.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="quantification.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Functions for rasterizing habitat types</span></span>
-<span id="cb8-2"><a href="quantification.html#cb8-2" aria-hidden="true" tabindex="-1"></a>nybem.domain <span class="ot">&lt;-</span> <span class="cf">function</span>(NYBightWatersheds, Ocean20mDepth, bedelev, MHHW){</span>
-<span id="cb8-3"><a href="quantification.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Insert code</span></span>
-<span id="cb8-4"><a href="quantification.html#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="quantification.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Functions for rasterizing habitat types</span></span>
+<span id="cb2-2"><a href="quantification.html#cb2-2" aria-hidden="true" tabindex="-1"></a>nybem.domain <span class="ot">&lt;-</span> <span class="cf">function</span>(NYBightWatersheds, Ocean20mDepth, bedelev, MHHW){</span>
+<span id="cb2-3"><a href="quantification.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Insert code</span></span>
+<span id="cb2-4"><a href="quantification.html#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="map-habitat-extent-and-type" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Map Habitat Extent and Type<a href="quantification.html#map-habitat-extent-and-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -344,62 +344,62 @@ div.csl-indent {
 </li>
 <li><em>Habitat Zone / Ecosystem Type</em>: 1 = upland, 2 = marine, deepwater, 3 = marine, subtidal, 4 = marine, intertidal, 5 = estuarine subtidal, 6 = estuarine intertidal, or 7 = freshwater</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="quantification.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Functions for isolating habitat types</span></span>
-<span id="cb9-2"><a href="quantification.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="quantification.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">##########</span></span>
-<span id="cb9-4"><a href="quantification.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Labels for tidal zones</span></span>
-<span id="cb9-5"><a href="quantification.html#cb9-5" aria-hidden="true" tabindex="-1"></a>ZoneTidal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Deep&quot;</span>, <span class="st">&quot;Subtidal&quot;</span>, <span class="st">&quot;Intertidal&quot;</span>, <span class="st">&quot;Upland&quot;</span>)</span>
-<span id="cb9-6"><a href="quantification.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="quantification.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Create function for isolating tidal zones</span></span>
-<span id="cb9-8"><a href="quantification.html#cb9-8" aria-hidden="true" tabindex="-1"></a>set.tidal.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(bedelev, MLLW, MHHW){</span>
-<span id="cb9-9"><a href="quantification.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
-<span id="cb9-10"><a href="quantification.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  tidalzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>,</span>
-<span id="cb9-11"><a href="quantification.html#cb9-11" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> MLLW, <span class="dv">2</span>,</span>
-<span id="cb9-12"><a href="quantification.html#cb9-12" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> MHHW, <span class="dv">3</span>, </span>
-<span id="cb9-13"><a href="quantification.html#cb9-13" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&gt;</span> MHHW, <span class="dv">4</span>, <span class="cn">NA</span>))))</span>
-<span id="cb9-14"><a href="quantification.html#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb9-15"><a href="quantification.html#cb9-15" aria-hidden="true" tabindex="-1"></a>  tidalzone</span>
-<span id="cb9-16"><a href="quantification.html#cb9-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-17"><a href="quantification.html#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="quantification.html#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="do">##########</span></span>
-<span id="cb9-19"><a href="quantification.html#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Labels for salinity zones</span></span>
-<span id="cb9-20"><a href="quantification.html#cb9-20" aria-hidden="true" tabindex="-1"></a>ZoneSalinity <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Marine&quot;</span>, <span class="st">&quot;Estuarine&quot;</span>, <span class="st">&quot;Fresh&quot;</span>)</span>
-<span id="cb9-21"><a href="quantification.html#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-22"><a href="quantification.html#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">#Create function for isolating salinity zones</span></span>
-<span id="cb9-23"><a href="quantification.html#cb9-23" aria-hidden="true" tabindex="-1"></a>set.salinity.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(salinity){</span>
-<span id="cb9-24"><a href="quantification.html#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
-<span id="cb9-25"><a href="quantification.html#cb9-25" aria-hidden="true" tabindex="-1"></a>  salinityzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(salinity <span class="sc">&gt;=</span><span class="dv">30</span>, <span class="dv">1</span>, </span>
-<span id="cb9-26"><a href="quantification.html#cb9-26" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> salinity <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="dv">2</span>, </span>
-<span id="cb9-27"><a href="quantification.html#cb9-27" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity <span class="sc">&lt;</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> salinity <span class="sc">&gt;=</span> <span class="dv">0</span>, <span class="dv">3</span>, <span class="cn">NA</span>)))</span>
-<span id="cb9-28"><a href="quantification.html#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb9-29"><a href="quantification.html#cb9-29" aria-hidden="true" tabindex="-1"></a>  salinityzone</span>
-<span id="cb9-30"><a href="quantification.html#cb9-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-31"><a href="quantification.html#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-32"><a href="quantification.html#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="do">##########</span></span>
-<span id="cb9-33"><a href="quantification.html#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co">#Labels for habitat zones</span></span>
-<span id="cb9-34"><a href="quantification.html#cb9-34" aria-hidden="true" tabindex="-1"></a>ZoneHabitat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Upland&quot;</span>, <span class="st">&quot;Marine.Deep&quot;</span>, <span class="st">&quot;Marine.Subtidal&quot;</span>, <span class="st">&quot;Marine.Intertidal&quot;</span>, <span class="st">&quot;Estuarine.Subtidal&quot;</span>, <span class="st">&quot;Estuarine.Intertidal&quot;</span>, <span class="st">&quot;Freshwater&quot;</span>)</span>
-<span id="cb9-35"><a href="quantification.html#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-36"><a href="quantification.html#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="co">#Create function for isolating habitat zones</span></span>
-<span id="cb9-37"><a href="quantification.html#cb9-37" aria-hidden="true" tabindex="-1"></a>set.habitat.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(tidalzone, salinityzone){</span>
-<span id="cb9-38"><a href="quantification.html#cb9-38" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
-<span id="cb9-39"><a href="quantification.html#cb9-39" aria-hidden="true" tabindex="-1"></a>  habitatzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(tidalzone <span class="sc">==</span> <span class="dv">4</span>, <span class="dv">1</span>,</span>
-<span id="cb9-40"><a href="quantification.html#cb9-40" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">2</span>,</span>
-<span id="cb9-41"><a href="quantification.html#cb9-41" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb9-42"><a href="quantification.html#cb9-42" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">4</span>,</span>
-<span id="cb9-43"><a href="quantification.html#cb9-43" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">5</span>,</span>
-<span id="cb9-44"><a href="quantification.html#cb9-44" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">6</span>,</span>
-<span id="cb9-45"><a href="quantification.html#cb9-45" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">7</span>, <span class="cn">NA</span>)))))))</span>
-<span id="cb9-46"><a href="quantification.html#cb9-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb9-47"><a href="quantification.html#cb9-47" aria-hidden="true" tabindex="-1"></a>  habitatzone</span>
-<span id="cb9-48"><a href="quantification.html#cb9-48" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="quantification.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Functions for isolating habitat types</span></span>
+<span id="cb3-2"><a href="quantification.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="quantification.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="do">##########</span></span>
+<span id="cb3-4"><a href="quantification.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Labels for tidal zones</span></span>
+<span id="cb3-5"><a href="quantification.html#cb3-5" aria-hidden="true" tabindex="-1"></a>ZoneTidal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Deep&quot;</span>, <span class="st">&quot;Subtidal&quot;</span>, <span class="st">&quot;Intertidal&quot;</span>, <span class="st">&quot;Upland&quot;</span>)</span>
+<span id="cb3-6"><a href="quantification.html#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="quantification.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Create function for isolating tidal zones</span></span>
+<span id="cb3-8"><a href="quantification.html#cb3-8" aria-hidden="true" tabindex="-1"></a>set.tidal.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(bedelev, MLLW, MHHW){</span>
+<span id="cb3-9"><a href="quantification.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
+<span id="cb3-10"><a href="quantification.html#cb3-10" aria-hidden="true" tabindex="-1"></a>  tidalzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>,</span>
+<span id="cb3-11"><a href="quantification.html#cb3-11" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> MLLW, <span class="dv">2</span>,</span>
+<span id="cb3-12"><a href="quantification.html#cb3-12" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> MHHW, <span class="dv">3</span>, </span>
+<span id="cb3-13"><a href="quantification.html#cb3-13" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&gt;</span> MHHW, <span class="dv">4</span>, <span class="cn">NA</span>))))</span>
+<span id="cb3-14"><a href="quantification.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb3-15"><a href="quantification.html#cb3-15" aria-hidden="true" tabindex="-1"></a>  tidalzone</span>
+<span id="cb3-16"><a href="quantification.html#cb3-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-17"><a href="quantification.html#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="quantification.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="do">##########</span></span>
+<span id="cb3-19"><a href="quantification.html#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Labels for salinity zones</span></span>
+<span id="cb3-20"><a href="quantification.html#cb3-20" aria-hidden="true" tabindex="-1"></a>ZoneSalinity <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Marine&quot;</span>, <span class="st">&quot;Estuarine&quot;</span>, <span class="st">&quot;Fresh&quot;</span>)</span>
+<span id="cb3-21"><a href="quantification.html#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="quantification.html#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#Create function for isolating salinity zones</span></span>
+<span id="cb3-23"><a href="quantification.html#cb3-23" aria-hidden="true" tabindex="-1"></a>set.salinity.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(salinity){</span>
+<span id="cb3-24"><a href="quantification.html#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
+<span id="cb3-25"><a href="quantification.html#cb3-25" aria-hidden="true" tabindex="-1"></a>  salinityzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(salinity <span class="sc">&gt;=</span><span class="dv">30</span>, <span class="dv">1</span>, </span>
+<span id="cb3-26"><a href="quantification.html#cb3-26" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> salinity <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="dv">2</span>, </span>
+<span id="cb3-27"><a href="quantification.html#cb3-27" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity <span class="sc">&lt;</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> salinity <span class="sc">&gt;=</span> <span class="dv">0</span>, <span class="dv">3</span>, <span class="cn">NA</span>)))</span>
+<span id="cb3-28"><a href="quantification.html#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb3-29"><a href="quantification.html#cb3-29" aria-hidden="true" tabindex="-1"></a>  salinityzone</span>
+<span id="cb3-30"><a href="quantification.html#cb3-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-31"><a href="quantification.html#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="quantification.html#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="do">##########</span></span>
+<span id="cb3-33"><a href="quantification.html#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#Labels for habitat zones</span></span>
+<span id="cb3-34"><a href="quantification.html#cb3-34" aria-hidden="true" tabindex="-1"></a>ZoneHabitat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Upland&quot;</span>, <span class="st">&quot;Marine.Deep&quot;</span>, <span class="st">&quot;Marine.Subtidal&quot;</span>, <span class="st">&quot;Marine.Intertidal&quot;</span>, <span class="st">&quot;Estuarine.Subtidal&quot;</span>, <span class="st">&quot;Estuarine.Intertidal&quot;</span>, <span class="st">&quot;Freshwater&quot;</span>)</span>
+<span id="cb3-35"><a href="quantification.html#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="quantification.html#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co">#Create function for isolating habitat zones</span></span>
+<span id="cb3-37"><a href="quantification.html#cb3-37" aria-hidden="true" tabindex="-1"></a>set.habitat.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(tidalzone, salinityzone){</span>
+<span id="cb3-38"><a href="quantification.html#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
+<span id="cb3-39"><a href="quantification.html#cb3-39" aria-hidden="true" tabindex="-1"></a>  habitatzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(tidalzone <span class="sc">==</span> <span class="dv">4</span>, <span class="dv">1</span>,</span>
+<span id="cb3-40"><a href="quantification.html#cb3-40" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">2</span>,</span>
+<span id="cb3-41"><a href="quantification.html#cb3-41" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb3-42"><a href="quantification.html#cb3-42" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">4</span>,</span>
+<span id="cb3-43"><a href="quantification.html#cb3-43" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">5</span>,</span>
+<span id="cb3-44"><a href="quantification.html#cb3-44" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">6</span>,</span>
+<span id="cb3-45"><a href="quantification.html#cb3-45" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">7</span>, <span class="cn">NA</span>)))))))</span>
+<span id="cb3-46"><a href="quantification.html#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb3-47"><a href="quantification.html#cb3-47" aria-hidden="true" tabindex="-1"></a>  habitatzone</span>
+<span id="cb3-48"><a href="quantification.html#cb3-48" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="rasterize-habitat-patches" class="section level3 hasAnchor" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> Rasterize Habitat Patches<a href="quantification.html#rasterize-habitat-patches" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>patch.rasterizer</code>: This function rasterizes the output of <code>patch.mapper</code> based on a specified grid resolution and aligns that layer with a specified spatial coordinate system.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="quantification.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Functions for rasterizing habitat types</span></span>
-<span id="cb10-2"><a href="quantification.html#cb10-2" aria-hidden="true" tabindex="-1"></a>patch.rasterizer <span class="ot">&lt;-</span> <span class="cf">function</span>(patch.mapper.output, grid.resolution, my.coordinate.system){</span>
-<span id="cb10-3"><a href="quantification.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Insert code</span></span>
-<span id="cb10-4"><a href="quantification.html#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="quantification.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Functions for rasterizing habitat types</span></span>
+<span id="cb4-2"><a href="quantification.html#cb4-2" aria-hidden="true" tabindex="-1"></a>patch.rasterizer <span class="ot">&lt;-</span> <span class="cf">function</span>(patch.mapper.output, grid.resolution, my.coordinate.system){</span>
+<span id="cb4-3"><a href="quantification.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Insert code</span></span>
+<span id="cb4-4"><a href="quantification.html#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
@@ -434,13 +434,13 @@ div.csl-indent {
 <div id="fresh.int-code" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> fresh.int Code<a href="quantification.html#fresh.int-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="quantification.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
-<span id="cb11-2"><a href="quantification.html#cb11-2" aria-hidden="true" tabindex="-1"></a>fresh.tid <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb11-3"><a href="quantification.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  fresh.tid.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb11-4"><a href="quantification.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="quantification.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb11-6"><a href="quantification.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  fresh.tid.HSI</span>
-<span id="cb11-7"><a href="quantification.html#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="quantification.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
+<span id="cb5-2"><a href="quantification.html#cb5-2" aria-hidden="true" tabindex="-1"></a>fresh.tid <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb5-3"><a href="quantification.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  fresh.tid.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb5-4"><a href="quantification.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="quantification.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb5-6"><a href="quantification.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  fresh.tid.HSI</span>
+<span id="cb5-7"><a href="quantification.html#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
@@ -508,13 +508,13 @@ div.csl-indent {
 <div id="est.int-code" class="section level3 hasAnchor" number="3.3.7">
 <h3><span class="header-section-number">3.3.7</span> est.int Code<a href="quantification.html#est.int-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="quantification.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
-<span id="cb12-2"><a href="quantification.html#cb12-2" aria-hidden="true" tabindex="-1"></a>est.int <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb12-3"><a href="quantification.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  est.int.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb12-4"><a href="quantification.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="quantification.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb12-6"><a href="quantification.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  est.int.HSI</span>
-<span id="cb12-7"><a href="quantification.html#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="quantification.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
+<span id="cb6-2"><a href="quantification.html#cb6-2" aria-hidden="true" tabindex="-1"></a>est.int <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb6-3"><a href="quantification.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  est.int.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb6-4"><a href="quantification.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="quantification.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb6-6"><a href="quantification.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  est.int.HSI</span>
+<span id="cb6-7"><a href="quantification.html#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
@@ -603,13 +603,13 @@ div.csl-indent {
 <div id="est.sub-code" class="section level3 hasAnchor" number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> est.sub Code<a href="quantification.html#est.sub-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="quantification.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
-<span id="cb13-2"><a href="quantification.html#cb13-2" aria-hidden="true" tabindex="-1"></a>est.sub <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb13-3"><a href="quantification.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  est.sub.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb13-4"><a href="quantification.html#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="quantification.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb13-6"><a href="quantification.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  est.sub.HSI</span>
-<span id="cb13-7"><a href="quantification.html#cb13-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="quantification.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
+<span id="cb7-2"><a href="quantification.html#cb7-2" aria-hidden="true" tabindex="-1"></a>est.sub <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb7-3"><a href="quantification.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  est.sub.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb7-4"><a href="quantification.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="quantification.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb7-6"><a href="quantification.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  est.sub.HSI</span>
+<span id="cb7-7"><a href="quantification.html#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
@@ -643,13 +643,13 @@ div.csl-indent {
 <div id="mar.int-code" class="section level3 hasAnchor" number="3.5.3">
 <h3><span class="header-section-number">3.5.3</span> mar.int Code<a href="quantification.html#mar.int-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="quantification.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
-<span id="cb14-2"><a href="quantification.html#cb14-2" aria-hidden="true" tabindex="-1"></a>mar.int <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb14-3"><a href="quantification.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  mar.int.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb14-4"><a href="quantification.html#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="quantification.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb14-6"><a href="quantification.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  mar.int.HSI</span>
-<span id="cb14-7"><a href="quantification.html#cb14-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="quantification.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
+<span id="cb8-2"><a href="quantification.html#cb8-2" aria-hidden="true" tabindex="-1"></a>mar.int <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb8-3"><a href="quantification.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  mar.int.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb8-4"><a href="quantification.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="quantification.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb8-6"><a href="quantification.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  mar.int.HSI</span>
+<span id="cb8-7"><a href="quantification.html#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
@@ -683,13 +683,13 @@ div.csl-indent {
 <div id="mar.sub-code" class="section level3 hasAnchor" number="3.6.3">
 <h3><span class="header-section-number">3.6.3</span> mar.sub Code<a href="quantification.html#mar.sub-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="quantification.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
-<span id="cb15-2"><a href="quantification.html#cb15-2" aria-hidden="true" tabindex="-1"></a>mar.sub <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb15-3"><a href="quantification.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  mar.sub.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb15-4"><a href="quantification.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="quantification.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb15-6"><a href="quantification.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  mar.sub.HSI</span>
-<span id="cb15-7"><a href="quantification.html#cb15-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="quantification.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
+<span id="cb9-2"><a href="quantification.html#cb9-2" aria-hidden="true" tabindex="-1"></a>mar.sub <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb9-3"><a href="quantification.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  mar.sub.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb9-4"><a href="quantification.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="quantification.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb9-6"><a href="quantification.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  mar.sub.HSI</span>
+<span id="cb9-7"><a href="quantification.html#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
@@ -758,13 +758,13 @@ Within the NYBEM, percentages of light through the Water (PLW) are derived from 
 <div id="mar.deep-code" class="section level3 hasAnchor" number="3.7.8">
 <h3><span class="header-section-number">3.7.8</span> mar.deep Code<a href="quantification.html#mar.deep-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="quantification.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
-<span id="cb16-2"><a href="quantification.html#cb16-2" aria-hidden="true" tabindex="-1"></a>mar.deep <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb16-3"><a href="quantification.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  mar.deep.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb16-4"><a href="quantification.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="quantification.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb16-6"><a href="quantification.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  mar.deep.HSI</span>
-<span id="cb16-7"><a href="quantification.html#cb16-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="quantification.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function for assessing habitat quality</span></span>
+<span id="cb10-2"><a href="quantification.html#cb10-2" aria-hidden="true" tabindex="-1"></a>mar.deep <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb10-3"><a href="quantification.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  mar.deep.HSI <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb10-4"><a href="quantification.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="quantification.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb10-6"><a href="quantification.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  mar.deep.HSI</span>
+<span id="cb10-7"><a href="quantification.html#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
@@ -772,13 +772,13 @@ Within the NYBEM, percentages of light through the Water (PLW) are derived from 
 <h2><span class="header-section-number">3.8</span> New York Bight Overarching Model (NYBEM.wrapper) (I)<a href="quantification.html#new-york-bight-overarching-model-nybem.wrapper-i" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span style="color: red;">Dougherty and McKay to write.</span></p>
 <p>Numerical code for running the entire model suite</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="quantification.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function </span></span>
-<span id="cb17-2"><a href="quantification.html#cb17-2" aria-hidden="true" tabindex="-1"></a>NYBEM.wrapper <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb17-3"><a href="quantification.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  NYBEM.out <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb17-4"><a href="quantification.html#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="quantification.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb17-6"><a href="quantification.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  NYBEM.out</span>
-<span id="cb17-7"><a href="quantification.html#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="quantification.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function </span></span>
+<span id="cb11-2"><a href="quantification.html#cb11-2" aria-hidden="true" tabindex="-1"></a>NYBEM.wrapper <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb11-3"><a href="quantification.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  NYBEM.out <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb11-4"><a href="quantification.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="quantification.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
+<span id="cb11-6"><a href="quantification.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  NYBEM.out</span>
+<span id="cb11-7"><a href="quantification.html#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
