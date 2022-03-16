@@ -7,7 +7,7 @@ The foundation of ecological modeling is a clear conceptualization of the ecosys
 
 Conceptual ecological models are required for all USACE ecosystem restoration projects due to their utility to increase understanding, identify potential alternatives, and facilitate team dialog [@fischenich_application_2008; @us_army_corps_of_engineers_assuring_2011]. These same benefits apply for assessing environmental effects of proposed coastal storm risk management actions. Additionally, conceptual models also inform and structure the development of quantitative ecological models [@grant_ecological_2008; @swannack_ecological_2012] such as the NYBEM. Conceptual models of the New York Bight were iteratively developed through the mediated workshops described in Section 2.3. Workshop ideas and content were synthesized with available literature, conceptual models of similar ecosystems (e.g., wetland function in Coastal Louisiana; @twilley_formulation_nodate), and existing regional conceptual models [e.g., @montagna_conceptual_2013]. A seven step conceptual model development process was iteratively applied as workshops proceeded [@fischenich_application_2008; Table 3.1].
 
-```{r}
+```{r echo=FALSE}
 #Create empty table
 Table3.1 <- as.data.frame(matrix(NA, nrow = 7, ncol = 2))
 colnames(Table3.1) <- c("Step", "NYBEM Application")
@@ -40,7 +40,7 @@ Ultimately, multiple conceptual models were developed of the New York Bight with
 Patch-scale assessments were developed for both the marine and estuarine ecosystems. Models were developed for each of six major ecosystem types (Table 3.2). These ecosystems are defined from a combined classification based on @cowardin_classification_1979 and @us_fish_and_wildlife_service_usfws_significant_1997. Salinity and tidal range differentiate these ecosystems, both of which can change under futures with and without agency projects. Other analyses have developed ecosystem-scale assessments and models based on similar or more refined divisions in physical properties (e.g., @clough_modeling_2016, @fischbach_building_2018), and the current criteria represent a compromise between the need for detailed assessment of the type and location of infrastructure impacts and the need for a readily implementable rule set applicable at the broad spatial scale of the NYBEM.  
 
 
-```{r}
+```{r echo=FALSE}
 #Create empty table
 Table3.2 <- as.data.frame(matrix(NA, nrow = 3, ncol = 4))
 colnames(Table3.2) <- c("Tidal Limits", "Marine (Salinity >= 30ppt)", "Estuarine (Salinity = 0.5 to 30ppt)", "Freshwater (Salinity <= 0.5ppt)")

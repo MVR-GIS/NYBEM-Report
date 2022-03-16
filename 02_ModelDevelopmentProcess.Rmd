@@ -35,7 +35,7 @@ USACE planning studies sequentially make decisions about potential actions and b
 
 Importantly, a phased development approach applies the best available information at the moment of application. However, this inherently leads to "interim" or "draft" models that are sequentially applied, reviewed, and improved. In this report, Phase 1 of model development is documented, while presenting the planned path forward for future phases. Development plans are subject to change. 
 
-```{r}
+```{r echo=FALSE}
 #Create empty table
 Table1 <- as.data.frame(matrix(NA, nrow = 7, ncol = 4))
 colnames(Table1) <- c("District Planning Milestone", "Interim Report", "Draft Feasibility Report", "Final Feasibility Report")
