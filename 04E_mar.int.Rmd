@@ -1,27 +1,111 @@
 ## Marine, Intertidal Submodel (mar.int) (I)
 
-<span style="color: red;">McKay and Mahan to write.</span>
+
+Marine, intertidal ecosystems include the areas of high salinity (> 30 psu) bracketed by tidal limits of the mean higher high water (MHHW) and mean lower low water (MLLW). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 
+
+Figure XX presents a conceptual model of the marine, intertidal ecosystem. This nearshore ecosystem is strongly influenced by two major pressures, the physical drivers of the ocean environment (e.g., currents, sediment transport) and human uses of the system (e.g., beaches and associated upland development). Ecologically, this ecosystem hosts a variety of species of management interest such as seabeach amaranth, horseshoe crabs, shorebirds (e.g., piping plover, terns, red knot), and sea turtles. 
+
+Coastal storm risk management actions have the potential to affect this ecosystem through two primary mechanisms. First, some risk management actions (e.g., storm surge barriers) could be directly constructed in this area. Second, large-scale features have the potential to alter coastal dynamics to indirectly, although this affect may occur to a lesser extent given the overarching dominance of ocean effects.
 
 
-1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
-
-Present and describe the conceptual model for this system.
-
-**FIGURE**
+![*Conceptual model for the marine, intertidal submodel.*](ZZ_Fig08_Mar.Int_ConModel.png)
 
 
-Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
+The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, intertidal zones of the region. This submodel drew heavily from four general bodies of knowledge, specifically:
 
-**TABLE**
-
-**FIGURE WITH SUITABILITY CURVES**
-
-Present the overarching habitat suitability index equation.
-
-**EQUATION**
+* USFWS Habitat Evaluation Procedure models: tern (Carreker 1985, USFWS 2001), hard clam (Mulholland 1984), plover (USFWS 2001), horseshoe crab (Brady and Schrading 1996, USFWS 2001), red knot (USFWS 2001).  
+* Other habitat suitability models: plover (Farmer et al. 2000, Seavey et al. 2011), horseshoe crab (Avissar 2006, Jackson et al. 2010, Lathrop et al. 2013), amaranth (Sellars and Jolls 2007), sea turtles (Dunkin et al. 2016)  
+* Fire Island to Montauk Point Habitat Evaluation Procedure OceanBeach Sub-Model (USACE 2009)  
+* Empirical data studies of the system: Virginia Tech shorebird program (Hermanns et al. 2018), Rutgers horseshoe crab mapping (Lathrop et al. 2013), international shorebird survey (Manomet)
 
 
-### Variable-1
+Four classes of processes and dynamics were identified from a review of these models and studies: long-term and large-scale wave and sediment dynamics, beach morphology, benthic food supplies, and the role of this system as a corridor between aquatic and upland environments. From these processes, six surrogate metrics were identified, which collectively reflect the condition of the marine, intertidal zone. Notably, variables reflecting wave and sediment dynamics are minimally included in this phase of modeling due to assessment challenges. The sections below describe each metric and the rationale in detail, but briefly:
+
+* Beach slope was identified as a proxy for larger effects on overall morphology.  
+* The proportion of time a beach is exposed provides a metric of benthic food supplies and availability of foraging habitat.  
+* An assessment of fine substrate provides a metric of benthic foraging as well as physical properties of the beach.  
+* Upland land use intensity and shoreline armoring metrics describe the general human use pressures on a given system and viability of corridor functions.  
+* A vegetation cover metric assesses the viability of the corridor relative to different taxa movement requirements.
+
+
+The overall habitat suitability of the marine, intertidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these six metrics.
+
+
+$I_{mar.int} = \frac{beach.slope + exp.dur + substrate + land.use + veg.cover + shoreline}{6}$ 
+
+Where $I_{mar.int}$ is an overarching index of ecosystem quality for the marine intertidal zone, $beach.slope$ is a suitability index relative to beach slope, $exp.dur$ is a suitability index relative to the duration of beach exposure, $substrate$ is a suitability index relative to fine substrate, $land.use$ is a suitability index relative to adjacent upland land uses, $veg.cover$ is a suitability index relative to vegetative cover, and $shoreline$ is a suitability index relative to shoreline armoring. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
+
+
+```{r echo=FALSE, fig.width=8, fig.height=12}
+#Create data frame with mar.int submodel
+NYBEM.mar.int <- data.frame(matrix(NA,nrow=3,ncol=12))
+colnames(NYBEM.mar.int) <- c("beach.slope.per", "beach.slope.SIV", "exp.dur.per", "exp.dur.SIV",
+                             "substrate.fines", "substrate.SIV", "land.use.per", "land.use.SIV",
+                             "veg.cover.per", "veg.cover.SIV", "shoreline.m", "shoreline.SIV")
+NYBEM.mar.int$beach.slope.per <- c(0, 10, 30)
+NYBEM.mar.int$beach.slope.SIV <- c(1, 1, 0)
+NYBEM.mar.int$exp.dur.per <- c(0, 50, 100)
+NYBEM.mar.int$exp.dur.SIV <- c(0, 1, 0)
+NYBEM.mar.int$substrate.fines <- c(0, 100, NA)
+NYBEM.mar.int$substrate.SIV <- c(1, 0, NA)
+NYBEM.mar.int$land.use.per <- c(0, 50, 100)
+NYBEM.mar.int$land.use.SIV <- c(1, 1, 0)
+NYBEM.mar.int$veg.cover.per <- c(0, 20, 100)
+NYBEM.mar.int$veg.cover.SIV <- c(1, 1, 0)
+NYBEM.mar.int$shoreline.m <- c(0, 100, 500)
+NYBEM.mar.int$shoreline.SIV <- c(0.5, 1, 1)
+
+##########
+#Create summary figure for mar.int submodel
+par(mfrow=c(3,2), cex=1.0)
+
+  #beach.slope.per
+  plot(NYBEM.mar.int$beach.slope.per, NYBEM.mar.int$beach.slope.SIV, xlim=c(0,30), ylim=c(0,1), type="l",
+       xlab="Slope of Intertidal Zone (%)", ylab="Suitability Index (beach.slope)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.int$beach.slope.per, NYBEM.mar.int$beach.slope.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.int$beach.slope.per, NYBEM.mar.int$beach.slope.SIV, lwd=3)
+  
+  #exp.dur.per
+  plot(NYBEM.mar.int$exp.dur.per, NYBEM.mar.int$exp.dur.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Intertidal Habitat Exposure (%time)", ylab="Suitability Index (exp.dur)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.int$exp.dur.per, NYBEM.mar.int$exp.dur.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.int$exp.dur.per, NYBEM.mar.int$exp.dur.SIV, lwd=3)
+  
+  #substrate.fines
+  plot(NYBEM.mar.int$substrate.fines, NYBEM.mar.int$substrate.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Substrate Composition (%fines)", ylab="Suitability Index (substrate.fines)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.int$substrate.fines, NYBEM.mar.int$substrate.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.int$substrate.fines, NYBEM.mar.int$substrate.SIV, lwd=3)
+  
+  #land.use.per
+  plot(NYBEM.mar.int$land.use.per, NYBEM.mar.int$land.use.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Developed Area within 100m (%)", ylab="Suitability Index (land.use)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.int$land.use.per, NYBEM.mar.int$land.use.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.int$land.use.per, NYBEM.mar.int$land.use.SIV, lwd=3)
+  
+  #veg.cover.per
+  plot(NYBEM.mar.int$veg.cover.per, NYBEM.mar.int$veg.cover.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Vegetation Cover (%)", ylab="Suitability Index (veg.cover)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.int$veg.cover.per, NYBEM.mar.int$veg.cover.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.int$veg.cover.per, NYBEM.mar.int$veg.cover.SIV, lwd=3)
+  
+  #shoreline.m
+  plot(NYBEM.mar.int$shoreline.m, NYBEM.mar.int$shoreline.SIV, xlim=c(0,500), ylim=c(0,1), type="l",
+       xlab="Distance to Armored Shoreline (m)", ylab="Suitability Index (shoreline)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.int$shoreline.m, NYBEM.mar.int$shoreline.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.int$shoreline.m, NYBEM.mar.int$shoreline.SIV, lwd=3)
+
+```
+
+### Beach Slope
+
+<span style="color: red;">McKay to resume writing here.</span>
 
 2-5 paragraphs presenting three main ideas.
 
@@ -31,9 +115,15 @@ Describe how this variable is assessed and quantified in NYBEM.
 
 Present the equation for assessing the suitability index.
 
-**EQUATION**
+$$beach.slope = \begin{pmatrix} 1.0 & slope_{per}=0-10\\
+-0.05*slope_{per}+1.5 & slope_{per}=10-30\\
+0.0 & slope_{per}>30
+\end{pmatrix}$$ 
 
-### Variable-2
+Where $beach.slope$ is a suitability index relative to beach slope and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
+
+
+### Exposure Duration
 
 2-5 paragraphs presenting three main ideas.
 
@@ -43,7 +133,75 @@ Describe how this variable is assessed and quantified in NYBEM.
 
 Present the equation for assessing the suitability index.
 
-**EQUATION**
+$$exp.dur = \begin{pmatrix} 0.02*t_{exp} & t_{exp}<50\\
+-0.02*t_{exp}+2 & t_{exp}>50
+\end{pmatrix}$$ 
+
+Where $exp.dur$ is a suitability index relative to exposure duration and $t_{exp}$ is the percent of time an intertidal area is exposed.
+
+
+### Substrate
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM. **DO SUBSTRATE DATA EXTEND INTO THE INTERTIDAL ZONE?**
+
+$substrate = -0.1*fines_{per}+1$ 
+
+Where $substrate$ is a suitability index relative to fine substrate and $fines_{per}$ is the percent of fine substrate (silt and clay).
+
+
+### Upland Land Use
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+$$land.use = \begin{pmatrix} 1.0 & urban_{per}=0-50\\
+-0.02*urban_{per}+2 & urban_{per}=50-100
+\end{pmatrix}$$ 
+
+Where $land.use$ is a suitability index relative to adjacent upland land uses and $urban_{per}$ is the percent of adjancent upland in developed (i.e., urban) land uses within 500m.
+
+
+### Vegetation Cover
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+$$veg.cover = \begin{pmatrix} 1.0 & cover_{per}=0-20\\
+-0.0125*urban_{per}+1.25 & cover_{per}=20-100
+\end{pmatrix}$$ 
+
+Where $veg.cover$ is a suitability index relative to vegetation coverage and $cover_{per}$ is the percent of vegetation coverage.
+
+
+### Shoreline Armoring
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+$$shoreline = \begin{pmatrix} 0.05*dist_{armor}+0.5 & dist_{armor}=0-100m\\
+1.0 & dist_{armor}>100m
+\end{pmatrix}$$ 
+
+Where $shoreline$ is a suitability index relative to shoreline armoring and $dist_{armor}$ is the distance to the nearest armored shoreline in meters.
 
 
 ### mar.int Code
@@ -52,11 +210,11 @@ Numerical code for assessing habitat quality (<span style="color: red;">Doughert
 
 
 ```{r echo=TRUE}
-#Function for assessing habitat quality
-mar.int <- function(x, y){
-  mar.int.HSI <- x + y
+#Load ecorest
+library(ecorest)
 
-  #Send output
-  mar.int.HSI
-}
+#Test mar.int with ecorest
+mar.int.test <- c(20, 25, 50, 75, 60, 50)
+ecorest::SIcalc(NYBEM.mar.int, mar.int.test)
+
 ```

@@ -1,6 +1,6 @@
 ## Estuarine, Intertidal Submodel (est.int) (I)
 
-<span style="color: red;">Mahan and McKay to write.</span>
+<span style="color: red;">Check equations.</span>
 
 Estuarine environments include marine water that has been diluted by freshwater runoff from the land [@prosser_impacts_2018]. Due to tidal influence, intertidal ecosystems are found between high and low tide, experiencing varying land and sea influences, whereas subtidal ecosystems are constantly submerged. The estuarine intertidal ecosystem considers areas with salinity values greater than 0.5 ppt to 30 ppt and elevation from MHHW to MLLW. Plant, animal, and microorganism populations, as well as their nonliving surroundings, interact as a working unit in intertidal ecosystems, which are exposed at low tides (Citation). Within the estuarine intertidal ecosystem, ecological processes are linked to physical and chemical characteristics. These characteristics can experience change under anthropogenic and climatic pressures that deviate from the homeostasis, or baseline, habitat condition. This can result in reduced habitat suitability across the estuarine intertidal ecosystem.   
 
@@ -8,20 +8,82 @@ Tidal marshes are vegetated intertidal ecosystems found at the land-sea interfac
 
 The following variables are accessible to the estuarine intertidal submodel portion of the NYBEM: salinity, episodic sediment deposition, edge erosion, vegetative cover, development of adjacent uplands, and the presence/absence of shoreline armoring.
 
-Present and describe the conceptual model for this system.
+![*Conceptual model for the estuarine, intertidal submodel.*](ZZ_Fig05_Est.Int_ConModel.png)
 
-**FIGURE**
+The overall habitat suitability of the marine, intertidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these six metrics.
 
 
-Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
+$I_{est.int} = \frac{salinity + erosion + veg.cover + deposition + upland + shoreline}{6}$ 
 
-**TABLE**
+Where $I_{est.int}$ is an overarching index of ecosystem quality for the marine intertidal zone, $salinity$ is a suitability index relative to salinity, $erosion$ is a suitability index relative to the edge erosion, $veg.cover$ is a suitability index relative to vegetative cover, $deposition$ is a suitability index relative to episodic sediment deposition, $upland$ is a suitability index relative to adjacent upland land uses, and $shoreline$ is a suitability index relative to shoreline armoring. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
-**FIGURE WITH SUITABILITY CURVES**
+```{r echo=FALSE, fig.width=8, fig.height=12}
+#Create data frame with est.int submodel
+NYBEM.est.int <- data.frame(matrix(NA,nrow=3,ncol=12))
+colnames(NYBEM.est.int) <- c("salinity.psu", "salinity.SIV", "erosion", "erosion.SIV",
+                             "veg.cover.per", "veg.cover.SIV", "deposition", "deposition.SIV", 
+                             "land.use.per", "land.use.SIV", "shoreline.m", "shoreline.SIV")
+NYBEM.est.int$salinity.psu <- c(0, 30, NA)
+NYBEM.est.int$salinity.SIV <- c(1, 0, NA)
+NYBEM.est.int$erosion <- c(-50, 10, 50)
+NYBEM.est.int$erosion.SIV <- c(1, 1, 0)
+NYBEM.est.int$veg.cover.per <- c(0, 100, NA)
+NYBEM.est.int$veg.cover.SIV <- c(0.1, 1, NA)
+NYBEM.est.int$deposition <- c(0, 100, NA)
+NYBEM.est.int$deposition.SIV <- c(1, 0, NA)
+NYBEM.est.int$land.use.per <- c(0, 50, 100)
+NYBEM.est.int$land.use.SIV <- c(1, 1, 0)
+NYBEM.est.int$shoreline.m <- c(0, 100, 500)
+NYBEM.est.int$shoreline.SIV <- c(0.5, 1, 1)
 
-Present the overarching habitat suitability index equation.
+##########
+#Create summary figure for mar.int submodel
+par(mfrow=c(3,2), cex=1.0)
 
-**EQUATION**
+  #salinity.psu
+  plot(NYBEM.est.int$salinity.psu, NYBEM.est.int$salinity.SIV, xlim=c(0,30), ylim=c(0,1), type="l",
+       xlab="Salinity (psu)", ylab="Suitability Index (salinity.psu)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.est.int$salinity.psu, NYBEM.est.int$salinity.SIV, pch=19, cex=2)
+  lines(NYBEM.est.int$salinity.psu, NYBEM.est.int$salinity.SIV, lwd=3)
+  
+  #erosion
+  plot(NYBEM.est.int$erosion, NYBEM.est.int$erosion.SIV, xlim=c(-50,50), ylim=c(0,1), type="l",
+       xlab="Percent Change in Velocity from Existing", ylab="Suitability Index (erosion)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.est.int$erosion, NYBEM.est.int$erosion.SIV, pch=19, cex=2)
+  lines(NYBEM.est.int$erosion, NYBEM.est.int$erosion.SIV, lwd=3)
+  
+  #veg.cover.per
+  plot(NYBEM.est.int$veg.cover.per, NYBEM.est.int$veg.cover.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Vegetation Cover (%)", ylab="Suitability Index (veg.cover)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.est.int$veg.cover.per, NYBEM.est.int$veg.cover.SIV, pch=19, cex=2)
+  lines(NYBEM.est.int$veg.cover.per, NYBEM.est.int$veg.cover.SIV, lwd=3)
+  
+  #deposition
+  plot(NYBEM.est.int$deposition, NYBEM.est.int$deposition.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Episodic Sediment Deposition", ylab="Suitability Index (deposition)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.est.int$deposition, NYBEM.est.int$deposition.SIV, pch=19, cex=2)
+  lines(NYBEM.est.int$deposition, NYBEM.est.int$deposition.SIV, lwd=3)
+  
+  #land.use.per
+  plot(NYBEM.est.int$land.use.per, NYBEM.est.int$land.use.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Developed Area within 100m (%)", ylab="Suitability Index (land.use)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.est.int$land.use.per, NYBEM.est.int$land.use.SIV, pch=19, cex=2)
+  lines(NYBEM.est.int$land.use.per, NYBEM.est.int$land.use.SIV, lwd=3)
+  
+  #shoreline.m
+  plot(NYBEM.est.int$shoreline.m, NYBEM.est.int$shoreline.SIV, xlim=c(0,500), ylim=c(0,1), type="l",
+       xlab="Distance to Armored Shoreline (m)", ylab="Suitability Index (shoreline)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.est.int$shoreline.m, NYBEM.est.int$shoreline.SIV, pch=19, cex=2)
+  lines(NYBEM.est.int$shoreline.m, NYBEM.est.int$shoreline.SIV, lwd=3)
+
+```
+
 
 ### Salinity
 
@@ -32,9 +94,9 @@ Higher salinity, lower nutrient intake, and lower sediment inputs associated wit
 The NYBEM estuarine intertidal submodel relies on a percent in deviation of salinity regime to represent change in tidal inundation and freshwater flow input across the ecosystem.  As the percentage of deviation from the baseline salinity regime increases, habitat suitability for taxa within the estuarine intertidal ecosystem will decrease.
 
 
-Present the equation for assessing the suitability index.
+$$salinity = salinity.metric.TBD$$ 
 
-**EQUATION**
+Where $salinity$ is a suitability index relative to salinity and...
 
 ### Edge Erosion
 
@@ -43,9 +105,12 @@ Climate change, pollution, and other anthropogenic effects are putting more pres
  The percent change in edge erosion throughout the estuarine intertidal ecosystem is used to represent habitat suitability. When the percentage of shear stress for erosion is 10% or greater, erosion occurs, resulting in a reduction in total marsh area and an increase in open water area. At a rate of 30% shear stress from erosion, the habitat will no longer be suitable (habitat suitability equals zero.
 
 
-Present the equation for assessing the suitability index.
+$$erosion = \begin{pmatrix} 1.0 & vel_{delta}=-50-10\\
+-0.025*urban_{per}+1.25 & vel_{delta}=10-50
+\end{pmatrix}$$
 
-**EQUATION**
+Where $erosion$ is a suitability index relative to edge erosion and $vel_{delta}$ is the percent change in velocity relative to the existing condition.
+
 
 ### Vegetation Cover
 
@@ -55,9 +120,10 @@ The loss of vegetative cover changes the dynamics near the seabed in locations w
 
 For the NYBEM, habitat suitability increases as the percentage of vegetative cover increases throughout the habitat. When vegetative cover is equal to 100 percent, the estuarine intertidal ecosystem will have a high suitability value (greater than 90%).
 
-Present the equation for assessing the suitability index.
+$$veg.cover = 0.9*cover_{per}+0.1$$ 
 
-**EQUATION**
+Where $veg.cover$ is a suitability index relative to vegetation cover and $cover_{per}$ is the percent of vegetation coverage.
+
 
 ### Episodic Sediment Deposition
 
@@ -70,9 +136,9 @@ In coastal and estuary environments across the world, harmful algal blooms (HABs
 The NYBEM estuarine intertidal submodel utilizes a depth threshold that represents optimal episodic sediment deposit levels. Sediment supply is a key determinant of long-term marsh stability. The percent of time the estuarine depth is greater than MHHW is an indicator of habitat suitability. 
 
 
-Present the equation for assessing the suitability index.
+$$deposition = deposition.metric.TBD$$ 
 
-**EQUATION**
+Where $deposition$ is a suitability index relative to episodic sediment deposition and...
 
 ### Developement of Adjacent Upland
 
@@ -82,9 +148,11 @@ Both developed and undeveloped uplands can experience ecological stress as a res
 
 For the NYBEM, habitat suitability is modeled for an increase in development for adjacent uplands. When the percentage of developed adjacent uplands is greater than 10%, habitat suitability in the estuarine intertidal ecosystem declines. When the development of adjacent upland reaches 100% of the estuarine intertidal ecosystem, the habitat will no longer be considered suitable. 
 
-Present the equation for assessing the suitability index.
+$$land.use = \begin{pmatrix} 1.0 & urban_{per}=0-50\\
+-0.02*urban_{per}+2 & urban_{per}=50-100
+\end{pmatrix}$$ 
 
-**EQUATION**
+Where $land.use$ is a suitability index relative to adjacent upland land uses and $urban_{per}$ is the percent of adjancent upland in developed (i.e., urban) land uses within 500m.
 
 ### Shoreline Armoring 
 
@@ -95,9 +163,11 @@ Armoring is widespread throughout the United States, with the most extensive arm
 The environmental consequences of armoring are context dependent, relying on characteristics of the environment and armoring structural factors [@dugan_generalizing_2018]. The type of structure placed (e.g., seawalls, bulkheads, revetments) and its relative placement on the coast profile will influence the biological reactions to armoring. Estuarine intertidal habitats that lack shoreline armoring have increased habitat suitability. For the NYBEM, the presence and absence of shoreline armoring will be utilized to derive information about the ability for multiple taxa to use the shoreline as migratory pathways. 
 
 
-Present the equation for assessing the suitability index.
+$$shoreline = \begin{pmatrix} 0.05*dist_{armor}+0.5 & dist_{armor}=0-100m\\
+1.0 & dist_{armor}>100m
+\end{pmatrix}$$ 
 
-**EQUATION**
+Where $shoreline$ is a suitability index relative to shoreline armoring and $dist_{armor}$ is the distance to the nearest armored shoreline in meters.
 
 
 ### est.int Code

@@ -1,63 +1,78 @@
-## Marine, Deepwater Submodel (mar.deep) (I)
+## Marine, Deepwater Submodel (mar.deep)
 
-<span style="color: red;">Hall and McKay to write.</span>
 
-Marine deepwater ecosystem considers areas with salinity values greater or equal to 30 ppt and depths between 2 – 20 m. Physical, biological and chemical variables effect may be compounded by anthropogenic and climatic pressures to develop an ecosystem that deviates from the baseline condition, reducing the habitat suitability of the system for multiple dependents.  
+The marine, deepwater ecosystem considers areas with salinity values greater or equal to 30 ppt and depths between 2 – 20 m. Physical, biological and chemical variables effect may be compounded by anthropogenic and climatic pressures to develop an ecosystem that deviates from the baseline condition, reducing the habitat suitability of the system for multiple dependents. Figure XX presents a conceptual model of the marine, deepwater ecosystem. This ecosystem is strongly influenced by large-scale oceanographic processes. Ecologically, this ecosystem hosts a variety of species of management interest such as mammals, turtles, surf clams, migratory fish, and flounder (winter). 
+
+
+![*Conceptual model for the marine, intertidal submodel.*](ZZ_Fig10_Mar.Deep_ConModel.png)
+
 
 The following variables are available to assess the marine deepwater submodel portion of the NYBEM: water temperature, salinity, wave environment, suspended solids, velocity and currents, and vessel traffic. Water temperature and salinity act as proxies for vertical mixing of the water column, dissolved oxygen availability, and productivity of algal, pelagic, demersal and benthic systems. The wave environment and current velocities represent mixing and flushing of the system, sediment suspension and benthic scouring. Light penetration depths within the water column indicate water column turbidity, nutrient loading and chlorophyll-a production levels, another productivity control. Finally, vessel traffic provides an index for development pressures, both commercial and recreational fishing pressure on the pelagic, demersal and benthic systems, as well as commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution).    
 
+Salinity and dissolved oxygen are two primary indicators of water quality and ecosystem function, condition and resilience [@smit_assessing_2021]. The overall habitat suitability of the marine, deepwater zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
 
-**FIGURE**
+$I_{mar.deep} = \frac{salinity.low.dur + velocity.low.change + light + vessel.density}{4}$ 
+
+Where $I_{mar.deep}$ is an overarching index of ecosystem quality for the marine intertidal zone, $salinity.low.dur$ is a suitability index relative to low salinity periods, $velocity.low.change$ is a suitability index relative to changes in low velocity, $light$ is a suitability index relative to light penetration through water, and $vessel.density$ is a suitability index relative to ship traffic. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 
-Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
+```{r echo=FALSE, fig.width=8, fig.height=8}
+#Create data frame with mar.deep submodel
+NYBEM.mar.deep <- data.frame(matrix(NA,nrow=4,ncol=8))
+colnames(NYBEM.mar.deep) <- c("salinity.low.dur", "salinity.low.SIV", "velocity.low.change", "velocity.low.SIV", 
+                             "light.PLW", "light.SIV", "vessel.density", "vessel.density.SIV")
+NYBEM.mar.deep$salinity.low.dur <- c(0, 50, NA, NA)
+NYBEM.mar.deep$salinity.low.SIV <- c(1, 0, NA, NA)
+NYBEM.mar.deep$velocity.low.change <- c(-100, -10, 10, 100)
+NYBEM.mar.deep$velocity.low.SIV <- c(0, 1, 1, 0.8)
+NYBEM.mar.deep$light.PLW <- c(0, 20, 100, NA)
+NYBEM.mar.deep$light.SIV <- c(0, 1, 1, NA)
+NYBEM.mar.deep$vessel.density <- c(0, 1, 10, 100)
+NYBEM.mar.deep$vessel.density.SIV <- c(1, 1, 0.5, 0)
 
-**TABLE**
+##########
+#Create summary figure for mar.int submodel
+par(mfrow=c(2,2), cex=1.0)
 
-**FIGURE WITH SUITABILITY CURVES**
+  #salinity.low.dur
+  plot(NYBEM.mar.deep$salinity.low.dur, NYBEM.mar.deep$salinity.low.SIV, xlim=c(0,50), ylim=c(0,1), type="l",
+       xlab="Percent of Time Salinity < 30psu", ylab="Suitability Index (salinity.low.dur)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.deep$salinity.low.dur, NYBEM.mar.deep$salinity.low.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.deep$salinity.low.dur, NYBEM.mar.deep$salinity.low.SIV, lwd=3)
+  
+  #velocity.low.change
+  plot(NYBEM.mar.deep$velocity.low.change, NYBEM.mar.deep$velocity.low.SIV, xlim=c(-100,100), ylim=c(0,1), type="l",
+       xlab="Change in Low Velocity (%)", ylab="Suitability Index (velocity.low.change)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.deep$velocity.low.change, NYBEM.mar.deep$velocity.low.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.deep$velocity.low.change, NYBEM.mar.deep$velocity.low.SIV, lwd=3)
+  
+  #light.PLW
+  plot(NYBEM.mar.deep$light.PLW, NYBEM.mar.deep$light.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Light Penetration (% Light Reaching Bottom)", ylab="Suitability Index (substrate.fines)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.deep$light.PLW, NYBEM.mar.deep$light.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.deep$light.PLW, NYBEM.mar.deep$light.SIV, lwd=3)
+  
+  #vessel.density
+  plot(NYBEM.mar.deep$vessel.density, NYBEM.mar.deep$vessel.density.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Vessel Densite (tracks/m2/year)", ylab="Suitability Index (vessel.density)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.deep$vessel.density, NYBEM.mar.deep$vessel.density.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.deep$vessel.density, NYBEM.mar.deep$vessel.density.SIV, lwd=3)
 
-Present the overarching habitat suitability index equation.
-
-**EQUATION**
-
-Salinity and dissolved oxygen are two primary indicators of water quality and ecosystem function, condition and resilience [@smit_assessing_2021].
+```
 
 ### Salinity
 
 Salinity, often used as a proxy for the total concentration of all dissolved salts in the water, is a key factor in water density that controls the vertical mixing of nutrients and chemicals throughout the water column. Salinity constrains dissolved oxygen concentration and limits speciation of marine zones to euryhaline taxa that are physiological adapted to tolerate hypoosmotic processes (are able to maintain a lower internal ionic concentration than seawater).  
 Depth-averaged salinity (mean, 0-100 % exceeded by 10 %), sourced from AdH summary statistics (bottom and surface salinity may be available for HATS in future analyses), are assessed within the NYBEM. 
 
-Present the equation for assessing the suitability index.
+$$salinity.low.dur = -0.02*sal_{dur}+1$$ 
 
-**EQUATION**
+Where $salinity.low.dur$ is a suitability index relative to low salinity periods and $sal_{dur}$ is the percent of time salinity is less than the threshold for marine habitat (i.e., salinity < 30 ppt).
 
-### Dissolved Oxygen Processes
-
-Dissolved oxygen concentration, a key element for the survival of marine species, limits speciation of marine zones through hypoxia, where low oxygen levels may cause die-offs in marine species. Dissolved oxygen concentrations act as a proxy for pelagic, demersal and benthic fauna biomass (abundance/diversity of phytoplankton, zooplankton, fish, marine turtles, birds and mammals) that indicate the productivity of the zone permanent monitoring stations, as supported by NYC DEP Monitoring Stations (2018), Jamaica Bay Eutrophication Model [@fischbach_building_2018], Chesapeake Bay model [@cerco_threedimensional_1993] and the EPA Long Island Sound integrated model (underway), are assessed within the NYBEM.
-
-Present the equation for assessing the suitability index.
-
-**EQUATION**
-
-Water temperature, the wave environment, current velocity, light, depth, substrate, suspended solids, and nutrient loading. Depth is not specifically modeled within the NYBEM, but is inherent within model input variables, such as the AdH hydrodynamic model. 
-
-### Water Temperature
-
-Water temperature acts as a control for the majority of the chemical (dissolved nutrients, pH, density, and photosynthesis), biological (respiration and metabolic rates, taxa development, and migrations) and physical (ice formation and thermal stratification of the water column) properties of a marine ecosystem.   
-MARACOOS Monthly Sea Surface Temperature from the MARCO Mid-Atlantic Ocean Data Portal and seasonal temperature thresholds for winter flounder, as identified in changes in temperature regimes that are based on AdH model outputs, are assessed within the NYBEM. The AdH model outputs are supported by the Winter flounder habitat suitability model [@banner_usfws_2001] and VIMS 2018 habitat suitability models and the USACE Harbor monitoring (USACE 2013).
-
-Present the equation for assessing the suitability index.
-
-**EQUATION**
-
-### Wave Environment
-
-The wave environment affects many variables with the NYB: vertical and horizontal mixing and flushing of the physical and chemical properties of the water, suspended sediment and solids, substrate settlement of taxa, and commercial and recreational vessel traffic.   
-Wave height and wave refraction from STWAVE are assessed within the NYBEM, as supported by (@byrnes_effects_2004).
-
-Present the equation for assessing the suitability index.
-
-**EQUATION**
 
 ### Current Velocity
 
@@ -67,7 +82,13 @@ Change in velocity, particularly in low flow conditions when flushing is of conc
 
 Present the equation for assessing the suitability index.
 
-**EQUATION**
+
+$$velocity.low.change = \begin{pmatrix} 0.011*vel_{10}+1.11 & vel_{10}=-100-10\\
+1.0 & vel_{10}=-10-10\\
+-0.0022*vel_{10}+1.02 & vel_{10}>10
+\end{pmatrix}$$ 
+
+Where $velocity.low.change$ is a suitability index relative to change in low velocity and mixing and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
 
 ### Derived Metrics- Light
 
@@ -78,7 +99,11 @@ Within the NYBEM, percentages of light through the Water (PLW) are derived from 
 
 Present the equation for assessing the suitability index.
 
-**EQUATION**
+$$light = \begin{pmatrix} 0.05*light_{PLW} & light_{PLW}=0-20\\
+1.0 & light_{PLW}=10-30
+\end{pmatrix}$$ 
+
+Where $light$ is a suitability index relative to light penetration and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
 
 ### Vessel Traffic and Development Pressures
 
@@ -88,7 +113,14 @@ Vessel use density from the historical Automatic Identification System (AIS) ves
 
 Present the equation for assessing the suitability index.
 
-**EQUATION**
+$$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
+-0.0556*ves_{AIS}+1.06 & ves_{AIS}=1-10\\
+-0.00556*ves_{AIS}+0.56 & ves_{AIS}=10-100\\
+0.0 & ves_{AIS}>100
+\end{pmatrix}$$ 
+
+Where $vessel.density$ is a suitability index relative to ship traffic and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
+
 
 ### mar.deep Code
 
@@ -96,11 +128,23 @@ Numerical code for assessing habitat quality (<span style="color: red;">Doughert
 
 
 ```{r echo=TRUE}
-#Function for assessing habitat quality
-mar.deep <- function(x, y){
-  mar.deep.HSI <- x + y
+#Load ecorest
+library(ecorest)
 
-  #Send output
-  mar.deep.HSI
-}
+#Test mar.int with ecorest
+mar.deep.test <- c(10, -20, 10, 30)
+ecorest::SIcalc(NYBEM.mar.deep, mar.deep.test)
 ```
+
+### Future Development
+
+Insert intro comment.
+
+Dissolved oxygen concentration, a key element for the survival of marine species, limits speciation of marine zones through hypoxia, where low oxygen levels may cause die-offs in marine species. Dissolved oxygen concentrations act as a proxy for pelagic, demersal and benthic fauna biomass (abundance/diversity of phytoplankton, zooplankton, fish, marine turtles, birds and mammals) that indicate the productivity of the zone permanent monitoring stations, as supported by NYC DEP Monitoring Stations (2018), Jamaica Bay Eutrophication Model [@fischbach_building_2018], Chesapeake Bay model [@cerco_threedimensional_1993] and the EPA Long Island Sound integrated model (underway), are assessed within the NYBEM.
+
+Water temperature acts as a control for the majority of the chemical (dissolved nutrients, pH, density, and photosynthesis), biological (respiration and metabolic rates, taxa development, and migrations) and physical (ice formation and thermal stratification of the water column) properties of a marine ecosystem.   
+MARACOOS Monthly Sea Surface Temperature from the MARCO Mid-Atlantic Ocean Data Portal and seasonal temperature thresholds for winter flounder, as identified in changes in temperature regimes that are based on AdH model outputs, are assessed within the NYBEM. The AdH model outputs are supported by the Winter flounder habitat suitability model [@banner_usfws_2001] and VIMS 2018 habitat suitability models and the USACE Harbor monitoring (USACE 2013).
+
+The wave environment affects many variables with the NYB: vertical and horizontal mixing and flushing of the physical and chemical properties of the water, suspended sediment and solids, substrate settlement of taxa, and commercial and recreational vessel traffic.   
+Wave height and wave refraction from STWAVE are assessed within the NYBEM, as supported by (@byrnes_effects_2004).
+
