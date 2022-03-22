@@ -1,7 +1,7 @@
 # Quantification
 
 
-The quantification phase of ecological model development formalizes a conceptual model in terms of mathematical relationships, model parameters, and a numerical algorithm (Grant and Swannack 2008). This chapter describes the NYBEM relative to model structure, associated numerical tools, and the theoretical underpinnings of the sub-models. In general, the overarching quantitative architecture of the NYBEM can be summarized in three major elements (Figure 4.1). First, model inputs are assembled in a geospatial database. Second, the model code is prepared as a "package" in the [R Statistical Software](https://cran.r-project.org/). Finally, the model outputs habitat quantity and quality as well as habitat units for each patch in the model domain. 
+The quantification phase of ecological model development formalizes a conceptual model in terms of mathematical relationships, model parameters, and a numerical algorithm (@grant_ecological_2008). This chapter describes the NYBEM relative to model structure, associated numerical tools, and the theoretical underpinnings of the sub-models. In general, the overarching quantitative architecture of the NYBEM can be summarized in three major elements (Figure 4.1). First, model inputs are assembled in a geospatial database. Second, the model code is prepared as a "package" in the [R Statistical Software](https://cran.r-project.org/). Finally, the model outputs habitat quantity and quality as well as habitat units for each patch in the model domain. 
 
 
 ![*Quantitative architecture of the NYBEM.*](ZZ_Fig04_NYBEM.Architecture.png)
