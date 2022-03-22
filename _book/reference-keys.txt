@@ -53,9 +53,12 @@ vegetation-cover-1
 shoreline-armoring-1
 mar.int-code
 marine-subtidal-submodel-mar.sub-i
-variable-1
-variable-2
+velocity
+substrate-1
+light-1
+vessel-density
 mar.sub-code
+future-development-of-mar.sub
 marine-deepwater-submodel-mar.deep
 salinity-3
 current-velocity

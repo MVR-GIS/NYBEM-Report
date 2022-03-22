@@ -1,27 +1,87 @@
 ## Marine, Subtidal Submodel (mar.sub) (I)
 
-<span style="color: red;">McKay and Hall to write.</span>
+<span style="color: red;">McKay to continue writing.</span>
 
 
-1-2 paragraphs providing background on the ecosystem type. Physical properties. Typical ecological functions and ecosystem services.
+Marine, subtidal ecosystems include the areas of high salinity (> 30 psu) bracketed by tidal limits of the mean lower low water (MLLW) and 2m below Mean Tide Level (MTL). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 
 
-Present and describe the conceptual model for this system.
-
-**FIGURE**
+Figure XX presents a conceptual model of the marine, subtidal ecosystem. This nearshore ecosystem hosts a variety of species of management interest such as hard clams, winter flounder, and seagrasses. As such, this model generally centers on the pelagic systems, submerged aquatic vegetation, and the benthic system. In general, coastal storm risk management actions are more likely to have direct effects on this ecosystem (e.g., footprint of constructed storm surge barriers) than indirect, offsite concerns more common in the estuarine systems.
 
 
-Describe the main ideas being captured in the model. Summarize as table. Present suitability index curves, which are described in subsequent sections.
+![*Conceptual model for the marine, intertidal submodel.*](ZZ_Fig09_Mar.Sub_ConModel.png)
 
-**TABLE**
+The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, subtidal zones of the region. This submodel drew heavily from three primary bodies of knowledge, specifically:
 
-**FIGURE WITH SUITABILITY CURVES**
-
-Present the overarching habitat suitability index equation.
-
-**EQUATION**
+* NY/NJ harbor mitigation functional assessment models (USACE 2000).  
+* Habitat suitability models for winter flounder (USFWS 2001) and hard clam (Mulholland 1984).  
+* Regional monitoring data associated with NY/NJ Harbor Deepening (USACE 2012, USACE 2015a, USACE 2015b), essential fish habitat mapping (USACE 2013), and water quality data for the lower bay (DEP 2018, USACE 2015b).
 
 
-### Variable-1
+Four main classes of processes and dynamics were identified from a review of these models and studies: substrate-driven habitat use, physical currents and mixing, light penetration, and human uses of the system. From these processes, four surrogate metrics were identified, which collectively reflect the condition of the marine, subtidal zone. The sections below describe each metric and the rationale in detail, but briefly:
+
+* Current velocity is a major driver of sediment dynamics as well as water quality processes.  
+* Fine substrate affects utilization of habitats by a variety of taxa.  
+* Light penetration is a proxy for both water quality outcomes and potential for SAV growth.  
+* Human use intensity was summarized relative to vessel traffic density.  
+
+
+The overall habitat suitability of the marine, subtidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
+
+
+$I_{mar.sub} = \frac{velocity + substrate + light + vessel.density}{4}$ 
+
+Where $I_{mar.sub}$ is an overarching index of ecosystem quality for the marine subtidal zone, $velocity$ is a suitability index relative to beach slope, $substrate$ is a suitability index relative to fine substrate, $light$ is a suitability index relative to light penetration, and $vessel.density$ is a suitability index relative to boat traffic and human uses. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
+
+```{r echo=FALSE, fig.width=8, fig.height=8}
+#Create data frame with mar.deep submodel
+NYBEM.mar.sub <- data.frame(matrix(NA,nrow=4,ncol=8))
+colnames(NYBEM.mar.sub) <- c("velocity", "velocity.SIV", "substrate.fines", "substrate.SIV", 
+                             "light.PLW", "light.SIV", "vessel.density", "vessel.density.SIV")
+NYBEM.mar.sub$velocity <- c(0, 30, 50, 100)
+NYBEM.mar.sub$velocity.SIV <- c(0, 1, 1, 0)
+NYBEM.mar.sub$substrate.fines <- c(0, 100, NA, NA)
+NYBEM.mar.sub$substrate.SIV <- c(1, 0, NA, NA)
+NYBEM.mar.sub$light.PLW <- c(0, 20, 100, NA)
+NYBEM.mar.sub$light.SIV <- c(0, 1, 1, NA)
+NYBEM.mar.sub$vessel.density <- c(0, 1, 10, 100)
+NYBEM.mar.sub$vessel.density.SIV <- c(1, 1, 0.5, 0)
+
+##########
+#Create summary figure for mar.int submodel
+par(mfrow=c(2,2), cex=1.0)
+
+  #velocity
+  plot(NYBEM.mar.sub$velocity, NYBEM.mar.sub$velocity.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Velocity (cm/s)", ylab="Suitability Index (velocity)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.sub$velocity, NYBEM.mar.sub$velocity.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.sub$velocity, NYBEM.mar.sub$velocity.SIV, lwd=3)
+  
+  #substrate.fines
+  plot(NYBEM.mar.sub$substrate.fines, NYBEM.mar.sub$substrate.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Fine Substrate Composition (%fines)", ylab="Suitability Index (substrate.fines)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.sub$substrate.fines, NYBEM.mar.sub$substrate.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.sub$substrate.fines, NYBEM.mar.sub$substrate.SIV, lwd=3)
+  
+  #light.PLW
+  plot(NYBEM.mar.sub$light.PLW, NYBEM.mar.sub$light.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Light Penetration (% Light Reaching Bottom)", ylab="Suitability Index (substrate.fines)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.sub$light.PLW, NYBEM.mar.sub$light.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.sub$light.PLW, NYBEM.mar.sub$light.SIV, lwd=3)
+  
+  #vessel.density
+  plot(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Vessel Densite (tracks/m2/year)", ylab="Suitability Index (vessel.density)")
+  abline(h=seq(0,1,0.1), lty=3)
+  points(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, pch=19, cex=2)
+  lines(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, lwd=3)
+
+```
+
+
+### Velocity
 
 2-5 paragraphs presenting three main ideas.
 
@@ -33,7 +93,7 @@ Present the equation for assessing the suitability index.
 
 **EQUATION**
 
-### Variable-2
+### Substrate
 
 2-5 paragraphs presenting three main ideas.
 
@@ -45,6 +105,40 @@ Present the equation for assessing the suitability index.
 
 **EQUATION**
 
+
+### Light
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+$$light = \begin{pmatrix} 0.05*light_{PLW} & light_{PLW}=0-20\\
+1.0 & light_{PLW}=10-30
+\end{pmatrix}$$ 
+
+Where $light$ is a suitability index relative to light penetration and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
+
+### Vessel Density
+
+2-5 paragraphs presenting three main ideas.
+
+Provide some general context for this variable's role in ecosystem function and condition.  
+
+Describe how this variable is assessed and quantified in NYBEM.
+
+Present the equation for assessing the suitability index.
+
+$$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
+-0.0556*ves_{AIS}+1.06 & ves_{AIS}=1-10\\
+-0.00556*ves_{AIS}+0.56 & ves_{AIS}=10-100\\
+0.0 & ves_{AIS}>100
+\end{pmatrix}$$ 
+
+Where $vessel.density$ is a suitability index relative to ship traffic and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
 
 ### mar.sub Code
 
@@ -52,11 +146,16 @@ Numerical code for assessing habitat quality (<span style="color: red;">Doughert
 
 
 ```{r echo=TRUE}
-#Function for assessing habitat quality
-mar.sub <- function(x, y){
-  mar.sub.HSI <- x + y
+#Load ecorest
+library(ecorest)
 
-  #Send output
-  mar.sub.HSI
-}
+#Test mar.int with ecorest
+mar.sub.test <- c(25, 50, 10, 30)
+ecorest::SIcalc(NYBEM.mar.sub, mar.sub.test)
 ```
+
+
+### Future Development of mar.sub
+
+Insert intro comment.
+
