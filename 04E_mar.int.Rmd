@@ -181,7 +181,7 @@ Describe how this variable is assessed and quantified in NYBEM.
 Present the equation for assessing the suitability index.
 
 $$veg.cover = \begin{pmatrix} 1.0 & cover_{per}=0-20\\
--0.0125*urban_{per}+1.25 & cover_{per}=20-100
+-0.0125*cover_{per}+1.25 & cover_{per}=20-100
 \end{pmatrix}$$ 
 
 Where $veg.cover$ is a suitability index relative to vegetation coverage and $cover_{per}$ is the percent of vegetation coverage.
