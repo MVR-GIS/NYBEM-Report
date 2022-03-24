@@ -1,4 +1,4 @@
-## Marine, Subtidal Submodel (mar.sub) (I)
+## Marine, Subtidal Submodel (`mar.sub`) (I)
 
 <span style="color: red;">McKay to continue writing.</span>
 
@@ -73,7 +73,7 @@ par(mfrow=c(2,2), cex=1.0)
   
   #vessel.density
   plot(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
-       xlab="Vessel Densite (tracks/m2/year)", ylab="Suitability Index (vessel.density)")
+       xlab="Vessel Density (tracks/m2/year)", ylab="Suitability Index (vessel.density)")
   abline(h=seq(0,1,0.1), lty=3)
   points(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, pch=19, cex=2)
   lines(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, lwd=3)

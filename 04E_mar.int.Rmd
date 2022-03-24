@@ -1,4 +1,4 @@
-## Marine, Intertidal Submodel (mar.int) (I)
+## Marine, Intertidal Submodel (`mar.int`) (I)
 
 
 Marine, intertidal ecosystems include the areas of high salinity (> 30 psu) bracketed by tidal limits of the mean higher high water (MHHW) and mean lower low water (MLLW). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 

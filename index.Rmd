@@ -82,6 +82,7 @@ rm(list=ls(all=TRUE))
 #Load all necessary R packages
 library(viridis)    #Contains color-blind friendly color schemes
 library(kableExtra) #Contains formatting for markdown
+library(tinytex)    #Contains latex pdf help
 library(ecorest)    #Habitat modeling functions
 #library(sp)         #Geospatial functions
 #library(spData)     #Geographic data
