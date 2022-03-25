@@ -37,12 +37,12 @@ Where $I_{mar.sub}$ is an overarching index of ecosystem quality for the marine 
 NYBEM.mar.sub <- data.frame(matrix(NA,nrow=4,ncol=8))
 colnames(NYBEM.mar.sub) <- c("velocity", "velocity.SIV", "substrate.fines", "substrate.SIV", 
                              "light.PLW", "light.SIV", "vessel.density", "vessel.density.SIV")
-NYBEM.mar.sub$velocity <- c(0, 30, 50, 100)
-NYBEM.mar.sub$velocity.SIV <- c(0, 1, 1, 0)
+NYBEM.mar.sub$velocity <- c(0, 25, 50, 100)
+NYBEM.mar.sub$velocity.SIV <- c(0.6, 1, 1, 0)
 NYBEM.mar.sub$substrate.fines <- c(0, 100, NA, NA)
 NYBEM.mar.sub$substrate.SIV <- c(1, 0, NA, NA)
-NYBEM.mar.sub$light.PLW <- c(0, 20, 100, NA)
-NYBEM.mar.sub$light.SIV <- c(0, 1, 1, NA)
+NYBEM.mar.sub$light.PLW <- c(0, 10, 22, 100)
+NYBEM.mar.sub$light.SIV <- c(0, 0, 1, 1)
 NYBEM.mar.sub$vessel.density <- c(0, 1, 10, 100)
 NYBEM.mar.sub$vessel.density.SIV <- c(1, 1, 0.5, 0)
 
@@ -66,7 +66,7 @@ par(mfrow=c(2,2), cex=1.0)
   
   #light.PLW
   plot(NYBEM.mar.sub$light.PLW, NYBEM.mar.sub$light.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
-       xlab="Light Penetration (% Light Reaching Bottom)", ylab="Suitability Index (substrate.fines)")
+       xlab="Percent of Light Available (%)", ylab="Suitability Index (light)")
   abline(h=seq(0,1,0.1), lty=3)
   points(NYBEM.mar.sub$light.PLW, NYBEM.mar.sub$light.SIV, pch=19, cex=2)
   lines(NYBEM.mar.sub$light.PLW, NYBEM.mar.sub$light.SIV, lwd=3)
@@ -83,54 +83,41 @@ par(mfrow=c(2,2), cex=1.0)
 
 ### Velocity
 
-2-5 paragraphs presenting three main ideas.
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+Velocity, currents, and wave environment are a key determinant of habitat suitability as well as critical drivers of sediment dynamics and water quality processes. For example, hard clam habitat suitability is generally in low to moderate velocity environments (<50 cm/s) with declines in suitability up to 100 cm/s. For NYBEM, the velocity suitability for hard clams is adopted directly from Mulholland (1984) as shown below. We assess velocity as the median velocity observed over an annual hydrodynamic simulation. 
 
-Describe how this variable is assessed and quantified in NYBEM.
+$$velocity = \begin{pmatrix} 0.016*V_{50}+0.6 & V_{50}=0-1\\
+1.0 & V_{50}=1-10\\
+-0.02*ves_{AIS}+2 & V_{50}=10-100\\
+0.0 & V_{50}>100
+\end{pmatrix}$$ 
 
-Present the equation for assessing the suitability index.
-
-**EQUATION**
+Where $velocity$ is a suitability index relative to currents and velocity and $ves_{AIS}$ is the vessel density from the Automated Information System.
 
 ### Substrate
 
-2-5 paragraphs presenting three main ideas.
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+Sediment quality drives multiple aspects of ecosystem integrity such as benthic habitat provision, nutrient dynamics, and erodibility. Fine sediment composition (i.e., %fine) is a common metric in multiple assessment procedures in the region (e.g., Mulholland 1984, USACE 2000, USACE 2021). Specifically, the suitability curves from the hard clam model (Mulholland 1984) are adopted here as a rapid metric of ecosystem quality. For marine environments, sediment data are obtained from the [usSEABED](https://www.usgs.gov/programs/cmhrp/science/accessing-usseabed) data set throughout the region. Habitat suitability is then quantified as follows:
 
-Describe how this variable is assessed and quantified in NYBEM.
+$$substrate = -0.01*fines_{per}+1$$ 
 
-Present the equation for assessing the suitability index.
-
-**EQUATION**
-
+Where $substrate$ is a suitability index relative to sediment substrate and $fines_{per}$ is the proportion of fine sediment (silt and clay) at the location.
 
 ### Light
 
-2-5 paragraphs presenting three main ideas.
 
-Provide some general context for this variable's role in ecosystem function and condition.  
+Light penetration provides an important metric of general water quality as well as suitability for submerged aquatic vegetation. Specifically, light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the `mar.sub`, light availability and suitability are modeled following the same algorithms described for the `est.sub` model (See Section 4.4), which can be summarized in suitability terms as as:
 
-Describe how this variable is assessed and quantified in NYBEM.
-
-Present the equation for assessing the suitability index.
-
-$$light = \begin{pmatrix} 0.05*light_{PLW} & light_{PLW}=0-20\\
-1.0 & light_{PLW}=10-30
+$$light = \begin{pmatrix} 0.0 & PLA<10\\
+0.0833*PLA-0.83 & PLA>70\\
+1.0 & PLA>22\\
 \end{pmatrix}$$ 
 
-Where $light$ is a suitability index relative to light penetration and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
+Where $light$ is a suitability index relative to light penetration and $PLA$ is percent light available (PLA).
 
 ### Vessel Density
 
-2-5 paragraphs presenting three main ideas.
-
-Provide some general context for this variable's role in ecosystem function and condition.  
-
-Describe how this variable is assessed and quantified in NYBEM.
-
-Present the equation for assessing the suitability index.
+Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact subtidal habitats. A proxy of vessel traffic per area is used here to quantify these disturbances. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows: 
 
 $$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
 -0.0556*ves_{AIS}+1.06 & ves_{AIS}=1-10\\
@@ -138,7 +125,7 @@ $$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
 0.0 & ves_{AIS}>100
 \end{pmatrix}$$ 
 
-Where $vessel.density$ is a suitability index relative to ship traffic and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
+Where $vessel.density$ is a suitability index relative to ship traffic and $ves_{AIS}$ is the vessel density from the Automated Information System.
 
 ### mar.sub Code
 
@@ -152,10 +139,19 @@ library(ecorest)
 #Test mar.int with ecorest
 mar.sub.test <- c(25, 50, 10, 30)
 ecorest::SIcalc(NYBEM.mar.sub, mar.sub.test)
+ecorest::HSIarimean(ecorest::SIcalc(NYBEM.mar.sub, mar.sub.test))
 ```
 
+### Future Development of `mar.sub`
 
-### Future Development of mar.sub
+The `mar.sub` model provides a useful framework for estimating general ecosystem condition, although other variables and processes could be addressed in future iterations. Specifically, substrate is a dynamic feature through time, particularly with sea level change, and substrate could be linked to sediment transport algorithms in coastal dynamics models. Similarly, wave environment is an important feature of this ecosystem, and additional wave metrics could be incorporated. 
 
-Insert intro comment.
+
+### New References
+
+Mulholland, R., 1984. Habitat suitability index models: Hard clam. Fish and Wildlife Service.
+
+U.S. Army Corps of Engineers (USACE). 2000. New York and New Jersey Harbor Navigation Study, Mitigation Report. Vol. II, Attachment 6 – Functional Assessment of Disturbed Areas. USACE, New York District.
+
+US Army Corps of Engineers (USACE). 2021. Port Habitat Functional Assessment Model Documentation. NY/NJ Harbor Deepening and Channel Improvements Study. New York District, New York, NY. 
 
