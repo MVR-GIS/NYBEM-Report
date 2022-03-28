@@ -300,13 +300,9 @@ Where $sav.prob$ is an overarching index of ecosystem quality relative to submer
 
 This model for soft bottom habitat omits some important variables and processes. Notably, temperature is not presently included but represents a crucial variable for both SAV and clams. 
 
-* *Temperature for SAV*: Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures.
+- *Temperature for SAV*: Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr et al. 2011). At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation.[@atkin_thermal_2003];[@jensen_psi-k_2000]
 
-[@Staehr_2011)
-
-At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation.[@atkin_thermal_2003];[@jensen_psi-k_2000]
-
-* *Temperature for Clams*: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C  range in suitability with optimal temperatures between 22.5°C and 30°C.
+- *Temperature for Clams*: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C  range in suitability with optimal temperatures between 22.5°C and 30°C.
 
 
 ### `est.sub` Code
