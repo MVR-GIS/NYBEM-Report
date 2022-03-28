@@ -13,11 +13,11 @@ Coastal storm risk management actions have the potential to affect this ecosyste
 
 The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, intertidal zones of the region. This submodel drew heavily from four general bodies of knowledge, specifically:
 
-- USFWS Habitat Evaluation Procedure models: tern [@carreker_habitat_1985], [@us_fish_and_wildlife_service_usfws_gulf_2001], plover [@us_fish_and_wildlife_service_usfws_gulf_2001], horseshoe crab [@us_fish_and_wildlife_service_usfws_gulf_2001],[@us_fish_and_wildlife_service_usfws_gulf_2001], red knot [@us_fish_and_wildlife_service_usfws_gulf_2001]
+- USFWS Habitat Evaluation Procedure models: tern [@carreker_habitat_1985], [@us_fish_and_wildlife_service_usfws_gulf_2001], plover @us_fish_and_wildlife_service_usfws_gulf_2001, horseshoe crab @us_fish_and_wildlife_service_usfws_gulf_2001, red knot @us_fish_and_wildlife_service_usfws_gulf_2001.
 
-- Other habitat suitability models: plover (@farmer_habitat_2000, @seavey_effect_2011), horseshoe crab [@avissar_modeling_2006], [@nancy_jackson_armoring_2010], [Lathrop_2013], amaranth [@sellars_2007], sea turtles [@dunkin_2016]  
-- Fire Island to Montauk Point Habitat Evaluation Procedure OceanBeach Sub-Model [@USACE_2009].  
-- Empirical studies of the system: Virginia Tech shorebird program [@herman_unpacking_20190], Rutgers horseshoe crab mapping [@lathrope_mapping_2013], international shorebird survey (Manomet)
+- Other habitat suitability models: plover (@farmer_habitat_2000, @seavey_effect_2011), horseshoe crab [@avissar_modeling_2006], [@nancy_jackson_armoring_2010], [Lathrop_2013], amaranth [@sellars_habitat_2007], sea turtles [@dunkin_spatially_2016]  
+- Fire Island to Montauk Point Habitat Evaluation Procedure OceanBeach Sub-Model [@usace_evaluation_2009].  
+- Empirical studies of the system: Virginia Tech shorebird program [@herman_unpacking_2019], Rutgers horseshoe crab mapping [@lathrope_mapping_2013], international shorebird survey (Manomet)
 
 
 Four classes of processes and dynamics were identified from a review of these models and studies: long-term and large-scale wave and sediment dynamics, beach morphology, benthic food supplies, and the role of this system as a corridor between aquatic and upland environments. From these processes, six surrogate metrics were identified, which collectively reflect the condition of the marine, intertidal zone. Notably, variables reflecting wave and sediment dynamics are minimally included in this phase of modeling due to assessment challenges. The sections below describe each metric and the rationale in detail, but briefly:
@@ -100,7 +100,7 @@ par(mfrow=c(3,2), cex=1.0)
 Beach morphology directly affects habitat use by multiple focal taxa (e.g., shorebirds, turtles, horseshoe crab). Beach shape and morphologic character could be described through parameters of width, slope, elevation, and other summaries of topography [@bridges_use_2015]. Beach width is indirectly captured in NYBEM through metrics of habitat quantity and patch size and is not considered here. Beach slope integrates morphologic outcomes and is directly tied to grain size and wave environment [@lodder_chapter_2021]. Beach slope, thus, provides an important and synthetic metric of marine, intertidal habitat quality.
 
 
-More specifically, beach slope has been identified as an important driving component of habitat use by multiple taxa in the New York Bight. Seabeach amaranth (*Amaranthus pumilus*) typically occurs in low slope environments [@sellars_habitat_2007]. Habitat is most suitable for horseshoe crabs between ~5-10% slopes [@brady_1996]. Slope has been used as a general indicator of ecosystem condition for Long Island ecosystems (FIMP HEP 2009). Notably, not all taxa may respond in kind to these generalization; for instance, sea turtles have shown habitat preferences for moderate slopes between ~10-30% in subtropical areas such as Southeastern Florida. Mereging these regional models, NYBEM assesses suitability relative to beach slope as follows:
+More specifically, beach slope has been identified as an important driving component of habitat use by multiple taxa in the New York Bight. Seabeach amaranth (*Amaranthus pumilus*) typically occurs in low slope environments [@sellars_habitat_2007]. Habitat is most suitable for horseshoe crabs between ~5-10% slopes [@brady_habitat_1996]. Slope has been used as a general indicator of ecosystem condition for Long Island ecosystems (FIMP HEP 2009). Notably, not all taxa may respond in kind to these generalization; for instance, sea turtles have shown habitat preferences for moderate slopes between ~10-30% in subtropical areas such as Southeastern Florida. Merging these regional models, NYBEM assesses suitability relative to beach slope as follows:
 
 $$beach.slope = \begin{pmatrix} 1.0 & slope_{per}=0-10\\
 -0.05*slope_{per}+1.5 & slope_{per}=10-30\\
@@ -113,7 +113,7 @@ Where $beach.slope$ is a suitability index relative to beach slope and $slope_{p
 ### Exposure Duration
 
 
-Intertidal zones are a key foraging habitat for shorebirds. The benthic food availability is related in part to soil moisture [@brady_1996] and the time to forage in these zones. Soil moisture is also a key determinant of horseshoe crab spawning [@avissar_modeling_2006]. For NYBEM, a proxy variable is used to account for these processes. Specifically, a ratio of depth ranges to the tidal range is used as a relative duration of exposure, which we calculate as follows:
+Intertidal zones are a key foraging habitat for shorebirds. The benthic food availability is related in part to soil moisture [@brady_habitat_1996] and the time to forage in these zones. Soil moisture is also a key determinant of horseshoe crab spawning [@avissar_modeling_2006]. For NYBEM, a proxy variable is used to account for these processes. Specifically, a ratio of depth ranges to the tidal range is used as a relative duration of exposure, which we calculate as follows:
 
 $$t_{rel} = \frac{H_{max} - H_{min}}{MHHW-MLLW}$$ 
 
@@ -193,7 +193,7 @@ ecorest::HSIarimean(ecorest::SIcalc(NYBEM.mar.int, mar.int.test))
 The `mar.int` model represents trade-offs between habitat needs for multiple taxa and availability of data at regional scales. Future model development could be expanded to include more processes and outcome, specifically:  
 
 - Some authors have distinguished the difference in the upper, vegetated intertidal zone and the lower, unvegetated areas [@usace_evaluation_2009].  
-- Substrate is a key driver of beach outcomes in many contexts [@lodder_chapter_2021], and specifically, substrate is often included in regional models of this system (e.g., @brady_1996, @avissar_modeling_2006). However, high quality substrate data were unavilable, which created a major data gap for incorporating this variable.  
+- Substrate is a key driver of beach outcomes in many contexts [@lodder_chapter_2021], and specifically, substrate is often included in regional models of this system (e.g., @brady_habitat_1996, @avissar_modeling_2006). However, high quality substrate data were unavilable, which created a major data gap for incorporating this variable.  
 - Other assessment procedures (@farmer_habitat_2000, @usace_evaluation_2009) have included a variety of human development pressures related to local features (e.g., vehicle and foot traffic), which could provide important refinement of the human use intensity metrics for land use and shoreline development.  
 - Wave environments clearly affect the morphology of beaches, and additional hydrodynamic variables could be assessed in future models.
 
