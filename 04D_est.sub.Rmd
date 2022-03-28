@@ -27,7 +27,7 @@ Alternative approach...known or historic hard bottom (i.e., any historic mapped 
 ### Hard Bottom Habitats (`est.sub.hard`)
 
 
-Oysters are a major indicator of the integrity of hard bottom habitats in the New York Bight, and the hard bottom submodel is represented by an **adaptation** of the Oyster Habitat Suitability Index Model (OHSIM; Swannack et al., 2014). The OHSIM is a USACE-certified model for the Eastern oyster (*Crassostrea virginica*). OHSIM is a spatially-explicit, grid-based index model that uses a series of linear equations to calculate habitat suitability for *C. virginica*. The model consists of four variables: substrate and three measures of salinity – 1) mean salinity during spawning season, in which spawning and spat set have a higher optimal salinity than for survival of adults, 2) annual mean salinity, which is the expected range over which adult oysters are viable, and 3) minimum annual salinity, which defines the impacts of high mortality events resulting from lower salinities due to freshwater influxes (Soniat 2012). Variables are briefly described below, and more details can be found in Swannack et al. (2014) and EcoPCX documentation. 
+Oysters are a major indicator of the integrity of hard bottom habitats in the New York Bight, and the hard bottom submodel is represented by an **adaptation** of the Oyster Habitat Suitability Index Model [OHSIM @swannack_2014]. The OHSIM is a USACE-certified model for the Eastern oyster (*Crassostrea virginica*). OHSIM is a spatially-explicit, grid-based index model that uses a series of linear equations to calculate habitat suitability for *C. virginica*. The model consists of four variables: substrate and three measures of salinity – 1) mean salinity during spawning season, in which spawning and spat set have a higher optimal salinity than for survival of adults, 2) annual mean salinity, which is the expected range over which adult oysters are viable, and 3) minimum annual salinity, which defines the impacts of high mortality events resulting from lower salinities due to freshwater influxes [@soniat_2012]. Variables are briefly described below, and more details can be found in @swannack_2014 and EcoPCX documentation. 
 
 For the NYBEM, spawning season salinity data were not available, so only three variables are used. The overall habitat suitability of the estuarine, subtidal, hard bottom ecosystem is aggregated into a single metric via a geometric mean of these three suitability indices (following the OHSIM).
 
@@ -85,7 +85,7 @@ Where $cultch$ is a suitability index relative to hard bottom composition and $h
 
 #### Minimum Annual Salinity
 
-Minimum Annual Salinity (MAS) is the minimum value of the 12 monthly mean salinities. This variable is essential to describe freshwater impacts (e.g., freshets, high rainfall years, or freshwater diversions) on oysters and is analogous to the frequency of killing floods variable used by Cake (1983). For NYBEM, we use a representative low salinity (i.e., the tenth exceedence percentile, $S_{10}$) rather than a minimum of monthly average. The relationship between MAS and its suitability index is formulated as a linear step-function as follows: 
+Minimum Annual Salinity (MAS) is the minimum value of the 12 monthly mean salinities. This variable is essential to describe freshwater impacts (e.g., freshets, high rainfall years, or freshwater diversions) on oysters and is analogous to the frequency of killing floods variable used by @cake_1983. For NYBEM, we use a representative low salinity (i.e., the tenth exceedence percentile, $S_{10}$) rather than a minimum of monthly average. The relationship between MAS and its suitability index is formulated as a linear step-function as follows: 
 
 $$sal.min.ann = \begin{pmatrix} 0.0 & MAS=0-2\\
 0.025*MAS-0.05 & MAS=2-4\\
@@ -98,7 +98,7 @@ Where $sal.min.ann$ is a suitability index relative to minimum annual salinity, 
 
 #### Annual Mean Salinity
 
-Annual Mean Salinity (AS) represents the range of salinities over which adult oysters are viable (Cake 1983). The relationship between AS and its suitability index is formulated as a linear step-function as follows:
+Annual Mean Salinity (AS) represents the range of salinities over which adult oysters are viable [@Cake_1983]. The relationship between AS and its suitability index is formulated as a linear step-function as follows:
 
 $$sal.mean.ann = \begin{pmatrix} 0.0 & AS=0-5\\
 0.2*AS-1.00 & AS=5-10\\
@@ -114,7 +114,7 @@ Where $sal.mean.ann$ is a suitability index relative to mean annual salinity and
 
 #### Key Gaps in `est.sub.hard`
 
-This model for hard bottom habitat omits some important variables and processes. Notably, mean Salinity during Spawning Season (MSSS) represents reflects the higher optimal salinities required for spawning and larval stages (Butler 1954, Cake 1983) and is part of the OHSIM framework but omitted here.  
+This model for hard bottom habitat omits some important variables and processes. Notably, mean Salinity during Spawning Season (MSSS) represents reflects the higher optimal salinities required for spawning and larval stages [@butler_1954],[@Cake_1983] and is part of the OHSIM framework but omitted here.  
 
 
 ### Soft Bottom Habitats (`est.sub.soft`)
@@ -185,7 +185,7 @@ $$sal.mean.ann = \begin{pmatrix} 1.0 & fines_{per}=0-70\\
 Where $substrate.sav$ is a suitability index relative to fine substrate and $fines_{per}$ is the percent of fine substrate (silt and clay).
 
 
-Light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the ESM, light availability depends on depth and Total Suspended Solids (TSS) and is calculated algorithmically, then converted into a suitability index. Light availability (Iz) at the plant surface is estimated based on van Nes et al., (2003) is calculated in Equations 34-35 as follows: 
+Light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the ESM, light availability depends on depth and Total Suspended Solids (TSS) and is calculated algorithmically, then converted into a suitability index. Light availability (Iz) at the plant surface is estimated based on @van_2003 is calculated in Equations 34-35 as follows: 
 
 $$I_{z} = PAR * exp(-K_{d}*z)$$ 
 
@@ -300,8 +300,13 @@ Where $sav.prob$ is an overarching index of ecosystem quality relative to submer
 
 This model for soft bottom habitat omits some important variables and processes. Notably, temperature is not presently included but represents a crucial variable for both SAV and clams. 
 
-* *Temperature for SAV*: Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr and Borman, 2011). At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation (Atkin and Tjoelker, 2003; Jensen, 2000). 
-* *Temperature for Clams*: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C  range in suitability with optima temperatures between 22.5°C and 30°C.
+* *Temperature for SAV*: Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures.
+
+[@Staehr_2011)
+
+At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation.[@atkin_2003];[@jensen_2000]
+
+* *Temperature for Clams*: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C  range in suitability with optimal temperatures between 22.5°C and 30°C.
 
 
 ### `est.sub` Code
