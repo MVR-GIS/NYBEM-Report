@@ -86,7 +86,7 @@ Where $salinity$ is a suitability index relative to salinity and $salinity_{per}
 
 ### Vegetation Coverage
 
-Freshwater Tidal Marshes are characterized by the dominance of herbaceous, shrubby, or emergent aquatic vegetation, with only a slight canopy of trees. Emergent vegetation coverage plays a crucial role in the tidal freshwater ecosystem. For avian taxa like the marsh wren, cover/reproduction appropriateness must be determined by the relative availability of emergent plants for nesting marsh wrens (Gutzwiller and Anderson 1987). Microorganisms frequently occupy headwater marshes because they are contiguous with tidal creeks and contain an abundance of emergent vegetation (@Rozas_1988).
+Freshwater Tidal Marshes are characterized by the dominance of herbaceous, shrubby, or emergent aquatic vegetation, with only a slight canopy of trees. Emergent vegetation coverage plays a crucial role in the tidal freshwater ecosystem. For avian taxa like the marsh wren, cover/reproduction appropriateness must be determined by the relative availability of emergent plants for nesting marsh wrens (Gutzwiller and Anderson 1987). Microorganisms frequently occupy headwater marshes because they are contiguous with tidal creeks and contain an abundance of emergent vegetation [@rozas_rosubmerged_1988].
 
 Vegetation coverage within a freshwater marsh provides crucial habitat to a variety of unique animals and organisms. Vegetation within a tidal freshwater marsh is mainly brackish and cannot withstand long periods of increased salinity (over 0.5 ppt). Further, excessively moist or dry periods can cause additional stress to vegetation leaving the habitat susceptible to a salt intrusion event which can destroy vegetation and make the habitat totally unsuitable. 
 
