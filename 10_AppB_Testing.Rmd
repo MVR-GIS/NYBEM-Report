@@ -1,0 +1,65 @@
+# Model Testing
+
+<span style="color: red;">Insert all of the testthat outcomes from Dougherty's package building.</span>
+
+## HSIarimean
+
+```{r echo=FALSE}
+#Create empty data frame
+test.HSIarimean <- data.frame(matrix(NA,nrow=0,ncol=5))
+colnames(test.HSIarimean) <- c("Target", paste("In",seq(1,4),sep=""))
+
+#Specify tests as c(Target Result, Input vector)
+test.HSIarimean[1,] <- c(1.00, c(1,1,1,1))
+test.HSIarimean[2,] <- c(0.75, c(1,1,1,0))
+test.HSIarimean[3,] <- c(0.50, c(1,1,0,0))
+test.HSIarimean[4,] <- c(0.25, c(1,0,0,0))
+test.HSIarimean[5,] <- c(0.00, c(0,0,0,0))
+
+#Create empty column for test results
+#test.HSIarimean$Result <- rep(NA, length(test.HSIarimean[,1]))
+
+#Loop through input matrix to test and store outcomes
+#for(i in 1:length(test.HSIarimean[,1])){
+#  test.HSIarimean$Result[i] <- testthat::test_that("", {expect_equal(test.HSIarimean[i,1], HSIarimean(t(test.HSIarimean)[2:5,i]))})
+#}
+
+#Send output table
+knitr::kable(test.HSIarimean, caption="Tests run on HSIarimean.", align="c") 
+
+#Run tests
+testthat::test_that("", {
+  expect_equal(test.HSIarimean[1,1], HSIarimean(t(test.HSIarimean)[2:5,1]))
+  expect_equal(test.HSIarimean[2,1], HSIarimean(t(test.HSIarimean)[2:5,2]))
+  expect_equal(test.HSIarimean[3,1], HSIarimean(t(test.HSIarimean)[2:5,3]))
+  expect_equal(test.HSIarimean[4,1], HSIarimean(t(test.HSIarimean)[2:5,4]))
+  expect_equal(test.HSIarimean[5,1], HSIarimean(t(test.HSIarimean)[2:5,5]))
+})
+```
+
+## HSIgeomean
+
+```{r echo=FALSE}
+#Create empty data frame
+test.HSIgeomean <- data.frame(matrix(NA,nrow=0,ncol=5))
+colnames(test.HSIgeomean) <- c("Target", paste("In",seq(1,4),sep=""))
+
+#Specify tests as c(Target Result, Input vector)
+test.HSIgeomean[1,] <- c(1.00, c(1,1,1,1))
+test.HSIgeomean[2,] <- c(0.00, c(1,1,1,0))
+test.HSIgeomean[3,] <- c(0.00, c(1,1,0,0))
+test.HSIgeomean[4,] <- c(0.00, c(1,0,0,0))
+test.HSIgeomean[5,] <- c(0.00, c(0,0,0,0))
+
+#Send output table
+knitr::kable(test.HSIgeomean, caption="Tests run on HSIgeomean.", align="c") 
+
+#Run tests
+testthat::test_that("", {
+  expect_equal(test.HSIgeomean[1,1], HSIgeomean(t(test.HSIgeomean)[2:5,1]))
+  expect_equal(test.HSIgeomean[2,1], HSIgeomean(t(test.HSIgeomean)[2:5,2]))
+  expect_equal(test.HSIgeomean[3,1], HSIgeomean(t(test.HSIgeomean)[2:5,3]))
+  expect_equal(test.HSIgeomean[4,1], HSIgeomean(t(test.HSIgeomean)[2:5,4]))
+  expect_equal(test.HSIgeomean[5,1], HSIgeomean(t(test.HSIgeomean)[2:5,5]))
+})
+```

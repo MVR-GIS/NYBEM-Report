@@ -1,0 +1,79 @@
+# USACE Model Certification Review
+
+
+Ecological models typically rely on multiple variables, ecological processes, and in many cases present a variety of ecological outcomes. As such, models can quickly become complex system representations with many components, inputs, assumptions, and modules. Model evaluation is the process for ensuring that numerical tools are scientifically defensible and transparently developed. Evaluation is often referred to as verification or validation, but it in fact includes a family of methods ranging from peer review to model testing to error checking (Schmolke et al. 2010). The USACE has established an ecological model certification process to ensure that planning models are sound and functional. These generally consist of evaluating tools relative to the three following categories: system quality, technical quality, and usability (EC 1105-2-412).
+
+The NYBEM underwent USACE review and certification from March through April 2022. Models were reviewd by Larry Oliver (USACE New England District, "Reviewer-1"), Dr. Kelly Burks-Copes (USACE Galveston District, "Reviewer-2"), Nate Richards (USACE Headquarters, "Reviewer-3"), and Alicia Logalbo (USACE Norfolk District, "Reviewer-4"). All comments follow the four-part comment structure of: (1) identify the problem, (2) describe the technical basis for the comment, (3) rate the significance or impact of the problem, and (4) recommend a mechanism for resolution. Comments and author responses are provided for transparency in review processes and long-term archival. 
+
+
+**Reviewer-1**
+
+*Comment 1.1: Insert.*  
+
+* _Basis_: Insert.  
+* _Significance_: Insert.  
+* _Resolution_: Insert.  
+* _Author Response_: Insert.
+
+
+*Comment 1.2: Insert.*  
+
+* _Basis_: Insert.  
+* _Significance_: Insert.  
+* _Resolution_: Insert.  
+* _Author Response_: Insert.
+
+
+**Reviewer-2**
+
+*Comment 2.1: Insert.*  
+
+* _Basis_: Insert.  
+* _Significance_: Insert.  
+* _Resolution_: Insert.  
+* _Author Response_: Insert.
+
+
+*Comment 2.2: Insert.*  
+
+* _Basis_: Insert.  
+* _Significance_: Insert.  
+* _Resolution_: Insert.  
+* _Author Response_: Insert.
+
+
+**Reviewer-3**
+
+*Comment 3.1: Insert.*  
+
+* _Basis_: Insert.  
+* _Significance_: Insert.  
+* _Resolution_: Insert.  
+* _Author Response_: Insert.
+
+
+*Comment 3.2: Insert.*  
+
+* _Basis_: Insert.  
+* _Significance_: Insert.  
+* _Resolution_: Insert.  
+* _Author Response_: Insert.
+
+
+**Reviewer-4**
+
+*Comment 4.1: Insert.*  
+
+* _Basis_: Insert.  
+* _Significance_: Insert.  
+* _Resolution_: Insert.  
+* _Author Response_: Insert.
+
+
+*Comment 4.2: Insert.*  
+
+* _Basis_: Insert.  
+* _Significance_: Insert.  
+* _Resolution_: Insert.  
+* _Author Response_: Insert.
+

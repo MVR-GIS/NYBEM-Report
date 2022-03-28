@@ -3,6 +3,8 @@ tab:unnamed-chunk-4
 tab:unnamed-chunk-5
 fig:unnamed-chunk-21
 fig:unnamed-chunk-22
+tab:unnamed-chunk-26
+tab:unnamed-chunk-27
 background
 problem-statement
 report-overview
@@ -80,4 +82,7 @@ habitat-quality-modules
 system-scale-connectivity-model
 aggregated-model-outcomes
 model-development-workshops
+model-testing
+hsiarimean
+hsigeomean
 usace-model-certification-review

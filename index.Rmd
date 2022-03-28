@@ -90,6 +90,7 @@ library(raster)     #Geospatial functions
 #library(rgdal)      #Geospatial functions
 library(cartography)#Mapping functions
 library(rgeos)      #Geospatial functions
+library(testthat)   #Function testing
 
 #library(sf)         #Geospatial functions
 #library(dismo)      #Geospatial functions - interpolation
