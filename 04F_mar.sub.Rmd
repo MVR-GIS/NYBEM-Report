@@ -12,17 +12,12 @@ Figure XX presents a conceptual model of the marine, subtidal ecosystem. This ne
 
 The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, subtidal zones of the region. This submodel drew heavily from three primary bodies of knowledge, specifically:
 
-* NY/NJ harbor mitigation functional assessment models 
+- NY/NJ harbor mitigation functional assessment models [@usace_new_2000]  
 
-[@usace_new_2000]  
+- Habitat suitability models for winter flounder[@banner_usfws_2001], and hard clam [@mulholland_habitat_1984-1].
 
-* Habitat suitability models for winter flounder and hard clam
+- Regional monitoring data associated with NY/NJ Harbor Deepening (@usace_application_2012, @usace_demersal_2015a, @usace_dredge_2015b), essential fish habitat mapping [@usace_essential_2013], and water quality data for the lower bay (DEP 2018, @usace_dredge_2015b).
 
-[@USFWS_2001],[@mulholland_habitat_1984-1]
-
-* Regional monitoring data associated with NY/NJ Harbor Deepening (USACE 2012, USACE 2015a, USACE 2015b), essential fish habitat mapping (USACE 2013), and water quality data for the lower bay (DEP 2018, USACE 2015b).
-
-[@usace_application_2012],[@usace_demersal_2015a],[@usace_dredge_2015b],[@usace_essential_2013],
 
 Four main classes of processes and dynamics were identified from a review of these models and studies: substrate-driven habitat use, physical currents and mixing, light penetration, and human uses of the system. From these processes, four surrogate metrics were identified, which collectively reflect the condition of the marine, subtidal zone. The sections below describe each metric and the rationale in detail, but briefly:
 
@@ -91,7 +86,7 @@ par(mfrow=c(2,2), cex=1.0)
 ### Velocity
 
 
-Velocity, currents, and wave environment are a key determinant of habitat suitability as well as critical drivers of sediment dynamics and water quality processes. For example, hard clam habitat suitability is generally in low to moderate velocity environments (<50 cm/s) with declines in suitability up to 100 cm/s. For NYBEM, the velocity suitability for hard clams is adopted directly from @mulholland_1984 as shown below. We assess velocity as the median velocity observed over an annual hydrodynamic simulation. 
+Velocity, currents, and wave environment are a key determinant of habitat suitability as well as critical drivers of sediment dynamics and water quality processes. For example, hard clam habitat suitability is generally in low to moderate velocity environments (<50 cm/s) with declines in suitability up to 100 cm/s. For NYBEM, the velocity suitability for hard clams is adopted directly from @mulholland_habitat_1984-1 as shown below. We assess velocity as the median velocity observed over an annual hydrodynamic simulation. 
 
 $$velocity = \begin{pmatrix} 0.016*V_{50}+0.6 & V_{50}=0-1\\
 1.0 & V_{50}=1-10\\
@@ -104,7 +99,7 @@ Where $velocity$ is a suitability index relative to currents and velocity and $v
 ### Substrate
 
 
-Sediment quality drives multiple aspects of ecosystem integrity such as benthic habitat provision, nutrient dynamics, and erodibility. Fine sediment composition (i.e., %fine) is a common metric in multiple assessment procedures in the region (e.g., @mulholland_1984, @USACE_2000, @USACE_2021). Specifically, the suitability curves from the hard clam model [@mulholland 1984] are adopted here as a rapid metric of ecosystem quality. For marine environments, sediment data are obtained from the [usSEABED](https://www.usgs.gov/programs/cmhrp/science/accessing-usseabed) data set throughout the region. Habitat suitability is then quantified as follows:
+Sediment quality drives multiple aspects of ecosystem integrity such as benthic habitat provision, nutrient dynamics, and erodibility. Fine sediment composition (i.e., %fine) is a common metric in multiple assessment procedures in the region (e.g., @mulholland_habitat_1984-1, @usace_new_2000, @USACE_port_2021). Specifically, the suitability curves from the hard clam model [@mulholland_habitat_1984-1] are adopted here as a rapid metric of ecosystem quality. For marine environments, sediment data are obtained from the [usSEABED](https://www.usgs.gov/programs/cmhrp/science/accessing-usseabed) data set throughout the region. Habitat suitability is then quantified as follows:
 
 $$substrate = -0.01*fines_{per}+1$$ 
 
