@@ -9,7 +9,7 @@ knitr::include_graphics("ZZ_Fig10_Mar.Deep_ConModel.png")
 ```
 
 
-The following variables are used to assess the marine deepwater submodel: salinity, velocity and currents, light attenuation, and vessel traffic. Salinity acts as a proxy for vertical mixing of the water column and influence of freshwater inputs [@smit_assessing_2021]. Current velocities represent mixing and flushing of the system, sediment suspension, and benthic scouring. Light penetration depths within the water column indicate water column turbidity, nutrient loading and algal production levels. Finally, vessel traffic provides an index for development pressures, both commercial and recreational fishing pressure on the pelagic, demersal and benthic systems, and commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). The overall habitat suitability of the marine, deepwater zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
+The following variables are used to assess the marine deepwater submodel: a) salinity, b) velocity and currents, c) light attenuation, and d) vessel traffic. Salinity acts as a proxy for vertical mixing of the water column and influence of freshwater inputs [@smit_assessing_2021]. Current velocities represent mixing and flushing of the system, sediment suspension, and benthic scouring. Light penetration depths within the water column indicate water column turbidity, nutrient loading and algal production levels. Finally, vessel traffic provides an index for development pressures, both i) commercial and recreational fishing pressure on the pelagic, demersal and benthic systems, and ii) commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). The overall habitat suitability of the marine, deepwater zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
 
 $I_{mar.deep} = \frac{salinity.low.dur + velocity.low.change + light + vessel.density}{4}$ 
 
@@ -68,7 +68,7 @@ par(mfrow=c(2,2), cex=1.0)
 
 Salinity, often used as a proxy for the total concentration of all dissolved salts in the water, is a key factor in water density that controls the vertical mixing of nutrients and chemicals throughout the water column. Salinity constrains dissolved oxygen concentration and limits speciation of marine zones to euryhaline taxa that are physiological adapted to tolerate hypoosmotic processes (are able to maintain a lower internal ionic concentration than seawater).
 
-For NYBEM, the salinity regime is summarized through a metric of the percent of time salinity is less than the marine ecosystem threshold of 30 ppt. This approach assumes that freshwater inputs serve as disturbance on the ecosystem, and higher marine levels of salinity are preferred. Depth-averaged salinity is computed or measured at small time steps over and annual timeframe. These data may then be summarized as an "exceedence curve" with thresholds from 0-100% in 10% intervals. For NYBEM, this exceedence curve is used to calculate the percent of time salinity is less than or equal to 30 ppt.
+For NYBEM, the salinity regime is summarized through a metric of the percent of time salinity is less than the marine ecosystem threshold of 30 psu. This approach assumes that freshwater inputs serve as disturbance on the ecosystem, and higher marine levels of salinity are preferred. Depth-averaged salinity is computed or measured at small time steps over and annual timeframe. These data may then be summarized as an “exceedence curve” with thresholds from 0-100% in 10% intervals. For NYBEM, this exceedence curve is used to calculate the percent of time salinity is less than or equal to 30 psu.
 
 ```{r echo=FALSE, eval=FALSE}
 #Examples of exceedence duration calculation
@@ -93,12 +93,12 @@ $$salinity.low.dur = \begin{pmatrix} -0.02*sal_{dur}+1 & sal_{dur}=0-50\\
 0.0 & sal_{dur}=50-100
 \end{pmatrix}$$
 
-Where $salinity.low.dur$ is a suitability index relative to low salinity periods and $sal_{dur}$ is the percent of time salinity is less than the threshold for marine habitat (i.e., salinity < 30 ppt).
+Where $salinity.low.dur$ is a suitability index relative to low salinity periods and $sal_{dur}$ is the percent of time salinity is less than the threshold for marine habitat (i.e., salinity < 30 psu).
 
 
 ### Current Velocity
 
-The marine deepwater environment is subjected to velocity effects from ocean currents and tides that affect vertical and horizontal mixing and flushing of the system, suspended sediment and solids, substrate settlement of taxa, and small and recreational vessel traffic. Low flow conditions allow for the settlement of sediment, possibly burying viable habitat, reducing mixing and flushing, and potentially facilitating hypoxic conditions. Conversely, high velocities scour the benthic environment, prohibiting settling in the substrate by benthic taxa.
+The marine deepwater environment is subjected to velocity effects from ocean currents and tides that affect vertical and horizontal mixing and flushing of the system, suspended sediment and solids, substrate settlement of taxa, as well as the operation of small and recreational vessels. Low flow conditions allow for the settlement of sediment, possibly burying viable habitat, reducing mixing and flushing, and potentially facilitating hypoxic conditions. Conversely, high velocities scour the benthic environment, prohibiting settling in the substrate by benthic taxa.
 
 Low flow conditions are particularly of concern for these processes, so a representative low velocity (i.e., 10% exceedance probability) is used within NYBEM as a key indicator metric. Suitability is then calculated based on the change in this low velocity relative to a baseline condition. For NYBEM, the baseline condition is assessed as the existing condition for a representative tidal year. Suitability declines linearly beyond a 10% change in this metric from the baseline with sharper decreases as velocities slow.
 
@@ -116,7 +116,7 @@ Where $vel_{10,f}$ is the 10% exceedence velocity for a focal condition and $vel
 
 ### Light
 
-The depth that light reaches within the water column acts as a proxy for the viability of water column turbidity, nutrient loading, and chlorophyll-a production, the essential building block for ocean productivity. As light controls chlorophyll-a production, it may be seen as a limiting factor for algal and particulate organic matter densities, and ultimately the development of harmful algal blooms. Therefore, light provides a meaningful metric for a variety of biological processes in this ecosystem. For the `mar.deepsub`, light availability and suitability are modeled following the same algorithms described for the `est.sub` model (See Section 4.4), which can be summarized in suitability terms as as:
+The depth that light reaches within the water column acts as a proxy for the viability of water column turbidity, nutrient loading, and chlorophyll-a production (an essential building block for ocean productivity). As light controls chlorophyll-a production, it may be seen as a limiting factor for algal and particulate organic matter densities, and ultimately the development of harmful algal blooms. Therefore, light provides a meaningful metric for a variety of biological processes in this ecosystem. For the `mar.deepsub`, light availability and suitability are modeled following the same algorithms described for the `est.sub` model (See Section 4.4), which can be summarized in suitability terms as as:
 
 $$light = \begin{pmatrix} 0.0 & PLA<10\\
 0.0833*PLA-0.83 & PLA>70\\
