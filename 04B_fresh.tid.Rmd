@@ -75,9 +75,14 @@ Freshwater tidal wetlands are marshes and swamps with water that is less saline 
 
 Salinity influences physical and chemical processes such as flocculation and the amount of dissolved oxygen (DO) in the water column, as well as the types of organisms that reside in a freshwater tidal ecosystem. Hurricanes and other storms may bring brackish water into them, which is a significant natural disturbance. Because many plant species in these wetlands are not tolerant to brackish conditions, much of the vegetation is harmed as a result of these occurrences. For NYBEM, a proxy variable is used to account for these processes. As a relative duration of salinity, we utilize a ratio of salinity ranges to the tidal range, which we compute as follows:
 
+_Please check equation_
+
 $$t_{rel} = \frac{Sal_{max} - Sal_{min}}{MHHW-MLLW}$$ 
+Where $t_{rel}$ is a relative duration of salinty, $Sal_{max}$ is the maximum salinity observed over a hydrodynamic simulation period, $Sal_{min}$ is the minimum salinity observed over a hydrodynamic simulation period, $MHHW$ is mean higher high water, and $MLLW$ is mean lower low water.
 
 The NYBEM tidal freshwater sub model relies on salinity duration to represent changes in tidal inundation and freshwater flow input across the ecosystem. As the percentage of time with less than 10% exceedance from the current salinity regime increases, habitat suitability for taxa within the freshwater tidal ecosystem will decrease. As the percentage of time with less than 90% exceedance from the current salinity regime increases, habitat suitability for taxa within the freshwater tidal ecosystem will increase. This metric provides a relative accounting for salinity events within the freshwater tidal ecosystem. For instance, $t_{rel}>1$ usually occurs in portions of the freshwater tidal ecosystem that receive more influxes of freshwater, and $t_{rel}=0$ occurs in areas where the salinity influx exceeds the freshwater tidal range (0.5 psu-5.0 psu). In terms of habitat suitability, we assume that ideal values of this metric occur around 0.5 (near the mean tide level) and suitability declines on either side of this threshold as follows: 
+
+_Please check equation_
 
 $$sal.dur = \begin{pmatrix} 0.02*t_{rel} & t_{rel}<0.5\\
 -0.02*t_{rel}+2 & t_{rel}>0.5\\
@@ -88,11 +93,11 @@ Where $salinity$ is a suitability index relative to salinity and $salinity_{per}
 
 ### Vegetation Coverage
 
-Freshwater Tidal Marshes are characterized by the dominance of herbaceous, shrubby, or emergent aquatic vegetation, with only a slight canopy of trees. Emergent vegetation coverage plays a crucial role in the tidal freshwater ecosystem. For avian taxa like the marsh wren, cover/reproduction appropriateness must be determined by the relative availability of emergent plants for nesting marsh wrens (Gutzwiller and Anderson 1987). Microorganisms frequently occupy headwater marshes because they are contiguous with tidal creeks and contain an abundance of emergent vegetation [@rozas_rosubmerged_1988].
+Freshwater Tidal Marshes are characterized by the dominance of herbaceous, shrubby, or emergent aquatic vegetation, with only a slight canopy of trees. Emergent vegetation coverage plays a crucial role in the tidal freshwater ecosystem. For avian taxa like the marsh wren, cover/reproduction appropriateness must be determined by the relative availability of emergent plants for nesting marsh wrens (Gutzwiller and Anderson 1987). Microorganisms frequently occupy headwaters marshes because they are contiguous with tidal creeks and contain an abundance of emergent vegetation [@rozas_rosubmerged_1988].
 
 Vegetation coverage within a freshwater marsh provides crucial habitat to a variety of unique animals and organisms. Vegetation within a tidal freshwater marsh is mainly brackish and cannot withstand long periods of increased salinity (over 0.5 ppt). Further, excessively moist or dry periods can cause additional stress to vegetation leaving the habitat susceptible to a salt intrusion event which can destroy vegetation and make the habitat totally unsuitable. 
 
-For the NYBEM tidal freshwater ecosystem submodel, vegetation coverage is quantified as the percentage of emergent aquatic vegetation. Emergent aquatic vegetation is a key habitat resource for species found within this ecosystem like marsh wren. Marsh wren are a key indicator species of ecosystem health because they are drawn to ideal wetland conditions. These important avian taxa are highly territorial and have a minimum habitat area of 50% emergent vegetation coverage (@gutzwiller_habitat_1987). Marsh wrens rarely breed in marshes with less than 57% emergent vegetation (@gutzwiller_habitat_1987). As a result, if there is less than this quantity of wetland habitat (emergent vegetation), the HSI is presumed to be 0. Vegetation coverage is a vital parameter of habitat suitability within a tidal freshwater ecosystem.
+For the NYBEM tidal freshwater ecosystem submodel, vegetation coverage is quantified as the percentage of emergent aquatic vegetation. Emergent aquatic vegetation is a key habitat resource for species found within this ecosystem like marsh wren. Marsh wren are a key indicator species of ecosystem health because they are drawn to ideal wetland conditions. These important avian taxa are highly territorial and have a minimum habitat area of 50% emergent vegetation coverage [@gutzwiller_habitat_1987]. Marsh wrens rarely breed in marshes with less than 57% emergent vegetation [@gutzwiller_habitat_1987]. As a result, if there is less than this quantity of wetland habitat (emergent vegetation), the HSI is presumed to be 0. Vegetation coverage is a vital parameter of habitat suitability within a tidal freshwater ecosystem.
 
 
 $$veg.cover = \begin{pmatrix} 0.0 & cover_{per}=0-50\\
@@ -107,31 +112,23 @@ Where $veg.cover$ is a suitability index relative to vegetation coverage and $co
 
 Tidal oscillations control the short-term dynamics of freshwater tidal wetlands, which feed nutrients into the environment and make them more fruitful and productive than most non-tidal wetlands (@propato_evaluating_2018). These tidal oscillations and irregular weather events deposit sediment and nutrients into the ecosystem. 
 
-Increased inundation in tidal freshwater marshes leads to more inorganic sediment deposition, which can assist tidal wetlands keep up with rising sea levels. As a result, marshes can migrate vertically to preserve their position in the tidal frame to some extent. In contrast, tidal freshwater ecosystems are frequently coupled with complicated geometry, such as a meandering channel with uneven depth and cross-section. Because of the complicated geometry and huge fluctuations in freshwater discharge, there are strong seasonal variations in depth, which might affect pollution transfer and algae development. When the depth of water within the ecosystem increases, it’s more susceptible to HABs, pollution, and habitat degradation.
+Increased inundation in tidal freshwater marshes leads to more inorganic sediment deposition, which can assist tidal wetlands keep up with rising sea levels. As a result, marshes can migrate vertically to preserve their position in the tidal frame to some extent. In contrast, tidal freshwater ecosystems are frequently coupled with complicated geometry, such as a meandering channel with uneven depth and cross-section. Because of the complicated geometry and huge fluctuations in freshwater discharge, there are strong seasonal variations in depth, which might affect pollution transfer and algae development. When the depth of water within the ecosystem increases, it’s more susceptible to HABs, pollution, and habitat degradation. As a relative output of sediment, we adopt the ratio of water depth ranges to the tidal range, which we calculate as follows:
 
-The relationship between sediment deposition and water level rise can be used to quantify habitat suitability within the freshwater tidal ecosystem. When water depth increases, sediment deposition will be at an optimal level to support tidal freshwater habitat. As the perecent of time with less than 90% exceedance in water depth increases, habitat suitability increase as a result of optimal water level for sediment deposition. As the percent Percent of time less than 10% exceedance of baseline water depth increases, habitat suitability will decrease due to the lack of sediment deposits. For the NYBEM Model, HSI equals 0.8 when water depth increases by 1 meter. When there is no increase in water depth, HSI equals zero because there is minimal episodic deposition.We assume that ideal values of habitat suitability occur around 0.5 (around the mean tidal level) and that suitability diminishes on each side of this threshold as follows:
+_Please check equation_
 
-$$deposition = \begin{pmatrix} depth_{m} & depth_{m}=0-1\\
--depth_{m}+2 & depth_{m}=1-2\\
-0.0 & depth_{m}>2
+$$d_{rel} = \frac{H_{max} - H_{min}}{Hmedian}$$ 
+Where $d_{rel}$ is water depth relative to the minimum and maximum water height measurements, $H_{max}$ is the maximum depth observed over a hydrodynamic simulation period, $H_{min}$ is the minimum depth observed over a hydrodynamic simulation period, and $H_{median}$ is the median depth observed over a hydrodynamic stimulation period.
+
+The relationship between sediment deposition and water level rise can be used to quantify habitat suitability within the freshwater tidal ecosystem. When water level increases, sediment deposition will be at an optimal level to support freshwater tidal habitat. This metric provides a relative accounting for the variances in depth across the ecosystem. For instance, $d_{rel}>1$ occurs in portions of the freshwater tidal ecosystem that experience optimal sediment deposition conditions less than 90% exceedance from $H_{median}$, and in portions of the freshwater tidal ecosystem that experience optimal sediment deposition conditions less than 10% exceedance from $H_{median}$. In terms of habitat suitability, we assume that ideal values of this metric occur around 0.5 (near 1.1 meter depth) and suitability declines on either side of this threshold as follows: 
+
+_Please check equation_
+
+$$deposition = \begin{pmatrix} 0.02*d_{rel} & d_{rel}<0.5\\
+-0.02*d_{rel}+2 & d_{rel}>0.5\\
+0.0 & d_{rel}>1.0
 \end{pmatrix}$$ 
 
 Where $deposition$ is a suitability index relative to episodic sediment deposition and $depth_{m}$ is the change in depth in meters.
-
-
-### Edge Accretion
-
-Salt marsh accretion is characterized as the accumulation of plant material, including roots and degraded material, from plants growing in the marsh, as well as growth via deposition of suspended particles during floods (allochthonous growth) (autochthonous growth)(@schile_modeling_2014). This submodel draws from the Marsh Equilibrium Model (MEM) to predict habitat suitability from the change in marsh platform elevation (@morris_responses_2002). Many tidal freshwater ecosystems have survived despite a rise in sea level, with tidal marsh heights remaining constant under freshwater circumstances, but future anticipated increases in relative sea-level rise might outpace marsh accretion rates, potentially resulting in the loss of these elevation-dependent coastal ecosystems (@schile_modeling_2014). 
-
-In SLAMM, marsh erosion is exclusively modeled at the marsh-to-open-water interface, and erosion occurs only if fetch is sufficient. As a result, marshes have been proven to be less sensitive to this parameter than accretion parameters (MEM)(SLAMM)(@morris_responses_2002)(@propato_evaluating_2018). This is why for the freshwater tidal ecosystem submodel edge accretion is used in place of edge erosion. Edge Accretion is quantified through percent change in marsh platform elevation. As the marsh platform deviates in baseline elevation, habitat suitability will decrease because the marsh will experience more edge accretion. When the marsh platform experiences 100% change in elevation HSI equals 0. The key outputs are change in elevation above mean sea-level from 0%-100% deviation, and associated HSI for edge accretion.
-
-
-$$deposition = \begin{pmatrix} -0.02*elev_{m}+1 & elev_{m}=0-10\\
--0.015*elev_{m}+0.95 & elev_{m}=10-30\\
--0.0071*elev_{m}+0.71 & elev_{m}=30-100
-\end{pmatrix}$$ 
-
-Where $deposition$ is a suitability index relative to episodic sediment deposition and $elev_{m}$ is the percent change in marsh elevation.
 
 
 ### fresh.int Code
@@ -151,6 +148,12 @@ ecorest::SIcalc(NYBEM.fresh.tid, fresh.tid.test)
 
 
 ### Future Extension of fresh.tid
+
+## Edge Accretion {-}
+
+Edge accretion remains an important parameter of habitat suitability within the freshwater tidal ecosystem to include in the future development of the NYBEM. Freshwater tidal ecosystems have survived despite a rise in sea level, with tidal marsh heights remaining constant under freshwater circumstances, but future anticipated increases in relative sea-level rise might outpace marsh accretion rates, potentially resulting in the loss of these elevation-dependent coastal ecosystems (@schile_modeling_2014). Accretion is characterized as the accumulation of plant material, including roots and degraded material, from plants growing in the marsh, as well as growth via deposition of suspended particles during floods (allochthonous growth) (autochthonous growth)(@schile_modeling_2014).
+In the SLAMM model, marsh erosion is exclusively modeled at the marsh-to-open-water interface, and erosion occurs only if fetch is sufficient. As a result, marshes have been proven to be less sensitive to this parameter than accretion parameters (MEM)(SLAMM)(@morris_responses_2002;@propato_evaluating_2018). Edge Accretion can be quantified using parameters in marsh platform elevation, biomass increase, and tidal inundation, but face limitations from data availability and accessibility. 
+
 
 (<span style="color: red;">ADD NOTES HERE.</span>)
 
