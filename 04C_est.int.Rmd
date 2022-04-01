@@ -93,10 +93,31 @@ Higher salinity, lower nutrient intake, and lower sediment inputs, that are asso
 
 For NYBEM, the salinity regime is represented by a percentage of time where salinity is less than 30 psu, the estuarine intertidal ecological threshold. Freshwater inputs are assumed to be a disruption to the environment, and moderate salinity levels are recommended (less than 30 psu). Over an annual timescale, depth-averaged salinity is estimated or measured at short time steps. The data can then be summarized as a "exceedence curve," with thresholds ranging from 0% to 100% in 10% increments. The percent of time that salinity is less than or equal to 30 psu is calculated using this exceedence curve in NYBEM.
 
+```{r echo=FALSE, eval=FALSE}
+#Examples of exceedence duration calculation
+exceedence <- seq(0,100,10)
 
-$$salinity = salinity.metric.TBD$$ 
+salinity.ex1 <- c(22, 23, 24, 29.5, 29.9, 31, 32, 33, 34, 35, 37)
+approx(salinity.ex1, exceedence, xout = 30, method = "linear", rule = 2, ties = "ordered")$y
 
-Where $salinity$ is a suitability index relative to salinity and...
+salinity.ex2 <- c(24, 26, 27, 28, 30.1, 32, 34, 36, 38, 40, 42)
+approx(salinity.ex2, exceedence, xout = 30, method = "linear", rule = 2, ties = "ordered")$y
+
+salinity.ex3 <- c(24, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40)
+approx(salinity.ex3, exceedence, xout = 30, method = "linear", rule = 2, ties = "ordered")$y
+
+salinity.ex4 <- c(30.5, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40)
+approx(salinity.ex4, exceedence, xout = 30, method = "linear", rule = 2, ties = "ordered")$y
+```
+
+This duration metric is then translated into a suitability metric as follows:
+
+$$salinity.mod.dur = \begin{pmatrix} -0.02*sal_{dur}+1 & sal_{dur}=0-50\\
+0.0 & sal_{dur}=50-100
+\end{pmatrix}$$
+
+Where $salinity.mod.dur$ is a suitability index relative to moderate salinity periods and $sal_{dur}$ is the percent of time salinity is less than the threshold for marine habitat (i.e., salinity < 30 psu).
+
 
 ### Edge Erosion
 
