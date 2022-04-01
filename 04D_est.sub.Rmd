@@ -1,7 +1,7 @@
 ## Estuarine, Subtidal Submodel (`est.sub`)
 
 
-This section presents development of the estuarine, subtidal submodel (`est.sub`). Estuarine subtidal habitat was defined as areas with elevations between MLLW and -20m with salinities ranging from 0.5 to 30 psu. In general, the est.sub seeks to capture the general condition and trajectory of the estuarine subtidal habitat using three different taxa (oysters, SAV, and clams) as indicators of ecosystem quality. Each taxa provides critical contributions to the overall quality of the ecosystem. 
+This section presents development of the estuarine, subtidal submodel (est.sub). Estuarine subtidal habitat was defined as areas with elevations between MLLW and -20m with salinities ranging from 0.5 to 30 psu. In general, the est.sub seeks to capture the general condition and trajectory of the estuarine subtidal habitat using three different taxa (oysters, SAV, and clams) as indicators of ecosystem quality. Each taxa provides critical contributions to the overall quality of the ecosystem. 
 
 
 A conceptual model of the estuarine subtidal habitat was developed at a mediated modeling workshop (Appendix A). The conceptual model represented the major components affecting the quality of the ecosystem. Three main categories of drivers were identified: physical (water quality, velocity, sedimentation), anthropogenic (vessel traffic and development stress), and biological (SAV, benthic organisms, fish) with interactions among the categories. Conceptual models were then refined in two key ways (Figure XX). First, it was assumed that essential fish habitat would be present if oysters, SAV, and clams were present, so this variable was removed. Second, substrate type is a major driver of SAV, oysters, and clams. In general, the ecosystem can be coarsely divided into hard bottom and soft bottom habitats roughly correlated with oysters and SAV/clams, respectively. The unique characteristics and drivers of these habitats led to splitting the est.sub model into modules for each of these substrate types. 
@@ -120,7 +120,7 @@ This model for hard bottom habitat omits some important variables and processes.
 ### Soft Bottom Habitats (`est.sub.soft`)
 
 
-Estuarine, subtidal soft bottom habitats comprise large portions of the study areas and host a variety of taxa of interest to environmental management. Specifically, submerged aquatic vegetation (SAV) beds and hard clams are focal target of management. However, these two outcomes have different ecological drivers. As such, the `est.sub.soft` model represents a hybridized approach that attempts to assess the general condition of this habitat type relative to both major outcomes. 
+Estuarine, subtidal soft bottom habitats comprise large portions of the study areas and host a variety of taxa of interest to environmental management. Specifically, submerged aquatic vegetation (SAV) beds and hard clams are focal targets of management. Specifically, submerged aquatic vegetation (SAV) beds and hard clams are focal target of management. However, these two outcomes have different ecological drivers. As such, the `est.sub.soft` model represents a hybridized approach that attempts to assess the general condition of this habitat type relative to both major outcomes. 
 
 Habitat suitability is assessed separately for SAV and hard clams. The overall habitat suitability of the estuarine, subtidal, soft bottom ecosystem is aggregated into a single metric via a maximum of the separate suitability indices. This approach assumes that a given patch does not need to be perfect for both taxa simultaneously, but instead, the habitat could have high quality relative to one or the other outcome.
 
@@ -130,11 +130,11 @@ Where $I_{est.sub.soft}$ is an overarching index of ecosystem quality for the es
 
 #### Submerged Aquatic Vegetation Module
 
-The SAV submodel is represented by four variables critical for growth and reproduction of seagrass, (1) substrate, (2) light availability, and (3) development stress. Suitability scores are represented either as discrete categories or as step functions with linear interpolations between steps. 
+The SAV submodel is represented by three variables critical for growth and reproduction of seagrass, (1) substrate, (2) light availability, and (3) development stress. Suitability scores are represented either as discrete categories or as step functions with linear interpolations between steps. 
 
 $I_{sav} = \frac{substrate.sav + light + vessel.density}{3}$ 
 
-Where $I_{sav}$ is an overarching index of ecosystem quality relative to submerged aquatic vegetation, $substrate.sav$ is a suitability index relative to fine substrate, $light$ is a suitability index relative to light penetration, and $vessel.density$ is a suitability index relative to boat traffic and human uses. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
+Where $I_{sav}$ is an overarching index of ecosystem quality relative to submerged aquatic vegetation, $substrate.sav$is a suitability index relative to fine substrate, light is a suitability index relative to light penetration, and $vessel.density$is a suitability index relative to boat traffic and human uses (a proxy for development stress). All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 ```{r echo=FALSE, fig.width=8, fig.height=8}
 #Create data frame with est.sub.hard submodel
@@ -218,7 +218,7 @@ Where $vessel.density$ is a suitability index relative to ship traffic and $ves_
 
 #### Hard Clam Module
 
-The clam habitat suitability submodel is based on Thompson et al. (2021). Ideal depth for hard clams has been reported as 4 to 8 meters, however hard clams can be found in shallower depths, but the habitat is considered suboptimal. This submodel consists of four variables (1) salinity, (2) substrate, and (3) SAV suitability. 
+The clam habitat suitability submodel is based on _Thompson et al. (2021)_. Ideal depth for hard clams has been reported as 4 to 8 m, however hard clams can be found in shallower depths, but the habitat is considered suboptimal. This submodel consists of three variables (1) salinity, (2) substrate, and (3) SAV suitability. 
 
 $I_{clam} = \frac{salinity.clam + substrate.clam + sav.prob}{4}$ 
 
@@ -265,7 +265,7 @@ par(mfrow=c(2,2), cex=1.0)
 
 ```
 
-Salinity represents the range of salinities over which clams can survive. Optimal salinity for hard clams ranges from 25 to 35. Hyper- and hypo-saline conditions (> 45 or <12.5, respectively) are considered unsuitable when clams are exposed to these conditions for three to six consecutive days. Habitat suitability increases with increasing salinity for intermediate values. The relationship between salinity and its suitability index is formulated as follows: 
+Salinity represents the range of salinities over which clams can survive. Optimal salinity for hard clams ranges from 25 to 35 psu. Hyper- and hypo-saline conditions (> 45 or <12.5 psu, respectively) are considered unsuitable when clams are exposed to these conditions for three to six consecutive days. Habitat suitability increases with increasing salinity for intermediate values. The relationship between salinity and its suitability index is formulated as follows: 
 
 $$salinity.clam = \begin{pmatrix} 0.0 & salinity.psu=0-12\\
 0.5*salinity.psu-6.0 & salinity.psu=12-12.5\\
@@ -300,9 +300,9 @@ Where $sav.prob$ is an overarching index of ecosystem quality relative to submer
 
 This model for soft bottom habitat omits some important variables and processes. Notably, temperature is not presently included but represents a crucial variable for both SAV and clams. 
 
-- *Temperature for SAV*: Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr et al. 2011). At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation.[@atkin_thermal_2003];[@jensen_psi-k_2000]
+- *Temperature for SAV*: Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr et al. 2011).At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation [@atkin_thermal_2003];[@jensen_psi-k_2000].
 
-- *Temperature for Clams*: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C  range in suitability with optimal temperatures between 22.5°C and 30°C.
+- *Temperature for Clams*: Temperature for Clams: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C range in suitability with optimal temperatures between 22.5°C and 30°C.
 
 
 ### `est.sub` Code
