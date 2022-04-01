@@ -129,16 +129,25 @@ Where $veg.cover$ is a suitability index relative to vegetation cover and $cover
 
 Estuaries are efficient sediment traps where near-bottom circulation causes sediment flow convergence during the transition from brackish to fresh water, resulting in local maxima in suspended sediment concentration (SSC) and deposition rates. Marine materials are deposited from the continental shelf into estuarine habitats. Due to disparities in tidal currents (ebb versus flood tide), sediments are carried to supply sediment on varying time frames. In the estuarine intertidal ecosystem, sediment transport capacity is mostly determined by river discharge and by the timing of discharge events in relation to the spring–neap cycle and subtidal oscillations in sea level [@prosser_impacts_2018]. 
 
-Due to the retreat of the salinity intrusion and increasing bed pressures, sediment deposition episodes can induce considerable bed resuspension in the estuary. These periodic flood and storm events are major drivers in sediment dynamics and contribute disproportionately to the total sediment discharge [@ralston_sediment_2013]. The duration of high-discharge episodes in relation to the estuarine reaction time, a feature that fluctuates seasonally with discharge and estuarine length, also affects sediment transport capacity [@palinkas_sediment_2014]. These short-term events can cause changes in the local biological community and affect seabed stability and strength. 
+Due to the retreat of the salinity intrusion and increasing bed pressures, sediment deposition episodes can induce considerable bed resuspension in the estuary. These periodic flood and storm events are major drivers in sediment dynamics and contribute disproportionately to the total sediment discharge [@ralston_sediment_2013]. The duration of high-discharge episodes in relation to the estuarine reaction time, a feature that fluctuates seasonally with discharge and estuarine length, also affects sediment transport capacity [@palinkas_sediment_2014]. These short-term events can cause changes in the local biological community and affect seabed stability and strength. As a relative output of sediment, we adopt the ratio of water depth ranges to the tidal range, which we calculate as follows:
+
+$$d_{rel} = \frac{H_{max} - H_{min}}{Hmedian}$$
+
+Where $d_{rel}$ is water depth relative to the minimum and maximum water height measurements, $H_{max}$ is the maximum depth observed over a hydrodynamic simulation period, $H_{min}$ is the minimum depth observed over a hydrodynamic simulation period, and $H_{median}$ is the median depth observed over a hydrodynamic stimulation period.
 
 In coastal and estuary environments across the world, harmful algal blooms (HABs) have substantial economic, public health, and ecological consequences. The influx of additional nutrients following an episode of sediment deposition have been known to cause harmful algal blooms (HABs)[@ralston_temperature_2014]. Further, the frequent upturn of sediment can displace biological organisms. The most significant foreshore processes for the horseshoe crab are episodic storms, which impact erosion and accretion cycles, swash and wave processes, which affect sediment mixing and activation, and tides, which affect water infiltration and exfiltration through the sediment [@nancy_jackson_armoring_2010]. During storms, erosion of the shoreline can result in the removal of material from the upper foreshore and deposition on the lower foreshore, or the foreshore moving horizontally landward.
 
-The NYBEM estuarine intertidal submodel utilizes a depth threshold that represents optimal episodic sediment deposit levels. Sediment supply is a key determinant of long-term marsh stability. The percent of time the estuarine depth is greater than MHHW is an indicator of habitat suitability. 
+The relationship between sediment deposition and water level rise can be used to quantify habitat suitability within the esturarine intertidal ecosystem. When water level increases, sediment deposition will be at an optimal level to support esturarine intertidal habitat. This metric provides a relative accounting for the variances in depth across the ecosystem. For instance, $d_{rel}>1$ occurs in portions of the esturarine intertidal ecosystem that experience optimal sediment deposition conditions less than 90% exceedance from $H_{median}$, and in portions of the esturarine intertidal ecosystem that experience optimal sediment deposition conditions less than 10% exceedance from $H_{median}$. In terms of habitat suitability, we assume that ideal values of this metric occur around 0.5 (near 1.1 meter depth) and suitability declines on either side of this threshold as follows: 
 
+_Please check equation_
 
-$$deposition = deposition.metric.TBD$$ 
+$$deposition = \begin{pmatrix} 0.02*d_{rel} & d_{rel}<0.5\\
+-0.02*d_{rel}+2 & d_{rel}>0.5\\
+0.0 & d_{rel}>1.0
+\end{pmatrix}$$ 
 
-Where $deposition$ is a suitability index relative to episodic sediment deposition and...
+Where $deposition$ is a suitability index relative to episodic sediment deposition and $depth_{m}$ is the change in depth in meters.
+
 
 ### Developement of Adjacent Upland
 
