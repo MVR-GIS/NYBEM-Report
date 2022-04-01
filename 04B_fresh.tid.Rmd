@@ -71,9 +71,9 @@ par(mfrow=c(2,2), cex=1.0)
 
 ### Salinity
 
-Freshwater tidal wetlands are marshes and swamps with water that is less saline than brackish and is flooded on a regular lunar or irregular wind tidal basis. The salinity of the water varies from oligohaline to totally fresh (0 ppt to 0.5 ppt). 
+Freshwater tidal wetlands are marshes and swamps with water that is less saline than brackish and is flooded on a regular lunar tidal basis. The salinity of the water varies from oligohaline to totally fresh (0 psu to 0.5 psu). 
 
-Salinity influences physical and chemical processes such as flocculation and the amount of dissolved oxygen (DO) in the water column, as well as the types of organisms that reside in a freshwater tidal ecosystem. Hurricanes and other storms may bring brackish water into them, which is a significant natural disturbance. Because many plant species in these wetlands are not tolerant to brackish conditions, much of the vegetation is harmed as a result of these occurrences. For NYBEM, a proxy variable is used to account for these processes. As a relative duration of salinity, we utilize a ratio of salinity ranges to the tidal range, which we compute as follows:
+Salinity influences physical and chemical processes such as flocculation and the amount of dissolved oxygen (DO) in the water column, as well as the types of organisms that reside in a freshwater tidal ecosystem. Hurricanes and other storms may bring brackish water into the system, which is a significant natural disturbance. Because many plant species in these wetlands are not tolerant to brackish conditions, much of the vegetation is harmed as a result of these occurrences. For NYBEM, a proxy variable is used to account for these processes. As a relative duration of salinity, we utilize a ratio of salinity ranges to the tidal range, which we compute as follows:
 
 _Please check equation_
 
@@ -110,9 +110,9 @@ Where $veg.cover$ is a suitability index relative to vegetation coverage and $co
 
 ### Episodic Sediment Deposition
 
-Tidal oscillations control the short-term dynamics of freshwater tidal wetlands, which feed nutrients into the environment and make them more fruitful and productive than most non-tidal wetlands (@propato_evaluating_2018). These tidal oscillations and irregular weather events deposit sediment and nutrients into the ecosystem. 
+Tidal oscillations control the short-term dynamics of freshwater tidal wetlands, which feed nutrients into the environment and make them more fruitful and productive than most non-tidal wetlands (@propato_evaluating_2018). These tidal oscillations, as well as irregular weather events, deposit sediment and nutrients into the ecosystem.
 
-Increased inundation in tidal freshwater marshes leads to more inorganic sediment deposition, which can assist tidal wetlands keep up with rising sea levels. As a result, marshes can migrate vertically to preserve their position in the tidal frame to some extent. In contrast, tidal freshwater ecosystems are frequently coupled with complicated geometry, such as a meandering channel with uneven depth and cross-section. Because of the complicated geometry and huge fluctuations in freshwater discharge, there are strong seasonal variations in depth, which might affect pollution transfer and algae development. When the depth of water within the ecosystem increases, it’s more susceptible to HABs, pollution, and habitat degradation. As a relative output of sediment, we adopt the ratio of water depth ranges to the tidal range, which we calculate as follows:
+Increased inundation in tidal freshwater marshes leads to more inorganic sediment deposition, which can assist tidal wetlands keep up with rising sea levels. As a result, marshes can migrate vertically to preserve their position in the tidal frame to some extent. In contrast, tidal freshwater ecosystems are frequently coupled with complicated geometry, such as a meandering channel with uneven depths and cross-sections. Because of the complicated geometry and huge fluctuations in freshwater discharge, there are strong seasonal variations in depth, which affect pollution transfer and algae development. When the depth of water within the ecosystem increases, the system is more susceptible to HABs, pollution, and habitat degradation. As a relative output of sediment, we adopt the ratio of water depth ranges to the tidal range, which we calculate as follows:
 
 _Please check equation_
 
