@@ -24,10 +24,10 @@ nybem.domain <- function(NYBightWatersheds, Ocean20mDepth, bedelev, MHHW){
 `patch.mapper`: This function maps the extent of NYBEM's six major ecosystem types (Table 3.2) based on user-specified data layers for bed elevation, MLLW, MTL, MHHW, and salinity.  
 
 
-In NYBEM, the quantity and quality of each ecosystem type may be assessed separately. For instance, ecosystems could be rapidly delineated from empirical data for the existing condition (e.g., field or tide gauge) or modeled hydrodynamic data for future conditions or proposed management actions. These delineated ecosystems can be summarized as an overarching habitat quantity in acres. Ecosystem quality may then be assessed based on patch-specific data and known thresholds in ecological response (e.g., on a normalized 0 to 1 scale indicating ecological quality or function). The product of habitat quality and quantity provides a consistent metric across ecosystem types (i.e., “habitat units”). Here, the terms "habitat" and "ecosystem" are used synonymously to indicate a given patch.
+In NYBEM, the quantity and quality of each ecosystem type may be assessed separately. For instance, ecosystems could be rapidly delineated from empirical data for the existing condition (e.g., field or tide gauge) or modeled hydrodynamic data for future conditions or proposed management actions. These delineated ecosystems can be summarized as an overarching habitat quantity in acres. Ecosystem quality may then be assessed based on patch-specific data and known thresholds in ecological response (e.g., on a normalized 0 to 1 scale indicating ecological quality or function). The product of habitat quality and quantity provides a consistent metric across ecosystem types (i.e., “habitat units”). Here, the terms “habitat” and “ecosystem” are used synonymously to indicate a given patch.
 
 
-The criteria for delineating ecosystems (Table 3) were subsequently programmed as a suite of logic statements for identifying the salinity zone, tidal zone, or ecosystem / habitat type for any given patch. The following functions input salinity, bed elevation, mean lower low water (MLLW), and mean higher high water (MHHW) and output a numerical code indicating salinity, tidal, and habitat zone as follows.
+The criteria for delineating ecosystems (Table 3) were subsequently programmed as a suite of logic statements for identifying the salinity zone, tidal zone, or ecosystem / habitat type for any given patch. The following functions input salinity, bed elevation, mean lower low water (MLLW), and mean higher high water (MHHW), and output a numerical code indicating salinity, tidal, and habitat zone as follows:
 
 * *Tidal Zone*: 1 = deep, 2 = subtidal, 3 = intertidal, and 4 = upland
 * *Salinity Zone*: 1 = marine, 2 = estuarine, or 3 = freshwater  
@@ -87,6 +87,8 @@ set.habitat.zone <- function(tidalzone, salinityzone){
 
 
 ### Rasterize Habitat Patches
+
+__Do we need to reference the spatial coordinate systems? Maybe the R function or package used?__
 
 `patch.rasterizer`: This function rasterizes the output of `patch.mapper` based on a specified grid resolution and aligns that layer with a specified spatial coordinate system. 
 
