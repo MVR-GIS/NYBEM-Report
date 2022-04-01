@@ -9,7 +9,7 @@ In response to Superstorm Sandy and associated Congressional directives ([PL 113
 
 ![*Figure 1. USACE regional coastal storm risk management studies. NJBB and HATS are the primary focus of model development.*](ZZ_Fig01_USACE.Studies.jpeg)
 
-In these study areas, the USACE is considering a diversity of measures for mitigating flood risks, including: structural actions (e.g., levees, floodwalls, storm surge barriers), non-structural measures (e.g., buy-outs, elevation of structures, flood-proofing), and natural and nature-based features (NNBF, e.g., wetland creation, reefs for breakwaters). Environmental outcomes and acceptability are important constraints on plan selection, and recommended plans must be in compliance with environmental laws and regulations. Given the large spatial scope, these USACE studies are applying a “tiered” approach to compliance with the National Environmental Policy Act (NEPA). Tiered assessment intends to provide appropriate data at key planning milestones for complex studies with diverse environmental effects. In the context of these studies, a “Tier 1” Environmental Impact Statement (EIS) will be generated at the conclusion of the USACE Planning Process (i.e., in the Feasibility Report and Chief’s Report). A “Tier 2” EIS will be developed in Pre-Construction Engineering and Design (PED). The “Tier 1” EIS is being developed with sequentially more accurate and precise information as the planning process proceed through key milestones such as the Alternatives Milestone Meeting (AMM), Tentatively Selected Plan Milestone (TSP), and Agency Decision Milestone (ADM).
+In these study areas, the USACE is considering a diversity of measures for mitigating flood risks, including: structural actions (e.g., levees, floodwalls, storm surge barriers), non-structural measures (e.g., buy-outs, elevation of structures, flood-proofing), and natural and nature-based features (NNBF, e.g., wetland creation, reefs for breakwaters). Environmental outcomes and acceptability are important constraints on plan selection, and recommended plans must be in compliance with environmental laws and regulations. Given the large spatial scope, these USACE studies are applying a “tiered” approach to compliance with the National Environmental Policy Act (NEPA). Tiered assessment intends to provide appropriate data at key planning milestones for complex studies with diverse environmental effects. In the context of these studies, a “Tier 1” Environmental Impact Statement (EIS) will be generated at the conclusion of the USACE Planning Process (i.e., in the Feasibility Report and Chief’s Report). The “Tier 1” EIS is being developed with sequentially more accurate and precise information as the planning process proceeds through key milestones such as the Alternatives Milestone Meeting (AMM), Tentatively Selected Plan Milestone (TSP), and Agency Decision Milestone (ADM). A “Tier 2” EIS will be developed in Pre-Construction Engineering and Design (PED).
 
 ## Problem Statement
 
@@ -21,11 +21,11 @@ The conceptual and numerical models presented here seek to articulate and quanti
 
 * Models should assess environmental effects by ecosystem type (e.g., marine deepwater vs. estuarine intertidal) to inform mitigation actions.
 
-* Models should capture direct effects of actions at infrastructure locations (e.g., the footprint of a floodwall) as well as indirect effects induced off-site from infrastructure (e.g., change in back bay hydrodynamics associated with a storm surge barrier).
+* Models should capture direct effects of actions at infrastructure locations (e.g., the footprint of a floodwall) as well as indirect effects induced off-site from the/any infrastructure (e.g., change in back bay hydrodynamics associated with a storm surge barrier).
 
 * Models should be adaptable to new information and data as project planning proceeds.
 
-* Models should provide a consistent approach for environmental assessment, which can assist with communication of cumulative effects of recommended alternatives across the region.
+* Models should provide a consistent approach for environmental assessment, which can assist with communication of the cumulative effects of recommended alternatives across the region.
 
 ## Report Overview
 
