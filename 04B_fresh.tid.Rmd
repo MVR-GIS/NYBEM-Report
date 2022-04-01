@@ -149,7 +149,7 @@ ecorest::SIcalc(NYBEM.fresh.tid, fresh.tid.test)
 
 ### Future Extension of fresh.tid
 
-## Edge Accretion {-}
+#### Edge Accretion {-}
 
 Edge accretion remains an important parameter of habitat suitability within the freshwater tidal ecosystem to include in the future development of the NYBEM. Freshwater tidal ecosystems have survived despite a rise in sea level, with tidal marsh heights remaining constant under freshwater circumstances, but future anticipated increases in relative sea-level rise might outpace marsh accretion rates, potentially resulting in the loss of these elevation-dependent coastal ecosystems (@schile_modeling_2014). Accretion is characterized as the accumulation of plant material, including roots and degraded material, from plants growing in the marsh, as well as growth via deposition of suspended particles during floods (allochthonous growth) (autochthonous growth)(@schile_modeling_2014).
 In the SLAMM model, marsh erosion is exclusively modeled at the marsh-to-open-water interface, and erosion occurs only if fetch is sufficient. As a result, marshes have been proven to be less sensitive to this parameter than accretion parameters (MEM)(SLAMM)(@morris_responses_2002;@propato_evaluating_2018). Edge Accretion can be quantified using parameters in marsh platform elevation, biomass increase, and tidal inundation, but face limitations from data availability and accessibility. 
