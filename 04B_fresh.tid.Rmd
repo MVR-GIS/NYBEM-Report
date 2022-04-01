@@ -1,7 +1,7 @@
 ## Freshwater, Tidal Submodel (fresh.tid)
 
 
-Freshwater marshes are found in the topmost region of the estuary zone, from New York to North Carolina, where the entry of saltwater from tidal action is mitigated by a significantly higher amount of freshwater from upstream. These unique environments are ideally developed from sediments deposited by inflows from major freshwater rivers. Salt concentrations in tidal freshwater are typically less than 0.5 ppt, although larger salinity pulses can occur during spring tides or periods of extremely low river discharge.
+Freshwater marshes are found in the topmost region of the estuary zone, from New York to North Carolina, where the entry of saltwater from tidal action is mitigated by a significantly higher amount of freshwater from upstream. These unique environments are ideally developed from sediments deposited by inflows from major freshwater rivers. Salt concentrations in tidal freshwater are typically less than 0.5 psu, although larger salinity pulses can occur during spring tides or periods of extremely low river discharge.
 
 Tidal freshwater marshes provide significant nesting sites for a variety of species, including the marsh wren, and offer the primary habitat for emergent aquatic plants. Chronic sea-level rise is pushing the salt gradient upstream in rivers around the Atlantic Coast, causing vegetation to shift and some tidal freshwater marshes to become oligohaline wetlands. Many migratory (diadromous) fish species also rely on this habitat system, which is characterized by tidally impacted freshwater systems [@pasternack_biogeomorphology_2000]. Mussels, sturgeon, herring, and marsh wren are some of the species that live in this zone along with many micro-organisms.
 
@@ -73,13 +73,15 @@ par(mfrow=c(2,2), cex=1.0)
 
 Freshwater tidal wetlands are marshes and swamps with water that is less saline than brackish and is flooded on a regular lunar or irregular wind tidal basis. The salinity of the water varies from oligohaline to totally fresh (0 ppt to 0.5 ppt). 
 
-Salinity influences physical and chemical processes such as flocculation and the amount of dissolved oxygen (DO) in the water column, as well as the types of organisms that reside in a freshwater tidal ecosystem. Hurricanes and other storms may bring brackish water into them, which is a significant natural disturbance. Because many plant species in these wetlands are not tolerant to brackish conditions, much of the vegetation is harmed as a result of these occurrences. 
+Salinity influences physical and chemical processes such as flocculation and the amount of dissolved oxygen (DO) in the water column, as well as the types of organisms that reside in a freshwater tidal ecosystem. Hurricanes and other storms may bring brackish water into them, which is a significant natural disturbance. Because many plant species in these wetlands are not tolerant to brackish conditions, much of the vegetation is harmed as a result of these occurrences. For NYBEM, a proxy variable is used to account for these processes. As a relative duration of salinity, we utilize a ratio of salinity ranges to the tidal range, which we compute as follows:
 
-The NYBEM tidal freshwater sub model relies on a percent in deviation of salinity regime to represent change in tidal inundation and freshwater flow input across the ecosystem.  As the percentage of deviation from the baseline salinity regime increases, habitat suitability for taxa within the estuarine intertidal ecosystem will decrease. When there are zero changes in salinity regime the HSI (habitat suitability index) is equal to 1. As the percent in deviation of salinity regime increases from 10% to 30%, the HSI will decrease from 1 to 0. 
+$$t_{rel} = \frac{Sal_{max} - Sal_{min}}{MHHW-MLLW}$$ 
 
-$$salinity = \begin{pmatrix} 1.0 & salinity_{per}=0-10\\
--0.05*salinity_{per}+1.5 & salinity_{per}=10-30\\
-0.0 & salinity_{per}>30
+The NYBEM tidal freshwater sub model relies on salinity duration to represent changes in tidal inundation and freshwater flow input across the ecosystem. As the percentage of time with less than 10% exceedance from the current salinity regime increases, habitat suitability for taxa within the freshwater tidal ecosystem will decrease. As the percentage of time with less than 90% exceedance from the current salinity regime increases, habitat suitability for taxa within the freshwater tidal ecosystem will increase. This metric provides a relative accounting for salinity events within the freshwater tidal ecosystem. For instance, $t_{rel}>1$ usually occurs in portions of the freshwater tidal ecosystem that receive more influxes of freshwater, and $t_{rel}=0$ occurs in areas where the salinity influx exceeds the freshwater tidal range (0.5 psu-5.0 psu). In terms of habitat suitability, we assume that ideal values of this metric occur around 0.5 (near the mean tide level) and suitability declines on either side of this threshold as follows: 
+
+$$sal.dur = \begin{pmatrix} 0.02*t_{rel} & t_{rel}<0.5\\
+-0.02*t_{rel}+2 & t_{rel}>0.5\\
+0.0 & t_{rel}>1.0
 \end{pmatrix}$$ 
 
 Where $salinity$ is a suitability index relative to salinity and $salinity_{per}$ is the percent increase in salinity over the existing condition.
@@ -107,7 +109,7 @@ Tidal oscillations control the short-term dynamics of freshwater tidal wetlands,
 
 Increased inundation in tidal freshwater marshes leads to more inorganic sediment deposition, which can assist tidal wetlands keep up with rising sea levels. As a result, marshes can migrate vertically to preserve their position in the tidal frame to some extent. In contrast, tidal freshwater ecosystems are frequently coupled with complicated geometry, such as a meandering channel with uneven depth and cross-section. Because of the complicated geometry and huge fluctuations in freshwater discharge, there are strong seasonal variations in depth, which might affect pollution transfer and algae development. When the depth of water within the ecosystem increases, it’s more susceptible to HABs, pollution, and habitat degradation.
 
-The relationship between sediment deposition and water level rise can be used to quantify habitat suitability within the freshwater tidal ecosystem. When water depth increases, sediment deposition will be at an optimal level to support tidal freshwater habitat. For the NYBEM Model, HSI equals 0.8 when water depth increases by 1 meter. When there is no increase in water depth, HSI equals zero because there is minimal episodic deposition.
+The relationship between sediment deposition and water level rise can be used to quantify habitat suitability within the freshwater tidal ecosystem. When water depth increases, sediment deposition will be at an optimal level to support tidal freshwater habitat. As the perecent of time with less than 90% exceedance in water depth increases, habitat suitability increase as a result of optimal water level for sediment deposition. As the percent Percent of time less than 10% exceedance of baseline water depth increases, habitat suitability will decrease due to the lack of sediment deposits. For the NYBEM Model, HSI equals 0.8 when water depth increases by 1 meter. When there is no increase in water depth, HSI equals zero because there is minimal episodic deposition.We assume that ideal values of habitat suitability occur around 0.5 (around the mean tidal level) and that suitability diminishes on each side of this threshold as follows:
 
 $$deposition = \begin{pmatrix} depth_{m} & depth_{m}=0-1\\
 -depth_{m}+2 & depth_{m}=1-2\\
