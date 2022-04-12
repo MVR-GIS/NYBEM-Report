@@ -16,7 +16,7 @@ Ecological models must not only maintain an appropriate theoretical and technica
 
 ## Technical Quality
 
-The NYBEM includes a number of parameters that have long been recognized as crucial to the health of coastal ecosystems. Model assessments were used or adapted from existing peer-reviewed models whenever possible (e.g., @usace_evaluation_2009, plover (@farmer_habitat_2000, @seavey_effect_2011), horseshoe crab (@avissar_modeling_2006, @nancy_jackson_armoring_2010, @lathrope_mapping_2013, @brady_habitat_1996), amaranth (@sellars_habitat_2007), sea turtles (@dunkin_spatially_2016)).
+The NYBEM includes a number of parameters that have long been recognized as crucial to the health of coastal ecosystems. Model assessments were used or adapted from existing peer-reviewed models whenever possible (e.g., [@usace_evaluation_2009], plover ([@farmer_habitat_2000], [@seavey_effect_2011]), horseshoe crab ([@avissar_modeling_2006], [@nancy_jackson_armoring_2010], [@lathrope_mapping_2013], [@brady_habitat_1996]), amaranth [@sellars_habitat_2007], sea turtles [@dunkin_spatially_2016]).
 Suitability curves and associated inputs, on the other hand, rely substantially on expert judgment and postulated coastal ecosystem functions. These methods have been found to have great utility and predictive value, and they are still widely utilized in ecological assessments (Hughes et al. 2010).
 
 - Interagency workshops (Appendix A) for informal input and review.  
