@@ -21,15 +21,16 @@ Ecological models must not only maintain an appropriate theoretical and technica
 
 Main talking points (1-paragraph each):  
 
-- Built models from published models (mostly).  
+The NYBEM includes a number of parameters that have long been recognized as crucial to the health of coastal ecosystems. Model assessments were used or adapted from existing peer-reviewed models whenever possible (e.g., SLAMM, USFWS HEP models, NWI, FIMP, plover (Farmer et al. 2000, Seavey et al. 2011), horseshoe crab (Avissar 2006, Jackson et al. 2010, Lathrop et al. 2013), amaranth (Sellars and Jolls 2007), sea turtles (Dunkin et al. 2016)).
+Suitability curves and associated inputs, on the other hand, rely substantially on expert judgment and postulated coastal ecosystem functions. These methods have been found to have great utility and predictive value, and they are still widely utilized in ecological assessments (Hughes et al. 2010).
 
 - Interagency workshops (Appendix A) for informal input and review.  
 
-- Linked to hydrodynamic model outcomes. A key difference from SLAMM and other long-term forecasting tools.  
+As a tool to examine the ecological impacts of alternative infrastructure alternatives in a large, diversified ecosystem, the NYBEM is coupled to hydrodynamic model outcomes. This is a significant distinction between SLAMM and other long-term forecasting models. The inclusion of hydrodynamic model results is intended to quantify key physical processes within the ecosystem, with the model capable of influencing engineering design and assessing environmental impact. This model was used to create baseline conditions across the whole study area, and then construct habitat suitability curves to assess the potential impacts.
 
 The technical quality of a model is assessed relative to its reliance on contemporary theory, consistency with design objectives, and degree of documentation and testing. NYBEM is being developed with a variety of ecological modeling methods for analyzing coastal ecosystems. The patch-scale quantity/quality framework has been applied extensively to assess outcomes ranging from the species to ecosystem levels of hierarchy (e.g., habitat evaluation procedures and the hydrogeomorphic methods, respectively). Furthermore, each sub-model is being developed with existing models and supported by peer reviewed methods developed elsewhere. System-scale connectivity models will do the same as well. To date, technical quality has been informally assessed through multiple development workshops.
 
-Future evaluations of technical quality will include:
+__Future evaluations of technical quality will include:__
 
 - Habitat zones will be compared to existing condition habitat maps through the National Wetlands Inventory and analogous state data sets (e.g., submerged aquatic vegetation and shellfish data sets).
 
@@ -40,21 +41,20 @@ Future evaluations of technical quality will include:
 
 ## Usability 
 
-
+The usability of a model can influence the repeatable and transparent application of a tool. This type of evaluation typically examines the ease of use, availability of inputs, transparency, error potential, and education of the user. As such, defining the intended user(s) is a crucial component of assessing usability. The NYBEM was developed for application by the USACE technical team of the NJBB and HATS studies. The tool is not currently intended for broader application by local sponsors, other regional teams, or by other USACE Districts. As such, there is currently no graphical user interface for the model beyond the script itself. To date, the primary mechanism for maintaining usability is development in Rmarkdown which allows for transparent sharing of code within model documentation.
 No graphic user interface (GUI) right now, but other methods were used to increase useability. Main talking points (1-paragraph each):  
 
 - Reproducible research methods.  
 
-- Code packaging.  
+For a substantial and growing proportion of research experts developing novel statistical algorithms, R is the primary language. CRAN (Comprehensive R Archive Network) makes it simple to learn from others' work, share your own, and receive comments on possible changes. Packaging the NYBEM improves usability by providing a system for developing software that includes documentation and tests, resulting in higher software quality and development productivity.
 
-- GitHub and versioning.  
+Version control helps to maintain track of work and review the changes made to the NYBEM, whether they're to data, coding scripts, or notes. Version control is considerably smoother and easier to apply with version control software like Git. Furthermore, storing the NYBEM on the online platform Github creates an online backup, which is helpful to all contributors.
 
 - Open source national and regional data sets and publishing of AdH outcomes.  
 
+Utilizing previously-published high-value data sets in the NYBEM can increase transparency and accountability to the public and stakeholders. 
 
-
-The usability of a model can influence the repeatable and transparent application of a tool. This type of evaluation typically examines the ease of use, availability of inputs, transparency, error potential, and education of the user. As such, defining the intended user(s) is a crucial component of assessing usability. The NYBEM was developed for application by the USACE technical team of the NJBB and HATS studies. The tool is not currently intended for broader application by local sponsors, other regional teams, or by other USACE Districts. As such, there is currently no graphical user interface for the model beyond the script itself. To date, the primary mechanism for maintaining usability is development in Rmarkdown which allows for transparent sharing of code within model documentation.
-Future evaluations of usability will include:
+__Future evaluations of usability will include:__
 
 * Open data sharing of all site-specific inputs and outputs for interrogation by internal and external partners.
 
