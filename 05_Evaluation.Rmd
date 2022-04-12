@@ -2,12 +2,10 @@
 
 <span style="color: red;">McKay will complete by April 1.</span>
 
-Ecological models such as NYBEM, typically rely on multiple variables, ecological processes, and in many cases present a variety of ecological outcomes. As such, models can quickly become complex system representations with many components, inputs, assumptions, and modules. Model evaluation is the process for ensuring that numerical tools are scientifically defensible and transparently developed. Evaluation is often referred to as verification or validation, but it in fact includes a family of methods ranging from peer review to model testing to error checking (Schmolke et al. 2010). In this more general sense, evaluation should include the following (Grant and Swannack 2008): (1) assessing the reasonableness of model structure, (2) assessing functional relationships and verifying code, (3) evaluating model behavior relative to expected patterns, (4) comparing outcomes to empirical data, if possible, and (5) analyzing uncertainty in predictions. The USACE has established an ecological model certification process to ensure that planning models are sound and functional. These generally consist of evaluating tools relative to the three following categories: system quality, technical quality, and usability (EC 1105-2-412).
+Ecological models such as NYBEM, typically rely on multiple variables, ecological processes, and in many cases present a variety of ecological outcomes. As such, models can quickly become complex system representations with many components, inputs, assumptions, and modules. Model evaluation is the process for ensuring that numerical tools are scientifically defensible and transparently developed. Evaluation is often referred to as verification or validation, but it in fact includes a family of methods ranging from peer review to model testing to error checking (Schmolke et al. 2010). In this more general sense, evaluation should include the following [@grant_ecological_2008]: (1) assessing the reasonableness of model structure, (2) assessing functional relationships and verifying code, (3) evaluating model behavior relative to expected patterns, (4) comparing outcomes to empirical data, if possible, and (5) analyzing uncertainty in predictions. The USACE has established an ecological model certification process to ensure that planning models are sound and functional. These generally consist of evaluating tools relative to the three following categories: system quality, technical quality, and usability (EC 1105-2-412).
 
 
 ## System Quality 
-
-**REFER TO MCKAY ET AL. TECH NOTE FOR BASIC TALKING POINTS.**
 
 Ecological models must not only maintain an appropriate theoretical and technical basis, but also must be computationally accurate (McKay et al. 2021b). System quality refers to the computational integrity of a model (or modeling system). For instance, is the tool appropriately programmed, has it been verified or stress-tested, and do outcomes behave in expected ways? NYBEM’s system quality was evaluated in a variety of ways, including the following:
 
@@ -18,15 +16,12 @@ Ecological models must not only maintain an appropriate theoretical and technica
 
 ## Technical Quality
 
-
-Main talking points (1-paragraph each):  
-
-The NYBEM includes a number of parameters that have long been recognized as crucial to the health of coastal ecosystems. Model assessments were used or adapted from existing peer-reviewed models whenever possible (e.g., SLAMM, USFWS HEP models, NWI, FIMP, plover (Farmer et al. 2000, Seavey et al. 2011), horseshoe crab (Avissar 2006, Jackson et al. 2010, Lathrop et al. 2013), amaranth (Sellars and Jolls 2007), sea turtles (Dunkin et al. 2016)).
+The NYBEM includes a number of parameters that have long been recognized as crucial to the health of coastal ecosystems. Model assessments were used or adapted from existing peer-reviewed models whenever possible (e.g., @usace_evaluation_2009, plover (@farmer_habitat_2000, @seavey_effect_2011), horseshoe crab (@avissar_modeling_2006, @nancy_jackson_armoring_2010, @lathrope_mapping_2013, @brady_habitat_1996), amaranth (@sellars_habitat_2007), sea turtles (@dunkin_spatially_2016)).
 Suitability curves and associated inputs, on the other hand, rely substantially on expert judgment and postulated coastal ecosystem functions. These methods have been found to have great utility and predictive value, and they are still widely utilized in ecological assessments (Hughes et al. 2010).
 
 - Interagency workshops (Appendix A) for informal input and review.  
 
-As a tool to examine the ecological impacts of alternative infrastructure alternatives in a large, diversified ecosystem, the NYBEM is coupled to hydrodynamic model outcomes. This is a significant distinction between SLAMM and other long-term forecasting models. The inclusion of hydrodynamic model results is intended to quantify key physical processes within the ecosystem, with the model capable of influencing engineering design and assessing environmental impact. This model was used to create baseline conditions across the whole study area, and then construct habitat suitability curves to assess the potential impacts.
+As a tool to examine the ecological impacts of infrastructure alternatives in a large, diversified ecosystem, the NYBEM is coupled to hydrodynamic model outcomes. This is a significant distinction between SLAMM and other long-term forecasting models. The inclusion of hydrodynamic model results is intended to quantify key physical processes within the ecosystem, with the model capable of influencing engineering design and assessing environmental impact. This model was used to create baseline conditions across the whole study area, and then construct habitat suitability curves to assess the potential impacts.
 
 The technical quality of a model is assessed relative to its reliance on contemporary theory, consistency with design objectives, and degree of documentation and testing. NYBEM is being developed with a variety of ecological modeling methods for analyzing coastal ecosystems. The patch-scale quantity/quality framework has been applied extensively to assess outcomes ranging from the species to ecosystem levels of hierarchy (e.g., habitat evaluation procedures and the hydrogeomorphic methods, respectively). Furthermore, each sub-model is being developed with existing models and supported by peer reviewed methods developed elsewhere. System-scale connectivity models will do the same as well. To date, technical quality has been informally assessed through multiple development workshops.
 
@@ -42,7 +37,7 @@ __Future evaluations of technical quality will include:__
 ## Usability 
 
 The usability of a model can influence the repeatable and transparent application of a tool. This type of evaluation typically examines the ease of use, availability of inputs, transparency, error potential, and education of the user. As such, defining the intended user(s) is a crucial component of assessing usability. The NYBEM was developed for application by the USACE technical team of the NJBB and HATS studies. The tool is not currently intended for broader application by local sponsors, other regional teams, or by other USACE Districts. As such, there is currently no graphical user interface for the model beyond the script itself. To date, the primary mechanism for maintaining usability is development in Rmarkdown which allows for transparent sharing of code within model documentation.
-No graphic user interface (GUI) right now, but other methods were used to increase useability. Main talking points (1-paragraph each):  
+No graphic user interface (GUI) right now, but other methods were used to increase useability. Main talking points 
 
 - Reproducible research methods.  
 

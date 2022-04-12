@@ -7,7 +7,7 @@ Tidal freshwater marshes provide significant nesting sites for a variety of spec
 
 The ability for the tidal freshwater ecosystem to support these various organisms can be modeled using salinity, vegetation coverage, episodic sediment deposition, and edge accretion parameters. Salinity concentration influences many chemical and physical ecological processes within the tidal freshwater ecosystem and supports euryhaline organisms. Emergent vegetation coverage provides habitat, mitigates inland flooding, and supports water quality within the tidal freshwater ecosystem. Water depth fluctuations support sediment deposition that bring an influx of organic nutrients into the ecosystem and mitigates sea-level rise. These quantifiable parameters all have influences on ecosystem services and habitat suitability within a tidal freshwater ecosystem. 
 
-Figure XX presents a conceptual model of the freshwater, tidal ecosystem. This ecosystem is strongly influenced by effects on marsh elevations, salinity regimes, and the role of the system as a migratory corridor. 
+Figure 4.1 presents a conceptual model of the freshwater, tidal ecosystem. This ecosystem is strongly influenced by effects on marsh elevations, salinity regimes, and the role of the system as a migratory corridor. 
 
 ![*Conceptual model for the freshwater, tidal submodel.*](ZZ_Fig05_Fresh.Tid_ConModel.png)
 
