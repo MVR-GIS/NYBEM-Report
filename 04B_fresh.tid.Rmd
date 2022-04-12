@@ -22,25 +22,23 @@ Where $I_{fresh.tid}$ is an overarching index of ecosystem quality for the fresh
 
 ```{r echo=FALSE, fig.width=8, fig.height=8}
 #Create data frame with freshwater tidal submodel
-NYBEM.fresh.tid <- data.frame(matrix(NA,nrow=4,ncol=8))
+NYBEM.fresh.tid <- data.frame(matrix(NA,nrow=4,ncol=6))
 colnames(NYBEM.fresh.tid) <- c("salinity.per", "salinity.SIV", "veg.cover.per", "veg.cover.SIV", 
-                             "deposition", "deposition.SIV", "edge.change.m", "edge.change.SIV")
-NYBEM.fresh.tid$salinity.per <- c(0, 10, 30, NA)
-NYBEM.fresh.tid$salinity.SIV <- c(1, 1, 0, NA)
+                             "deposition", "deposition.SIV")
+NYBEM.fresh.tid$salinity.per <- c(0, 20, 100, NA)
+NYBEM.fresh.tid$salinity.SIV <- c(0, 1, 1, NA)
 NYBEM.fresh.tid$veg.cover.per <- c(50, 57, 100, NA)
 NYBEM.fresh.tid$veg.cover.SIV <- c(0, 0.5, 1, NA)
 NYBEM.fresh.tid$deposition <- c(0, 1, 2, 5)
 NYBEM.fresh.tid$deposition.SIV <- c(0, 1, 0, 0)
-NYBEM.fresh.tid$edge.change.m <- c(0, 10, 30, 100)
-NYBEM.fresh.tid$edge.change.SIV <- c(1, 0.8, 0.5, 0)
 
 ##########
 #Create summary figure for fresh.tid submodel
 par(mfrow=c(2,2), cex=1.0)
 
   #salinity.per
-  plot(NYBEM.fresh.tid$salinity.per, NYBEM.fresh.tid$salinity.SIV, xlim=c(0,30), ylim=c(0,1), type="l",
-       xlab="Salinity (%deviation)", ylab="Suitability Index (salinity)")
+  plot(NYBEM.fresh.tid$salinity.per, NYBEM.fresh.tid$salinity.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Salinity duration (% of time > 0.5 psu)", ylab="Suitability Index (salinity)")
   abline(h=seq(0,1,0.1), lty=3)
   points(NYBEM.fresh.tid$salinity.per, NYBEM.fresh.tid$salinity.SIV, pch=19, cex=2)
   lines(NYBEM.fresh.tid$salinity.per, NYBEM.fresh.tid$salinity.SIV, lwd=3)
@@ -54,17 +52,11 @@ par(mfrow=c(2,2), cex=1.0)
   
   #deposition
   plot(NYBEM.fresh.tid$deposition, NYBEM.fresh.tid$deposition.SIV, xlim=c(0,5), ylim=c(0,1), type="l",
-       xlab="Depth (m)", ylab="Suitability Index (deposition)")
+       xlab="Relative Depth (%)", ylab="Suitability Index (deposition)")
   abline(h=seq(0,1,0.1), lty=3)
   points(NYBEM.fresh.tid$deposition, NYBEM.fresh.tid$deposition.SIV, pch=19, cex=2)
   lines(NYBEM.fresh.tid$deposition, NYBEM.fresh.tid$deposition.SIV, lwd=3)
   
-  #edge.change.m
-  plot(NYBEM.fresh.tid$edge.change.m, NYBEM.fresh.tid$edge.change.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
-       xlab="Change in Bed Elevation (%)", ylab="Suitability Index (edge.change)")
-  abline(h=seq(0,1,0.1), lty=3)
-  points(NYBEM.fresh.tid$edge.change.m, NYBEM.fresh.tid$edge.change.SIV, pch=19, cex=2)
-  lines(NYBEM.fresh.tid$edge.change.m, NYBEM.fresh.tid$edge.change.SIV, lwd=3)
 
 ```
 
@@ -75,7 +67,7 @@ Freshwater tidal wetlands are marshes and swamps with water that is less saline 
 
 Salinity influences physical and chemical processes such as flocculation and the amount of dissolved oxygen (DO) in the water column, as well as the types of organisms that reside in a freshwater tidal ecosystem. Hurricanes and other storms may bring brackish water into the system, which is a significant natural disturbance. Because many plant species in these wetlands are not tolerant to brackish conditions, much of the vegetation is harmed as a result of these occurrences. For NYBEM, a proxy variable is used to account for these processes. 
 
-For NYBEM, the salinity regime is summarized through a metric of the percent of time salinity is less than the freshwater tidal ecosystem threshold of 5.0 psu. This approach assumes that saltwater inputs serve as disturbance on the ecosystem, and lower levels of salinity are preferred. Depth-averaged salinity is computed or measured at small time steps over and annual timeframe. These data may then be summarized as an “exceedence curve” with thresholds from 0-100% in 10% intervals. For NYBEM, this exceedence curve is used to calculate the percent of time salinity is less than or equal to 5.0 psu. 
+For NYBEM, the salinity regime is summarized through a metric of the percent of time salinity is less than the freshwater tidal ecosystem threshold of 0.5 psu. This approach assumes that saltwater inputs serve as disturbance on the ecosystem, and lower levels of salinity are preferred. Depth-averaged salinity is computed or measured at small time steps over and annual timeframe. These data may then be summarized as an “exceedence curve” with thresholds from 0-100% in 10% intervals. For NYBEM, this exceedence curve is used to calculate the percent of time salinity is less than or equal to 0.5 psu. 
 
 ```{r echo=FALSE, eval=FALSE}
 #Examples of exceedence duration calculation
@@ -97,11 +89,11 @@ approx(salinity.ex4, exceedence, xout = 5, method = "linear", rule = 2, ties = "
 _Please check equation_
 This duration metric is then translated into a suitability metric as follows:
 
-$$salinity.high.dur = \begin{pmatrix} -0.02*sal_{dur}+1 & sal_{dur}=0-50\\
-0.0 & sal_{dur}=50-100
+$$salinity.high.dur = \begin{pmatrix} 0.05*sal_{dur} & sal_{dur}=0-20\\
+1.0 & sal_{dur}=20-100
 \end{pmatrix}$$
 
-Where $salinity.high.dur$ is a suitability index relative to high salinity periods and $sal_{dur}$ is the percent of time salinity is greater than the threshold for freshwater tidal habitat (i.e., salinity > 5 psu).
+Where $salinity.high.dur$ is a suitability index relative to high salinity periods and $sal_{dur}$ is the percent of time salinity is greater than the threshold for freshwater tidal habitat (i.e., salinity > 0.5 psu).
 
 
 ### Vegetation Coverage
