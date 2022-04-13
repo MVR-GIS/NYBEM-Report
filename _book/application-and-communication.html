@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Application and Communication (I) | New York Bight Ecological Model (NYBEM)</title>
+  <title>Chapter 6 Application and Communication | New York Bight Ecological Model (NYBEM)</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Application and Communication (I) | New York Bight Ecological Model (NYBEM)" />
+  <meta property="og:title" content="Chapter 6 Application and Communication | New York Bight Ecological Model (NYBEM)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Application and Communication (I) | New York Bight Ecological Model (NYBEM)" />
+  <meta name="twitter:title" content="Chapter 6 Application and Communication | New York Bight Ecological Model (NYBEM)" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
   
@@ -253,7 +253,13 @@ div.csl-indent {
 <li class="chapter" data-level="5.2" data-path="evaluation-i.html"><a href="evaluation-i.html#technical-quality"><i class="fa fa-check"></i><b>5.2</b> Technical Quality<span></span></a></li>
 <li class="chapter" data-level="5.3" data-path="evaluation-i.html"><a href="evaluation-i.html#usability"><i class="fa fa-check"></i><b>5.3</b> Usability<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="application-and-communication-i.html"><a href="application-and-communication-i.html"><i class="fa fa-check"></i><b>6</b> Application and Communication (I)<span></span></a></li>
+<li class="chapter" data-level="6" data-path="application-and-communication.html"><a href="application-and-communication.html"><i class="fa fa-check"></i><b>6</b> Application and Communication<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="application-and-communication.html"><a href="application-and-communication.html#njbb-hydrodynamic-modeling"><i class="fa fa-check"></i><b>6.1</b> NJBB Hydrodynamic Modeling<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="application-and-communication.html"><a href="application-and-communication.html#environmental-data-compilation"><i class="fa fa-check"></i><b>6.2</b> Environmental Data Compilation<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="application-and-communication.html"><a href="application-and-communication.html#model-execution"><i class="fa fa-check"></i><b>6.3</b> Model Execution<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="application-and-communication.html"><a href="application-and-communication.html#summary-of-nybem-outcomes"><i class="fa fa-check"></i><b>6.4</b> Summary of NYBEM Outcomes<span></span></a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Summary<span></span></a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="summary.html"><a href="summary.html#future-model-development"><i class="fa fa-check"></i><b>7.1</b> Future Model Development<span></span></a>
@@ -294,10 +300,50 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="application-and-communication-i" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Application and Communication (I)<a href="application-and-communication-i.html#application-and-communication-i" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><span style="color: red;">McKay to draft text by April 1. Demonstration of outcomes for NJBB existing condition by April 8.</span></p>
+<div id="application-and-communication" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Application and Communication<a href="application-and-communication.html#application-and-communication" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The NYBEM has been explicitly designed to inform site screening and environmental impact assessment for the NJBB and HATS. A key component of this process is understanding the existing condition without project effects. This section presents a preliminary application of the NYBEM to assess ecosystem condition in the New Jersey Back Bays following four main activities:</p>
+<ul>
+<li>Incorporation of hydrodynamic model outcomes,<br />
+</li>
+<li>Compilation of other environmental input data sets for the NYBEM in this region,<br />
+</li>
+<li>Execution of the models, and<br />
+</li>
+<li>Summary of model outcomes.</li>
+</ul>
+<div id="njbb-hydrodynamic-modeling" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> NJBB Hydrodynamic Modeling<a href="application-and-communication.html#njbb-hydrodynamic-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Adaptive Hydraulics (AdH) is the numerical model code applied for hydrodynamic simulations in this study. For this study, the two-dimensional (2D) shallow water module of AdH is applied for all simulations. This code solves for depth-averaged velocity and salinity throughout the model domain. (More details of the 2D shallow water module of AdH and its computational philosophy and equations are available in Savant et al. 2014 and Savant and Berger 2015.) AdH version 4.6 was applied for this study.</p>
+<p>A 2D AdH model was developed and validated for simulation of hydrodynamics and salinity (Details provided in McAlpin and Ross, <em>draft</em>). The model was validated to available field data for all parameters and then utilized to test project alternatives for present and future sea level rise conditions. A field data collection effort was performed in February 2019 to collect salinity and discharge/velocity data over a 13-hour tidal cycle at three major inlets – Barnegat, Little Egg, and Great Egg. Field data supported the use of a 2D model as opposed to a three-dimensional (3D) model due to lack of major salinity stratification.</p>
+<p>The model domain was determined using aerial images and bathymetry/topographic data for the area. The Surface Water Modeling System was used to generate a 2D surface mesh and define material regions for applying specific model features, such as bed roughness. The domain is defined horizontally in Universal Transverse Mercator, zone 18 coordinates with units of meters. Vertically it is based on North American Vertical Datum of 1988 (NAVD88) with units of meters. All data applied to the model are shifted to this datum and coordinate system. Bathymetry data for the model were obtained from several sources: the Coastal Relief Model, sponsor collected hydrographic surveys, and the National Elevation Dataset. These data sets were combined such that the latest data were made a priority as well as data collected at finer resolution. The 2D AdH code can include areas that wet/dry; therefore, elevations were included in the domain up to 2 m NAVD88.</p>
+<p>The model domain includes over 9,867 square miles, extending approximately 115 miles along the New Jersey Atlantic Ocean coastline from Lewes, DE, to Manasquan, NJ. The 2D mesh contains 324,881 elements and 165,514 nodes. Figure 6.1 shows horizontal node resolution for the model with an example region surrounding the Barnegat Bay Inlet. Resolution is finest in the small wetland channels to accurately capture the conveyance of flow in these areas as well as the salinity that migrates upstream in deeper channels. Finer resolution is also seen in areas where geometric features need to be defined accurately, such as in the inlets and around jetties.</p>
+<p><span style="color: red;">INSERT FIGURE 6.1</span></p>
+<p>Ten AdH simulations were executed: seven project alternatives and three projects rerun with sea level change. An elevation shift of 0.445 m was added to the water surface elevation at the tide boundary for sea level rise simulations to reflect the “intermediate” sea level rise curve in the year 2080 (per EC 1165-2-212). The mesh domain was not expanded to account for potential wetted area with rising sea level. Additionally, vegetated areas were not raised in the sea level rise simulations. Only the existing condition scenario is presented here.</p>
+<p>AdH was executed for a “base” condition representing 2018, which is assumed here to be the “future without project” (FWOP) condition from a project planning perspective. For all simulations, outputs included the following:</p>
+<ul>
+<li>Water surface elevations (MHHW and MLLW)<br />
+</li>
+<li>Salinity levels (mean)<br />
+</li>
+<li>Velocity</li>
+</ul>
+<p>Bed elevation, water surface elevation (MHHW and MLLW), and salinity were input to the zonation functions shown in the Quantification section of this report. Figure 6.2 shows representative outputs from these functions for salinity and tidal zones as well as habitat types in the Barnegat Bay Inlet and Absecon Inlet. Notably, these habitat zones represent only AdH outputs and do not necessarily reflect regulatory definitions of ecosystems. For instance, an area identified as an estuarine, subtidal ecosystem may (or may not) currently host submerged aquatic vegetation or hard-bottom reef environments, which would imply very different outcomes from a management perspective. Likewise, an estuarine, intertidal zone may currently be developed and non-functional from an ecological perspective. However, these outputs provide broad spatial coverage not feasible to collect for the entire study area.</p>
+<p><span style="color: red;">INSERT FIGURE 6.2</span></p>
+</div>
+<div id="environmental-data-compilation" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Environmental Data Compilation<a href="application-and-communication.html#environmental-data-compilation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Insert.</p>
+</div>
+<div id="model-execution" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Model Execution<a href="application-and-communication.html#model-execution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Insert text describing the rasterization of data sets and any numerical magic.</p>
+</div>
+<div id="summary-of-nybem-outcomes" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Summary of NYBEM Outcomes<a href="application-and-communication.html#summary-of-nybem-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Insert.</p>
 
+</div>
 </div>
             </section>
 

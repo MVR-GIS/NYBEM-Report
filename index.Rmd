@@ -24,16 +24,16 @@ Phone: 970-980-9747
 Environmental Laboratory  
 New York, NY 10278
 
-<span style="color: red;">AUTHOR NOTE: All chapters or sections marked with an (I) are incomplete and sections marked with an (i) require minor edits!</span>
+<span style="color: red;">DRAFT FOR MODEL CERTIFICATION REVIEW ONLY</span>
 
 
 ## Abstract {-}
 
-The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, specifically: the New Jersey Back Bays, the New York-New Jersey Harbor & Tributaries Study, and the Nassau County Back Bays. In these study areas, the USACE is considering a diversity of measures for mitigating flood risks, including: structural actions (e.g., levees, floodwalls, storm surge barriers), non-structural measures (e.g., buy-outs, elevation of structures, flood-proofing), and natural and nature-based features (e.g., wetland creation, reefs for breakwaters). Environmental outcomes and acceptability are important constraints on plan selection, and the studies are applying a “tiered” approach to compliance with the National Environmental Policy Act. The New York Bight Ecological Model (NYBEM) is being developed as a tool for partially assessing the direct and indirect effects of agency actions on regional ecosystems. The NYBEM currently assesses changes in habitat quantity associated with changing hydrodynamics, although future versions will include assessment of habitat quality and changes in aquatic connectivity. This report documents ecological model development processes to date, including information on model scoping, the development process, conceptualization, quantification, and evaluation. The NYBEM is then applied to the New Jersey Back Bays study to assess the extent of potential changes in habitat quantity associated with six alignments of inlet and bay closure structures. The direct, “footprint” effects of this infrastructure range from 71 to 182 acres of aquatic ecosystems. The indirect, “offsite” effects of this infrastructure lead to habitat switching from estuarine-intertidal and freshwater ecosystems to estuarine-subtidal and upland ecosystems. The magnitude of switching varies based on the six alternative alignments from 418 ac to as much as 938 acres. These estimates do not currently incorporate changes in habitat quality, but instead only account for tidal ranges and salinity thresholds.
+The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, specifically: the New Jersey Back Bays, the New York-New Jersey Harbor & Tributaries Study, and the Nassau County Back Bays. In these study areas, the USACE is considering a diversity of measures for mitigating flood risks, including structural actions (e.g., levees, floodwalls, storm surge barriers), non-structural measures (e.g., buy-outs, elevation of structures, flood-proofing), and natural and nature-based features (e.g., wetland creation, reefs for breakwaters). Environmental outcomes and acceptability are important constraints on plan selection, and the studies are applying a “tiered” approach to compliance with the National Environmental Policy Act. The New York Bight Ecological Model (NYBEM) is being developed as a tool for partially assessing the direct and indirect effects of agency actions on regional ecosystems. The NYBEM assesses changes in habitat quantity and quality associated with changing hydrodynamic conditions in six major ecosystem types: freshwater tidal, estuarine intertidal, estuarine subtidal, marine intertidal, marine subtidal, and marine deepwater. The numerical code for NYBEM was programmed in the R Statistical Software Language, and the model code is contained within an R-package (`nybem`), which will be shared publicly following review and certification. This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation. The NYBEM is then applied to assess the existing condition of ecosystems in the New Jersey Back Bay study area.
 
 ## Acknowledgements {-}
 
-Model development was funded by the U.S. Army Corps of Engineers through the New Jersey Back Bays ([NJBB](https://www.nap.usace.army.mil/Missions/Civil-Works/New-Jersey-Back-Bays-Coastal-Storm-Risk-Management/)) and NY/NJ Harbor and Tributaries Study ([HATS](https://www.nan.usace.army.mil/Missions/Civil-Works/Projects-in-New-York/New-York-New-Jersey-Harbor-Tributaries-Focus-Area-Feasibility-Study/)). The U.S. Army Corps of Engineers also partially funded research aspects of this work through the Ecosystem Management and Restoration Research Program. The authors are grateful to the USACE project team members and workshop attendees for their generous contributions of time, energy, and ideas. In particular, Bryce Wisemiller and JB Smith managed the larger USACE studies; Rob Hampson, Tate McAlpin, Jennifer McAlpin, and Anthony Emiren coordinated and conducted all hydrodynamic modeling; Cheryl Alkemeyer led environmental impact assessment for the HATS; and Jess Miller provided input and contributions throughout model development. Opinions expressed here are those of the authors and not necessarily those of the agencies they represent.
+Model development was funded by two U.S. Army Corps of Engineers' feasibility studies in the New Jersey Back Bays ([NJBB](https://www.nap.usace.army.mil/Missions/Civil-Works/New-Jersey-Back-Bays-Coastal-Storm-Risk-Management/)) and NY/NJ Harbor and Tributaries Study ([HATS](https://www.nan.usace.army.mil/Missions/Civil-Works/Projects-in-New-York/New-York-New-Jersey-Harbor-Tributaries-Focus-Area-Feasibility-Study/)). The U.S. Army Corps of Engineers also partially funded research aspects of this work through the Ecosystem Management and Restoration Research Program. The authors are grateful to the USACE project team members and workshop attendees for their generous contributions of time, energy, and ideas. In particular, Bryce Wisemiller and JB Smith managed the larger USACE studies; Rob Hampson, Tate McAlpin, Jennifer McAlpin, and Anthony Emiren coordinated and conducted all hydrodynamic modeling; Cheryl Alkemeyer led environmental impact assessment for the HATS; Jesse Miller provided input and contributions throughout model development; and Elvin Cordero provided important contributions to early formulations of the numerical toolkit. Opinions expressed here are those of the authors and not necessarily those of the agencies they represent.
 
 
 ## Glossary and Acronymns {-}
@@ -83,20 +83,10 @@ rm(list=ls(all=TRUE))
 library(viridis)    #Contains color-blind friendly color schemes
 library(kableExtra) #Contains formatting for markdown
 library(tinytex)    #Contains latex pdf help
-library(ecorest)    #Habitat modeling functions
-#library(sp)         #Geospatial functions
-#library(spData)     #Geographic data
+#library(ecorest)    #Habitat modeling functions
 library(raster)     #Geospatial functions
-#library(rgdal)      #Geospatial functions
 library(cartography)#Mapping functions
 library(rgeos)      #Geospatial functions
 library(testthat)   #Function testing
-
 #library(sf)         #Geospatial functions
-#library(dismo)      #Geospatial functions - interpolation
-#library(dplyr)      #Data management functions
-#library(gstat)      #Geospatial functions - interpolation
-#library(spatstat)   #Geospatial interpolation functions
-#library(maptools)   #Geospatial functions
-#library(spatial)    #Geospatial functions
 ```

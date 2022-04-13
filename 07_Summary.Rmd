@@ -19,6 +19,7 @@ As of this writing, the NYBEM only assesses habitat quantity, although future de
 
 Currently, only habitat quantity is included in assessments. Model development is underway relative to habitat quality modules, system connectivity, and aggregation of quantity, quality, and connectivity into an overarching environmental effects index. These assessments will be included in the NJBB Final Feasibility Report.
 
+_Undeveloped Areas_: USACE projects are required to account and mitigate for detrimental environmental effects associated with any recommended actions. However, the region is highly developed, and USACE should not be penalized for existing ecological impacts. As such, developed areas are removed from the domain as these represent impacts not attributable to USACE projects. Developed areas were assessed via the 2016 National Land Cover Dataset (NLCD) as open space, low intensity, medium intensity, and high intensity classes (Codes 21, 22, 23, and 24). The reduced model domain is 1,720 mi^2^, which includes all areas potentially assessed for impacts.  
 
 ### Habitat Quality Modules
 
