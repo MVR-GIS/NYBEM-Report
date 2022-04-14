@@ -1,4 +1,4 @@
-## Marine, Intertidal Submodel (`mar.int`)
+## Marine, Intertidal Zone
 
 
 Marine, intertidal ecosystems include the areas of high salinity (> 30 psu) bracketed by tidal limits of the mean higher high water (MHHW) and mean lower low water (MLLW). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 
@@ -7,8 +7,9 @@ Figure XX presents a conceptual model of the marine, intertidal ecosystem. This 
 
 Coastal storm risk management actions have the potential to affect this ecosystem through two primary mechanisms. First, some risk management actions (e.g., storm surge barriers) could be directly constructed in this area. Second, large-scale features have the potential to alter coastal dynamics indirectly, although this affect may occur to a lesser extent given the overarching dominance of ocean effects.
 
-
-![*Conceptual model for the marine, intertidal submodel.*](ZZ_Fig08_Mar.Int_ConModel.png)
+```{r, fig.cap="Conceptual model for the marine, intertidal submodel."}
+knitr::include_graphics("ZZ_Fig04.10_Mar.Int_ConModel.png")
+```
 
 
 The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, intertidal zones of the region. This submodel drew heavily from four general bodies of knowledge, specifically:
@@ -39,7 +40,7 @@ $I_{mar.int} = \frac{beach.slope + exp.dur + substrate + land.use + veg.cover + 
 Where $I_{mar.int}$ is an overarching index of ecosystem quality for the marine intertidal zone, $beach.slope$ is a suitability index relative to beach slope, $exp.dur$ is a suitability index relative to the duration of beach exposure, $substrate$ is a suitability index relative to fine substrate, $land.use$ is a suitability index relative to adjacent upland land uses, $veg.cover$ is a suitability index relative to vegetative cover, and $shoreline$ is a suitability index relative to shoreline armoring. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 
-```{r echo=FALSE, fig.width=8, fig.height=12}
+```{r echo=FALSE, fig.width=8, fig.height=12, fig.cap="Suitability index curves for the marine, intertidal zone."}
 #Create data frame with mar.int submodel
 NYBEM.mar.int <- data.frame(matrix(NA,nrow=3,ncol=10))
 colnames(NYBEM.mar.int) <- c("beach.slope.per", "beach.slope.SIV", "trel", "exp.dur.SIV",
@@ -176,23 +177,7 @@ $$shoreline = \begin{pmatrix} 0.01*dist_{armor} & dist_{armor}=0-100m\\
 Where $shoreline$ is a suitability index relative to shoreline armoring and $dist_{armor}$ is the distance to the nearest armored shoreline in meters.
 
 
-### mar.int Code
-
-Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)
-
-
-```{r echo=TRUE}
-#Load ecorest
-library(ecorest)
-
-#Test mar.int with ecorest
-mar.int.test <- c(20, 0.2, 75, 60, 50)
-ecorest::SIcalc(NYBEM.mar.int, mar.int.test)
-ecorest::HSIarimean(ecorest::SIcalc(NYBEM.mar.int, mar.int.test))
-
-```
-
-### Future Development of `mar.int`
+### Potential extension of marine, intertidal models
 
 
 The `mar.int` model represents trade-offs between habitat needs for multiple taxa and availability of data at regional scales. Future model development could be expanded to include more processes and outcome, specifically:  

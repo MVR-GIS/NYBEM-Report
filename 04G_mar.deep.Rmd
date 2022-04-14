@@ -1,11 +1,11 @@
-## Marine, Deepwater Submodel (`mar.deep`)
+## Marine, Deepwater Zone
 
 
 The marine, deepwater ecosystem considers areas with salinity values greater or equal to 30 psu and depths between 2 – 20 m. Physical, biological and chemical variables may be compounded by anthropogenic and climatic pressures to influence the overall integrity of this system. **Figure XX** presents a conceptual model of the marine, deepwater ecosystem. This ecosystem is strongly dominated by large-scale oceanographic processes and less so by potential coastal storm risk management features. Ecologically, this ecosystem hosts a variety of species of management interest such as mammals, turtles, surf clams, migratory fish, and flounder (winter). 
 
 
 ```{r, fig.cap="Conceptual model for the marine, deepwater submodel."}
-knitr::include_graphics("ZZ_Fig10_Mar.Deep_ConModel.png")
+knitr::include_graphics("ZZ_Fig04.14_Mar.Deep_ConModel.png")
 ```
 
 
@@ -16,7 +16,7 @@ $I_{mar.deep} = \frac{salinity.low.dur + velocity.low.change + light + vessel.de
 Where $I_{mar.deep}$ is an overarching index of ecosystem quality for the marine intertidal zone, $salinity.low.dur$ is a suitability index relative to low salinity periods, $velocity.low.change$ is a suitability index relative to changes in low velocity, $light$ is a suitability index relative to light penetration through water, and $vessel.density$ is a suitability index relative to ship traffic. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 
-```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for the NYBEM marine, deepwater submodel."}
+```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for the marine, deepwater zone."}
 #Create data frame with mar.deep submodel
 NYBEM.mar.deep <- data.frame(matrix(NA,nrow=4,ncol=8))
 colnames(NYBEM.mar.deep) <- c("salinity.low.dur", "salinity.low.SIV", "velocity.low.change", "velocity.low.SIV", 
@@ -138,21 +138,7 @@ $$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
 Where $vessel.density$ is a suitability index relative to ship traffic and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
 
 
-### mar.deep Code
-
-Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)
-
-
-```{r echo=TRUE}
-#Load ecorest
-library(ecorest)
-
-#Test mar.int with ecorest
-mar.deep.test <- c(10, -20, 10, 30)
-ecorest::SIcalc(NYBEM.mar.deep, mar.deep.test)
-```
-
-### Future Development of `mar.deep`
+### Potential extension of marine, deepwater model
 
 The marine deepwater zone is affected by many processes not included in NYBEM. Future model development could explore the following:  
 

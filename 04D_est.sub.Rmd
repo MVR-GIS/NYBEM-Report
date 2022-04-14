@@ -1,4 +1,4 @@
-## Estuarine, Subtidal Submodel (`est.sub`)
+## Estuarine, Subtidal Zone
 
 
 This section presents development of the estuarine, subtidal submodel (est.sub). Estuarine subtidal habitat was defined as areas with elevations between MLLW and -20m with salinities ranging from 0.5 to 30 psu. In general, the est.sub seeks to capture the general condition and trajectory of the estuarine subtidal habitat using three different taxa (oysters, SAV, and clams) as indicators of ecosystem quality. Each taxa provides critical contributions to the overall quality of the ecosystem. 
@@ -6,8 +6,9 @@ This section presents development of the estuarine, subtidal submodel (est.sub).
 
 A conceptual model of the estuarine subtidal habitat was developed at a mediated modeling workshop (Appendix A). The conceptual model represented the major components affecting the quality of the ecosystem. Three main categories of drivers were identified: physical (water quality, velocity, sedimentation), anthropogenic (vessel traffic and development stress), and biological (SAV, benthic organisms, fish) with interactions among the categories. Conceptual models were then refined in two key ways (Figure XX). First, it was assumed that essential fish habitat would be present if oysters, SAV, and clams were present, so this variable was removed. Second, substrate type is a major driver of SAV, oysters, and clams. In general, the ecosystem can be coarsely divided into hard bottom and soft bottom habitats roughly correlated with oysters and SAV/clams, respectively. The unique characteristics and drivers of these habitats led to splitting the est.sub model into modules for each of these substrate types. 
 
-
-![*Conceptual model for the estuarine, subtidal submodel.*](ZZ_Fig07_Est.Sub_ConModel.png)
+```{r, fig.cap="Conceptual model for the estuarine, subtidal submodel."}
+knitr::include_graphics("ZZ_Fig04.06_Est.Sub_ConModel.png")
+```
 
 The est.sub modules was split into hard and soft bottom habitats (`est.sub.hard` and `est.sub.soft`, respectively). **Insert text differentiating hard bottom and soft bottom habitat**. All substrate data are merged from the [TNC Substrate Map](https://maps.coastalresilience.org/newjersey/#) and the [usSEABED](https://www.usgs.gov/programs/cmhrp/science/accessing-usseabed). Grain size are from XXX (**DO WE HAVE THIS?**), and fine substrate composition are from TNC.
 
@@ -24,7 +25,7 @@ Median grain size <= coarse sand
 Alternative approach...known or historic hard bottom (i.e., any historic mapped oyster reef)?
 
 
-### Hard Bottom Habitats (`est.sub.hard`)
+### Hard Bottom Habitats
 
 
 Oysters are a major indicator of the integrity of hard bottom habitats in the New York Bight, and the hard bottom submodel is represented by an **adaptation** of the Oyster Habitat Suitability Index Model (OHSIM @swannack_robust_2014). The OHSIM is a USACE-certified model for the Eastern oyster (*Crassostrea virginica*). OHSIM is a spatially-explicit, grid-based index model that uses a series of linear equations to calculate habitat suitability for *C. virginica*. The model consists of four variables: substrate and three measures of salinity – 1) mean salinity during spawning season, in which spawning and spat set have a higher optimal salinity than for survival of adults, 2) annual mean salinity, which is the expected range over which adult oysters are viable, and 3) minimum annual salinity, which defines the impacts of high mortality events resulting from lower salinities due to freshwater influxes [@soniat_understanding_2012]. Variables are briefly described below, and more details can be found in @swannack_robust_2014 and EcoPCX documentation. 
@@ -36,7 +37,7 @@ $I_{est.sub.hard} = {(cultch * sal.min.ann * sal.mean.ann)}^{1/3}$
 Where $I_{est.sub.hard}$ is an overarching index of ecosystem quality for the estuarine, subtidal, hard bottom habitats, $cultch$ is a suitability index relative to hard bottom composition, $sal.min.ann$ is a suitability index relative to minimum annual salinity, and $sal.mean.ann$ is a suitability index relative to mean annual salinity. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 
-```{r echo=FALSE, fig.width=8, fig.height=8}
+```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for hard bottom habitats in the esturaine, subtidal zone."}
 #Create data frame with est.sub.hard submodel
 NYBEM.est.sub.hard <- data.frame(matrix(NA,nrow=9,ncol=6))
 colnames(NYBEM.est.sub.hard) <- c("cultch", "cultch.SIV",  
@@ -136,7 +137,7 @@ $I_{sav} = \frac{substrate.sav + light + vessel.density}{3}$
 
 Where $I_{sav}$ is an overarching index of ecosystem quality relative to submerged aquatic vegetation, $substrate.sav$is a suitability index relative to fine substrate, light is a suitability index relative to light penetration, and $vessel.density$is a suitability index relative to boat traffic and human uses (a proxy for development stress). All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
-```{r echo=FALSE, fig.width=8, fig.height=8}
+```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for seagrass in soft bottom habitats in the esturaine, subtidal zone."}
 #Create data frame with est.sub.hard submodel
 NYBEM.est.sub.soft.sav <- data.frame(matrix(NA,nrow=4,ncol=6))
 colnames(NYBEM.est.sub.soft.sav) <- c("substrate.sav", "substrate.sav.SIV", "light.PLA", "light.SIV",
@@ -225,8 +226,8 @@ $I_{clam} = \frac{salinity.clam + substrate.clam + sav.prob}{4}$
 Where $I_{clam}$ is an overarching index of ecosystem quality relative to hard clam habitat, $salinity.clam$ is a suitability index relative to salinity, $substrate.clam$ is a suitability index relative to fine substrate, and $sav.prob$ is an overarching index of ecosystem quality relative to submerged aquatic vegetation coverage. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 
-```{r echo=FALSE, fig.width=8, fig.height=8}
-#Create data frame with est.sub.hard submodel
+```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for clams in soft bottom habitats in the esturaine, subtidal zone."}
+#Create data frame with est.sub.soft.clam submodel
 NYBEM.est.sub.soft.clam <- data.frame(matrix(NA,nrow=7,ncol=6))
 colnames(NYBEM.est.sub.soft.clam) <- c("salinity.clam", "salinity.clam.SIV", "substrate.clam.sand", "substrate.clam.SIV", 
                                       "Isav", "Isav.SIV")
@@ -296,47 +297,10 @@ $$sav.prob = \begin{pmatrix} 1.0 & I_{sav}=0-0.2\\
 
 Where $sav.prob$ is an overarching index of ecosystem quality relative to submerged aquatic vegetation coverage and $I_{clam}$ is an overarching index of ecosystem quality relative to submerged aquatic vegetation coverage.
 
-#### Key Gaps in `est.sub.soft`
+#### Potential extension of estuarine, subtidal model
 
 This model for soft bottom habitat omits some important variables and processes. Notably, temperature is not presently included but represents a crucial variable for both SAV and clams. 
 
 - *Temperature for SAV*: Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr et al. 2011).At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation [@atkin_thermal_2003];[@jensen_psi-k_2000].
 
 - *Temperature for Clams*: Temperature for Clams: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C range in suitability with optimal temperatures between 22.5°C and 30°C.
-
-
-### `est.sub` Code
-
-Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)
-
-
-```{r echo=TRUE}
-#Load ecorest
-library(ecorest)
-
-#Test est.sub.soft with ecorest
-est.sub.hard.test <- c(80, 8, 20)
-est.sub.hard.test.SIV <- ecorest::SIcalc(NYBEM.est.sub.hard, est.sub.hard.test)
-est.sub.hard.test.SIV
-est.sub.hard.HSI <- ecorest::HSIgeomean(est.sub.hard.test.SIV)
-est.sub.hard.HSI
-
-#Test est.sub.soft.sav with ecorest
-est.sub.soft.sav.test <- c(80, 18, 40)
-est.sub.soft.sav.test.SIV <- ecorest::SIcalc(NYBEM.est.sub.soft.sav, est.sub.soft.sav.test)
-est.sub.soft.sav.test.SIV
-est.sub.soft.sav.HSI <- ecorest::HSIarimean(est.sub.soft.sav.test.SIV)
-est.sub.soft.sav.HSI
-
-#Test est.sub.soft.clam with ecorest
-est.sub.soft.clam.test <- c(20, 60, est.sub.soft.sav.HSI)
-est.sub.soft.clam.test.SIV <- ecorest::SIcalc(NYBEM.est.sub.soft.clam, est.sub.soft.clam.test)
-est.sub.soft.clam.test.SIV
-est.sub.soft.clam.HSI <- ecorest::HSIarimean(est.sub.soft.clam.test.SIV)
-est.sub.soft.clam.HSI
-
-#Test est.sub.soft.clam with ecorest
-est.sub.soft <- max(est.sub.soft.sav.HSI, est.sub.soft.clam.HSI)
-est.sub.soft
-```
-

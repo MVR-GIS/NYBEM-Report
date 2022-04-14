@@ -1,6 +1,5 @@
-## Estuarine, Intertidal Submodel (est.int) (I)
+## Estuarine, Intertidal Zone
 
-<span style="color: red;">Check equations.</span>
 
 Estuarine environments include marine water that has been diluted by freshwater runoff from the land [@prosser_impacts_2018]. Due to tidal influence, intertidal ecosystems are found between high and low tide, experiencing varying land and sea influences, whereas subtidal ecosystems are constantly submerged. The estuarine intertidal ecosystem considers areas with salinity values greater than 0.5 psu to 30 psu and elevation from MHHW to MLLW. Plant, animal, and microorganism populations, as well as their nonliving surroundings, interact as a working unit in intertidal ecosystems, which are exposed at low tides (Citation). Within the estuarine intertidal ecosystem, ecological processes are linked to physical and chemical characteristics. These characteristics can experience change under anthropogenic and climatic pressures that deviate from the homeostasis, or baseline, habitat condition. This can result in reduced habitat suitability across the estuarine intertidal ecosystem.   
 
@@ -8,16 +7,18 @@ Tidal marshes are vegetated intertidal ecosystems found at the land-sea interfac
 
 The following variables are accessible to the estuarine intertidal submodel portion of the NYBEM: salinity, episodic sediment deposition, edge erosion, vegetative cover, development of adjacent uplands, and the presence/absence of shoreline armoring.
 
-![*Conceptual model for the estuarine, intertidal submodel.*](ZZ_Fig05_Est.Int_ConModel.png)
+```{r, fig.cap="Conceptual model for the estuarine, intertidal submodel."}
+knitr::include_graphics("ZZ_Fig04.04_Est.Int_ConModel.png")
+```
+
 
 The overall habitat suitability of the marine, intertidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these six metrics.
-
 
 $I_{est.int} = \frac{salinity + erosion + veg.cover + deposition + upland + shoreline}{6}$ 
 
 Where $I_{est.int}$ is an overarching index of ecosystem quality for the marine intertidal zone, $salinity$ is a suitability index relative to salinity, $erosion$ is a suitability index relative to the edge erosion, $veg.cover$ is a suitability index relative to vegetative cover, $deposition$ is a suitability index relative to episodic sediment deposition, $upland$ is a suitability index relative to adjacent upland land uses, and $shoreline$ is a suitability index relative to shoreline armoring. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
-```{r echo=FALSE, fig.width=8, fig.height=12}
+```{r echo=FALSE, fig.width=8, fig.height=12, fig.cap="Suitability index curves for the estuarine, intertidal zone."}
 #Create data frame with est.int submodel
 NYBEM.est.int <- data.frame(matrix(NA,nrow=3,ncol=12))
 colnames(NYBEM.est.int) <- c("salinity.psu", "salinity.SIV", "erosion", "erosion.SIV",
@@ -200,17 +201,7 @@ $$shoreline = \begin{pmatrix} 0.05*dist_{armor}+0.5 & dist_{armor}=0-100m\\
 Where $shoreline$ is a suitability index relative to shoreline armoring and $dist_{armor}$ is the distance to the nearest armored shoreline in meters.
 
 
-### est.int Code
+### Potential extension of estuarine, intertidal models 
 
-Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)
+Describe model gaps here.
 
-
-```{r echo=TRUE}
-#Function for assessing habitat quality
-est.int <- function(x, y){
-  est.int.HSI <- x + y
-
-  #Send output
-  est.int.HSI
-}
-```

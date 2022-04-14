@@ -1,4 +1,4 @@
-## Freshwater, Tidal Submodel (fresh.tid)
+## Freshwater, Tidal Zone
 
 
 Freshwater marshes are found in the topmost region of the estuary zone, from New York to North Carolina, where the entry of saltwater from tidal action is mitigated by a significantly higher amount of freshwater from upstream. These unique environments are ideally developed from sediments deposited by inflows from major freshwater rivers. Salt concentrations in tidal freshwater are typically less than 0.5 psu, although larger salinity pulses can occur during spring tides or periods of extremely low river discharge.
@@ -7,9 +7,11 @@ Tidal freshwater marshes provide significant nesting sites for a variety of spec
 
 The ability for the tidal freshwater ecosystem to support these various organisms can be modeled using salinity, vegetation coverage, episodic sediment deposition, and edge accretion parameters. Salinity concentration influences many chemical and physical ecological processes within the tidal freshwater ecosystem and supports euryhaline organisms. Emergent vegetation coverage provides habitat, mitigates inland flooding, and supports water quality within the tidal freshwater ecosystem. Water depth fluctuations support sediment deposition that bring an influx of organic nutrients into the ecosystem and mitigates sea-level rise. These quantifiable parameters all have influences on ecosystem services and habitat suitability within a tidal freshwater ecosystem. 
 
-Figure 4.1 presents a conceptual model of the freshwater, tidal ecosystem. This ecosystem is strongly influenced by effects on marsh elevations, salinity regimes, and the role of the system as a migratory corridor. 
+Figure 4.2 presents a conceptual model of the freshwater, tidal ecosystem. This ecosystem is strongly influenced by effects on marsh elevations, salinity regimes, and the role of the system as a migratory corridor. 
 
-![*Conceptual model for the freshwater, tidal submodel.*](ZZ_Fig05_Fresh.Tid_ConModel.png)
+```{r, fig.cap="Conceptual model for the freshwater, tidal submodel."}
+knitr::include_graphics("ZZ_Fig04.02_Fresh.Tid_ConModel.png")
+```
 
 
 The overall habitat suitability of the freshwater, tidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
@@ -20,7 +22,7 @@ $I_{fresh.tid} = \frac{salinity + veg.cover + deposition + edge.change}{4}$
 Where $I_{fresh.tid}$ is an overarching index of ecosystem quality for the freshwater, tidal zone, $salinity$ is a suitability index relative to salinity, $veg.cover$ is a suitability index relative to vegetative cover, $deposition$ is a suitability index relative to episodic deposition of sediment, and $edge.change$ is a suitability index relative to edge accretion. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 
-```{r echo=FALSE, fig.width=8, fig.height=8}
+```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for the freshwater, tidal zone."}
 #Create data frame with freshwater tidal submodel
 NYBEM.fresh.tid <- data.frame(matrix(NA,nrow=4,ncol=6))
 colnames(NYBEM.fresh.tid) <- c("salinity.per", "salinity.SIV", "veg.cover.per", "veg.cover.SIV", 
@@ -136,29 +138,13 @@ $$deposition = \begin{pmatrix} 0.02*d_{rel} & d_{rel}<0.5\\
 Where $deposition$ is a suitability index relative to episodic sediment deposition and $depth_{m}$ is the change in depth in meters.
 
 
-### fresh.int Code
+### Potential extension of freshwater, tidal model
 
-Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)
-
-
-```{r echo=TRUE}
-#Load ecorest
-library(ecorest)
-
-#Test mar.int with ecorest
-fresh.tid.test <- c(20, 80, 1.5, 40)
-ecorest::SIcalc(NYBEM.fresh.tid, fresh.tid.test)
-
-```
-
-
-### Future Extension of fresh.tid
-
-#### Edge Accretion {-}
-
-Edge accretion remains an important parameter of habitat suitability within the freshwater tidal ecosystem to include in the future development of the NYBEM. Freshwater tidal ecosystems have survived despite a rise in sea level, with tidal marsh heights remaining constant under freshwater circumstances, but future anticipated increases in relative sea-level rise might outpace marsh accretion rates, potentially resulting in the loss of these elevation-dependent coastal ecosystems (@schile_modeling_2014). Accretion is characterized as the accumulation of plant material, including roots and degraded material, from plants growing in the marsh, as well as growth via deposition of suspended particles during floods (allochthonous growth) (autochthonous growth)(@schile_modeling_2014).
+Edge Accretion: Edge accretion remains an important parameter of habitat suitability within the freshwater tidal ecosystem to include in the future development of the NYBEM. Freshwater tidal ecosystems have survived despite a rise in sea level, with tidal marsh heights remaining constant under freshwater circumstances, but future anticipated increases in relative sea-level rise might outpace marsh accretion rates, potentially resulting in the loss of these elevation-dependent coastal ecosystems (@schile_modeling_2014). Accretion is characterized as the accumulation of plant material, including roots and degraded material, from plants growing in the marsh, as well as growth via deposition of suspended particles during floods (allochthonous growth) (autochthonous growth)(@schile_modeling_2014).
 In the SLAMM model, marsh erosion is exclusively modeled at the marsh-to-open-water interface, and erosion occurs only if fetch is sufficient. As a result, marshes have been proven to be less sensitive to this parameter than accretion parameters (MEM)(SLAMM)(@morris_responses_2002;@propato_evaluating_2018). Edge Accretion can be quantified using parameters in marsh platform elevation, biomass increase, and tidal inundation, but face limitations from data availability and accessibility. 
 
+
+Depth zonation?
 
 (<span style="color: red;">ADD NOTES HERE.</span>)
 

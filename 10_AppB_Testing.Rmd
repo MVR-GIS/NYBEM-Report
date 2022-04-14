@@ -5,6 +5,9 @@
 ## HSIarimean
 
 ```{r echo=FALSE}
+#Load ecorest
+library(ecorest)
+
 #Create empty data frame
 test.HSIarimean <- data.frame(matrix(NA,nrow=0,ncol=5))
 colnames(test.HSIarimean) <- c("Target", paste("In",seq(1,4),sep=""))

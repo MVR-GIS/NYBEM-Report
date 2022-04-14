@@ -1,0 +1,100 @@
+## New York Bight Overarching Model (NYBEM.wrapper) (I)
+
+<span style="color: red;">Dougherty and McKay to write.</span>
+
+
+### Calculate habitat zones
+
+
+```{r echo=TRUE}
+#Functions for isolating habitat types
+
+##########
+#Labels for tidal zones
+ZoneTidal <- c("Deep", "Subtidal", "Intertidal", "Upland")
+
+#Create function for isolating tidal zones
+set.tidal.zone <- function(bedelev, MLLW, MHHW){
+  #Assign zone
+  tidalzone <- ifelse(bedelev <= -2, 1,
+          ifelse(bedelev <= MLLW, 2,
+          ifelse(bedelev <= MHHW, 3, 
+          ifelse(bedelev > MHHW, 4, NA))))
+  #Send output
+  tidalzone
+}
+
+##########
+#Labels for salinity zones
+ZoneSalinity <- c("Marine", "Estuarine", "Fresh")
+
+#Create function for isolating salinity zones
+set.salinity.zone <- function(salinity){
+  #Assign zone
+  salinityzone <- ifelse(salinity >=30, 1, 
+                  ifelse(salinity < 30 & salinity >= 0.5, 2, 
+                  ifelse(salinity < 0.5 & salinity >= 0, 3, NA)))
+  #Send output
+  salinityzone
+}
+
+##########
+#Labels for habitat zones
+ZoneHabitat <- c("Upland", "Marine.Deep", "Marine.Subtidal", "Marine.Intertidal", "Estuarine.Subtidal", "Estuarine.Intertidal", "Freshwater")
+
+#Create function for isolating habitat zones
+set.habitat.zone <- function(tidalzone, salinityzone){
+  #Assign zone
+  habitatzone <- ifelse(tidalzone == 4, 1,
+          ifelse(salinityzone == 1 & tidalzone == 1, 2,
+          ifelse(salinityzone == 1 & tidalzone == 2, 3,
+          ifelse(salinityzone == 1 & tidalzone == 3, 4,
+          ifelse(salinityzone == 2 & tidalzone == 1 | tidalzone == 2, 5,
+          ifelse(salinityzone == 2 & tidalzone == 3, 6,
+          ifelse(salinityzone == 3 & tidalzone == 1 | tidalzone == 2 | tidalzone == 3, 7, NA)))))))
+  #Send output
+  habitatzone
+}
+```
+
+
+### Suitability Index Calculator (`SI.calc`)
+
+Insert description here as needed.
+
+
+### Zone-specific habitat quality functions
+
+Insert description here as needed.
+
+
+### Rasterize Habitat Patches
+
+__Do we need to reference the spatial coordinate systems? Maybe the R function or package used?__
+
+`patch.rasterizer`: This function rasterizes the output of `patch.mapper` based on a specified grid resolution and aligns that layer with a specified spatial coordinate system. 
+
+
+```{r echo=TRUE}
+#Functions for rasterizing habitat types
+patch.rasterizer <- function(patch.mapper.output, grid.resolution, my.coordinate.system){
+  #Insert code
+}
+```
+
+
+### Other fxns as needed
+
+
+Numerical code for running the entire model suite
+
+
+```{r echo=TRUE}
+#Function 
+NYBEM.wrapper <- function(x, y){
+  NYBEM.out <- x + y
+
+  #Send output
+  NYBEM.out
+}
+```

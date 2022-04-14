@@ -1,14 +1,14 @@
-## Marine, Subtidal Submodel (`mar.sub`) (I)
-
-<span style="color: red;">McKay to continue writing.</span>
+## Marine, Subtidal Zone
 
 
 Marine, subtidal ecosystems include the areas of high salinity (> 30 psu) bracketed by tidal limits of the mean lower low water (MLLW) and 2m below Mean Tide Level (MTL). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 
 
 Figure XX presents a conceptual model of the marine, subtidal ecosystem. This nearshore ecosystem hosts a variety of species of management interest such as hard clams, winter flounder, and seagrasses. As such, this model generally centers on the pelagic systems, submerged aquatic vegetation, and the benthic system. In general, coastal storm risk management actions are more likely to have direct effects on this ecosystem (e.g., footprint of constructed storm surge barriers) than indirect, offsite concerns more common in the estuarine systems.
 
+```{r, fig.cap="Conceptual model for the marine, subtidal submodel."}
+knitr::include_graphics("ZZ_Fig04.12_Mar.Sub_ConModel.png")
+```
 
-![*Conceptual model for the marine, intertidal submodel.*](ZZ_Fig09_Mar.Sub_ConModel.png)
 
 The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, subtidal zones of the region. This submodel drew heavily from three primary bodies of knowledge, specifically:
 
@@ -29,15 +29,13 @@ Four main classes of processes and dynamics were identified from a review of the
 
 *	Vessel traffic density as a proxy for human use intensity.  
 
-
 The overall habitat suitability of the marine, subtidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
-
 
 $I_{mar.sub} = \frac{velocity + substrate + light + vessel.density}{4}$ 
 
 Where $I_{mar.sub}$ is an overarching index of ecosystem quality for the marine subtidal zone, $velocity$ is a suitability index relative to beach slope, $substrate$ is a suitability index relative to fine substrate, $light$ is a suitability index relative to light penetration, and $vessel.density$ is a suitability index relative to boat traffic and human uses. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
-```{r echo=FALSE, fig.width=8, fig.height=8}
+```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for the marine, deepwater zone."}
 #Create data frame with mar.deep submodel
 NYBEM.mar.sub <- data.frame(matrix(NA,nrow=4,ncol=8))
 colnames(NYBEM.mar.sub) <- c("velocity", "velocity.SIV", "substrate.fines", "substrate.SIV", 
@@ -132,31 +130,9 @@ $$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
 
 Where $vessel.density$ is a suitability index relative to ship traffic and $ves_{AIS}$ is the vessel density from the Automated Information System.
 
-### mar.sub Code
 
-Numerical code for assessing habitat quality (<span style="color: red;">Dougherty and McKay to write.</span>)
-
-
-```{r echo=TRUE}
-#Load ecorest
-library(ecorest)
-
-#Test mar.int with ecorest
-mar.sub.test <- c(25, 50, 10, 30)
-ecorest::SIcalc(NYBEM.mar.sub, mar.sub.test)
-ecorest::HSIarimean(ecorest::SIcalc(NYBEM.mar.sub, mar.sub.test))
-```
-
-### Future Development of `mar.sub`
+### Potential extension of marine, subtidal model
 
 The `mar.sub` model provides a useful framework for estimating general ecosystem condition, although other variables and processes could be addressed in future iterations. Specifically, substrate is a dynamic feature through time, particularly with sea level change, and substrate could be linked to sediment transport algorithms in coastal dynamics models. Similarly, wave environment is an important feature of this ecosystem, and additional wave metrics could be incorporated. 
 
-
-### New References
-
-Mulholland, R., 1984. Habitat suitability index models: Hard clam. Fish and Wildlife Service.
-
-U.S. Army Corps of Engineers (USACE). 2000. New York and New Jersey Harbor Navigation Study, Mitigation Report. Vol. II, Attachment 6 – Functional Assessment of Disturbed Areas. USACE, New York District.
-
-US Army Corps of Engineers (USACE). 2021. Port Habitat Functional Assessment Model Documentation. NY/NJ Harbor Deepening and Channel Improvements Study. New York District, New York, NY. 
 

@@ -24,7 +24,9 @@ The cumulative project area of the ongoing CSRM studies exceeds 3,000 mi^2^ and 
 
 <span style="color: red;">REPLACE FIGURE</span>
 
-![*NYBEM model domain: (left) Components of model domain, (right) NYBEM domain.*](ZZ_Fig02_NYBEM.Extent.jpeg)
+```{r, fig.cap="NYBEM model domain: (left) Components of model domain, (right) NYBEM domain."}
+knitr::include_graphics("ZZ_Fig02.01_NYBEM.Extent.jpeg")
+```
 
 
 ## Phased Approach

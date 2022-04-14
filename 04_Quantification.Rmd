@@ -3,8 +3,10 @@
 
 The quantification phase of ecological model development formalizes a conceptual model in terms of mathematical relationships, model parameters, and a numerical algorithm [@grant_ecological_2008]. This chapter describes the NYBEM relative to model structure, associated numerical tools, and the theoretical underpinnings of the sub-models. In general, the overarching quantitative architecture of the NYBEM can be summarized in three major elements (Figure 4.1). First, model inputs are assembled in a geospatial database. Second, the model code is prepared as a "package" in the [R Statistical Software](https://cran.r-project.org/). Finally, the model outputs habitat quantity and quality as well as habitat units for each patch in the model domain. 
 
+```{r, fig.cap="Quantitative architecture of the NYBEM."}
+knitr::include_graphics("ZZ_Fig04.01_NYBEM.Architecture.png")
+```
 
-![*Quantitative architecture of the NYBEM.*](ZZ_Fig04_NYBEM.Architecture.png)
 
 Input variables to NYBEM consist of three major groups of data layers. First, the spatial extent of a given model run must be defined. The NYBEM is constrained to applications within the region of the New York Bight watersheds (Section 2.1). Within that region, a focal area for the simulation must be specified, which can consist of a particular project boundary (e.g., NJBB or HATS) or a user-specified domain (e.g., a particular back bay). Within that focal area, the downstream and upstream extents of the model are specified based on the 20m ocean depth contour and Mean Higher High Water (MHHW), respectively. The second major group of variables consists of hydrodynamic inputs. These inputs may be computed for varying temporal windows (e.g., a month, a year, or a decade) depending on the project focus, and the inputs could be provided by a variety of hydrodynamic models or empirical data sources. Hydrodynamic variables characterize the bed elevation, water surface, salinity, and current velocity distributed throughout the project area. Third, a variety of environmental variables are compiled from national and regional data sets to inform habitat quality calculations.
 
