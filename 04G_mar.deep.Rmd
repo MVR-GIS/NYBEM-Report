@@ -1,7 +1,7 @@
 ## Marine, Deepwater Zone
 
 
-The marine, deepwater ecosystem considers areas with salinity values greater or equal to 30 psu and depths between 2 – 20 m. Physical, biological and chemical variables may be compounded by anthropogenic and climatic pressures to influence the overall integrity of this system. **Figure XX** presents a conceptual model of the marine, deepwater ecosystem. This ecosystem is strongly dominated by large-scale oceanographic processes and less so by potential coastal storm risk management features. Ecologically, this ecosystem hosts a variety of species of management interest such as mammals, turtles, surf clams, migratory fish, and flounder (winter). 
+The marine, deepwater ecosystem considers areas with salinity values greater or equal to 30 psu and depths from 2 to 20 m. Physical, biological and chemical variables may be compounded by anthropogenic and climatic pressures to influence the overall integrity of this system. Figure 4.14 presents a conceptual model of the marine, deepwater ecosystem, which is strongly dominated by large-scale oceanographic processes and less so by potential coastal storm risk management features. Ecologically, this ecosystem hosts a variety of species of management interest such as mammals, turtles, surf clams, migratory fish, and flounder (winter). 
 
 
 ```{r, fig.cap="Conceptual model for the marine, deepwater submodel."}
@@ -9,7 +9,7 @@ knitr::include_graphics("ZZ_Fig04.14_Mar.Deep_ConModel.png")
 ```
 
 
-The following variables are used to assess the marine deepwater submodel: a) salinity, b) velocity and currents, c) light attenuation, and d) vessel traffic. Salinity acts as a proxy for vertical mixing of the water column and influence of freshwater inputs [@smit_assessing_2021]. Current velocities represent mixing and flushing of the system, sediment suspension, and benthic scouring. Light penetration depths within the water column indicate water column turbidity, nutrient loading and algal production levels. Finally, vessel traffic provides an index for development pressures, both i) commercial and recreational fishing pressure on the pelagic, demersal and benthic systems, and ii) commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). The overall habitat suitability of the marine, deepwater zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
+The following variables are used to assess the marine deepwater submodel: (1) salinity, (2) velocity and currents, (3) light attenuation, and (4)) vessel traffic. Salinity acts as a proxy for vertical mixing of the water column and influence of freshwater inputs [@smit_assessing_2021]. Current velocities represent mixing and flushing of the system, sediment suspension, and benthic scouring. Light penetration depths within the water column indicate water column turbidity, nutrient loading and algal production levels. Finally, vessel traffic provides an index for development pressures for both commercial and recreational fishing pressure on the pelagic, demersal and benthic systems and commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise). The overall habitat suitability of the marine, deepwater zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
 
 $I_{mar.deep} = \frac{salinity.low.dur + velocity.low.change + light + vessel.density}{4}$ 
 
@@ -68,26 +68,7 @@ par(mfrow=c(2,2), cex=1.0)
 
 Salinity, often used as a proxy for the total concentration of all dissolved salts in the water, is a key factor in water density that controls the vertical mixing of nutrients and chemicals throughout the water column. Salinity constrains dissolved oxygen concentration and limits speciation of marine zones to euryhaline taxa that are physiological adapted to tolerate hypoosmotic processes (are able to maintain a lower internal ionic concentration than seawater).
 
-For NYBEM, the salinity regime is summarized through a metric of the percent of time salinity is less than the marine ecosystem threshold of 30 psu. This approach assumes that freshwater inputs serve as disturbance on the ecosystem, and higher marine levels of salinity are preferred. Depth-averaged salinity is computed or measured at small time steps over and annual timeframe. These data may then be summarized as an “exceedence curve” with thresholds from 0-100% in 10% intervals. For NYBEM, this exceedence curve is used to calculate the percent of time salinity is less than or equal to 30 psu.
-
-```{r echo=FALSE, eval=FALSE}
-#Examples of exceedence duration calculation
-exceedence <- seq(0,100,10)
-
-salinity.ex1 <- c(22, 23, 24, 29.5, 29.9, 31, 32, 33, 34, 35, 37)
-approx(salinity.ex1, exceedence, xout = 30, method = "linear", rule = 2, ties = "ordered")$y
-
-salinity.ex2 <- c(24, 26, 27, 28, 30.1, 32, 34, 36, 38, 40, 42)
-approx(salinity.ex2, exceedence, xout = 30, method = "linear", rule = 2, ties = "ordered")$y
-
-salinity.ex3 <- c(24, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40)
-approx(salinity.ex3, exceedence, xout = 30, method = "linear", rule = 2, ties = "ordered")$y
-
-salinity.ex4 <- c(30.5, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40)
-approx(salinity.ex4, exceedence, xout = 30, method = "linear", rule = 2, ties = "ordered")$y
-```
-
-This duration metric is then translated into a suitability metric as follows:
+For NYBEM, the salinity regime is summarized through a metric of the percent of time salinity is less than the marine ecosystem threshold of 30 psu. This approach assumes that freshwater inputs serve as disturbance on the ecosystem, and higher marine levels of salinity are preferred. Depth-averaged salinity is computed or measured at small time steps over an annual or inter-annual timeframe. These data may then be summarized as an “exceedence curve” with thresholds from 0-100% in 10% intervals. For NYBEM, this exceedence curve is used to calculate the percent of time salinity is less than or equal to 30 psu. This duration metric is then translated into a suitability metric as follows:
 
 $$salinity.low.dur = \begin{pmatrix} -0.02*sal_{dur}+1 & sal_{dur}=0-50\\
 0.0 & sal_{dur}=50-100
@@ -116,7 +97,7 @@ Where $vel_{10,f}$ is the 10% exceedence velocity for a focal condition and $vel
 
 ### Light
 
-The depth that light reaches within the water column acts as a proxy for the viability of water column turbidity, nutrient loading, and chlorophyll-a production (an essential building block for ocean productivity). As light controls chlorophyll-a production, it may be seen as a limiting factor for algal and particulate organic matter densities, and ultimately the development of harmful algal blooms. Therefore, light provides a meaningful metric for a variety of biological processes in this ecosystem. For the `mar.deepsub`, light availability and suitability are modeled following the same algorithms described for the `est.sub` model (See Section 4.4), which can be summarized in suitability terms as as:
+The depth that light reaches within the water column acts as a proxy for the viability of water column turbidity, nutrient loading, and chlorophyll-a production (an essential building block for ocean productivity). As light controls chlorophyll-a production, it may be seen as a limiting factor for algal and particulate organic matter densities, and ultimately the development of harmful algal blooms. Therefore, light provides a meaningful metric for a variety of biological processes in this ecosystem. For the marine deepwater submodel, light availability and suitability are modeled following the same algorithms described for the estuarine subtidal model (See Section 4.4.2.1), which can be summarized in suitability terms as as:
 
 $$light = \begin{pmatrix} 0.0 & PLA<10\\
 0.0833*PLA-0.83 & PLA>70\\
@@ -125,9 +106,10 @@ $$light = \begin{pmatrix} 0.0 & PLA<10\\
 
 Where $light$ is a suitability index relative to light penetration and $PLA$ is percent light available (PLA).
 
+
 ### Vessel Traffic
 
-Vessel traffic density provides an index for development pressures, both commercial and recreational fishing pressure, and commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). Vessel use density from the historical Automatic Identification System (AIS) vessel data from the MARCOS portal are assessed within the NYBEM to identify the general use of waterways. These data also indicate frequently visited fishing locations and offshore structures. Suitability is computed for this metric analogously to `est.sub` and `mar.sub` algorithms as follows:
+Vessel traffic density provides an index for development pressures, both commercial and recreational fishing pressure, and commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). Vessel use density from the Automatic Identification System (AIS) vessel data from the MARCOS portal are assessed within the NYBEM to identify the general use of waterways. These data also indicate frequently visited fishing locations and offshore structures. Suitability is computed for this metric analogously to estuarine and marine subtidal models as follows:
 
 $$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
 -0.0556*ves_{AIS}+1.06 & ves_{AIS}=1-10\\
@@ -135,7 +117,7 @@ $$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
 0.0 & ves_{AIS}>100
 \end{pmatrix}$$ 
 
-Where $vessel.density$ is a suitability index relative to ship traffic and $slope_{per}$ is the slope of the beach perpendicular to the mean tide line in percent.
+Where $vessel.density$ is a suitability index relative to ship traffic and $ves_{AIS}$ is the slope of the beach perpendicular to the mean tide line in percent.
 
 
 ### Potential extension of marine, deepwater model
@@ -143,7 +125,7 @@ Where $vessel.density$ is a suitability index relative to ship traffic and $slop
 The marine deepwater zone is affected by many processes not included in NYBEM. Future model development could explore the following:  
 
 - Dissolved oxygen concentration, a key element for the survival of marine species, limits speciation of marine zones through hypoxia, where low oxygen levels may cause die-offs in marine species. Dissolved oxygen concentrations act as a proxy for pelagic, demersal and benthic fauna biomass (abundance/diversity of phytoplankton, zooplankton, fish, marine turtles, birds and mammals). Data could potentially be integrated from sources such as permanent monitoring stations, as supported by NYC DEP Monitoring Stations (2018), Jamaica Bay Eutrophication Model [@fischbach_building_2018], frameworks such as the Chesapeake Bay model [@cerco_threedimensional_1993], and the EPA Long Island Sound integrated model (underway).  
-- Water temperature acts as a control for the majority of the chemical (dissolved nutrients, pH, density, and photosynthesis), biological (respiration and metabolic rates, taxa development, and migrations) and physical (ice formation and thermal stratification of the water column) properties of a marine ecosystem. Methods could be adapted from the Winter flounder habitat suitability model [@banner_usfws_2001] and VIMS 2018 habitat suitability models and the USACE Harbor monitoring [@usace_essential_2013], and data could potentially be extracted from MARACOOS Monthly Sea Surface Temperature via the MARCO Mid-Atlantic Ocean Data Portal or via hydrodynamic model outputs.  
+- Water temperature acts as a control for the majority of the chemical (dissolved nutrients, pH, density, and photosynthesis), biological (respiration and metabolic rates, taxa development, and migrations) and physical (ice formation and thermal stratification of the water column) properties of a marine ecosystem. Methods could be adapted from the Winter flounder habitat suitability model [@banner_usfws_2001], VIMS 2018 habitat suitability models, or the USACE Harbor monitoring [@usace_essential_2013], and data could potentially be extracted from MARACOOS Monthly Sea Surface Temperature via the MARCO Mid-Atlantic Ocean Data Portal or via hydrodynamic model outputs.  
 - The wave environment affects many variables with the New York Bight: vertical and horizontal mixing and flushing of the physical and chemical properties of the water, suspended sediment and solids, substrate settlement of taxa, and commercial and recreational vessel traffic. Wave height and wave refraction could be assessed from analytical software such as STWAVE (@byrnes_effects_2004).  
 - In the present iteration of NYBEM, light attenuation is assumed to be dependent on a single light coefficient ($K_{d}$). However, light attentuation can vary significantly based on suspended sediment concentration, algal processes, or water color, all of which may vary in time. Future version of the model could also consider spatially distributed data sets of light coefficients such as those by [NOAA](https://www.fisheries.noaa.gov/inport/item/66148).
 

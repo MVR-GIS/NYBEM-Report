@@ -16,7 +16,7 @@ github-repo: rstudio/bookdown-demo
 
 # Front Matter {-}
 
-## Point of Contact {-}
+Point of Contact
 
 S. Kyle McKay, Ph.D., P.E.  
 kyle.mckay at usace.army.mil  
@@ -26,10 +26,9 @@ New York, NY 10278
 
 <span style="color: red;">DRAFT FOR MODEL CERTIFICATION REVIEW ONLY</span>
 
-
 ## Abstract {-}
 
-The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, specifically: the New Jersey Back Bays, the New York-New Jersey Harbor & Tributaries Study, and the Nassau County Back Bays. In these study areas, the USACE is considering a diversity of measures for mitigating flood risks, including structural actions (e.g., levees, floodwalls, storm surge barriers), non-structural measures (e.g., buy-outs, elevation of structures, flood-proofing), and natural and nature-based features (e.g., wetland creation, reefs for breakwaters). Environmental outcomes and acceptability are important constraints on plan selection, and the studies are applying a “tiered” approach to compliance with the National Environmental Policy Act. The New York Bight Ecological Model (NYBEM) is being developed as a tool for partially assessing the direct and indirect effects of agency actions on regional ecosystems. The NYBEM assesses changes in habitat quantity and quality associated with changing hydrodynamic conditions in six major ecosystem types: freshwater tidal, estuarine intertidal, estuarine subtidal, marine intertidal, marine subtidal, and marine deepwater. The numerical code for NYBEM was programmed in the R Statistical Software Language, and the model code is contained within an R-package (`nybem`), which will be shared publicly following review and certification. This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation. The NYBEM is then applied to assess the existing condition of ecosystems in the New Jersey Back Bay study area.
+The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, specifically: the New Jersey Back Bays, the New York-New Jersey Harbor & Tributaries Study, and the Nassau County Back Bays. In these study areas, the USACE is considering a diversity of measures for mitigating flood risks, including structural actions (e.g., levees, floodwalls, storm surge barriers), non-structural measures (e.g., buy-outs, elevation of structures, flood-proofing), and natural and nature-based features (e.g., wetland creation, reefs for breakwaters). Environmental outcomes and acceptability are important constraints on plan selection, and the studies are applying a “tiered” approach to compliance with the National Environmental Policy Act. The New York Bight Ecological Model (NYBEM) is being developed as a tool for partially assessing the direct and indirect effects of agency actions on regional ecosystems. The NYBEM assesses changes in habitat quantity and quality associated with changing hydrodynamic conditions in six major ecosystem types: freshwater tidal, estuarine intertidal, estuarine subtidal, marine intertidal, marine subtidal, and marine deepwater. The numerical code for NYBEM was programmed in the R Statistical Software Language, and the model code is contained within an R-package (`nybem`), which is [available via github](https://github.com/MVR-GIS). This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation. The NYBEM is then applied to assess the existing condition of ecosystems in the New Jersey Back Bay study area.
 
 ## Acknowledgements {-}
 
@@ -46,6 +45,7 @@ Model development was funded by two U.S. Army Corps of Engineers' feasibility st
 - _Deepwater Ecosystems_: Coastal ecosystems with bed elevation between -2m and -20m below Mean Sea Level (MSL).
 - _EIS_: Environmental Impact Statement.
 - _[ERDC](https://www.erdc.usace.army.mil/)_: U.S. Army Engineer Research and Development Center.  
+- _[ESI](https://response.restoration.noaa.gov/resources/environmental-sensitivity-index-esi-maps)_: Environmental Sensitivity Index for shorelines from the National Oceanic and Atmospheric Administration
 - _Estuarine Ecosystems_: Coastal ecosystems with salinity from 0.5 to 28 ppt.
 - _Freshwater Ecosystems_: Coastal ecosystems with low salinity < 0.5 ppt.
 - _FWOP_: Future WithOut Project Conditions.

@@ -19,6 +19,7 @@ fig:unnamed-chunk-20
 fig:unnamed-chunk-21
 fig:unnamed-chunk-22
 fig:unnamed-chunk-23
+fig:unnamed-chunk-30
 background
 problem-statement
 report-overview
@@ -84,7 +85,6 @@ application-and-communication
 njbb-hydrodynamic-modeling
 environmental-data-compilation
 model-execution
-summary-of-nybem-outcomes
 summary
 future-model-development
 habitat-quality-modules

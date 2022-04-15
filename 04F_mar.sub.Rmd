@@ -1,9 +1,9 @@
 ## Marine, Subtidal Zone
 
 
-Marine, subtidal ecosystems include the areas of high salinity (> 30 psu) bracketed by tidal limits of the mean lower low water (MLLW) and 2m below Mean Tide Level (MTL). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 
+Marine, subtidal ecosystems include the areas of high salinity (> 30 psu) bracketed by tidal limits of the mean lower low water (MLLW) and 2m below Mean Tide Level (MTL). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean or occur in high salinity zones near inlets. 
 
-Figure XX presents a conceptual model of the marine, subtidal ecosystem. This nearshore ecosystem hosts a variety of species of management interest such as hard clams, winter flounder, and seagrasses. As such, this model generally centers on the pelagic systems, submerged aquatic vegetation, and the benthic system. In general, coastal storm risk management actions are more likely to have direct effects on this ecosystem (e.g., footprint of constructed storm surge barriers) than indirect, offsite concerns more common in the estuarine systems.
+Figure 4.12 presents a conceptual model of the marine, subtidal ecosystem. This nearshore ecosystem hosts a variety of species of management interest such as hard clams, winter flounder, and seagrasses. As such, this model generally centers on the pelagic systems, submerged aquatic vegetation, and the benthic system. In general, coastal storm risk management actions are more likely to have direct effects on this ecosystem (e.g., footprint of constructed storm surge barriers) than indirect, offsite concerns more common in the estuarine systems.
 
 ```{r, fig.cap="Conceptual model for the marine, subtidal submodel."}
 knitr::include_graphics("ZZ_Fig04.12_Mar.Sub_ConModel.png")
@@ -14,20 +14,20 @@ The tension between human uses of this landscape and ecological outcomes has lon
 
 - NY/NJ harbor mitigation functional assessment models [@usace_new_2000]  
 
-- Habitat suitability models for winter flounder[@banner_usfws_2001], and hard clam [@mulholland_habitat_1984-1].
+- Habitat suitability models for winter flounder [@banner_usfws_2001] and hard clam [@mulholland_habitat_1984-1].
 
 - Regional monitoring data associated with NY/NJ Harbor Deepening (@usace_application_2012, @usace_demersal_2015a, @usace_dredge_2015b), essential fish habitat mapping [@usace_essential_2013], and water quality data for the lower bay (DEP 2018, @usace_dredge_2015b).
 
 
-Four main classes of processes and dynamics were identified from a review of these models and studies: a) substrate-driven habitat use, b) physical currents and mixing, c) light penetration, and d) human uses of the system. From these processes, four surrogate metrics were identified, which collectively reflect the condition of the marine, subtidal zone. The sections below describe each metric and the rationale in detail, but briefly:
+Four main classes of processes and dynamics were identified from a review of these models and studies: (1) substrate-driven habitat use, (2) physical currents and mixing, (3) light penetration, and (4) human uses of the system. For each process, surrogate metrics were identified, which collectively reflect the condition of the marine, subtidal zone. The sections below describe each metric and the rationale in detail, but briefly:
 
 *	Current velocity is a major driver of sediment dynamics as well as water quality processes.
 
 *	Fine substrate affects utilization of habitats by a variety of taxa.  
 
-*	Light penetration is a proxy for both water quality outcomes and potential for SAV growth.  
+*	Light penetration is a proxy for both water quality outcomes and potential SAV growth.  
 
-*	Vessel traffic density as a proxy for human use intensity.  
+*	Vessel traffic density is a proxy for human use intensity.  
 
 The overall habitat suitability of the marine, subtidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these four metrics.
 
@@ -97,8 +97,8 @@ $$velocity = \begin{pmatrix} 0.016*V_{50}+0.6 & V_{50}=0-1\\
 
 Where $velocity$ is a suitability index relative to currents and velocity and $ves_{AIS}$ is the vessel density from the Automated Information System.
 
-### Substrate
 
+### Substrate
 
 Sediment quality drives multiple aspects of ecosystem integrity such as benthic habitat provision, nutrient dynamics, and erodibility. Fine sediment composition (i.e., %fine) is a common metric in multiple assessment procedures in the region (e.g., @mulholland_habitat_1984-1, @usace_new_2000, @USACE_port_2021). Specifically, the suitability curves from the hard clam model [@mulholland_habitat_1984-1] are adopted here as a rapid metric of ecosystem quality. For marine environments, sediment data are obtained from the [usSEABED](https://www.usgs.gov/programs/cmhrp/science/accessing-usseabed) data set throughout the region. Habitat suitability is then quantified as follows:
 
@@ -106,10 +106,10 @@ $$substrate = -0.01*fines_{per}+1$$
 
 Where $substrate$ is a suitability index relative to sediment substrate and $fines_{per}$ is the proportion of fine sediment (silt and clay) at the location.
 
+
 ### Light
 
-
-Light penetration provides an important metric of general water quality as well as suitability for submerged aquatic vegetation. Specifically, light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the `mar.sub`, light availability and suitability are modeled following the same algorithms described for the `est.sub` model (See Section 4.4), which can be summarized in suitability terms as as:
+Light penetration provides an important metric of general water quality as well as suitability for submerged aquatic vegetation. Specifically, light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the marine subtidal submodel, light availability and suitability are modeled following the same algorithms described for the estuarine subtidal model (See Section 4.4.2.1), which can be summarized in suitability terms as as:
 
 $$light = \begin{pmatrix} 0.0 & PLA<10\\
 0.0833*PLA-0.83 & PLA>70\\
@@ -117,6 +117,7 @@ $$light = \begin{pmatrix} 0.0 & PLA<10\\
 \end{pmatrix}$$ 
 
 Where $light$ is a suitability index relative to light penetration and $PLA$ is percent light available (PLA).
+
 
 ### Vessel Density
 
@@ -133,6 +134,5 @@ Where $vessel.density$ is a suitability index relative to ship traffic and $ves_
 
 ### Potential extension of marine, subtidal model
 
-The `mar.sub` model provides a useful framework for estimating general ecosystem condition, although other variables and processes could be addressed in future iterations. Specifically, substrate is a dynamic feature through time, particularly with sea level change, and substrate could be linked to sediment transport algorithms in coastal dynamics models. Similarly, wave environment is an important feature of this ecosystem, and additional wave metrics could be incorporated. 
-
+NYBEM's marine subtidal submodel provides a useful framework for estimating general ecosystem condition, although other variables and processes could be addressed in future iterations. Specifically, substrate is a dynamic feature through time, particularly with sea level change, and substrate could be linked to sediment transport algorithms in coastal dynamics models. Similarly, wave environment is an important feature of this ecosystem, and additional wave metrics could be incorporated. In the present iteration of NYBEM, light attenuation is assumed to be dependent on a single light coefficient ($K_{d}$). However, light attentuation can vary significantly based on suspended sediment concentration, algal processes, or water color, all of which may vary in time. Future version of the model could also consider spatially distributed data sets of light coefficients such as those by [NOAA](https://www.fisheries.noaa.gov/inport/item/66148).
 
