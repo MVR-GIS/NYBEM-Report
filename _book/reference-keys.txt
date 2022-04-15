@@ -49,8 +49,7 @@ hard-bottom-habitats
 oyster-substrate
 minimum-annual-salinity
 annual-mean-salinity
-key-gaps-in-est.sub.hard
-soft-bottom-habitats-est.sub.soft
+soft-bottom-habitats
 submerged-aquatic-vegetation-module
 hard-clam-module
 potential-extension-of-estuarine-subtidal-model

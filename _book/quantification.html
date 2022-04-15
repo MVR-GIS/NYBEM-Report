@@ -206,7 +206,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.4" data-path="quantification.html"><a href="quantification.html#estuarine-subtidal-zone"><i class="fa fa-check"></i><b>4.4</b> Estuarine, Subtidal Zone<span></span></a>
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="quantification.html"><a href="quantification.html#hard-bottom-habitats"><i class="fa fa-check"></i><b>4.4.1</b> Hard Bottom Habitats<span></span></a></li>
-<li class="chapter" data-level="4.4.2" data-path="quantification.html"><a href="quantification.html#soft-bottom-habitats-est.sub.soft"><i class="fa fa-check"></i><b>4.4.2</b> Soft Bottom Habitats (<code>est.sub.soft</code>)<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="quantification.html"><a href="quantification.html#soft-bottom-habitats"><i class="fa fa-check"></i><b>4.4.2</b> Soft Bottom Habitats<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="quantification.html"><a href="quantification.html#marine-intertidal-zone"><i class="fa fa-check"></i><b>4.5</b> Marine, Intertidal Zone<span></span></a>
 <ul>
@@ -471,27 +471,18 @@ Where <span class="math inline">\(H_{rel}\)</span> is a relative depth metric as
 </div>
 <div id="estuarine-subtidal-zone" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Estuarine, Subtidal Zone<a href="quantification.html#estuarine-subtidal-zone" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This section presents development of the estuarine, subtidal submodel (est.sub). Estuarine subtidal habitat was defined as areas with elevations between MLLW and -20m with salinities ranging from 0.5 to 30 psu. In general, the est.sub seeks to capture the general condition and trajectory of the estuarine subtidal habitat using three different taxa (oysters, SAV, and clams) as indicators of ecosystem quality. Each taxa provides critical contributions to the overall quality of the ecosystem.</p>
-<p>A conceptual model of the estuarine subtidal habitat was developed at a mediated modeling workshop (Appendix A). The conceptual model represented the major components affecting the quality of the ecosystem. Three main categories of drivers were identified: physical (water quality, velocity, sedimentation), anthropogenic (vessel traffic and development stress), and biological (SAV, benthic organisms, fish) with interactions among the categories. Conceptual models were then refined in two key ways (Figure XX). First, it was assumed that essential fish habitat would be present if oysters, SAV, and clams were present, so this variable was removed. Second, substrate type is a major driver of SAV, oysters, and clams. In general, the ecosystem can be coarsely divided into hard bottom and soft bottom habitats roughly correlated with oysters and SAV/clams, respectively. The unique characteristics and drivers of these habitats led to splitting the est.sub model into modules for each of these substrate types.</p>
+<p>This section presents development of the estuarine, subtidal submodel. Estuarine subtidal habitat was defined as areas with elevations between MLLW and -20m with salinities ranging from 0.5 to 30 psu. In general, this submodel seeks to capture the general condition and trajectory of the estuarine subtidal habitat using three different taxa (oysters, submerged aquatic vegetation/SAV, and clams) as indicators of ecosystem quality, each of which provides critical contributions to the overall quality of the ecosystem.</p>
+<p>A conceptual model of the estuarine subtidal habitat was developed at a mediated modeling workshop (Appendix A). The conceptual model represented the major components affecting the quality of the ecosystem, and three main categories of drivers were identified: physical (water quality, velocity, sedimentation), anthropogenic (vessel traffic and development stress), and biological (SAV, benthic organisms, fish) with interactions among the categories. Conceptual models were then refined in two key ways (Figure 4.6). First, it was assumed that essential fish habitat would be present if oysters, SAV, and clams were present, so this variable was removed. Second, substrate type is a major driver of SAV, oysters, and clams and became a point of stratification within the model. The ecosystem was coarsely divided into hard bottom and soft bottom habitats roughly correlated with oysters and SAV/clams, respectively. The unique characteristics and drivers of these habitats led to splitting the estuarine subtidal sub-model into modules for each of these substrate types.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
 <img src="ZZ_Fig04.06_Est.Sub_ConModel.png" alt="Conceptual model for the estuarine, subtidal submodel." width="830" />
 <p class="caption">
 Figure 4.6: Conceptual model for the estuarine, subtidal submodel.
 </p>
 </div>
-<p>The est.sub modules was split into hard and soft bottom habitats (<code>est.sub.hard</code> and <code>est.sub.soft</code>, respectively). <strong>Insert text differentiating hard bottom and soft bottom habitat</strong>. All substrate data are merged from the <a href="https://maps.coastalresilience.org/newjersey/#">TNC Substrate Map</a> and the <a href="https://www.usgs.gov/programs/cmhrp/science/accessing-usseabed">usSEABED</a>. Grain size are from XXX (<strong>DO WE HAVE THIS?</strong>), and fine substrate composition are from TNC.</p>
-<p>est.sub.hard
-Salinity = 0.5 to 30ppt
-Subtidal (MLLW to -20m)
-Median grain size &gt;= coarse sand</p>
-<p>est.sub.soft
-Salinity = 0.5 to 30ppt
-Subtidal (MLLW to -20m)
-Median grain size &lt;= coarse sand</p>
-<p>Alternative approach…known or historic hard bottom (i.e., any historic mapped oyster reef)?</p>
+<p>The model was split into hard and soft bottom habitats (<code>est.sub.hard</code> and <code>est.sub.soft</code>, respectively). Hard bottom substrates are crucial for oyster reef establishment and recruitment. Historically, this region was extremely wide distribution of hard bottom substrate, but anthropogenic influences on water quality, sedimentation, and overfishing have reduced the extent significantly. Here, we use a historical map of oyster reef extent as a proxy for hard bottom with the assumption that hard substrate is relatively immobile and these locations would likely have higher potential for oyster reestablishment.</p>
 <div id="hard-bottom-habitats" class="section level3 hasAnchor" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Hard Bottom Habitats<a href="quantification.html#hard-bottom-habitats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Oysters are a major indicator of the integrity of hard bottom habitats in the New York Bight, and the hard bottom submodel is represented by an <strong>adaptation</strong> of the Oyster Habitat Suitability Index Model (OHSIM <span class="citation">Swannack, Reif, and Soniat (2014)</span>). The OHSIM is a USACE-certified model for the Eastern oyster (<em>Crassostrea virginica</em>). OHSIM is a spatially-explicit, grid-based index model that uses a series of linear equations to calculate habitat suitability for <em>C. virginica</em>. The model consists of four variables: substrate and three measures of salinity – 1) mean salinity during spawning season, in which spawning and spat set have a higher optimal salinity than for survival of adults, 2) annual mean salinity, which is the expected range over which adult oysters are viable, and 3) minimum annual salinity, which defines the impacts of high mortality events resulting from lower salinities due to freshwater influxes <span class="citation">(Soniat et al. 2012)</span>. Variables are briefly described below, and more details can be found in <span class="citation">Swannack, Reif, and Soniat (2014)</span> and EcoPCX documentation.</p>
+<p>Oysters are a major indicator of the integrity of hard bottom habitats in the New York Bight, and the hard bottom submodel is represented by an <em>adaptation</em> of the Oyster Habitat Suitability Index Model (OHSIM, <span class="citation">Swannack, Reif, and Soniat (2014)</span>). The OHSIM is a USACE-certified model for the Eastern oyster (<em>Crassostrea virginica</em>). OHSIM is a spatially-explicit, grid-based index model that uses a series of linear equations to calculate habitat suitability for <em>C. virginica</em>. The model consists of four variables: (1) hard substrate or cultch, (2) mean salinity during spawning season, in which spawning and spat set have a higher optimal salinity than for survival of adults, (3) annual mean salinity, which is the expected range over which adult oysters are viable, and (4) minimum annual salinity, which defines the impacts of high mortality events resulting from lower salinities due to freshwater influxes <span class="citation">(Soniat et al. 2012)</span>. Variables are briefly described below, and more details can be found in <span class="citation">Swannack, Reif, and Soniat (2014)</span> and USACE model certification reports.</p>
 <p>For the NYBEM, spawning season salinity data were not available, so only three variables are used. The overall habitat suitability of the estuarine, subtidal, hard bottom ecosystem is aggregated into a single metric via a geometric mean of these three suitability indices (following the OHSIM).</p>
 <p><span class="math inline">\(I_{est.sub.hard} = {(cultch * sal.min.ann * sal.mean.ann)}^{1/3}\)</span></p>
 <p>Where <span class="math inline">\(I_{est.sub.hard}\)</span> is an overarching index of ecosystem quality for the estuarine, subtidal, hard bottom habitats, <span class="math inline">\(cultch\)</span> is a suitability index relative to hard bottom composition, <span class="math inline">\(sal.min.ann\)</span> is a suitability index relative to minimum annual salinity, and <span class="math inline">\(sal.mean.ann\)</span> is a suitability index relative to mean annual salinity. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.</p>
@@ -503,24 +494,24 @@ Figure 4.7: Suitability index curves for hard bottom habitats in the esturaine, 
 </div>
 <div id="oyster-substrate" class="section level4 hasAnchor" number="4.4.1.1">
 <h4><span class="header-section-number">4.4.1.1</span> Oyster Substrate<a href="quantification.html#oyster-substrate" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Substrate is represented as the percent of the bottom covered with hard substrate, such as existing reefs, or other hard surfaces. We assume that oyster habitat suitability increases linearly from 0 to 100% cultch cover.</p>
+<p>Cultch is hard substrate that provides points of attachment and recruitment for spat. Substrate is represented as the percent of the bottom covered with hard substrate, such as existing reefs, or other hard surfaces. We assume that oyster habitat suitability increases linearly from 0 to 100% cultch cover.</p>
 <p><span class="math display">\[cultch = 0.01*hard_{per}\]</span></p>
 <p>Where <span class="math inline">\(cultch\)</span> is a suitability index relative to hard bottom composition and <span class="math inline">\(hard_{per}\)</span> is the percent of the substrate that is hard bottom.</p>
 </div>
 <div id="minimum-annual-salinity" class="section level4 hasAnchor" number="4.4.1.2">
 <h4><span class="header-section-number">4.4.1.2</span> Minimum Annual Salinity<a href="quantification.html#minimum-annual-salinity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Minimum Annual Salinity (MAS) is the minimum value of the 12 monthly mean salinities. This variable is essential to describe freshwater impacts (e.g., freshets, high rainfall years, or freshwater diversions) on oysters and is analogous to the frequency of killing floods variable used by <span class="citation">Cake (1983)</span>. For NYBEM, we use a representative low salinity (i.e., the tenth exceedence percentile, <span class="math inline">\(S_{10}\)</span>) rather than a minimum of monthly average. The relationship between MAS and its suitability index is formulated as a linear step-function as follows:</p>
+<p>Per <span class="citation">Swannack, Reif, and Soniat (2014)</span>, Minimum Annual Salinity (MAS) is the minimum value of the 12 monthly mean salinities. This variable is essential to describe freshwater impacts (e.g., freshets, high rainfall years, or freshwater diversions) on oysters and is analogous to the frequency of killing floods variable used by <span class="citation">Cake (1983)</span>. For NYBEM, we use a representative low salinity (i.e., the tenth percentile, <span class="math inline">\(sal_{10}\)</span>) rather than a minimum of monthly average. The relationship between MAS and its suitability index is formulated as a linear step-function as follows:</p>
 <p><span class="math display">\[sal.min.ann = \begin{pmatrix} 0.0 &amp; MAS=0-2\\
 0.025*MAS-0.05 &amp; MAS=2-4\\
 0.225*MAS-0.85 &amp; MAS=4-6\\
 0.250*MAS-1.00 &amp; MAS=6-8\\
 1.0 &amp; MAS&gt;8
 \end{pmatrix}\]</span></p>
-<p>Where <span class="math inline">\(sal.min.ann\)</span> is a suitability index relative to minimum annual salinity, <span class="math inline">\(MAS\)</span> is the minimum value of the 12 monthly mean salinities, and <span class="math inline">\(S_{10}\)</span> is the tenth exceedence percentile of the annual salinity values, a proxy for MAS.</p>
+<p>Where <span class="math inline">\(sal.min.ann\)</span> is a suitability index relative to minimum annual salinity, <span class="math inline">\(MAS\)</span> is the minimum value of the 12 monthly mean salinities, and <span class="math inline">\(sal_{10}\)</span> is the tenth percentile of an annual time series of salinity values, a proxy for MAS.</p>
 </div>
 <div id="annual-mean-salinity" class="section level4 hasAnchor" number="4.4.1.3">
 <h4><span class="header-section-number">4.4.1.3</span> Annual Mean Salinity<a href="quantification.html#annual-mean-salinity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Annual Mean Salinity (AS) represents the range of salinities over which adult oysters are viable <span class="citation">(@ Cake 1983)</span>. The relationship between AS and its suitability index is formulated as a linear step-function as follows:</p>
+<p>Annual Mean Salinity (AS) represents the range of salinities over which adult oysters are viable <span class="citation">(Cake 1983)</span>. The relationship between AS and its suitability index is formulated as a linear step-function as follows:</p>
 <p><span class="math display">\[sal.mean.ann = \begin{pmatrix} 0.0 &amp; AS=0-5\\
 0.2*AS-1.00 &amp; AS=5-10\\
 1.00 &amp; AS=10-15\\
@@ -530,47 +521,43 @@ Figure 4.7: Suitability index curves for hard bottom habitats in the esturaine, 
 0.01*AS-0.4 &amp; AS=30-40\\
 0.0 &amp; AS&gt;40
 \end{pmatrix}\]</span></p>
-<p>Where <span class="math inline">\(sal.mean.ann\)</span> is a suitability index relative to mean annual salinity and <span class="math inline">\(hard_{per}\)</span> is the percent of the substrate that is hard bottom.</p>
-</div>
-<div id="key-gaps-in-est.sub.hard" class="section level4 hasAnchor" number="4.4.1.4">
-<h4><span class="header-section-number">4.4.1.4</span> Key Gaps in <code>est.sub.hard</code><a href="quantification.html#key-gaps-in-est.sub.hard" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>This model for hard bottom habitat omits some important variables and processes. Notably, mean Salinity during Spawning Season (MSSS) represents reflects the higher optimal salinities required for spawning and larval stages <span class="citation">(Butler 1954)</span>,<span class="citation">(@ Cake 1983)</span> and is part of the OHSIM framework but omitted here.</p>
+<p>Where <span class="math inline">\(sal.mean.ann\)</span> is a suitability index relative to mean annual salinity and <span class="math inline">\(AS\)</span> is the mean annual salinity.</p>
 </div>
 </div>
-<div id="soft-bottom-habitats-est.sub.soft" class="section level3 hasAnchor" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Soft Bottom Habitats (<code>est.sub.soft</code>)<a href="quantification.html#soft-bottom-habitats-est.sub.soft" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Estuarine, subtidal soft bottom habitats comprise large portions of the study areas and host a variety of taxa of interest to environmental management. Specifically, submerged aquatic vegetation (SAV) beds and hard clams are focal targets of management. Specifically, submerged aquatic vegetation (SAV) beds and hard clams are focal target of management. However, these two outcomes have different ecological drivers. As such, the <code>est.sub.soft</code> model represents a hybridized approach that attempts to assess the general condition of this habitat type relative to both major outcomes.</p>
+<div id="soft-bottom-habitats" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Soft Bottom Habitats<a href="quantification.html#soft-bottom-habitats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Estuarine, subtidal soft bottom habitats comprise large portions of the study areas and host a variety of taxa of interest to environmental management. Specifically, submerged aquatic vegetation (SAV) beds and hard clams are key targets of management. However, these two outcomes have different ecological drivers. As such, the soft bottom model represents a hybridized approach that attempts to assess the general condition of this habitat type relative to both major outcomes.</p>
 <p>Habitat suitability is assessed separately for SAV and hard clams. The overall habitat suitability of the estuarine, subtidal, soft bottom ecosystem is aggregated into a single metric via a maximum of the separate suitability indices. This approach assumes that a given patch does not need to be perfect for both taxa simultaneously, but instead, the habitat could have high quality relative to one or the other outcome.</p>
 <p><span class="math inline">\(I_{est.sub.soft} = max({I_{sav},I_{clam})}\)</span></p>
 <p>Where <span class="math inline">\(I_{est.sub.soft}\)</span> is an overarching index of ecosystem quality for the estuarine, subtidal, soft bottom habitats, <span class="math inline">\(I_{sav}\)</span> is a suitability index relative to submerged aquatic vegetation, and <span class="math inline">\(I_{clam}\)</span> is a suitability index relative to hard clams. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.</p>
 <div id="submerged-aquatic-vegetation-module" class="section level4 hasAnchor" number="4.4.2.1">
 <h4><span class="header-section-number">4.4.2.1</span> Submerged Aquatic Vegetation Module<a href="quantification.html#submerged-aquatic-vegetation-module" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The SAV submodel is represented by three variables critical for growth and reproduction of seagrass, (1) substrate, (2) light availability, and (3) development stress. Suitability scores are represented either as discrete categories or as step functions with linear interpolations between steps.</p>
+<p>The SAV model is represented by three variables critical for growth and reproduction of seagrass, (1) substrate, (2) light availability, and (3) development stress. Suitability scores are represented either as discrete categories or as step functions with linear interpolations between steps.</p>
 <p><span class="math inline">\(I_{sav} = \frac{substrate.sav + light + vessel.density}{3}\)</span></p>
-<p>Where <span class="math inline">\(I_{sav}\)</span> is an overarching index of ecosystem quality relative to submerged aquatic vegetation, <span class="math inline">\(substrate.sav\)</span>is a suitability index relative to fine substrate, light is a suitability index relative to light penetration, and <span class="math inline">\(vessel.density\)</span>is a suitability index relative to boat traffic and human uses (a proxy for development stress). All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.</p>
+<p>Where <span class="math inline">\(I_{sav}\)</span> is an overarching index of ecosystem quality relative to submerged aquatic vegetation, <span class="math inline">\(substrate.sav\)</span>is a suitability index relative to fine substrate, <span class="math inline">\(light\)</span> is a suitability index relative to light penetration, and <span class="math inline">\(vessel.density\)</span> is a suitability index relative to boat traffic and human uses (a proxy for development stress). All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-16"></span>
 <img src="_main_files/figure-html/unnamed-chunk-16-1.png" alt="Suitability index curves for seagrass in soft bottom habitats in the esturaine, subtidal zone." width="768" />
 <p class="caption">
 Figure 4.8: Suitability index curves for seagrass in soft bottom habitats in the esturaine, subtidal zone.
 </p>
 </div>
-<p>Substrate is represented as the presence of soft-bottom sediments conducive for SAV growth. Optimal conditions for growth in the study region were identified as non-cobble substrates with less than 70% fine sediment. Soft-bottom, non-cobble substrates with greater than 70% fine sediment were considered sub-optimal/adequate. Suitability scores for SAV substrate are represented as follows:</p>
+<p>Substrate is represented as the presence of soft-bottom sediments conducive for SAV growth. Based on Short et al. (2002), optimal conditions for growth were identified as non-cobble substrates with less than 70% fine sediment. Soft-bottom, non-cobble substrates with greater than 70% fine sediment were considered sub-optimal/adequate. Suitability scores for SAV substrate are represented as follows:</p>
 <p><span class="math display">\[sal.mean.ann = \begin{pmatrix} 1.0 &amp; fines_{per}=0-70\\
 -0.033*fines_{per}-3.33 &amp; fines_{per}&gt;70\\
 \end{pmatrix}\]</span></p>
 <p>Where <span class="math inline">\(substrate.sav\)</span> is a suitability index relative to fine substrate and <span class="math inline">\(fines_{per}\)</span> is the percent of fine substrate (silt and clay).</p>
-<p>Light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the ESM, light availability depends on depth and Total Suspended Solids (TSS) and is calculated algorithmically, then converted into a suitability index. Light availability (Iz) at the plant surface is estimated based on <span class="citation">Nes et al. (2003)</span> is calculated in Equations 34-35 as follows:</p>
+<p>Light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the this model, light availability depends on depth and is calculated algorithmically, then converted into a suitability index. Light availability (<span class="math inline">\(I_{z}\)</span>) at the plant surface is estimated based on <span class="citation">Nes et al. (2003)</span> is calculated as follows:</p>
 <p><span class="math display">\[I_{z} = PAR * exp(-K_{d}*z)\]</span></p>
 <p>where <span class="math inline">\(PAR\)</span> represents the photosynthetically active radiation at the surface, <span class="math inline">\(K_{d}\)</span> is the light attenuation coefficient for water clarity matching the conditions of the study site, and <span class="math inline">\(z\)</span> is water depth.</p>
-<p>Light at the plant surface is converted to a percent of light available at that depth, which is used to calculate a suitability score.</p>
-<p><span class="math display">\[PLW = \frac{I_{z}}{PAR} * 100\]</span></p>
-<p>The relationship between Percent light available (PLA) and its suitability index for SAV is represented as follows:</p>
+<p>Light at the plant surface is converted to a percent of light available (PLA) at that depth, which is used to calculate a suitability score.</p>
+<p><span class="math display">\[PLA = \frac{I_{z}}{PAR} * 100\]</span></p>
+<p>The relationship between PLA and its suitability index for SAV is represented as follows:</p>
 <p><span class="math display">\[light = \begin{pmatrix} 0.0 &amp; PLA&lt;10\\
 0.0833*PLA-0.83 &amp; PLA&gt;70\\
 1.0 &amp; PLA&gt;22\\
 \end{pmatrix}\]</span></p>
-<p>Where <span class="math inline">\(light\)</span> is a suitability index relative to light penetration and <span class="math inline">\(vessel.density\)</span> is a suitability index relative to boat traffic and human uses.</p>
-<p>Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact SAV abundance. We quantify these disturbances through a proxy of vessel traffic per area. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per year) is optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows:</p>
+<p>Where <span class="math inline">\(light\)</span> is a suitability index relative to light penetration and <span class="math inline">\(PLA\)</span> is percent light available.</p>
+<p>Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact SAV abundance. We quantify these disturbances through a proxy of vessel traffic per area. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows:</p>
 <p><span class="math display">\[vessel.density = \begin{pmatrix} 1.0 &amp; ves_{AIS}=0-1\\
 -0.0556*ves_{AIS}+1.06 &amp; ves_{AIS}=1-10\\
 -0.00556*ves_{AIS}+0.56 &amp; ves_{AIS}=10-100\\
@@ -580,8 +567,8 @@ Figure 4.8: Suitability index curves for seagrass in soft bottom habitats in the
 </div>
 <div id="hard-clam-module" class="section level4 hasAnchor" number="4.4.2.2">
 <h4><span class="header-section-number">4.4.2.2</span> Hard Clam Module<a href="quantification.html#hard-clam-module" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The clam habitat suitability submodel is based on <em>Thompson et al. (2021)</em>. Ideal depth for hard clams has been reported as 4 to 8 m, however hard clams can be found in shallower depths, but the habitat is considered suboptimal. This submodel consists of three variables (1) salinity, (2) substrate, and (3) SAV suitability.</p>
-<p><span class="math inline">\(I_{clam} = \frac{salinity.clam + substrate.clam + sav.prob}{4}\)</span></p>
+<p>The clam habitat suitability submodel is based on Thompson et al. (2021). Ideal depth for hard clams has been reported as 4 to 8 m, however hard clams can be found in shallower depths, but the habitat is considered suboptimal. This submodel consists of three variables (1) salinity, (2) substrate, and (3) SAV suitability.</p>
+<p><span class="math inline">\(I_{clam} = \frac{salinity.clam + substrate.clam + sav.prob}{3}\)</span></p>
 <p>Where <span class="math inline">\(I_{clam}\)</span> is an overarching index of ecosystem quality relative to hard clam habitat, <span class="math inline">\(salinity.clam\)</span> is a suitability index relative to salinity, <span class="math inline">\(substrate.clam\)</span> is a suitability index relative to fine substrate, and <span class="math inline">\(sav.prob\)</span> is an overarching index of ecosystem quality relative to submerged aquatic vegetation coverage. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
 <img src="_main_files/figure-html/unnamed-chunk-17-1.png" alt="Suitability index curves for clams in soft bottom habitats in the esturaine, subtidal zone." width="768" />
@@ -589,16 +576,16 @@ Figure 4.8: Suitability index curves for seagrass in soft bottom habitats in the
 Figure 4.9: Suitability index curves for clams in soft bottom habitats in the esturaine, subtidal zone.
 </p>
 </div>
-<p>Salinity represents the range of salinities over which clams can survive. Optimal salinity for hard clams ranges from 25 to 35 psu. Hyper- and hypo-saline conditions (&gt; 45 or &lt;12.5 psu, respectively) are considered unsuitable when clams are exposed to these conditions for three to six consecutive days. Habitat suitability increases with increasing salinity for intermediate values. The relationship between salinity and its suitability index is formulated as follows:</p>
-<p><span class="math display">\[salinity.clam = \begin{pmatrix} 0.0 &amp; salinity.psu=0-12\\
-0.5*salinity.psu-6.0 &amp; salinity.psu=12-12.5\\
-0.033*salinity.psu-0.17 &amp; salinity.psu=12.5-20\\
-0.1*salinity.psu-1.5 &amp; salinity.psu=20-25\\
-1.0 &amp; salinity.psu=25-35\\
--0.1*salinity.psu+4.5 &amp; salinity.psu=12.5-20\\
-0.0 &amp; salinity.psu&gt;45
+<p>The salinity metric describes the range of salinities over which clams can survive. Optimal salinity for hard clams ranges from 25 to 35 psu. Hyper- and hypo-saline conditions (&gt; 45 or &lt;12.5 psu, respectively) are considered unsuitable when clams are exposed to these conditions for three to six consecutive days. Habitat suitability increases with increasing salinity for intermediate values. The relationship between salinity and its suitability index is formulated as follows:</p>
+<p><span class="math display">\[salinity.clam = \begin{pmatrix} 0.0 &amp; MAS=0-12\\
+0.5*MAS-6.0 &amp; MAS=12-12.5\\
+0.033*MAS-0.17 &amp; MAS=12.5-20\\
+0.1*MAS-1.5 &amp; MAS=20-25\\
+1.0 &amp; MAS=25-35\\
+-0.1*MAS+4.5 &amp; MAS=12.5-20\\
+0.0 &amp; MAS&gt;45
 \end{pmatrix}\]</span></p>
-<p>Where <span class="math inline">\(salinity.clam\)</span> is a suitability index relative to salinity and <span class="math inline">\(salinity.psu\)</span> is mean annual salinity.</p>
+<p>Where <span class="math inline">\(salinity.clam\)</span> is a suitability index relative to salinity and <span class="math inline">\(MAS\)</span> is mean annual salinity.</p>
 <p>Similar to seagrass and oysters, substrate is a critical parameter for hard clam viability. Optimal substrate is shelly soft bottom. As the substrate composition increases in sand and/or mud, the substrate is less suitable for clams. Suitability scores for clam substrate are quantified as follows:</p>
 <p><span class="math display">\[substrate.clam = \begin{pmatrix} 0.0083*sand_{per} &amp; sand_{per}=0-30\\
 0.0125*sand_{per}-0.13 &amp; sand_{per}=30-70\\
@@ -614,10 +601,12 @@ Figure 4.9: Suitability index curves for clams in soft bottom habitats in the es
 </div>
 <div id="potential-extension-of-estuarine-subtidal-model" class="section level4 hasAnchor" number="4.4.2.3">
 <h4><span class="header-section-number">4.4.2.3</span> Potential extension of estuarine, subtidal model<a href="quantification.html#potential-extension-of-estuarine-subtidal-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>This model for soft bottom habitat omits some important variables and processes. Notably, temperature is not presently included but represents a crucial variable for both SAV and clams.</p>
+<p>As described, the estuarine subtidal ecosystem is a complex environment with multiple ecological outcomes of interest. Any model represents a simplifying set of assumptions, and future modeling could be extended in multiple ways.</p>
+<p>Th hard bottom model relies on an oyster habitat suitability model, although mean salinity during spawning season was omitted from the NYBEM formulation. This process reflects the higher optimal salinities required for spawning and larval stages (<span class="citation">Butler (1954)</span>,<span class="citation">Cake (1983)</span>) and is an important part of the OHSIM framework, which could be expanded with a more temporally distributed view of processes within NYBEM.</p>
+<p>Similarly, the soft bottom model omits some important variables and processes such as:</p>
 <ul>
-<li><p><em>Temperature for SAV</em>: Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr et al. 2011).At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation <span class="citation">(Atkin 2003)</span>;<span class="citation">(Jensen et al. 2000)</span>.</p></li>
-<li><p><em>Temperature for Clams</em>: Temperature for Clams: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C range in suitability with optimal temperatures between 22.5°C and 30°C.</p></li>
+<li><p><em>Temperature for SAV</em>: Temperature is not presently included but represents a crucial variable for both SAV and clams. Like all vascular plants, temperature is a major driver for SAV viability. At low temperatures, physiological processes are constrained, while metabolic temperature increases with higher temperatures (Staehr et al. 2011). At temperatures above optimal range for SAV, metabolic activity is significantly reduced or halted as a result of protein denaturation or inactivation (<span class="citation">Atkin (2003)</span>, <span class="citation">Jensen et al. (2000)</span>).</p></li>
+<li><p><em>Temperature for Clams</em>: Water temperature can have significant impacts on hard clams. For future models, temperatures below biological zero (5°C) and above 33°C are likely unsuitable. Temperatures between 12.5°C and above 32°C range in suitability with optimal temperatures between 22.5°C and 30°C.</p></li>
 </ul>
 
 </div>

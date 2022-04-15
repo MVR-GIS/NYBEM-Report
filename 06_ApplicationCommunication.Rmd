@@ -40,6 +40,8 @@ Insert.
 
 Note that for HATS and NJBB applications, hydrodynamic inputs vary with USACE actions, and other environmental parameters do not vary with USACE actions.
 
+Substrate - hard bottom: **TWO DATA SENTENCES FROM STEVE.** Any location with a historically mapped reef.
+
 Substrate: [TNC](https://maps.coastalresilience.org/newjersey/#) and [usSEABED](https://www.usgs.gov/programs/cmhrp/science/usseabed)
 
 NLCD - land use
