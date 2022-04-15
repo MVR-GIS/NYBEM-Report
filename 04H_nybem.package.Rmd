@@ -1,10 +1,15 @@
-## New York Bight Overarching Model (NYBEM.wrapper) (I)
-
-<span style="color: red;">Dougherty and McKay to write.</span>
+## `nybem` R-package
 
 
-### Calculate habitat zones
+All model code for the NYBEM is contained within an R-package (`nybem`, [available via github](https://github.com/MVR-GIS)). Generally speaking, a package can be thought of as a fundamental unit of code that can include functions, data, documentation, and tests ([Wickham and Bryan 2019](https://r-pkgs.org/)). Packages then provide a transportable and reproducible mechanism for code sharing and publication. The `nybem` package contains six functions and seven data.frames storing suitability curves. The first three functions can largely be thought of as habitat mapping functions. The second three function compute habitat quality using a general set of algorithms. The seven data frames contain suitability curve data as described in Sections 4.2-4.7. These topics will be treated separately in 4.8.1-4.8.3, respectively. 
 
+
+NOTABLY, everything is modular and can be used independently. In NYBEM, the quantity and quality of each ecosystem type may be assessed separately. For instance, ecosystems could be rapidly delineated from empirical data for the existing condition (e.g., field or tide gauge) or modeled hydrodynamic data for future conditions or proposed management actions.
+
+
+### Habitat Mapping Functions
+
+Insert description of code for habitat zonation.
 
 ```{r echo=TRUE}
 #Functions for isolating habitat types
@@ -58,17 +63,13 @@ set.habitat.zone <- function(tidalzone, salinityzone){
 ```
 
 
-### Suitability Index Calculator (`SI.calc`)
+### Habitat Quality Functions
 
-Insert description here as needed.
+`is_RasterLayer` Insert description here as needed.
 
+`SI.calc` Insert description here as needed.
 
-### Zone-specific habitat quality functions
-
-Insert description here as needed.
-
-
-### Rasterize Habitat Patches
+`HSIcalc` Insert description here as needed.
 
 __Do we need to reference the spatial coordinate systems? Maybe the R function or package used?__
 
@@ -83,18 +84,15 @@ patch.rasterizer <- function(patch.mapper.output, grid.resolution, my.coordinate
 ```
 
 
-### Other fxns as needed
+### Habitat Suitability Curves
 
+Insert description here as needed.
 
-Numerical code for running the entire model suite
+NYBEM.fresh.tid
 
 
 ```{r echo=TRUE}
-#Function 
-NYBEM.wrapper <- function(x, y){
-  NYBEM.out <- x + y
-
-  #Send output
-  NYBEM.out
-}
+#Store models in a single list and show them here?
+NYBEM.fresh.tid
 ```
+
