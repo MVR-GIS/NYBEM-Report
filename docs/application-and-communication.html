@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Application and Communication | New York Bight Ecological Model (NYBEM)</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Application and Communication | New York Bight Ecological Model (NYBEM)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Application and Communication | New York Bight Ecological Model (NYBEM)" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. set in the _output.yml file. The HTML output format for this example is bookdown::gitbook," />
+  
+
+<meta name="author" content="S. Kyle McKay, Vanessa Mahan, Michael P. Dougherty, Toddd M. Swannack, Candice Hall, Christina L. Saltus, Molly K. Reif, Steve Allen" />
+
+
+<meta name="date" content="2022-04-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="evaluation-i.html"/>
+<link rel="next" href="summary.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">New York Bight Ecological Model</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#front-matter">Front Matter<span></span></a>
+<ul>
+<li><a href="index.html#abstract">Abstract<span></span></a></li>
+<li><a href="index.html#acknowledgements">Acknowledgements<span></span></a></li>
+<li><a href="index.html#glossary-and-acronymns">Glossary and Acronymns<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>1</b> Background<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="background.html"><a href="background.html#problem-statement"><i class="fa fa-check"></i><b>1.1</b> Problem Statement<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="background.html"><a href="background.html#report-overview"><i class="fa fa-check"></i><b>1.2</b> Report Overview<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="model-development-process.html"><a href="model-development-process.html"><i class="fa fa-check"></i><b>2</b> Model Development Process<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="model-development-process.html"><a href="model-development-process.html#spatial-extent"><i class="fa fa-check"></i><b>2.1</b> Spatial Extent<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="model-development-process.html"><a href="model-development-process.html#phased-approach"><i class="fa fa-check"></i><b>2.2</b> Phased Approach<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="model-development-process.html"><a href="model-development-process.html#mediated-modeling"><i class="fa fa-check"></i><b>2.3</b> Mediated Modeling<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="conceptualization.html"><a href="conceptualization.html"><i class="fa fa-check"></i><b>3</b> Conceptualization<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="conceptualization.html"><a href="conceptualization.html#conceptual-model"><i class="fa fa-check"></i><b>3.1</b> Conceptual Model<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="conceptualization.html"><a href="conceptualization.html#major-ecosystem-types"><i class="fa fa-check"></i><b>3.2</b> Major Ecosystem Types<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="conceptualization.html"><a href="conceptualization.html#habitat-style-modeling-philosophy"><i class="fa fa-check"></i><b>3.3</b> Habitat-Style Modeling Philosophy<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="quantification.html"><a href="quantification.html"><i class="fa fa-check"></i><b>4</b> Quantification<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="quantification.html"><a href="quantification.html#habitat-zonation"><i class="fa fa-check"></i><b>4.1</b> Habitat Zonation<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="quantification.html"><a href="quantification.html#freshwater-tidal-zone"><i class="fa fa-check"></i><b>4.2</b> Freshwater, Tidal Zone<span></span></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="quantification.html"><a href="quantification.html#salinity"><i class="fa fa-check"></i><b>4.2.1</b> Salinity<span></span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="quantification.html"><a href="quantification.html#vegetation-cover"><i class="fa fa-check"></i><b>4.2.2</b> Vegetation Cover<span></span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="quantification.html"><a href="quantification.html#episodic-sediment-deposition"><i class="fa fa-check"></i><b>4.2.3</b> Episodic Sediment Deposition<span></span></a></li>
+<li class="chapter" data-level="4.2.4" data-path="quantification.html"><a href="quantification.html#potential-extension-of-freshwater-tidal-model"><i class="fa fa-check"></i><b>4.2.4</b> Potential extension of freshwater, tidal model<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="quantification.html"><a href="quantification.html#estuarine-intertidal-zone"><i class="fa fa-check"></i><b>4.3</b> Estuarine, Intertidal Zone<span></span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="quantification.html"><a href="quantification.html#edge-erosion"><i class="fa fa-check"></i><b>4.3.1</b> Edge Erosion<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="quantification.html"><a href="quantification.html#vegetation-cover-1"><i class="fa fa-check"></i><b>4.3.2</b> Vegetation Cover<span></span></a></li>
+<li class="chapter" data-level="4.3.3" data-path="quantification.html"><a href="quantification.html#episodic-sediment-deposition-1"><i class="fa fa-check"></i><b>4.3.3</b> Episodic Sediment Deposition<span></span></a></li>
+<li class="chapter" data-level="4.3.4" data-path="quantification.html"><a href="quantification.html#developement-of-adjacent-upland"><i class="fa fa-check"></i><b>4.3.4</b> Developement of Adjacent Upland<span></span></a></li>
+<li class="chapter" data-level="4.3.5" data-path="quantification.html"><a href="quantification.html#shoreline-armoring"><i class="fa fa-check"></i><b>4.3.5</b> Shoreline Armoring<span></span></a></li>
+<li class="chapter" data-level="4.3.6" data-path="quantification.html"><a href="quantification.html#potential-extension-of-estuarine-intertidal-models"><i class="fa fa-check"></i><b>4.3.6</b> Potential extension of estuarine, intertidal models<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="quantification.html"><a href="quantification.html#estuarine-subtidal-zone"><i class="fa fa-check"></i><b>4.4</b> Estuarine, Subtidal Zone<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="quantification.html"><a href="quantification.html#hard-bottom-habitats"><i class="fa fa-check"></i><b>4.4.1</b> Hard Bottom Habitats<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="quantification.html"><a href="quantification.html#soft-bottom-habitats"><i class="fa fa-check"></i><b>4.4.2</b> Soft Bottom Habitats<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="quantification.html"><a href="quantification.html#marine-intertidal-zone"><i class="fa fa-check"></i><b>4.5</b> Marine, Intertidal Zone<span></span></a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="quantification.html"><a href="quantification.html#beach-slope"><i class="fa fa-check"></i><b>4.5.1</b> Beach Slope<span></span></a></li>
+<li class="chapter" data-level="4.5.2" data-path="quantification.html"><a href="quantification.html#exposure-duration"><i class="fa fa-check"></i><b>4.5.2</b> Exposure Duration<span></span></a></li>
+<li class="chapter" data-level="4.5.3" data-path="quantification.html"><a href="quantification.html#upland-land-use"><i class="fa fa-check"></i><b>4.5.3</b> Upland Land Use<span></span></a></li>
+<li class="chapter" data-level="4.5.4" data-path="quantification.html"><a href="quantification.html#vegetation-cover-2"><i class="fa fa-check"></i><b>4.5.4</b> Vegetation Cover<span></span></a></li>
+<li class="chapter" data-level="4.5.5" data-path="quantification.html"><a href="quantification.html#shoreline-armoring-1"><i class="fa fa-check"></i><b>4.5.5</b> Shoreline Armoring<span></span></a></li>
+<li class="chapter" data-level="4.5.6" data-path="quantification.html"><a href="quantification.html#potential-extension-of-marine-intertidal-models"><i class="fa fa-check"></i><b>4.5.6</b> Potential extension of marine, intertidal models<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="quantification.html"><a href="quantification.html#marine-subtidal-zone"><i class="fa fa-check"></i><b>4.6</b> Marine, Subtidal Zone<span></span></a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="quantification.html"><a href="quantification.html#velocity"><i class="fa fa-check"></i><b>4.6.1</b> Velocity<span></span></a></li>
+<li class="chapter" data-level="4.6.2" data-path="quantification.html"><a href="quantification.html#substrate"><i class="fa fa-check"></i><b>4.6.2</b> Substrate<span></span></a></li>
+<li class="chapter" data-level="4.6.3" data-path="quantification.html"><a href="quantification.html#light"><i class="fa fa-check"></i><b>4.6.3</b> Light<span></span></a></li>
+<li class="chapter" data-level="4.6.4" data-path="quantification.html"><a href="quantification.html#vessel-density"><i class="fa fa-check"></i><b>4.6.4</b> Vessel Density<span></span></a></li>
+<li class="chapter" data-level="4.6.5" data-path="quantification.html"><a href="quantification.html#potential-extension-of-marine-subtidal-model"><i class="fa fa-check"></i><b>4.6.5</b> Potential extension of marine, subtidal model<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="quantification.html"><a href="quantification.html#marine-deepwater-zone"><i class="fa fa-check"></i><b>4.7</b> Marine, Deepwater Zone<span></span></a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="quantification.html"><a href="quantification.html#salinity-1"><i class="fa fa-check"></i><b>4.7.1</b> Salinity<span></span></a></li>
+<li class="chapter" data-level="4.7.2" data-path="quantification.html"><a href="quantification.html#current-velocity"><i class="fa fa-check"></i><b>4.7.2</b> Current Velocity<span></span></a></li>
+<li class="chapter" data-level="4.7.3" data-path="quantification.html"><a href="quantification.html#light-1"><i class="fa fa-check"></i><b>4.7.3</b> Light<span></span></a></li>
+<li class="chapter" data-level="4.7.4" data-path="quantification.html"><a href="quantification.html#vessel-traffic"><i class="fa fa-check"></i><b>4.7.4</b> Vessel Traffic<span></span></a></li>
+<li class="chapter" data-level="4.7.5" data-path="quantification.html"><a href="quantification.html#potential-extension-of-marine-deepwater-model"><i class="fa fa-check"></i><b>4.7.5</b> Potential extension of marine, deepwater model<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="quantification.html"><a href="quantification.html#nybem-r-package"><i class="fa fa-check"></i><b>4.8</b> <code>nybem</code> R-package<span></span></a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="quantification.html"><a href="quantification.html#habitat-mapping-functions"><i class="fa fa-check"></i><b>4.8.1</b> Habitat Mapping Functions<span></span></a></li>
+<li class="chapter" data-level="4.8.2" data-path="quantification.html"><a href="quantification.html#habitat-quality-functions"><i class="fa fa-check"></i><b>4.8.2</b> Habitat Quality Functions<span></span></a></li>
+<li class="chapter" data-level="4.8.3" data-path="quantification.html"><a href="quantification.html#habitat-suitability-curves"><i class="fa fa-check"></i><b>4.8.3</b> Habitat Suitability Curves<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="evaluation-i.html"><a href="evaluation-i.html"><i class="fa fa-check"></i><b>5</b> Evaluation (I)<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evaluation-i.html"><a href="evaluation-i.html#system-quality"><i class="fa fa-check"></i><b>5.1</b> System Quality<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="evaluation-i.html"><a href="evaluation-i.html#technical-quality"><i class="fa fa-check"></i><b>5.2</b> Technical Quality<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="evaluation-i.html"><a href="evaluation-i.html#usability"><i class="fa fa-check"></i><b>5.3</b> Usability<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="application-and-communication.html"><a href="application-and-communication.html"><i class="fa fa-check"></i><b>6</b> Application and Communication<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="application-and-communication.html"><a href="application-and-communication.html#njbb-hydrodynamic-modeling"><i class="fa fa-check"></i><b>6.1</b> NJBB Hydrodynamic Modeling<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="application-and-communication.html"><a href="application-and-communication.html#environmental-data-compilation"><i class="fa fa-check"></i><b>6.2</b> Environmental Data Compilation<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="application-and-communication.html"><a href="application-and-communication.html#model-execution"><i class="fa fa-check"></i><b>6.3</b> Model Execution<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Summary<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="summary.html"><a href="summary.html#future-model-development"><i class="fa fa-check"></i><b>7.1</b> Future Model Development<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="summary.html"><a href="summary.html#habitat-quality-modules"><i class="fa fa-check"></i><b>7.1.1</b> Habitat Quality Modules<span></span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="summary.html"><a href="summary.html#system-scale-connectivity-model"><i class="fa fa-check"></i><b>7.1.2</b> System-Scale, Connectivity Model<span></span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="summary.html"><a href="summary.html#aggregated-model-outcomes"><i class="fa fa-check"></i><b>7.1.3</b> Aggregated Model Outcomes<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendices<span></span></b></span></li>
+<li class="chapter" data-level="A" data-path="model-development-workshops.html"><a href="model-development-workshops.html"><i class="fa fa-check"></i><b>A</b> Model Development Workshops<span></span></a></li>
+<li class="chapter" data-level="B" data-path="usace-model-certification-review.html"><a href="usace-model-certification-review.html"><i class="fa fa-check"></i><b>B</b> USACE Model Certification Review<span></span></a></li>
+<li class="chapter" data-level="C" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>C</b> References<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">New York Bight Ecological Model (NYBEM)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="application-and-communication" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Application and Communication<a href="application-and-communication.html#application-and-communication" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The NYBEM has been explicitly designed to inform site screening and environmental impact assessment for the NJBB and HATS. A key component of this process is understanding the existing condition without project effects. This section presents a preliminary application of the NYBEM to assess ecosystem condition in the New Jersey Back Bays following four main activities:</p>
+<ul>
+<li>Collection of hydrodynamic model outcomes,<br />
+</li>
+<li>Compilation of other environmental input data sets,<br />
+</li>
+<li>Execution of the models, and<br />
+</li>
+<li>Summary of model outcomes.</li>
+</ul>
+<div id="njbb-hydrodynamic-modeling" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> NJBB Hydrodynamic Modeling<a href="application-and-communication.html#njbb-hydrodynamic-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Adaptive Hydraulics (AdH) is the numerical model code applied for hydrodynamic simulations in this study of the New Jersey Back Bays. For this study, the two-dimensional (2D) shallow water module of AdH is applied for all simulations. This code solves for depth-averaged velocity and salinity throughout the model domain. (More details of the 2D shallow water module of AdH and its computational philosophy and equations are available in Savant et al. 2014 and Savant and Berger 2015.) AdH version 4.6 was applied for this study.</p>
+<p>A 2D AdH model was developed and validated for simulation of hydrodynamics and salinity (Details provided in McAlpin and Ross, <em>draft</em>). The model was validated to available field data for all parameters . A field data collection effort was performed in February 2019 to collect salinity and discharge/velocity data over a 13-hour tidal cycle at three major inlets – Barnegat, Little Egg, and Great Egg. Field data supported the use of a 2D model as opposed to a three-dimensional (3D) model due to lack of major salinity stratification.</p>
+<p>The model domain was determined using aerial images and bathymetry/topographic data for the area. The Surface Water Modeling System was used to generate a 2D surface mesh and define material regions for applying specific model features, such as bed roughness. The domain is defined horizontally in Universal Transverse Mercator, zone 18 coordinates with units of meters. Vertically it is based on North American Vertical Datum of 1988 (NAVD88) with units of meters. All data applied to the model are shifted to this datum and coordinate system. Bathymetry data for the model were obtained from several sources: the Coastal Relief Model, sponsor collected hydrographic surveys, and the National Elevation Dataset. These data sets were combined such that the latest data were made a priority as well as data collected at finer resolution. The 2D AdH code can include areas that wet/dry; therefore, elevations were included in the domain up to 2 m NAVD88.</p>
+<p>The model domain includes over 9,867 square miles, extending approximately 115 miles along the New Jersey Atlantic Ocean coastline from Lewes, DE, to Manasquan, NJ. The 2D mesh contains 324,881 elements and 165,514 nodes. Figure 6.1 shows horizontal node resolution for the model with an example region surrounding the Barnegat Bay Inlet. Resolution is finest in the small wetland channels to accurately capture the conveyance of flow in these areas as well as the salinity that migrates upstream in deeper channels. Finer resolution is also seen in areas where geometric features need to be defined accurately, such as in the inlets and around jetties. Ten AdH simulations were executed: seven project alternatives and three projects rerun with sea level change. However, only the existing condition scenario is presented here.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
+<img src="ZZ_Fig06.01_AdH.Elev.jpeg" alt="AdH node spacing as shown for a representative area of the NJBB study site around the Barnegat Bay Inlet."  />
+<p class="caption">
+Figure 6.1: AdH node spacing as shown for a representative area of the NJBB study site around the Barnegat Bay Inlet.
+</p>
+</div>
+<p>AdH was executed for a “base” condition representing 2018. For all simulations, the models output the following variables:</p>
+<ul>
+<li>Bed elevation<br />
+</li>
+<li>Water surface elevations: mean lower low water (MLLW), mean tide level (MTL), mean higher high water (MHHW), and 0 to 100% exceedance by 10% (calculated over the 2018 period of record)<br />
+</li>
+<li>Salinity levels: mean annual and 0 to 100% exceedance by 10% (calculated over the 2018 period of record)<br />
+</li>
+<li>Velocity: mean annual and 0 to 100% exceedance by 10% (calculated over the 2018 period of record)</li>
+</ul>
+</div>
+<div id="environmental-data-compilation" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Environmental Data Compilation<a href="application-and-communication.html#environmental-data-compilation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span style="color: red;">Pick back up writing here.</span></p>
+<p>Insert.</p>
+<p>Substrate - hard bottom: <strong>TWO DATA SENTENCES FROM STEVE.</strong> Any location with a historically mapped reef.</p>
+<p>Substrate: <a href="https://maps.coastalresilience.org/newjersey/#">TNC</a> and <a href="https://www.usgs.gov/programs/cmhrp/science/usseabed">usSEABED</a></p>
+<p>NLCD - land use</p>
+<p>NLCD - veg cover</p>
+<p>Shoreline Armoring data layer is a linear dataset developed by NOAA Office of Response and Restoration. The layer represents linear areas of the coastal shoreline that are armored (ie. solid-man-made structures, riprap, boulder rubble) in 2014 (NJ) and 2016 (NY) as defined by the Environmental Sensitivity Index (ESI) guidelines to be used in the preparation, evaluation, and/or response to threats to the coastal environment such as oil spills. The shoreline was delineated at mean higher high water (MHHW) using Light Detection and Ranging (LiDAR) and high resolution digital orthophotography datasets.</p>
+<p>Automatic Identification Systems (AIS) vessel traffic density raster dataset was generated by the U.S. Coast Guard Navigation Center, Bureau of Ocean Energy Management, NOAA Office for Coastal Management from AIS Marine Cadastral data. This layer represents 2019 annual vessel transit counts of all vessels (i.e. commercial, recreational) summarized at a 100 m by 100 m pixel cell resolution. A single vessel transit is counted each time a vessel track passes through, starts, or stops within a 100 m grid cell. Dataset name: AISVesselTransitCounts2019_allvessels_clipINT.tif</p>
+</div>
+<div id="model-execution" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Model Execution<a href="application-and-communication.html#model-execution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Insert text describing any backend data prep stuff people need to know (e.g., the rasterization of data sets, coordinate systems, and any numerical magic).</p>
+<p>Something about habitat delineation like the following…Bed elevation, water surface elevation (MHHW and MLLW), and salinity were input to the zonation functions shown in the Quantification section of this report. Figure 6.2 shows representative outputs from these functions for salinity and tidal zones as well as habitat types in the Barnegat Bay Inlet and Absecon Inlet. Notably, these habitat zones represent only AdH outputs and do not necessarily reflect regulatory definitions of ecosystems. For instance, an area identified as an estuarine, subtidal ecosystem may (or may not) currently host submerged aquatic vegetation or hard-bottom reef environments, which would imply very different outcomes from a management perspective. Likewise, an estuarine, intertidal zone may currently be developed and non-functional from an ecological perspective. However, these outputs provide broad spatial coverage not feasible to collect for the entire study area.</p>
+<p><span style="color: red;">FIGURE 6.2. A three panel figure zoomed in on a test area like Great Egg, which shows the tidal, salinity, and habitat zones for the site.</span></p>
+<p>Talk about habitat quality calculations for the est.int model. This is just an example for one ecosystem type to give readers a feel for nybem outputs.</p>
+<p><span style="color: red;">FIGURE 6.3. A six-panel figure showing: suitability indices for the 5 input variables and the overarching HSI. Same site and zoom as Figure 6.2. The figure should show no data (e.g., no fill) for non-est.int areas and a color gradient for the est.int areas. All maps and suitability indices should be scaled from 0 to 1 for consistency.</span></p>
+<p>Insert a comment summarizing this application and pointing to the need for post-processing outcomes in any application (e.g., into maps, tables, and summary stats tailored to the simulation at hand).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="evaluation-i.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summary.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06_ApplicationCommunication.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["NYBEM-Report.pdf", "NYBEM-Report.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
