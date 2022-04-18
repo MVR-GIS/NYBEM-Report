@@ -172,6 +172,7 @@ HSIcalc <- function(si_list, method = "mean") {
 A variety of small scale utility functions were also needed to manage input / output data and support these functions. The underlying code for these functions can be found in the `nybem` package and help documentation, but it is not presented here in the interest of brevity. In general, the utility functions have the following goals.  
 
 -`is_RasterLayer` verifies that the input to a given function is of class `raster::RasterLayer`.  
+-`is_cat_raster` verifies that the layer is a categorical raster of class `raster::RasterLayer`.  
 -`ifelse` provides capacity to execute if-else logic statements on raster data.  
 - `write_cat_tiff` writes a categorical raster that preserves color schemes in the raster attribute table for ESRI reverse compatibility.  
 - `are_colors` determines if the input is a vector of valid colors according to the `grDevices::col2rgb` function.  

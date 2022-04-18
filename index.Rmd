@@ -44,34 +44,32 @@ Model development was funded by two U.S. Army Corps of Engineers' feasibility st
 - _AMM_: USACE Alternatives Milestone.
 - _Deepwater Ecosystems_: Coastal ecosystems with bed elevation between -2m and -20m below Mean Sea Level (MSL).
 - _EIS_: Environmental Impact Statement.
-- _[ERDC](https://www.erdc.usace.army.mil/)_: U.S. Army Engineer Research and Development Center.  
+- _[ERDC](https://www.erdc.usace.army.mil/)_: U.S. Army Engineer Research and Development Center.
 - _[ESI](https://response.restoration.noaa.gov/resources/environmental-sensitivity-index-esi-maps)_: Environmental Sensitivity Index for shorelines from the National Oceanic and Atmospheric Administration
 - _Estuarine Ecosystems_: Coastal ecosystems with salinity from 0.5 to 28 ppt.
 - _Freshwater Ecosystems_: Coastal ecosystems with low salinity < 0.5 ppt.
 - _FWOP_: Future WithOut Project Conditions.
-- _[HATS](https://www.nan.usace.army.mil/Missions/Civil-Works/Projects-in-New-York/New-York-New-Jersey-Harbor-Tributaries-Focus-Area-Feasibility-Study/)_: New York / New Jersey Harbor and Tributaries storm risk management study led by the USACE New York District.  
+- _[HATS](https://www.nan.usace.army.mil/Missions/Civil-Works/Projects-in-New-York/New-York-New-Jersey-Harbor-Tributaries-Focus-Area-Feasibility-Study/)_: New York / New Jersey Harbor and Tributaries storm risk management study led by the USACE New York District.
 - _Intertidal Ecosystems_: Coastal ecosystems with bed elevation between Mean Higher High Water (MHHW) and Mean Lower Low Water (MLLW).
 - _Marine Ecosystems_: Coastal ecosystems with low salinity >= 28 ppt.
 - _Mean Higher High Water (MHHW)_: A tidal datum. The average of the higher high water height each tidal day observed over AdH simulation period ([NOAA 2019](https://shoreline.noaa.gov/glossary.html)).
 - _Mean Lower Low Water (MLLW)_: A tidal datum. The average of the lower low water height each tidal day observed over AdH simulation period ([NOAA 2019](https://shoreline.noaa.gov/glossary.html)).
 - _MSL_: Mean Sea Level.
-- _NAB_: U.S. Army Corps of Engineers Baltimore District.  
-- _NAN_: U.S. Army Corps of Engineers New York District.  
-- _NAP_: U.S. Army Corps of Engineers Philadelphia District.  
+- _NAB_: U.S. Army Corps of Engineers Baltimore District.
+- _NAN_: U.S. Army Corps of Engineers New York District.
+- _NAP_: U.S. Army Corps of Engineers Philadelphia District.
 - _NEPA_: National Environmental Policy Act.
-- _[NLCD](https://www.usgs.gov/centers/eros/science/national-land-cover-database)_: National Land Cover Dataset  
-- _[NCBB](https://www.nap.usace.army.mil/Missions/Civil-Works/Nassau-County-Back-Bays-Study/)_: Nassau County Back Bays coastal storm risk management study led by the USACE Philadelphia District.  
-- _[NJBB](https://www.nap.usace.army.mil/Missions/Civil-Works/New-Jersey-Back-Bays-Study/)_: New Jersey Back Bays coastal storm risk management study led by the USACE Philadelphia District.  
-- _NYBEM_: New York Bight Ecological Model ("nigh-bem").  
-- _OHSIM_: Oyster Habitat Suitability Index Model
-- _PED_: Pre-construction Engineering and Design.  
-- _SAV_: submerged aquatic vegetation
+- _[NLCD](https://www.usgs.gov/centers/eros/science/national-land-cover-database)_: National Land Cover Dataset.
+- _[NCBB](https://www.nap.usace.army.mil/Missions/Civil-Works/Nassau-County-Back-Bays-Study/)_: Nassau County Back Bays coastal storm risk management study led by the USACE Philadelphia District.
+- _[NJBB](https://www.nap.usace.army.mil/Missions/Civil-Works/New-Jersey-Back-Bays-Study/)_: New Jersey Back Bays coastal storm risk management study led by the USACE Philadelphia District.
+- _NYBEM_: New York Bight Ecological Model ("nigh-bem").
+- _OHSIM_: Oyster Habitat Suitability Index Model.
+- _PED_: Pre-construction Engineering and Design.
+- _SAV_: submerged aquatic vegetation.
 - _Subtidal Ecosystems_: Coastal ecosystems with bed elevation between Mean Lower Low Water (MLLW) and -2m below Mean Sea Level (MSL).
 - _TSP_: Tentatively Selected Plan.
-- _[USACE](https://www.usace.army.mil/)_: U.S. Army Corps of Engineers.  
+- _[USACE](https://www.usace.army.mil/)_: U.S. Army Corps of Engineers.
 - _[USFWS](https://fws.gov/)_: U.S. Fish and Wildlife Service.
-
-
 
 ```{r, echo=FALSE, include=FALSE}
 #Markdown options
