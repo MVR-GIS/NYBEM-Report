@@ -2,6 +2,7 @@ body, td {
    font-family: sans-serif;
    background-color: white;
    font-size: 12px;
+   text-align: border-left;
 }
 
 body {
@@ -132,7 +133,7 @@ hr {
    h2, h3 {
       page-break-after: avoid;
    }
-   h1, h2, h3 {
-  text-align: left;
+   h1, h2, h3, h4, h5, h6, h7 {
+  text-align: border-left;
 }
 }

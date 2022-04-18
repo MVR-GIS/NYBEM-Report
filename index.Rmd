@@ -2,6 +2,10 @@
 title: 'New York Bight Ecological Model (NYBEM)'
 author: "S. Kyle McKay, Vanessa Mahan, Michael P. Dougherty, Toddd M. Swannack, Candice Hall, Christina L. Saltus, Molly K. Reif, Steve Allen"
 date: "`r Sys.Date()`"
+output:
+  pdf_document :
+    latex_engine : xelatex
+css: "style.css"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: ["Draftbooksubmodel.bib", "packages.bib"]
