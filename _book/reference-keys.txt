@@ -77,7 +77,11 @@ nybem-r-package
 habitat-mapping-functions
 habitat-quality-functions
 habitat-suitability-curves
+<<<<<<< HEAD
 evaluation
+=======
+evaluation-i
+>>>>>>> 6a7cf80aca1336fcafee12214d2b7959fadc1e23
 system-quality
 technical-quality
 usability
