@@ -80,7 +80,7 @@ nybem-r-package
 habitat-mapping-functions
 habitat-quality-functions
 habitat-suitability-curves
-evaluation-i
+evaluation
 system-quality
 technical-quality
 usability
@@ -88,11 +88,6 @@ application-and-communication
 njbb-hydrodynamic-modeling
 environmental-data-compilation
 model-execution
-summary
-future-model-development
-habitat-quality-modules
-system-scale-connectivity-model
-aggregated-model-outcomes
 model-development-workshops
 usace-model-certification-review
 references
