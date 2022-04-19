@@ -1,17 +1,24 @@
 --- 
-title: 'New York Bight Ecological Model (NYBEM)'
-author: "S. Kyle McKay, Vanessa Mahan, Michael P. Dougherty, Toddd M. Swannack, Candice Hall, Christina L. Saltus, Molly K. Reif, Steve Allen"
+title: "New York Bight Ecological Model (NYBEM)"
+author: S. Kyle McKay, Vanessa Mahan, Michael P. Dougherty, Toddd M. Swannack, Candice
+  Hall, Christina L. Saltus, Molly K. Reif, Steve Allen
 date: "`r Sys.Date()`"
 output:
-  pdf_document :
-    latex_engine : xelatex
-css: "style.css"
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: ["Draftbooksubmodel.bib", "packages.bib"]
-biblio-style: "apalike"
-link-citations: False
-description: The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation. 
+bibliography:
+- Draftbooksubmodel.bib
+- packages.bib
+biblio-style: apalike
+link-citations: no
+description: The U.S. Army Corps of Engineers (USACE) is conducting three large-scale
+  coastal storm risk management feasibility studies in the New York Bight ecosystem,
+  This report documents the development of this tool, including information on model
+  scoping, the development process, conceptualization, quantification, and evaluation.
 github-repo: MVR-GIS/NYBEM-Report
 ---
 
