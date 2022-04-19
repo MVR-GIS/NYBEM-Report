@@ -11,11 +11,8 @@ documentclass: book
 bibliography: ["Draftbooksubmodel.bib", "packages.bib"]
 biblio-style: "apalike"
 link-citations: False
-description:
-  This is a minimal example of using the bookdown package to write a book.
-  set in the _output.yml file.
-  The HTML output format for this example is bookdown::gitbook,
-github-repo: rstudio/bookdown-demo
+description: The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation. 
+github-repo: MVR-GIS/NYBEM-Report
 ---
 
 # Front Matter {-}
