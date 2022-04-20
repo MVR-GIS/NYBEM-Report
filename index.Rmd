@@ -2,7 +2,7 @@
 title: "New York Bight Ecological Model (NYBEM)"
 author: S. Kyle McKay, Vanessa Mahan, Michael P. Dougherty, Toddd M. Swannack, Candice
   Hall, Christina L. Saltus, Molly K. Reif, Steve Allen
-date: "`r Sys.Date()`"
+date: "April 2022"
 output:
   pdf_document:
     latex_engine: xelatex

@@ -24,7 +24,6 @@
 <meta name="author" content="S. Kyle McKay, Vanessa Mahan, Michael P. Dougherty, Toddd M. Swannack, Candice Hall, Christina L. Saltus, Molly K. Reif, Steve Allen" />
 
 
-<meta name="date" content="2022-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -538,6 +537,13 @@ Figure 4.8: Suitability index curves for seagrass in soft bottom habitats in the
 <p>Light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the this model, light availability depends on depth and is calculated algorithmically, then converted into a suitability index. Light availability (<span class="math inline">\(I_{z}\)</span>) at the plant surface is estimated based on <span class="citation">Nes et al. (2003)</span> is calculated as follows:</p>
 <p><span class="math display">\[I_{z} = PAR * exp(-K_{d}*z)\]</span></p>
 <p>where <span class="math inline">\(PAR\)</span> represents the photosynthetically active radiation at the surface, <span class="math inline">\(K_{d}\)</span> is the light attenuation coefficient for water clarity matching the conditions of the study site, and <span class="math inline">\(z\)</span> is water depth.</p>
+<p>Light attenuation in aquatic systems is a long studied process, although direct measurement of an extinction coefficient (<span class="math inline">\(K_{d}\)</span>) remains less common. However, Secchi disk depth (<span class="math inline">\(z_{sd}\)</span>) is a common surrogate for light extinction, and Kd is often estimated (Idso and Gilbert 1974) as:</p>
+<p><span class="math display">\[K_{d} = 1.7 / z_{sd}\]</span></p>
+<p>Where <span class="math inline">\(z_{sd}\)</span> is Secchi depth in meters.</p>
+<p>Secchi depth would vary depending on algal productivity, sediment load, water color, and other factors. However, we adopt a regional guideline as a general boundary condition for desirable water clarity. New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach (Lake George Association). This general target aligns with ranges of observations of Secchi depth for the region (NYC 2017). Using this standard as a generalized guide for the region, light extinction may be calculated as shown below.</p>
+<p><span class="math display">\[K_{d} = 1.7 / 1.22 = 1.39\]</span></p>
+<p><span class="math display">\[PLA = exp(-K_{d}*z) = exp(-1.39 *z)\]</span>
+Where <span class="math inline">\(z\)</span> is depth in meters.</p>
 <p>Light at the plant surface is converted to a percent of light available (PLA) at that depth, which is used to calculate a suitability score.</p>
 <p><span class="math display">\[PLA = \frac{I_{z}}{PAR} * 100\]</span></p>
 <p>The relationship between PLA and its suitability index for SAV is represented as follows:</p>

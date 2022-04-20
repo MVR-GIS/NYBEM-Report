@@ -169,12 +169,25 @@ $$sal.mean.ann = \begin{pmatrix} 1.0 & fines_{per}=0-70\\
 
 Where $substrate.sav$ is a suitability index relative to fine substrate and $fines_{per}$ is the percent of fine substrate (silt and clay).
 
-
 Light availability drives photosynthesis in SAV. Light attenuates within the water column based on depth and water clarity (i.e., the deeper and more turbid the water, the less light reaches the bottom). For the this model, light availability depends on depth and is calculated algorithmically, then converted into a suitability index. Light availability ($I_{z}$) at the plant surface is estimated based on @van_nes_charisma_2003 is calculated as follows: 
 
 $$I_{z} = PAR * exp(-K_{d}*z)$$ 
 
 where $PAR$ represents the photosynthetically active radiation at the surface, $K_{d}$ is the light attenuation coefficient for water clarity matching the conditions of the study site, and $z$ is water depth. 
+
+Light attenuation in aquatic systems is a long studied process, although direct measurement of an extinction coefficient ($K_{d}$) remains less common. However, Secchi disk depth ($z_{sd}$) is a common surrogate for light extinction, and Kd is often estimated (Idso and Gilbert 1974) as:
+
+$$K_{d} = 1.7 / z_{sd}$$
+
+Where $z_{sd}$ is Secchi depth in meters.
+
+Secchi depth would vary depending on algal productivity, sediment load, water color, and other factors. However, we adopt a regional guideline as a general boundary condition for desirable water clarity. New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach (Lake George Association). This general target aligns with ranges of observations of Secchi depth for the region (NYC 2017). Using this standard as a generalized guide for the region, light extinction may be calculated as shown below. 
+
+$$K_{d} = 1.7 / 1.22 = 1.39$$
+
+$$PLA = exp(-K_{d}*z) = exp(-1.39 *z)$$
+Where $z$ is depth in meters.
+
 
 Light at the plant surface is converted to a percent of light available (PLA) at that depth, which is used to calculate a suitability score. 
 
@@ -188,7 +201,6 @@ $$light = \begin{pmatrix} 0.0 & PLA<10\\
 \end{pmatrix}$$ 
 
 Where $light$ is a suitability index relative to light penetration and $PLA$ is percent light available.
-
 
 Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact SAV abundance. We quantify these disturbances through a proxy of vessel traffic per area. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows: 
 

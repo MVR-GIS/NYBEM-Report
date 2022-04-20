@@ -22,8 +22,6 @@ The cumulative project area of the ongoing CSRM studies exceeds 3,000 mi^2^ and 
 
 - _Aquatic Ecosystems_: A key focus of the NYBEM is assessment of indirect effects of proposed actions. Currently, upland and shoreline ecosystems above mean higher high water (MHHW) are not included in the models. Impact assessments from these systems (e.g., dunes, scrub-shrub, riparian zones) are better understood from prior impact analyses. Additionally, these systems are likely to experience fewer indirect impacts, and methods are generally available for assessing direct impacts. Upland ecosystems are not explicitly removed from the spatial domain at this phase, but are removed below through the absence of any patch-scale models at elevations above MHHW and the absence of hydrodynamic data in uplands.
 
-<span style="color: red;">REPLACE FIGURE</span>
-
 ```{r, fig.cap="NYBEM model domain: (left) Components of model domain, (right) NYBEM domain."}
 knitr::include_graphics("ZZ_Fig02.01_NYBEM.Extent.jpeg")
 ```
