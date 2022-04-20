@@ -46,8 +46,8 @@ NYBEM.mar.sub$substrate.fines <- c(0, 100, NA, NA)
 NYBEM.mar.sub$substrate.SIV <- c(1, 0, NA, NA)
 NYBEM.mar.sub$light.PLW <- c(0, 10, 22, 100)
 NYBEM.mar.sub$light.SIV <- c(0, 0, 1, 1)
-NYBEM.mar.sub$vessel.density <- c(0, 1, 10, 100)
-NYBEM.mar.sub$vessel.density.SIV <- c(1, 1, 0.5, 0)
+NYBEM.mar.sub$vessel.density <- c(0, 1000, 10000, NA)
+NYBEM.mar.sub$vessel.density.SIV <- c(1, 1, 0.1, NA)
 
 ##########
 #Create summary figure for mar.int submodel
@@ -75,8 +75,8 @@ par(mfrow=c(2,2), cex=1.0)
   lines(NYBEM.mar.sub$light.PLW, NYBEM.mar.sub$light.SIV, lwd=3)
   
   #vessel.density
-  plot(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
-       xlab="Vessel Density (tracks/m2/year)", ylab="Suitability Index (vessel.density)")
+  plot(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, xlim=c(0,10000), ylim=c(0,1), type="l",
+       xlab="Total Vessel Usage (tracks/year)", ylab="Suitability Index (vessel.density)")
   abline(h=seq(0,1,0.1), lty=3)
   points(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, pch=19, cex=2)
   lines(NYBEM.mar.sub$vessel.density, NYBEM.mar.sub$vessel.density.SIV, lwd=3)
@@ -121,15 +121,14 @@ Where $light$ is a suitability index relative to light penetration and $PLA$ is 
 
 ### Vessel Density
 
-Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact subtidal habitats. A proxy of vessel traffic per area is used here to quantify these disturbances. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows: 
+Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact SAV abundance. We quantify these disturbances through a proxy of vessel traffic per year. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 1,000 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows: 
 
-$$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
--0.0556*ves_{AIS}+1.06 & ves_{AIS}=1-10\\
--0.00556*ves_{AIS}+0.56 & ves_{AIS}=10-100\\
-0.0 & ves_{AIS}>100
+$$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1000\\
+-0.0001*ves_{AIS}+1.1 & ves_{AIS}=1000-10000\\
+0.1 & ves_{AIS}>10000
 \end{pmatrix}$$ 
 
-Where $vessel.density$ is a suitability index relative to ship traffic and $ves_{AIS}$ is the vessel density from the Automated Information System.
+Where $vessel.density$ is a suitability index relative to ship traffic and $ves_{AIS}$ is the annual vessel tracks over a patch from the Automated Information System.
 
 
 ### Potential extension of marine, subtidal model

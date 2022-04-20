@@ -27,8 +27,8 @@ NYBEM.mar.deep$velocity.low.change <- c(-100, -10, 10, 100)
 NYBEM.mar.deep$velocity.low.SIV <- c(0, 1, 1, 0.8)
 NYBEM.mar.deep$light.PLW <- c(0, 10, 22, 100)
 NYBEM.mar.deep$light.SIV <- c(0, 0, 1, 1)
-NYBEM.mar.deep$vessel.density <- c(0, 1, 10, 100)
-NYBEM.mar.deep$vessel.density.SIV <- c(1, 1, 0.5, 0)
+NYBEM.mar.deep$vessel.density <- c(0, 1000, 10000, NA)
+NYBEM.mar.deep$vessel.density.SIV <- c(1, 1, 0.1, NA)
 
 ##########
 #Create summary figure for mar.int submodel
@@ -56,8 +56,8 @@ par(mfrow=c(2,2), cex=1.0)
   lines(NYBEM.mar.deep$light.PLW, NYBEM.mar.deep$light.SIV, lwd=3)
   
   #vessel.density
-  plot(NYBEM.mar.deep$vessel.density, NYBEM.mar.deep$vessel.density.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
-       xlab="Vessel Density (tracks/m2/year)", ylab="Suitability Index (vessel.density)")
+  plot(NYBEM.mar.deep$vessel.density, NYBEM.mar.deep$vessel.density.SIV, xlim=c(0,10000), ylim=c(0,1), type="l",
+       xlab="Total Vessel Usage (tracks/year)", ylab="Suitability Index (vessel.density)")
   abline(h=seq(0,1,0.1), lty=3)
   points(NYBEM.mar.deep$vessel.density, NYBEM.mar.deep$vessel.density.SIV, pch=19, cex=2)
   lines(NYBEM.mar.deep$vessel.density, NYBEM.mar.deep$vessel.density.SIV, lwd=3)
@@ -109,15 +109,14 @@ Where $light$ is a suitability index relative to light penetration and $PLA$ is 
 
 ### Vessel Traffic
 
-Vessel traffic density provides an index for development pressures, both commercial and recreational fishing pressure, and commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). Vessel use density from the Automatic Identification System (AIS) vessel data from the MARCOS portal are assessed within the NYBEM to identify the general use of waterways. These data also indicate frequently visited fishing locations and offshore structures. Suitability is computed for this metric analogously to estuarine and marine subtidal models as follows:
+Vessel traffic density provides an index for development pressures, both commercial and recreational fishing pressure, and commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). We quantify these disturbances through a proxy of vessel traffic per year. These data also indicate frequently visited fishing locations and offshore structures. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 1,000 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows: 
 
-$$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1\\
--0.0556*ves_{AIS}+1.06 & ves_{AIS}=1-10\\
--0.00556*ves_{AIS}+0.56 & ves_{AIS}=10-100\\
-0.0 & ves_{AIS}>100
+$$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1000\\
+-0.0001*ves_{AIS}+1.1 & ves_{AIS}=1000-10000\\
+0.1 & ves_{AIS}>10000
 \end{pmatrix}$$ 
 
-Where $vessel.density$ is a suitability index relative to ship traffic and $ves_{AIS}$ is the slope of the beach perpendicular to the mean tide line in percent.
+Where $vessel.density$ is a suitability index relative to ship traffic and $ves_{AIS}$ is the annual vessel tracks over a patch from the Automated Information System.
 
 
 ### Potential extension of marine, deepwater model

@@ -540,7 +540,7 @@ Figure 4.8: Suitability index curves for seagrass in soft bottom habitats in the
 <p>Light attenuation in aquatic systems is a long studied process, although direct measurement of an extinction coefficient (<span class="math inline">\(K_{d}\)</span>) remains less common. However, Secchi disk depth (<span class="math inline">\(z_{sd}\)</span>) is a common surrogate for light extinction, and Kd is often estimated (Idso and Gilbert 1974) as:</p>
 <p><span class="math display">\[K_{d} = 1.7 / z_{sd}\]</span></p>
 <p>Where <span class="math inline">\(z_{sd}\)</span> is Secchi depth in meters.</p>
-<p>Secchi depth would vary depending on algal productivity, sediment load, water color, and other factors. However, we adopt a regional guideline as a general boundary condition for desirable water clarity. New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach (Lake George Association). This general target aligns with ranges of observations of Secchi depth for the region (NYC 2017). Using this standard as a generalized guide for the region, light extinction may be calculated as shown below.</p>
+<p>Secchi depth would vary depending on algal productivity, sediment load, water color, and other factors. However, we adopt a regional guideline as a general boundary condition for desirable water clarity. New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach <span class="citation">(Lake George Association 2022)</span>. This general target aligns with ranges of observations of Secchi depth for the region <span class="citation">(DEP 2017)</span>. Using this standard as a generalized guide for the region, light extinction may be calculated as shown below.</p>
 <p><span class="math display">\[K_{d} = 1.7 / 1.22 = 1.39\]</span></p>
 <p><span class="math display">\[PLA = exp(-K_{d}*z) = exp(-1.39 *z)\]</span>
 Where <span class="math inline">\(z\)</span> is depth in meters.</p>
@@ -552,13 +552,12 @@ Where <span class="math inline">\(z\)</span> is depth in meters.</p>
 1.0 &amp; PLA&gt;22\\
 \end{pmatrix}\]</span></p>
 <p>Where <span class="math inline">\(light\)</span> is a suitability index relative to light penetration and <span class="math inline">\(PLA\)</span> is percent light available.</p>
-<p>Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact SAV abundance. We quantify these disturbances through a proxy of vessel traffic per area. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows:</p>
-<p><span class="math display">\[vessel.density = \begin{pmatrix} 1.0 &amp; ves_{AIS}=0-1\\
--0.0556*ves_{AIS}+1.06 &amp; ves_{AIS}=1-10\\
--0.00556*ves_{AIS}+0.56 &amp; ves_{AIS}=10-100\\
-0.0 &amp; ves_{AIS}&gt;100
+<p>Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact SAV abundance. We quantify these disturbances through a proxy of vessel traffic per year. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 1,000 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows:</p>
+<p><span class="math display">\[vessel.density = \begin{pmatrix} 1.0 &amp; ves_{AIS}=0-1000\\
+-0.0001*ves_{AIS}+1.1 &amp; ves_{AIS}=1000-10000\\
+0.1 &amp; ves_{AIS}&gt;10000
 \end{pmatrix}\]</span></p>
-<p>Where <span class="math inline">\(vessel.density\)</span> is a suitability index relative to ship traffic and <span class="math inline">\(ves_{AIS}\)</span> is the vessel density from the Automated Information System.</p>
+<p>Where <span class="math inline">\(vessel.density\)</span> is a suitability index relative to ship traffic and <span class="math inline">\(ves_{AIS}\)</span> is the annual vessel tracks over a patch from the Automated Information System.</p>
 </div>
 <div id="hard-clam-module" class="section level4 hasAnchor" number="4.4.2.2">
 <h4><span class="header-section-number">4.4.2.2</span> Hard Clam Module<a href="quantification.html#hard-clam-module" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -620,12 +619,12 @@ Figure 4.10: Conceptual model for the marine, intertidal submodel.
 </div>
 <p>The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, intertidal zones of the region. This submodel drew heavily from four general bodies of knowledge, specifically:</p>
 <ul>
-<li>USFWS Habitat Evaluation Procedure models: tern <span class="citation">USFWS (2001)</span>, plover <span class="citation">(USFWS 2001)</span>, horseshoe crab <span class="citation">(USFWS 2001)</span>, and red knot <span class="citation">(USFWS 2001)</span>.</li>
-<li>Other habitat suitability models: plover <span class="citation">Seavey, Gilmer, and McGarigal (2011)</span>, horseshoe crab <span class="citation">Lathrope et al. (2013)</span>, amaranth <span class="citation">(Sellars and Jolls 2007)</span>, and sea turtles <span class="citation">(Dunkin et al. 2016)</span><br />
+<li>USFWS Habitat Evaluation Procedure models: tern <span class="citation">USFWS (2001)</span>, Plover <span class="citation">(USFWS 2001)</span>, Horseshoe Crab <span class="citation">(USFWS 2001)</span>, and Red Knot <span class="citation">(USFWS 2001)</span>.</li>
+<li>Other habitat suitability models: Plover <span class="citation">Seavey, Gilmer, and McGarigal (2011)</span>, Horseshoe Crab <span class="citation">Lathrope et al. (2013)</span>, amaranth <span class="citation">(Sellars and Jolls 2007)</span>, and Sea Turtles <span class="citation">(Dunkin et al. 2016)</span><br />
 </li>
 <li>Fire Island to Montauk Point Habitat Evaluation Procedure OceanBeach Sub-Model <span class="citation">(USACE 2009)</span>.<br />
 </li>
-<li>Empirical studies of the system: Virginia Tech shorebird program <span class="citation">(Herman et al. 2019)</span>, Rutgers horseshoe crab mapping <span class="citation">(Lathrope et al. 2013)</span>, and international shorebird survey (Manomet).</li>
+<li>Empirical studies of the system: Virginia Tech shorebird program <span class="citation">(Herman et al. 2019)</span>, Rutgers Horseshoe Crab Mapping <span class="citation">(Lathrope et al. 2013)</span>, and International Shorebird Survey (Manomet).</li>
 </ul>
 <p>Four classes of processes and dynamics were identified from a review of these models and studies: long-term and large-scale wave and sediment dynamics, beach morphology, benthic food supplies, and the role of this system as a corridor between aquatic and upland environments. From these processes, five surrogate metrics were identified, which collectively reflect the condition of the marine, intertidal zone. Notably, variables reflecting wave and sediment dynamics are minimally included in this phase of modeling due to assessment challenges. The sections below describe each metric and the rationale in detail, but briefly:</p>
 <ul>
@@ -766,13 +765,12 @@ Figure 4.13: Suitability index curves for the marine, deepwater zone.
 </div>
 <div id="vessel-density" class="section level3 hasAnchor" number="4.6.4">
 <h3><span class="header-section-number">4.6.4</span> Vessel Density<a href="quantification.html#vessel-density" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact subtidal habitats. A proxy of vessel traffic per area is used here to quantify these disturbances. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 10 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows:</p>
-<p><span class="math display">\[vessel.density = \begin{pmatrix} 1.0 &amp; ves_{AIS}=0-1\\
--0.0556*ves_{AIS}+1.06 &amp; ves_{AIS}=1-10\\
--0.00556*ves_{AIS}+0.56 &amp; ves_{AIS}=10-100\\
-0.0 &amp; ves_{AIS}&gt;100
+<p>Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact SAV abundance. We quantify these disturbances through a proxy of vessel traffic per year. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 1,000 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows:</p>
+<p><span class="math display">\[vessel.density = \begin{pmatrix} 1.0 &amp; ves_{AIS}=0-1000\\
+-0.0001*ves_{AIS}+1.1 &amp; ves_{AIS}=1000-10000\\
+0.1 &amp; ves_{AIS}&gt;10000
 \end{pmatrix}\]</span></p>
-<p>Where <span class="math inline">\(vessel.density\)</span> is a suitability index relative to ship traffic and <span class="math inline">\(ves_{AIS}\)</span> is the vessel density from the Automated Information System.</p>
+<p>Where <span class="math inline">\(vessel.density\)</span> is a suitability index relative to ship traffic and <span class="math inline">\(ves_{AIS}\)</span> is the annual vessel tracks over a patch from the Automated Information System.</p>
 </div>
 <div id="potential-extension-of-marine-subtidal-model" class="section level3 hasAnchor" number="4.6.5">
 <h3><span class="header-section-number">4.6.5</span> Potential extension of marine, subtidal model<a href="quantification.html#potential-extension-of-marine-subtidal-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -830,13 +828,12 @@ Figure 4.15: Suitability index curves for the marine, deepwater zone.
 </div>
 <div id="vessel-traffic" class="section level3 hasAnchor" number="4.7.4">
 <h3><span class="header-section-number">4.7.4</span> Vessel Traffic<a href="quantification.html#vessel-traffic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Vessel traffic density provides an index for development pressures, both commercial and recreational fishing pressure, and commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). Vessel use density from the Automatic Identification System (AIS) vessel data from the MARCOS portal are assessed within the NYBEM to identify the general use of waterways. These data also indicate frequently visited fishing locations and offshore structures. Suitability is computed for this metric analogously to estuarine and marine subtidal models as follows:</p>
-<p><span class="math display">\[vessel.density = \begin{pmatrix} 1.0 &amp; ves_{AIS}=0-1\\
--0.0556*ves_{AIS}+1.06 &amp; ves_{AIS}=1-10\\
--0.00556*ves_{AIS}+0.56 &amp; ves_{AIS}=10-100\\
-0.0 &amp; ves_{AIS}&gt;100
+<p>Vessel traffic density provides an index for development pressures, both commercial and recreational fishing pressure, and commercial and recreational vessel density pressures on the marine mammal populations within the area (population stress from ship strikes and noise pollution). We quantify these disturbances through a proxy of vessel traffic per year. These data also indicate frequently visited fishing locations and offshore structures. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 1,000 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows:</p>
+<p><span class="math display">\[vessel.density = \begin{pmatrix} 1.0 &amp; ves_{AIS}=0-1000\\
+-0.0001*ves_{AIS}+1.1 &amp; ves_{AIS}=1000-10000\\
+0.1 &amp; ves_{AIS}&gt;10000
 \end{pmatrix}\]</span></p>
-<p>Where <span class="math inline">\(vessel.density\)</span> is a suitability index relative to ship traffic and <span class="math inline">\(ves_{AIS}\)</span> is the slope of the beach perpendicular to the mean tide line in percent.</p>
+<p>Where <span class="math inline">\(vessel.density\)</span> is a suitability index relative to ship traffic and <span class="math inline">\(ves_{AIS}\)</span> is the annual vessel tracks over a patch from the Automated Information System.</p>
 </div>
 <div id="potential-extension-of-marine-deepwater-model" class="section level3 hasAnchor" number="4.7.5">
 <h3><span class="header-section-number">4.7.5</span> Potential extension of marine, deepwater model<a href="quantification.html#potential-extension-of-marine-deepwater-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1050,14 +1047,14 @@ Figure 4.15: Suitability index curves for the marine, deepwater zone.
 ## $est.sub.soft.sav
 ##   substrate.sav substrate.sav.SIV light.PLA light.SIV vessel.density
 ## 1             0                 1         0         0              0
-## 2            70                 1        10         0              1
-## 3           100                 0        22         1             10
-## 4            NA                NA        NA        NA            100
+## 2            70                 1        10         0           1000
+## 3           100                 0        22         1          10000
+## 4            NA                NA        NA        NA             NA
 ##   vessel.density.SIV
 ## 1                1.0
 ## 2                1.0
-## 3                0.5
-## 4                0.0
+## 3                0.1
+## 4                 NA
 ## 
 ## $est.sub.soft.clam
 ##   salinity.clam salinity.clam.SIV substrate.clam.sand substrate.clam.SIV Isav
@@ -1095,9 +1092,9 @@ Figure 4.15: Suitability index curves for the marine, deepwater zone.
 ## 4      100          0.0              NA            NA       100         1
 ##   vessel.density vessel.density.SIV
 ## 1              0                1.0
-## 2              1                1.0
-## 3             10                0.5
-## 4            100                0.0
+## 2           1000                1.0
+## 3          10000                0.1
+## 4             NA                 NA
 ## 
 ## $mar.deep
 ##   salinity.low.dur salinity.low.SIV velocity.low.change velocity.low.SIV
@@ -1107,9 +1104,9 @@ Figure 4.15: Suitability index curves for the marine, deepwater zone.
 ## 4               NA               NA                 100              0.8
 ##   light.PLW light.SIV vessel.density vessel.density.SIV
 ## 1         0         0              0                1.0
-## 2        10         0              1                1.0
-## 3        22         1             10                0.5
-## 4       100         1            100                0.0</code></pre>
+## 2        10         0           1000                1.0
+## 3        22         1          10000                0.1
+## 4       100         1             NA                 NA</code></pre>
 
 </div>
 </div>
