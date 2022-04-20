@@ -181,7 +181,7 @@ $$K_{d} = 1.7 / z_{sd}$$
 
 Where $z_{sd}$ is Secchi depth in meters.
 
-Secchi depth would vary depending on algal productivity, sediment load, water color, and other factors. However, we adopt a regional guideline as a general boundary condition for desirable water clarity. New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach (Lake George Association). This general target aligns with ranges of observations of Secchi depth for the region (NYC 2017). Using this standard as a generalized guide for the region, light extinction may be calculated as shown below. 
+Secchi depth would vary depending on algal productivity, sediment load, water color, and other factors. However, we adopt a regional guideline as a general boundary condition for desirable water clarity. New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach [@lake_george_water_2022]. This general target aligns with ranges of observations of Secchi depth for the region [@DEP_harbor_2017]. Using this standard as a generalized guide for the region, light extinction may be calculated as shown below. 
 
 $$K_{d} = 1.7 / 1.22 = 1.39$$
 
