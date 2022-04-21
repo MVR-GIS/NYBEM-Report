@@ -5,20 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Quantification | New York Bight Ecological Model (NYBEM)</title>
-  <meta name="description" content="The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem. This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Quantification | New York Bight Ecological Model (NYBEM)" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation." />
+  <meta property="og:description" content="The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem. This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation." />
   <meta name="github-repo" content="MVR-GIS/NYBEM-Report" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 4 Quantification | New York Bight Ecological Model (NYBEM)" />
   
-  <meta name="twitter:description" content="The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem, This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation." />
+  <meta name="twitter:description" content="The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem. This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation." />
   
 
 <meta name="author" content="S. Kyle McKay, Vanessa Mahan, Michael P. Dougherty, Todd M. Swannack, Candice Hall, Christina L. Saltus, Molly K. Reif, Steve Allen" />
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="conceptualization.html"/>
 <link rel="next" href="evaluation.html"/>
-<script src="libs/header-attrs-2.12/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -853,51 +851,55 @@ Figure 4.15: Suitability index curves for the marine, deepwater zone.
 <div id="nybem-r-package" class="section level2 hasAnchor" number="4.8">
 <h2><span class="header-section-number">4.8</span> <code>nybem</code> R-package<a href="quantification.html#nybem-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rapid timelines and iterative development encourage a transparent approach for model development and documentation. We adopt a growing family of methods for “<a href="https://ropensci.github.io/reproducibility-guide/sections/introduction/">reproducible research</a>,” which embrace transparent coding techniques and data sharing. Specifically, <a href="https://rmarkdown.rstudio.com/">R Markdown</a> is applied to develop and document models, which are coded in the <a href="https://cran.r-project.org/">R Statistical Software</a>. Similarly, all model code is contained within a transportable R-package (i.e., <code>nybem</code>) following <a href="https://r-pkgs.org/">common development procedures</a>.</p>
-<p>All model code for the <code>nybem</code> R-package is <a href="https://github.com/MVR-GIS/nybem">available via github</a>. Generally speaking, a package can be thought of as a fundamental unit of code that can include functions, data, documentation, and tests (<a href="https://r-pkgs.org/">Wickham and Bryan 2019</a>). Packages then provide a transportable and reproducible mechanism for code sharing and publication. The <code>nybem</code> package contains two sets of functions and one data object storing suitability curves (Figure 4.1). The first set of functions can largely be thought of as habitat mapping functions, which delineate NYBEM habitat zones. The second set of functions compute habitat quality using a general set of algorithms and data management functions. The data object contains suitability curve data as described in Sections 4.2-4.7. These topics will be treated separately in 4.8.1-4.8.3, respectively. Model code may be inspected on the <a href="https://github.com/MVR-GIS/nybem">nybem github repo</a>, and in-line documentation further describes the logic of the model.</p>
-<p>Notably, all functions and data presented in <code>nybem</code> are modular and can be used independently. For instance, ecosystems could be delineated from empirical data (e.g., field or tide gauge data) or modeled hydrodynamic data. Similarly, habitat quality assessments could be conducted for one of the six habitat types without consideration of the others.</p>
+<p>All model code for the <code>nybem</code> R-package is <a href="https://github.com/MVR-GIS/nybem/">available via github</a>. Generally speaking, a package can be thought of as a fundamental unit of code that can include functions, data, documentation, and tests (<a href="https://r-pkgs.org/">Wickham and Bryan 2019</a>). Packages then provide a transportable and reproducible mechanism for code sharing and publication. The <code>nybem</code> package contains two sets of functions and one data object storing suitability curves (Figure 4.1). The first set of functions can largely be thought of as habitat mapping functions, which delineate NYBEM habitat zones. The second set of functions compute habitat quality using a general set of algorithms and data management functions. The data object contains suitability curve data as described in Sections 4.2-4.7. These topics will be treated separately in 4.8.1-4.8.3, respectively. Model code may be inspected on the <a href="https://github.com/MVR-GIS/nybem/">nybem github repo</a>, and in-line documentation further describes the logic of the model.</p>
+<p>Notably, all functions and data presented in <a href="https://github.com/MVR-GIS/nybem/"><code>nybem</code></a> are modular and can be used independently. For instance, ecosystems could be delineated from empirical data (e.g., field or tide gauge data) or modeled hydrodynamic data. Similarly, habitat quality assessments could be conducted for one of the six habitat types without consideration of the others.</p>
 <div id="habitat-mapping-functions" class="section level3 hasAnchor" number="4.8.1">
 <h3><span class="header-section-number">4.8.1</span> Habitat Mapping Functions<a href="quantification.html#habitat-mapping-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first set of functions in <code>nybem</code> collectively allow for delineation and mapping of the six major ecosystem types described in Sections 3.2. Three functions execute the logic of habitat delineation shown in Section 4.1.</p>
-<p><code>set_tidal_zone</code> delineates four types of tidal regimes: deepwater, subtidal, intertidal, and upland (coded as outputs of 1, 2, 3, and 4, respectively). Inputs to this function are bed elevation, mean lower low water (MLLW), and mean higher high water (MHHW).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="quantification.html#cb1-1" aria-hidden="true" tabindex="-1"></a>set.tidal.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(bedelev, MLLW, MHHW){</span>
-<span id="cb1-2"><a href="quantification.html#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
-<span id="cb1-3"><a href="quantification.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  tidalzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>,</span>
-<span id="cb1-4"><a href="quantification.html#cb1-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> MLLW, <span class="dv">2</span>,</span>
-<span id="cb1-5"><a href="quantification.html#cb1-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&lt;=</span> MHHW, <span class="dv">3</span>, </span>
-<span id="cb1-6"><a href="quantification.html#cb1-6" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(bedelev <span class="sc">&gt;</span> MHHW, <span class="dv">4</span>, <span class="cn">NA</span>))))</span>
-<span id="cb1-7"><a href="quantification.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb1-8"><a href="quantification.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  tidalzone</span>
-<span id="cb1-9"><a href="quantification.html#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><code>set_salinity_zone</code> delineates three salinity regimes: marine, estuarine, and freshwater (coded as outputs of 1, 2, and 3, respectively). Inputs to this function are a representative low salinity.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="quantification.html#cb2-1" aria-hidden="true" tabindex="-1"></a>ZoneSalinity <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Marine&quot;</span>, <span class="st">&quot;Estuarine&quot;</span>, <span class="st">&quot;Fresh&quot;</span>)</span>
-<span id="cb2-2"><a href="quantification.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="quantification.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Create function for isolating salinity zones</span></span>
-<span id="cb2-4"><a href="quantification.html#cb2-4" aria-hidden="true" tabindex="-1"></a>set.salinity.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(salinity){</span>
-<span id="cb2-5"><a href="quantification.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
-<span id="cb2-6"><a href="quantification.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  salinityzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(salinity <span class="sc">&gt;=</span><span class="dv">30</span>, <span class="dv">1</span>, </span>
-<span id="cb2-7"><a href="quantification.html#cb2-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> salinity <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="dv">2</span>, </span>
-<span id="cb2-8"><a href="quantification.html#cb2-8" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity <span class="sc">&lt;</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> salinity <span class="sc">&gt;=</span> <span class="dv">0</span>, <span class="dv">3</span>, <span class="cn">NA</span>)))</span>
-<span id="cb2-9"><a href="quantification.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb2-10"><a href="quantification.html#cb2-10" aria-hidden="true" tabindex="-1"></a>  salinityzone</span>
-<span id="cb2-11"><a href="quantification.html#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><code>set_habitat_zone</code> combines tidal and salinity zonation into seven major ecosystem types: upland, marine deepwater, marine subtidal, marine intertidal, estuarine subtidal, estuarine intertidal, and freshwater tidal (coded as 1, 2, 3, 4, 5, 6, and 7, respectively). Notably, upland ecosystems are outside of the model domain and do not include habitat suitability models below.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="quantification.html#cb3-1" aria-hidden="true" tabindex="-1"></a>set.habitat.zone <span class="ot">&lt;-</span> <span class="cf">function</span>(tidalzone, salinityzone){</span>
-<span id="cb3-2"><a href="quantification.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign zone</span></span>
-<span id="cb3-3"><a href="quantification.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  habitatzone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(tidalzone <span class="sc">==</span> <span class="dv">4</span>, <span class="dv">1</span>,</span>
-<span id="cb3-4"><a href="quantification.html#cb3-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">2</span>,</span>
-<span id="cb3-5"><a href="quantification.html#cb3-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb3-6"><a href="quantification.html#cb3-6" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">4</span>,</span>
-<span id="cb3-7"><a href="quantification.html#cb3-7" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">5</span>,</span>
-<span id="cb3-8"><a href="quantification.html#cb3-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">6</span>,</span>
-<span id="cb3-9"><a href="quantification.html#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ifelse</span>(salinityzone <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> tidalzone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">|</span> tidalzone <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">7</span>, <span class="cn">NA</span>)))))))</span>
-<span id="cb3-10"><a href="quantification.html#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Send output</span></span>
-<span id="cb3-11"><a href="quantification.html#cb3-11" aria-hidden="true" tabindex="-1"></a>  habitatzone</span>
-<span id="cb3-12"><a href="quantification.html#cb3-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><a href="https://github.com/MVR-GIS/nybem/blob/master/R/set_tidal_zone.R"><code>set_tidal_zone</code></a> delineates four types of tidal regimes: deepwater, subtidal, intertidal, and upland (coded as outputs of 1, 2, 3, and 4, respectively). Inputs to this function are bed elevation, mean lower low water (MLLW), and mean higher high water (MHHW). Here is the relevant portion of the function:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="quantification.html#cb1-1" aria-hidden="true" tabindex="-1"></a>set_tidal_zone <span class="ot">&lt;-</span> <span class="cf">function</span>(bedelev, MLLW, MHHW){</span>
+<span id="cb1-2"><a href="quantification.html#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb1-3"><a href="quantification.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign tidal zone values</span></span>
+<span id="cb1-4"><a href="quantification.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  tidal_zone <span class="ot">&lt;-</span> nybem<span class="sc">::</span><span class="fu">ifelse</span>(bed_elevation <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">2</span>,   <span class="dv">1</span>,          <span class="co"># Deep</span></span>
+<span id="cb1-5"><a href="quantification.html#cb1-5" aria-hidden="true" tabindex="-1"></a>                nybem<span class="sc">::</span><span class="fu">ifelse</span>(bed_elevation <span class="sc">&lt;=</span> MLLW, <span class="dv">2</span>,          <span class="co"># Subtidal</span></span>
+<span id="cb1-6"><a href="quantification.html#cb1-6" aria-hidden="true" tabindex="-1"></a>                nybem<span class="sc">::</span><span class="fu">ifelse</span>(bed_elevation <span class="sc">&lt;=</span> MHHW, <span class="dv">3</span>,          <span class="co"># Intertidal</span></span>
+<span id="cb1-7"><a href="quantification.html#cb1-7" aria-hidden="true" tabindex="-1"></a>                nybem<span class="sc">::</span><span class="fu">ifelse</span>(bed_elevation <span class="sc">&gt;</span>  MHHW, <span class="dv">4</span>, <span class="dv">0</span>))))    <span class="co"># Upland</span></span>
+<span id="cb1-8"><a href="quantification.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">## ...</span></span>
+<span id="cb1-9"><a href="quantification.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(tidal_zone)</span>
+<span id="cb1-10"><a href="quantification.html#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><a href="https://github.com/MVR-GIS/nybem/blob/master/R/set_salinity_zone.R"><code>set_salinity_zone</code></a> delineates three salinity regimes: marine, estuarine, and freshwater (coded as outputs of 1, 2, and 3, respectively). Inputs to this function are a representative low salinity. Here is the relevant portion of the function:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="quantification.html#cb2-1" aria-hidden="true" tabindex="-1"></a>set_salinity_zone <span class="ot">&lt;-</span> <span class="cf">function</span>(salinity){</span>
+<span id="cb2-2"><a href="quantification.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb2-3"><a href="quantification.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign salinity zone</span></span>
+<span id="cb2-4"><a href="quantification.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  salinity_zone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(salinity <span class="sc">&gt;=</span> estuarine_marine_break, <span class="dv">1</span>,     <span class="co"># Marine</span></span>
+<span id="cb2-5"><a href="quantification.html#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">ifelse</span>(salinity <span class="sc">&lt;</span>  estuarine_marine_break <span class="sc">&amp;</span></span>
+<span id="cb2-6"><a href="quantification.html#cb2-6" aria-hidden="true" tabindex="-1"></a>                          salinity <span class="sc">&gt;=</span> fresh_estuarine_break, <span class="dv">2</span>,      <span class="co"># Estuarine</span></span>
+<span id="cb2-7"><a href="quantification.html#cb2-7" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">ifelse</span>(salinity <span class="sc">&lt;</span>  fresh_estuarine_break, <span class="dv">3</span>, <span class="dv">0</span>))) <span class="co"># Fresh</span></span>
+<span id="cb2-8"><a href="quantification.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb2-9"><a href="quantification.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(salinity_zone)</span>
+<span id="cb2-10"><a href="quantification.html#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><a href="https://github.com/MVR-GIS/nybem/blob/master/R/set_habitat_zone.R"><code>set_habitat_zone</code></a> combines tidal and salinity zonation into seven major ecosystem types: upland, marine deepwater, marine subtidal, marine intertidal, estuarine subtidal, estuarine intertidal, and freshwater tidal (coded as 1, 2, 3, 4, 5, 6, and 7, respectively). Notably, upland ecosystems are outside of the model domain and do not include habitat suitability models below. Here is the relevant portion of the function:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="quantification.html#cb3-1" aria-hidden="true" tabindex="-1"></a>set_habitat_zone <span class="ot">&lt;-</span> <span class="cf">function</span>(tidal_zone, salinity_zone){</span>
+<span id="cb3-2"><a href="quantification.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb3-3"><a href="quantification.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Assign habitat zone</span></span>
+<span id="cb3-4"><a href="quantification.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  habitat_zone <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(tidal_zone <span class="sc">==</span> <span class="dv">4</span>, <span class="dv">1</span>,</span>
+<span id="cb3-5"><a href="quantification.html#cb3-5" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity_zone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span>  tidal_zone <span class="sc">==</span> <span class="dv">1</span>,  <span class="dv">2</span>,</span>
+<span id="cb3-6"><a href="quantification.html#cb3-6" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity_zone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span>  tidal_zone <span class="sc">==</span> <span class="dv">2</span>,  <span class="dv">3</span>,</span>
+<span id="cb3-7"><a href="quantification.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity_zone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span>  tidal_zone <span class="sc">==</span> <span class="dv">3</span>,  <span class="dv">4</span>,</span>
+<span id="cb3-8"><a href="quantification.html#cb3-8" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity_zone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> (tidal_zone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span></span>
+<span id="cb3-9"><a href="quantification.html#cb3-9" aria-hidden="true" tabindex="-1"></a>                                               tidal_zone <span class="sc">==</span> <span class="dv">2</span>), <span class="dv">5</span>,</span>
+<span id="cb3-10"><a href="quantification.html#cb3-10" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity_zone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span>  tidal_zone <span class="sc">==</span> <span class="dv">3</span>,  <span class="dv">6</span>,</span>
+<span id="cb3-11"><a href="quantification.html#cb3-11" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(salinity_zone <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> (tidal_zone <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span></span>
+<span id="cb3-12"><a href="quantification.html#cb3-12" aria-hidden="true" tabindex="-1"></a>                                               tidal_zone <span class="sc">==</span> <span class="dv">2</span> <span class="sc">|</span></span>
+<span id="cb3-13"><a href="quantification.html#cb3-13" aria-hidden="true" tabindex="-1"></a>                                               tidal_zone <span class="sc">==</span> <span class="dv">3</span>), <span class="dv">7</span>, <span class="dv">0</span>)))))))</span>
+<span id="cb3-14"><a href="quantification.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb3-15"><a href="quantification.html#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(habitat_zone)</span>
+<span id="cb3-16"><a href="quantification.html#cb3-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="habitat-quality-functions" class="section level3 hasAnchor" number="4.8.2">
 <h3><span class="header-section-number">4.8.2</span> Habitat Quality Functions<a href="quantification.html#habitat-quality-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This group of functions computes habitat quality and can be thought of as the major computational engine of <code>nybem</code>. Two functions in particular conduct the bulk of habitat suitability calculations. <code>SIcalc</code> computes suitability for a given set of suitability curves (Section 4.8.3) and a set of user-defined inputs. <code>HSIcalc</code> computes an overarching habitat suitability index from multiple suitability indices (i.e., the output of <code>SIcalc</code>). These functions are adapted from an existing R-package for single patch habitat suitability analyses, <a href="https://cran.r-project.org/web/packages/ecorest/index.html"><code>ecorest</code></a> (McKay and Hernandez-Abrams 2020). The prior model did not contain raster functionality for spatially explicit mapping, and the functions were adapted to handle this different data format.</p>
-<p><code>SIcalc</code> computes habitat suitability relative to multiple variables and user-defined inputs. For instance, NYBEM’s freshwater tidal submodel include suitability curves associated with salinity, vegetation cover, and episodic flooding and sediment deposition (Section 4.2). <code>SIcalc</code> takes in the breakpoints of these suitability curves along with user-defined inputs for a given site and scenario. Suitability index curves may be specified as either categorical or continuous variables. For categorical variables, the model uses a look-up approach to identify suitability associated with that class. For continuous variables, the model computes suitability by linearly interpolating suitability values associated with the user inputs. Additional detail may be found in the <a href="https://cran.r-project.org/web/packages/ecorest/index.html"><code>ecorest</code></a> reference manual.</p>
+<p><a href="https://github.com/MVR-GIS/nybem/blob/master/R/SIcalc.R"><code>SIcalc</code></a> computes habitat suitability relative to multiple variables and user-defined inputs. For instance, NYBEM’s freshwater tidal submodel include suitability curves associated with salinity, vegetation cover, and episodic flooding and sediment deposition (Section 4.2). <code>SIcalc</code> takes in the breakpoints of these suitability curves along with user-defined inputs for a given site and scenario. Suitability index curves may be specified as either categorical or continuous variables. For categorical variables, the model uses a look-up approach to identify suitability associated with that class. For continuous variables, the model computes suitability by linearly interpolating suitability values associated with the user inputs. Additional detail may be found in the <a href="https://cran.r-project.org/web/packages/ecorest/index.html"><code>ecorest</code></a> reference manual.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="quantification.html#cb4-1" aria-hidden="true" tabindex="-1"></a>SIcalc <span class="ot">&lt;-</span> <span class="cf">function</span> (SI, input_proj) {</span>
 <span id="cb4-2"><a href="quantification.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set number of metrics in the SI model (count of breakpoint-SI pairs)</span></span>
 <span id="cb4-3"><a href="quantification.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  nSI <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">colnames</span>(SI))<span class="sc">/</span><span class="dv">2</span></span>
@@ -958,7 +960,7 @@ Figure 4.15: Suitability index curves for the marine, deepwater zone.
 <span id="cb4-58"><a href="quantification.html#cb4-58" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb4-59"><a href="quantification.html#cb4-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(SI_out)</span>
 <span id="cb4-60"><a href="quantification.html#cb4-60" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><code>HSIcalc</code> takes in suitability indices associated with multiple variables and computes and overarching habitat suitability index, which can be thought of as a metric of ecosystem condition or integrity. The model computes suitability based on an arithmetic mean although other forms of combination (e.g., geometric mean, minimums) could be incorporated into future versions.</p>
+<p><a href="https://github.com/MVR-GIS/nybem/blob/master/R/HSIcalc.R"><code>HSIcalc</code></a> takes in suitability indices associated with multiple variables and computes and overarching habitat suitability index, which can be thought of as a metric of ecosystem condition or integrity. The model computes suitability based on an arithmetic mean although other forms of combination (e.g., geometric mean, minimums) could be incorporated into future versions.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="quantification.html#cb5-1" aria-hidden="true" tabindex="-1"></a>HSIcalc <span class="ot">&lt;-</span> <span class="cf">function</span>(si_list, <span class="at">method =</span> <span class="st">&quot;mean&quot;</span>) {</span>
 <span id="cb5-2"><a href="quantification.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># si_list parameter must be list to preserve metric data type</span></span>
 <span id="cb5-3"><a href="quantification.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.list</span>(si_list)) {<span class="fu">stop</span>(<span class="st">&quot;si_list must be a list&quot;</span>)}</span>
@@ -991,11 +993,16 @@ Figure 4.15: Suitability index curves for the marine, deepwater zone.
 <span id="cb5-30"><a href="quantification.html#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(hsi_score)</span>
 <span id="cb5-31"><a href="quantification.html#cb5-31" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>A variety of small scale utility functions were also needed to manage input / output data and support these functions. The underlying code for these functions can be found in the <code>nybem</code> package and help documentation, but it is not presented here in the interest of brevity. In general, the utility functions have the following goals.</p>
-<p>-<code>is_RasterLayer</code> verifies that the input to a given function is of class <code>raster::RasterLayer</code>.<br />
--<code>ifelse</code> provides capacity to execute if-else logic statements on raster data.<br />
-- <code>write_cat_tiff</code> writes a categorical raster that preserves color schemes in the raster attribute table for ESRI reverse compatibility.<br />
-- <code>are_colors</code> determines if the input is a vector of valid colors according to the <code>grDevices::col2rgb</code> function.<br />
-- <code>has_colortable</code> determines if a RasterLayer has a valid colortable defined.</p>
+<ul>
+<li><a href="https://github.com/MVR-GIS/nybem/blob/master/R/is_RasterLayer.R"><code>is_RasterLayer</code></a> verifies that the input to a given function is of class <code>raster::RasterLayer</code>.<br />
+-<a href="https://github.com/MVR-GIS/nybem/blob/master/R/ifelse.R"><code>ifelse</code></a> provides capacity to execute if-else logic statements on raster data.<br />
+</li>
+<li><a href="https://github.com/MVR-GIS/nybem/blob/master/R/write_cat_tiff.R"><code>write_cat_tiff</code></a> writes a categorical raster that preserves color schemes in the raster attribute table for ESRI reverse compatibility.<br />
+</li>
+<li><a href="https://github.com/MVR-GIS/nybem/blob/master/R/are_colors.R"><code>are_colors</code></a> determines if the input is a vector of valid colors according to the <code>grDevices::col2rgb</code> function.<br />
+</li>
+<li><a href="https://github.com/MVR-GIS/nybem/blob/master/R/has_colortable.R"><code>has_colortable</code></a> determines if a RasterLayer has a valid colortable defined.</li>
+</ul>
 </div>
 <div id="habitat-suitability-curves" class="section level3 hasAnchor" number="4.8.3">
 <h3><span class="header-section-number">4.8.3</span> Habitat Suitability Curves<a href="quantification.html#habitat-suitability-curves" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1148,8 +1155,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04_Quantification.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -1159,7 +1166,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["NYBEM-Report.pdf", "NYBEM-Report.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
