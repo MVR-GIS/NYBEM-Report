@@ -5,58 +5,62 @@ Rapid timelines and iterative development encourage a transparent approach for m
 
 All model code for the `nybem` R-package is [available via github](https://github.com/MVR-GIS/nybem). Generally speaking, a package can be thought of as a fundamental unit of code that can include functions, data, documentation, and tests ([Wickham and Bryan 2019](https://r-pkgs.org/)). Packages then provide a transportable and reproducible mechanism for code sharing and publication. The `nybem` package contains two sets of functions and one data object storing suitability curves (Figure 4.1). The first set of functions can largely be thought of as habitat mapping functions, which delineate NYBEM habitat zones. The second set of functions compute habitat quality using a general set of algorithms and data management functions. The data object contains suitability curve data as described in Sections 4.2-4.7. These topics will be treated separately in 4.8.1-4.8.3, respectively. Model code may be inspected on the [nybem github repo](https://github.com/MVR-GIS/nybem), and in-line documentation further describes the logic of the model.
 
-Notably, all functions and data presented in `nybem` are modular and can be used independently. For instance, ecosystems could be delineated from empirical data (e.g., field or tide gauge data) or modeled hydrodynamic data. Similarly, habitat quality assessments could be conducted for one of the six habitat types without consideration of the others.
+Notably, all functions and data presented in [`nybem`](https://github.com/MVR-GIS/nybem) are modular and can be used independently. For instance, ecosystems could be delineated from empirical data (e.g., field or tide gauge data) or modeled hydrodynamic data. Similarly, habitat quality assessments could be conducted for one of the six habitat types without consideration of the others.
 
 
 ### Habitat Mapping Functions
 
 The first set of functions in `nybem` collectively allow for delineation and mapping of the six major ecosystem types described in Sections 3.2. Three functions execute the logic of habitat delineation shown in Section 4.1. 
 
-`set_tidal_zone` delineates four types of tidal regimes: deepwater, subtidal, intertidal, and upland (coded as outputs of 1, 2, 3, and 4, respectively). Inputs to this function are bed elevation, mean lower low water (MLLW), and mean higher high water (MHHW).
+[`set_tidal_zone`](https://github.com/MVR-GIS/nybem/blob/master/R/set_tidal_zone.R) delineates four types of tidal regimes: deepwater, subtidal, intertidal, and upland (coded as outputs of 1, 2, 3, and 4, respectively). Inputs to this function are bed elevation, mean lower low water (MLLW), and mean higher high water (MHHW). Here is the relevant portion of the function:  
 
-```{r echo=TRUE}
-set.tidal.zone <- function(bedelev, MLLW, MHHW){
-  #Assign zone
-  tidalzone <- ifelse(bedelev <= -2, 1,
-          ifelse(bedelev <= MLLW, 2,
-          ifelse(bedelev <= MHHW, 3, 
-          ifelse(bedelev > MHHW, 4, NA))))
-  #Send output
-  tidalzone
+```{r echo=TRUE, eval=FALSE}
+set_tidal_zone <- function(bedelev, MLLW, MHHW){
+  # ...
+  # Assign tidal zone values
+  tidal_zone <- nybem::ifelse(bed_elevation <= -2,   1,          # Deep
+                nybem::ifelse(bed_elevation <= MLLW, 2,          # Subtidal
+                nybem::ifelse(bed_elevation <= MHHW, 3,          # Intertidal
+                nybem::ifelse(bed_elevation >  MHHW, 4, 0))))    # Upland
+  ## ...
+  return(tidal_zone)
 }
 ```
 
-`set_salinity_zone` delineates three salinity regimes: marine, estuarine, and freshwater (coded as outputs of 1, 2, and 3, respectively). Inputs to this function are a representative low salinity.
+[`set_salinity_zone`](https://github.com/MVR-GIS/nybem/blob/master/R/set_salinity_zone.R) delineates three salinity regimes: marine, estuarine, and freshwater (coded as outputs of 1, 2, and 3, respectively). Inputs to this function are a representative low salinity. Here is the relevant portion of the function:  
 
 ```{r echo=TRUE}
-ZoneSalinity <- c("Marine", "Estuarine", "Fresh")
-
-#Create function for isolating salinity zones
-set.salinity.zone <- function(salinity){
-  #Assign zone
-  salinityzone <- ifelse(salinity >=30, 1, 
-                  ifelse(salinity < 30 & salinity >= 0.5, 2, 
-                  ifelse(salinity < 0.5 & salinity >= 0, 3, NA)))
-  #Send output
-  salinityzone
+set_salinity_zone <- function(salinity){
+  # ...
+  #Assign salinity zone
+  salinity_zone <- ifelse(salinity >= estuarine_marine_break, 1,     # Marine
+                   ifelse(salinity <  estuarine_marine_break &
+                          salinity >= fresh_estuarine_break, 2,      # Estuarine
+                   ifelse(salinity <  fresh_estuarine_break, 3, 0))) # Fresh
+  # ...
+  return(salinity_zone)
 }
 ```
 
 
-`set_habitat_zone` combines tidal and salinity zonation into seven major ecosystem types: upland, marine deepwater, marine subtidal, marine intertidal, estuarine subtidal, estuarine intertidal, and freshwater tidal (coded as 1, 2, 3, 4, 5, 6, and 7, respectively). Notably, upland ecosystems are outside of the model domain and do not include habitat suitability models below.
+[`set_habitat_zone`](https://github.com/MVR-GIS/nybem/blob/master/R/set_habitat_zone.R) combines tidal and salinity zonation into seven major ecosystem types: upland, marine deepwater, marine subtidal, marine intertidal, estuarine subtidal, estuarine intertidal, and freshwater tidal (coded as 1, 2, 3, 4, 5, 6, and 7, respectively). Notably, upland ecosystems are outside of the model domain and do not include habitat suitability models below. Here is the relevant portion of the function:  
 
 ```{r echo=TRUE}
-set.habitat.zone <- function(tidalzone, salinityzone){
-  #Assign zone
-  habitatzone <- ifelse(tidalzone == 4, 1,
-          ifelse(salinityzone == 1 & tidalzone == 1, 2,
-          ifelse(salinityzone == 1 & tidalzone == 2, 3,
-          ifelse(salinityzone == 1 & tidalzone == 3, 4,
-          ifelse(salinityzone == 2 & tidalzone == 1 | tidalzone == 2, 5,
-          ifelse(salinityzone == 2 & tidalzone == 3, 6,
-          ifelse(salinityzone == 3 & tidalzone == 1 | tidalzone == 2 | tidalzone == 3, 7, NA)))))))
-  #Send output
-  habitatzone
+set_habitat_zone <- function(tidal_zone, salinity_zone){
+  # ...
+  #Assign habitat zone
+  habitat_zone <- ifelse(tidal_zone == 4, 1,
+                  ifelse(salinity_zone == 1 &  tidal_zone == 1,  2,
+                  ifelse(salinity_zone == 1 &  tidal_zone == 2,  3,
+                  ifelse(salinity_zone == 1 &  tidal_zone == 3,  4,
+                  ifelse(salinity_zone == 2 & (tidal_zone == 1 |
+                                               tidal_zone == 2), 5,
+                  ifelse(salinity_zone == 2 &  tidal_zone == 3,  6,
+                  ifelse(salinity_zone == 3 & (tidal_zone == 1 |
+                                               tidal_zone == 2 |
+                                               tidal_zone == 3), 7, 0)))))))
+  # ...
+  return(habitat_zone)
 }
 ```
 
@@ -65,7 +69,7 @@ set.habitat.zone <- function(tidalzone, salinityzone){
 
 This group of functions computes habitat quality and can be thought of as the major computational engine of `nybem`. Two functions in particular conduct the bulk of habitat suitability calculations. `SIcalc` computes suitability for a given set of suitability curves (Section 4.8.3) and a set of user-defined inputs. `HSIcalc` computes an overarching habitat suitability index from multiple suitability indices (i.e., the output of `SIcalc`). These functions are adapted from an existing R-package for single patch habitat suitability analyses, [`ecorest`](https://cran.r-project.org/web/packages/ecorest/index.html) (McKay and Hernandez-Abrams 2020). The prior model did not contain raster functionality for spatially explicit mapping, and the functions were adapted to handle this different data format.
 
-`SIcalc` computes habitat suitability relative to multiple variables and user-defined inputs. For instance, NYBEM's freshwater tidal submodel include suitability curves associated with salinity, vegetation cover, and episodic flooding and sediment deposition (Section 4.2). `SIcalc` takes in the breakpoints of these suitability curves along with user-defined inputs for a given site and scenario. Suitability index curves may be specified as either categorical or continuous variables. For categorical variables, the model uses a look-up approach to identify suitability associated with that class.  For continuous variables, the model computes suitability by linearly interpolating suitability values associated with the user inputs. Additional detail may be found in the [`ecorest`](https://cran.r-project.org/web/packages/ecorest/index.html) reference manual.
+[`SIcalc`](https://github.com/MVR-GIS/nybem/blob/master/R/SIcalc.R) computes habitat suitability relative to multiple variables and user-defined inputs. For instance, NYBEM's freshwater tidal submodel include suitability curves associated with salinity, vegetation cover, and episodic flooding and sediment deposition (Section 4.2). `SIcalc` takes in the breakpoints of these suitability curves along with user-defined inputs for a given site and scenario. Suitability index curves may be specified as either categorical or continuous variables. For categorical variables, the model uses a look-up approach to identify suitability associated with that class.  For continuous variables, the model computes suitability by linearly interpolating suitability values associated with the user inputs. Additional detail may be found in the [`ecorest`](https://cran.r-project.org/web/packages/ecorest/index.html) reference manual.
 
 ```{r echo=TRUE}
 SIcalc <- function (SI, input_proj) {
@@ -131,7 +135,7 @@ SIcalc <- function (SI, input_proj) {
 ```
 
 
-`HSIcalc` takes in suitability indices associated with multiple variables and computes and overarching habitat suitability index, which can be thought of as a metric of ecosystem condition or integrity. The model computes suitability based on an arithmetic mean although other forms of combination (e.g., geometric mean, minimums) could be incorporated into future versions.
+[`HSIcalc`](https://github.com/MVR-GIS/nybem/blob/master/R/HSIcalc.R) takes in suitability indices associated with multiple variables and computes and overarching habitat suitability index, which can be thought of as a metric of ecosystem condition or integrity. The model computes suitability based on an arithmetic mean although other forms of combination (e.g., geometric mean, minimums) could be incorporated into future versions.
 
 
 ```{r echo=TRUE}
@@ -171,11 +175,11 @@ HSIcalc <- function(si_list, method = "mean") {
 
 A variety of small scale utility functions were also needed to manage input / output data and support these functions. The underlying code for these functions can be found in the `nybem` package and help documentation, but it is not presented here in the interest of brevity. In general, the utility functions have the following goals.  
 
--`is_RasterLayer` verifies that the input to a given function is of class `raster::RasterLayer`.  
--`ifelse` provides capacity to execute if-else logic statements on raster data.  
-- `write_cat_tiff` writes a categorical raster that preserves color schemes in the raster attribute table for ESRI reverse compatibility.  
-- `are_colors` determines if the input is a vector of valid colors according to the `grDevices::col2rgb` function.  
-- `has_colortable` determines if a RasterLayer has a valid colortable defined.
+- [`is_RasterLayer`](https://github.com/MVR-GIS/nybem/blob/master/R/is_RasterLayer.R) verifies that the input to a given function is of class `raster::RasterLayer`.  
+-[`ifelse`](https://github.com/MVR-GIS/nybem/blob/master/R/ifelse.R) provides capacity to execute if-else logic statements on raster data.  
+- [`write_cat_tiff`](https://github.com/MVR-GIS/nybem/blob/master/R/write_cat_tiff.R) writes a categorical raster that preserves color schemes in the raster attribute table for ESRI reverse compatibility.  
+- [`are_colors`](https://github.com/MVR-GIS/nybem/blob/master/R/are_colors.R) determines if the input is a vector of valid colors according to the `grDevices::col2rgb` function.  
+- [`has_colortable`](https://github.com/MVR-GIS/nybem/blob/master/R/has_colortable.R) determines if a RasterLayer has a valid colortable defined.
 
 
 ### Habitat Suitability Curves
