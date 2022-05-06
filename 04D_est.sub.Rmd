@@ -163,7 +163,7 @@ par(mfrow=c(2,2), cex=1.0)
 
 Substrate is represented as the presence of soft-bottom sediments conducive for SAV  growth. Based on Short et al. (2002), optimal conditions for growth were identified as non-cobble substrates with less than 70% fine sediment. Soft-bottom, non-cobble substrates with greater than 70% fine sediment were considered sub-optimal/adequate. Suitability scores for SAV substrate are represented as follows:
 
-$$sal.mean.ann = \begin{pmatrix} 1.0 & fines_{per}=0-70\\
+$$substrate.sav = \begin{pmatrix} 1.0 & fines_{per}=0-70\\
 -0.033*fines_{per}-3.33 & fines_{per}>70\\
 \end{pmatrix}$$ 
 
