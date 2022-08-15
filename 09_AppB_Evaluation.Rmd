@@ -1,0 +1,42 @@
+# Model Verification
+
+
+Model evaluation is the process for ensuring that numerical tools are scientifically defensible and transparently developed. Chapter 5 presents a broad examination of NYBEM relative to system quality, technical quality, and usability, which aligns with USACE model certification requirements (EC 1105-2-412). This appendix presents additional analyses undertaken to compare model outcomes (habitat zones and quality) with existing habitat for the region, which we refer to as verification. These analyses are an abbreviated version of broader evaluations against empirical data, which are being summarized in peer-reviewed journal articles (Mahan et al. _forthcoming_; Cordero et al. _forthcoming_). The analyses are separated by the six habitat types, and input and output data sets are described briefly for each.
+
+
+## Freshwater Tidal Model
+
+Mention model section
+Input data sets
+Output verification
+
+## Estuarine Intertidal Model
+
+Mention model section
+Input data sets
+Output verification
+
+## Estuarine Subtidal Model
+
+Mention model section
+Input data sets
+Output verification
+
+## Marine Intertidal Model
+
+Mention model section
+Input data sets
+Output verification
+
+## Marine Subtidal Model
+
+Mention model section
+Input data sets
+Output verification
+
+## Marine Deepwater Model
+
+Mention model section
+Input data sets
+Output verification
+
