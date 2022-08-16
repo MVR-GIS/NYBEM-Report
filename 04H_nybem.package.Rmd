@@ -176,8 +176,15 @@ HSIcalc <- function(si_list, method = "mean") {
 A variety of small scale utility functions were also needed to manage input / output data and support these functions. The underlying code for these functions can be found in the `nybem` package and help documentation, but it is not presented here in the interest of brevity. In general, the utility functions have the following goals.  
 
 - [`is_RasterLayer`](https://github.com/MVR-GIS/nybem/blob/master/R/is_RasterLayer.R) verifies that the input to a given function is of class `raster::RasterLayer`.  
--[`ifelse`](https://github.com/MVR-GIS/nybem/blob/master/R/ifelse.R) provides capacity to execute if-else logic statements on raster data.  
+- [`is_cat_raster`](https://github.com/MVR-GIS/nybem/blob/master/R/is_cat_raster.R) verifies that the input to a given function is of class `raster::RasterLayer` and is a factor.  
+- [`ifelse`](https://github.com/MVR-GIS/nybem/blob/master/R/ifelse.R) provides capacity to execute if-else logic statements on raster data.  
 - [`write_cat_tiff`](https://github.com/MVR-GIS/nybem/blob/master/R/write_cat_tiff.R) writes a categorical raster that preserves color schemes in the raster attribute table for ESRI reverse compatibility.  
+- [`write_cont_tiff`](https://github.com/MVR-GIS/nybem/blob/master/R/write_cont_tiff.R) writes a continuous raster that preserves color schemes in the raster attribute table for ESRI reverse compatibility.  
+- [`raster_fig`](https://github.com/MVR-GIS/nybem/blob/master/R/raster_fig.R) creates a raster figure cropped to the specified extent.  
+- [`na_outside_model`](https://github.com/MVR-GIS/nybem/blob/master/R/na_outside_model.R) sets all HSI values outside of the modeled habitat zone to -1 to distinguish areas inside the study area, but outside the modeled habitat zone.  
+- [`name_model`](https://github.com/MVR-GIS/nybem/blob/master/R/name_model.R) assigns a name to a raster HSI model. Used for processing individual models into alternatives analysis for a study area.  
+- [`model_summary`](https://github.com/MVR-GIS/nybem/blob/master/R/raster_fig.R) displays a brief set of result summaries for each HSI model.  
+- [`summarize_by_poly`](https://github.com/MVR-GIS/nybem/blob/master/R/summarize_by_poly.R) summarizes the raster HSI model by polygon.  
 - [`are_colors`](https://github.com/MVR-GIS/nybem/blob/master/R/are_colors.R) determines if the input is a vector of valid colors according to the `grDevices::col2rgb` function.  
 - [`has_colortable`](https://github.com/MVR-GIS/nybem/blob/master/R/has_colortable.R) determines if a RasterLayer has a valid colortable defined.
 

@@ -106,7 +106,7 @@ Where $veg.cover$ is a suitability index relative to vegetation coverage and $co
 
 ### Episodic Sediment Deposition
 
-Tidal oscillations control the short-term dynamics of freshwater tidal wetlands, which feed nutrients into the environment and make them more fruitful and productive than some non-tidal wetlands (@propato_evaluating_2018). These tidal oscillations, as well as irregular weather events, alsodeposit sediment and nutrients into the ecosystem.
+Tidal oscillations control the short-term dynamics of freshwater tidal wetlands, which feed nutrients into the environment and make them more fruitful and productive than some non-tidal wetlands (@propato_evaluating_2018). These tidal oscillations, as well as irregular weather events, also deposit sediment and nutrients into the ecosystem.
 
 Increased inundation in tidal freshwater marshes leads to more inorganic sediment deposition, which can assist tidal wetlands keep up with rising sea levels. As a result, marshes can migrate vertically to preserve their position in the tidal frame to some extent. In contrast, tidal freshwater ecosystems are frequently coupled with complicated geometry, such as a meandering channel with uneven depths and cross-sections. Because of the complicated geometry and huge fluctuations in freshwater discharge, there are strong seasonal variations in depth, which affect pollution transfer and algae development. 
 
