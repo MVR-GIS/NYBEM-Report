@@ -1,9 +1,9 @@
 ## Marine, Intertidal Zone
 
 
-Marine, intertidal ecosystems include the areas of high salinity (> 30 psu) bracketed by tidal limits of the mean higher high water (MHHW) and mean lower low water (MLLW). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 
+Marine, intertidal ecosystems include the areas of high salinity (> 28 psu) bracketed by tidal limits of the mean higher high water (MHHW) and mean lower low water (MLLW). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 
 
-Figure 4.10 presents a conceptual model of the marine, intertidal ecosystem. This nearshore ecosystem is strongly influenced by two major pressures, the physical drivers of the ocean environment (e.g., currents, sediment transport) and human uses of the system (e.g., beaches and associated upland development). Ecologically, this ecosystem hosts a variety of species of management interest such as seabeach amaranth, horseshoe crabs, shorebirds (e.g., piping plover, terns, red knot), and sea turtles. 
+Figure 4.10 presents a conceptual model of the marine, intertidal ecosystem. For NYBEM, we focus the assessment of habitat quality primarily on sandy beaches due to the large extent of this habitat type in the region. This nearshore ecosystem is strongly influenced by two major pressures, the physical drivers of the ocean environment (e.g., currents, sediment transport) and human uses of the system (e.g., beaches and associated upland development). Ecologically, this ecosystem hosts a variety of species of management interest such as seabeach amaranth, horseshoe crabs, and shorebirds (e.g., piping plover, terns, red knot).  
 
 Coastal storm risk management actions have the potential to affect this ecosystem through two primary mechanisms. First, some risk management actions (e.g., storm surge barriers) could be directly constructed in this area. Second, large-scale features have the potential to alter coastal dynamics indirectly, although this affect may occur to a lesser extent given the overarching dominance of ocean effects.
 
@@ -12,15 +12,15 @@ knitr::include_graphics("ZZ_Fig04.10_Mar.Int_ConModel.png")
 ```
 
 
-The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, intertidal zones of the region. This submodel drew heavily from four general bodies of knowledge, specifically:
+The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, intertidal zones of the region, specifically for sandy beaches. This submodel drew heavily from four general bodies of knowledge, specifically:
 
 - USFWS Habitat Evaluation Procedure models: tern [@carreker_habitat_1985, @us_fish_and_wildlife_service_usfws_gulf_2001], Plover [@us_fish_and_wildlife_service_usfws_gulf_2001], Horseshoe Crab [@us_fish_and_wildlife_service_usfws_gulf_2001], and Red Knot [@us_fish_and_wildlife_service_usfws_gulf_2001].
-- Other habitat suitability models: Plover [@farmer_habitat_2000, @seavey_effect_2011], Horseshoe Crab [@avissar_modeling_2006, @nancy_jackson_armoring_2010, @lathrope_mapping_2013], amaranth [@sellars_habitat_2007], and Sea Turtles [@dunkin_spatially_2016]  
+- Other habitat suitability models: Plover [@farmer_habitat_2000, @seavey_effect_2011], Horseshoe Crab [@avissar_modeling_2006, @nancy_jackson_armoring_2010, @lathrope_mapping_2013], and amaranth [@sellars_habitat_2007]  
 - Fire Island to Montauk Point Habitat Evaluation Procedure OceanBeach Sub-Model [@usace_evaluation_2009].  
 - Empirical studies of the system: Virginia Tech shorebird program [@herman_unpacking_2019], Rutgers Horseshoe Crab Mapping [@lathrope_mapping_2013], and International Shorebird Survey (Manomet).
 
 
-Four classes of processes and dynamics were identified from a review of these models and studies: long-term and large-scale wave and sediment dynamics, beach morphology, benthic food supplies, and the role of this system as a corridor between aquatic and upland environments. From these processes, five surrogate metrics were identified, which collectively reflect the condition of the marine, intertidal zone. Notably, variables reflecting wave and sediment dynamics are minimally included in this phase of modeling due to assessment challenges. The sections below describe each metric and the rationale in detail, but briefly:
+Four classes of processes and dynamics were identified from a review of these models and studies: long-term and large-scale wave and sediment dynamics, beach morphology, benthic food supplies, and the role of this system as a corridor between aquatic and upland environments. From these processes, four surrogate metrics were identified, which collectively reflect the condition of the marine, intertidal zone. Notably, variables reflecting wave and sediment dynamics are minimally included in this phase of modeling due to assessment challenges. The sections below describe each metric and the rationale in detail, but briefly:
 
 * Beach slope was identified as a proxy for larger effects on overall morphology and grain size.  
 
@@ -28,31 +28,25 @@ Four classes of processes and dynamics were identified from a review of these mo
 
 * Upland land use intensity and shoreline armoring metrics describe the general human use pressures on a given system and viability of corridor functions.  
 
-* A vegetation cover metric assesses the viability of the corridor relative to different taxa movement requirements.
-
-
 The overall habitat suitability of the marine, intertidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these metrics.
 
 
-$I_{mar.int} = \frac{beach.slope + exp.dur + land.use + shoreline + veg.cover }{5}$ 
+$I_{mar.int} = \frac{beach.slope + exp.dur + land.use + shoreline}{5}$ 
 
-Where $I_{mar.int}$ is an overarching index of ecosystem quality for the marine intertidal zone, $beach.slope$ is a suitability index relative to beach slope, $exp.dur$ is a suitability index relative to the duration of beach exposure, $land.use$ is a suitability index relative to adjacent upland land uses, $shoreline$ is a suitability index relative to shoreline armoring, and $veg.cover$ is a suitability index relative to vegetative cover. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
+Where $I_{mar.int}$ is an overarching index of ecosystem quality for the marine intertidal zone, $beach.slope$ is a suitability index relative to beach slope, $exp.dur$ is a suitability index relative to the duration of beach exposure, $land.use$ is a suitability index relative to adjacent upland land uses, and $shoreline$ is a suitability index relative to shoreline armoring. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 
-```{r echo=FALSE, fig.width=8, fig.height=12, fig.cap="Suitability index curves for the marine, intertidal zone."}
+```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for the marine, intertidal zone."}
 #Create data frame with mar.int submodel
-NYBEM.mar.int <- data.frame(matrix(NA,nrow=3,ncol=10))
+NYBEM.mar.int <- data.frame(matrix(NA,nrow=3,ncol=8))
 colnames(NYBEM.mar.int) <- c("beach.slope.per", "beach.slope.SIV", "trel", "exp.dur.SIV",
-                             "land.use.per", "land.use.SIV", "veg.cover.per", "veg.cover.SIV", 
-                             "shoreline.m", "shoreline.SIV")
+                             "land.use.per", "land.use.SIV", "shoreline.m", "shoreline.SIV")
 NYBEM.mar.int$beach.slope.per <- c(0, 10, 30)
 NYBEM.mar.int$beach.slope.SIV <- c(1, 1, 0)
 NYBEM.mar.int$trel <- c(0, 50, 100)
 NYBEM.mar.int$exp.dur.SIV <- c(0, 1, 0)
 NYBEM.mar.int$land.use.per <- c(0, 10, 100)
 NYBEM.mar.int$land.use.SIV <- c(1, 1, 0)
-NYBEM.mar.int$veg.cover.per <- c(0, 40, 100)
-NYBEM.mar.int$veg.cover.SIV <- c(1, 1, 0)
 NYBEM.mar.int$shoreline.m <- c(0, 100, 500)
 NYBEM.mar.int$shoreline.SIV <- c(0, 1, 1)
 
@@ -81,13 +75,6 @@ par(mfrow=c(3,2), cex=1.0)
   points(NYBEM.mar.int$land.use.per, NYBEM.mar.int$land.use.SIV, pch=19, cex=2)
   lines(NYBEM.mar.int$land.use.per, NYBEM.mar.int$land.use.SIV, lwd=3)
   
-  #veg.cover.per
-  plot(NYBEM.mar.int$veg.cover.per, NYBEM.mar.int$veg.cover.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
-       xlab="Vegetation Cover (%)", ylab="Suitability Index (veg.cover)")
-  abline(h=seq(0,1,0.1), lty=3)
-  points(NYBEM.mar.int$veg.cover.per, NYBEM.mar.int$veg.cover.SIV, pch=19, cex=2)
-  lines(NYBEM.mar.int$veg.cover.per, NYBEM.mar.int$veg.cover.SIV, lwd=3)
-  
   #shoreline.m
   plot(NYBEM.mar.int$shoreline.m, NYBEM.mar.int$shoreline.SIV, xlim=c(0,500), ylim=c(0,1), type="l",
        xlab="Distance to Armored Shoreline (m)", ylab="Suitability Index (shoreline)")
@@ -103,7 +90,7 @@ par(mfrow=c(3,2), cex=1.0)
 Beach morphology directly affects habitat use by multiple focal taxa (e.g., shorebirds, turtles, horseshoe crab). Beach shape and morphologic character can be described through parameters of width, slope, elevation, and other summaries of topography [@bridges_use_2015]. Beach width is indirectly captured in NYBEM through metrics of habitat quantity and patch size and is not considered here. Beach slope integrates morphologic outcomes and is directly tied to grain size and wave environment [@lodder_chapter_2021]. Beach slope, thus, provides an important and synthetic metric of marine, intertidal habitat quality.
 
 
-Beach slope is identified as a general indicator of ecosystem condition for Long Island ecosystems (@usace_evaluation_2009), and as an important driving component of habitat use by multiple taxa in the New York Bight. For example, seabeach amaranth (_Amaranthus pumilus_) typically occurs in low slope environments [@sellars_habitat_2007], while habitat is most suitable for horseshoe crabs between ~5-10% slopes [@brady_habitat_1996]. Notably, not all taxa may respond in kind to these generalization; for instance, sea turtles have shown habitat preferences for moderate slopes between ~10-30% in subtropical areas such as Southeastern Florida. Merging these regional models, NYBEM assesses suitability relative to beach slope as follows:
+Beach slope is identified as a general indicator of ecosystem condition for Long Island ecosystems (@usace_evaluation_2009), and as an important driving component of habitat use by multiple taxa in the New York Bight. For example, seabeach amaranth (_Amaranthus pumilus_) typically occurs in low slope environments [@sellars_habitat_2007], while habitat is most suitable for horseshoe crabs between ~5-10% slopes [@brady_habitat_1996]. Notably, not all taxa may respond in kind to these generalization. Merging these regional models, NYBEM assesses suitability relative to beach slope as follows:
 
 $$beach.slope = \begin{pmatrix} 1.0 & slope_{per}=0-10\\
 -0.05*slope_{per}+1.5 & slope_{per}=10-30\\
@@ -146,20 +133,6 @@ $$land.use = \begin{pmatrix} 1.0 & urban_{per}=0-10\\
 Where $land.use$ is a suitability index relative to adjacent upland land uses and $urban_{per}$ is the percent of adjacent upland in developed (i.e., urban) land uses within 100m.
 
 
-### Vegetation Cover
-
-
-Vegetative cover in the intertidal zone produces both positive and negative ecological effects. Animal movement can be disrupted by the presence of vegetation, such as the precipitous declines in habitat suitability for least tern beyond 20-25% herbaceous or shrub canopy cover [@carreker_habitat_1985]. Conversely, vegetation can be a positive attribute and a key transitional feature moving upland toward dune environments, as well as define the difference between the lower intertidal (below MTL) and higher intertidal (above MTL)[@usace_evaluation_2009].
-
-For NYBEM, these competing outcomes are balanced by extending the range of suitable habitat to sparse coverage of 40% with subsequent declines as vegetation becomes dense. This parameter may be assessed throughout the region based on nationally available NLCD or Landfire data for existing vegetation cover. Suitability indices are computed as follows:
-
-$$veg.cover = \begin{pmatrix} 1.0 & cover_{per}=0-40\\
--0.0167*cover_{per}+1.67 & cover_{per}=40-100
-\end{pmatrix}$$ 
-
-Where $veg.cover$ is a suitability index relative to vegetation coverage and $cover_{per}$ is the percent of vegetation coverage.
-
-
 ### Shoreline Armoring
 
 
@@ -179,7 +152,7 @@ Where $shoreline$ is a suitability index relative to shoreline armoring and $dis
 
 The marine, intertidal model represents trade-offs between habitat needs for multiple taxa and availability of data at regional scales. Future model development could be expanded to include more processes and outcome, specifically:  
 
-- Some authors have distinguished the difference in the upper, vegetated intertidal zone and the lower, unvegetated areas [@usace_evaluation_2009].  
+- A vegetative cover metric may be appropriate for some ecological processes such as the role of this system as a corridor. However, different habitat needs presented a challenge for scoping this metric, and some authors have distinguished the difference in the upper, vegetated intertidal zone and the lower, unvegetated areas [@usace_evaluation_2009].  
 - Substrate is a key driver of beach outcomes in many contexts [@lodder_chapter_2021], and specifically, substrate is often included in regional models of this system (e.g., @brady_habitat_1996, @avissar_modeling_2006). However, high quality substrate data were unavailable, which created a major data gap for incorporating this variable.  
 - Other assessment procedures (@farmer_habitat_2000, @usace_evaluation_2009) have included a variety of human development pressures related to local features (e.g., vehicle and foot traffic), which could provide important refinement of the human use intensity metrics for land use and shoreline development.  
 - Wave environments clearly affect the morphology of beaches, and additional hydrodynamic variables could be assessed in future models.

@@ -15,7 +15,7 @@ The model domain was determined using aerial images and bathymetric/topographic 
 
 The model domain includes over 9,867 square miles, extending approximately 115 miles along the New Jersey Atlantic Ocean coastline from Lewes, DE, to Manasquan, NJ. The 2D mesh contains 324,881 elements and 165,514 nodes. Figure 6.1 shows horizontal node resolution for the model with an example region surrounding the Barnegat Bay Inlet. Resolution is finest in the small wetland channels to accurately capture the conveyance of flow in these areas as well as the salinity that migrates upstream in deeper channels. Finer resolution is also seen in areas where geometric features need to be defined accurately, such as in the inlets and around jetties. Ten AdH simulations were executed: seven project alternatives and three projects rerun with sea level change. However, only the existing condition scenario is presented here.
 
-```{r, fig.cap="AdH node spacing as shown for a representative area of the NJBB study site around the Barnegat Bay Inlet. Color reflects bed elevation."}
+```{r, echo=FALSE, fig.cap="AdH node spacing as shown for a representative area of the NJBB study site around the Barnegat Bay Inlet. Color reflects bed elevation."}
 knitr::include_graphics("ZZ_Fig06.01_AdH.Elev.jpeg")
 ```
 
@@ -55,7 +55,7 @@ For this analysis, all data sets were rasterized at the 10m resolution and align
 
 Bed elevation, water surface elevation (MHHW and MLLW), and salinity were input to the zonation functions (Sections 4.1 and 4.8.1) to identify tidal, salinity, and habitat zones. Figure 6.2 shows representative outputs from these functions for salinity and tidal zones as well as habitat types in the area surroudning Great Egg Inlet. Notably, these habitat zones represent only AdH outputs and do not necessarily reflect regulatory definitions of ecosystems. For instance, an area identified as an estuarine, subtidal ecosystem may (or may not) currently host submerged aquatic vegetation or hard-bottom reef environments, which would imply very different outcomes from a management perspective. Likewise, an estuarine, intertidal zone may currently be developed and non-functional from an ecological perspective. However, these outputs provide broad spatial coverage not feasible to collect for the entire study area. 
 
-```{r, fig.cap="Demonstration of habitat zonation functions for delineating ecosystems based on tidal range, salinity, and the combined assessment for habitat types in the area surrounding the Great Egg Inlet"}
+```{r, echo=FALSE, fig.cap="Demonstration of habitat zonation functions for delineating ecosystems based on tidal range, salinity, and the combined assessment for habitat types in the area surrounding the Great Egg Inlet"}
 knitr::include_graphics("ZZ_Fig06.02_HabitatZones.png")
 ```
 
@@ -63,13 +63,13 @@ Habitat quality may then be assessed for each ecosystem type as shown in Chapter
 
 The estuarine intertidal model (Section 4.3) assesses ecosystem integrity relative to five metrics: edge erosion, vegetative cover, episodic sediment deposition, development of adjacent uplands, and the presence/absence of shoreline armoring. Each of the input data sets described above was processed for use in these functions as described in Section 4.3. For instance, episodic sediment deposition relies on a metric calculated from multiple depth values based on AdH data. These inputs may then be translated into 0 to 1 suitability indices associated with each process (Figure 6.3).
 
-```{r, fig.cap="Example of suitability calculations for the estuarine intertidal model. The left panel show the percent of land use in urban uses, and the right panel shows the normalized (0 to 1) suitability outcome."}
+```{r, echo=FALSE, fig.cap="Example of suitability calculations for the estuarine intertidal model. The left panel show the percent of land use in urban uses, and the right panel shows the normalized (0 to 1) suitability outcome."}
 knitr::include_graphics("ZZ_Fig06.03_SI.Example.Urban.png")
 ```
 
 The five suitability index values provide important insights into the limiting factors within a given area. For instance, the erosion metric provides no distinguishing effect across this domain because the metric is presented relative to a baseline condition of the existing condition (i.e., there is no percent change in this scenario). Conversely, the urban land use and shoreline armoring metrics behave as anticipated with greater effects near developed parts of the system and along roadways. Ultimately, these suitability data may also be aggregated into an overarching habitat suitability index for the area (Figure 6.4). 
 
-```{r, fig.cap="Summary of the example application of the estuarine intertidal model in the Great Egg Inlet."}
+```{r, echo=FALSE, fig.cap="Summary of the example application of the estuarine intertidal model in the Great Egg Inlet."}
 knitr::include_graphics("ZZ_Fig06.04_SI.All.est.int.png")
 ```
 

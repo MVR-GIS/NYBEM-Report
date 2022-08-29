@@ -43,7 +43,7 @@ colnames(NYBEM.mar.sub) <- c("velocity", "velocity.SIV", "substrate.fines", "sub
 NYBEM.mar.sub$velocity <- c(0, 25, 50, 100)
 NYBEM.mar.sub$velocity.SIV <- c(0.6, 1, 1, 0)
 NYBEM.mar.sub$substrate.fines <- c(0, 100, NA, NA)
-NYBEM.mar.sub$substrate.SIV <- c(1, 0, NA, NA)
+NYBEM.mar.sub$substrate.SIV <- c(1, 0.1, NA, NA)
 NYBEM.mar.sub$light.PLW <- c(0, 10, 22, 100)
 NYBEM.mar.sub$light.SIV <- c(0, 0, 1, 1)
 NYBEM.mar.sub$vessel.density <- c(0, 1000, 10000, NA)
@@ -100,9 +100,9 @@ Where $velocity$ is a suitability index relative to currents and velocity and $v
 
 ### Substrate
 
-Sediment quality drives multiple aspects of ecosystem integrity such as benthic habitat provision, nutrient dynamics, and erodibility. Fine sediment composition (i.e., %fine) is a common metric in multiple assessment procedures in the region (e.g., @mulholland_habitat_1984-1, @usace_new_2000, @USACE_port_2021). Specifically, the suitability curves from the hard clam model [@mulholland_habitat_1984-1] are adopted here as a rapid metric of ecosystem quality. For marine environments, sediment data are obtained from the [usSEABED](https://www.usgs.gov/programs/cmhrp/science/accessing-usseabed) data set throughout the region. Habitat suitability is then quantified as follows:
+Sediment quality drives multiple aspects of ecosystem integrity such as benthic habitat provision, nutrient dynamics, and erodibility. Fine sediment composition (i.e., %fine) is a common metric in multiple assessment procedures in the region (e.g., @mulholland_habitat_1984-1, @usace_new_2000, @USACE_port_2021). Specifically, the suitability curve from the hard clam model [@mulholland_habitat_1984-1] is used as the basis for this rapid metric of ecosystem quality. Notably, the curve was modified such that the suitability index is 0.1 when fines are 100%; this change was made in response to more recent literature showing the value of fine sediment patches as part of a habitat mosaic (Kritzer et al. 2016). For marine environments, sediment data are obtained from the [usSEABED](https://www.usgs.gov/programs/cmhrp/science/accessing-usseabed) data set throughout the region. Habitat suitability is then quantified as follows:
 
-$$substrate = -0.01*fines_{per}+1$$ 
+$$substrate = -0.009*fines_{per}+1$$ 
 
 Where $substrate$ is a suitability index relative to sediment substrate and $fines_{per}$ is the proportion of fine sediment (silt and clay) at the location.
 
@@ -133,5 +133,5 @@ Where $vessel.density$ is a suitability index relative to ship traffic and $ves_
 
 ### Potential extension of marine, subtidal model
 
-NYBEM's marine subtidal submodel provides a useful framework for estimating general ecosystem condition, although other variables and processes could be addressed in future iterations. Specifically, substrate is a dynamic feature through time, particularly with sea level change, and substrate could be linked to sediment transport algorithms in coastal dynamics models. Similarly, wave environment is an important feature of this ecosystem, and additional wave metrics could be incorporated. In the present iteration of NYBEM, light attenuation is assumed to be dependent on a single light coefficient ($K_{d}$). However, light attentuation can vary significantly based on suspended sediment concentration, algal processes, or water color, all of which may vary in time. Future version of the model could also consider spatially distributed data sets of light coefficients such as those by [NOAA](https://www.fisheries.noaa.gov/inport/item/66148).
+NYBEM's marine subtidal submodel provides a simple framework for estimating general ecosystem condition, which was centered on indicator species of hard clam and seagrasses. Other indicator taxa, variables, and processes should be addressed in future iterations where possible. Specifically, substrate is a dynamic feature through time, particularly with sea level change, and substrate could be linked to sediment transport algorithms in coastal dynamics models. Similarly, wave environment is an important feature of this ecosystem, and additional wave metrics could be incorporated. In the present iteration of NYBEM, light attenuation is assumed to be dependent on a single light coefficient ($K_{d}$). However, light attenuation can vary significantly based on suspended sediment concentration, algal processes, or water color, all of which may vary in time. Future version of the model could also consider spatially distributed data sets of light coefficients such as those by [NOAA](https://www.fisheries.noaa.gov/inport/item/66148).
 

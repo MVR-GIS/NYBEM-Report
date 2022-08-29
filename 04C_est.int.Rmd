@@ -1,7 +1,7 @@
 ## Estuarine, Intertidal Zone
 
 
-Estuarine environments include marine water that has been diluted by freshwater input to varying degrees [@prosser_impacts_2018]. Intertidal ecosystems are found between high and low tide, and thus experience varying influences from both upland and aquatic drivers and stressors. The estuarine intertidal ecosystem considers areas with salinity values from 0.5 to 30 psu and elevation from MHHW to MLLW. 
+Estuarine environments include marine water that has been diluted by freshwater input to varying degrees [@prosser_impacts_2018]. Intertidal ecosystems are found between high and low tide, and thus experience varying influences from both upland and aquatic drivers and stressors. The estuarine intertidal ecosystem considers areas with salinity values from 0.5 to 28 psu and elevation from MHHW to MLLW. 
 
 Tidal marshes are vegetated intertidal ecosystems found at the land-sea interface that serve as crucial transition zones for marine, freshwater, and terrestrial processes [@colombano_climate_2021]. Their location exposes them to a number of environmental factors (e.g., ocean currents, watershed hydrology) and environmental gradients (e.g., salinity)[@lauchlan_species_2020]. Figure 4.4 presents a general conceptual model of this system. Generally speaking, the function of these systems is highly related to sediment processes like edge erosion and episodic deposition, long-term shifts in salinity, and the role of these systems as transitional ecotones from fresh-salt water and upland-aquatic.
 
@@ -29,7 +29,7 @@ NYBEM.est.int$veg.cover.per <- c(0, 100, NA)
 NYBEM.est.int$veg.cover.SIV <- c(0.1, 1, NA)
 NYBEM.est.int$deposition <- c(0, 1, NA)
 NYBEM.est.int$deposition.SIV <- c(1, 0, NA)
-NYBEM.est.int$land.use.per <- c(0, 50, 100)
+NYBEM.est.int$land.use.per <- c(0, 10, 100)
 NYBEM.est.int$land.use.SIV <- c(1, 1, 0)
 NYBEM.est.int$shoreline.m <- c(0, 100, 500)
 NYBEM.est.int$shoreline.SIV <- c(0.5, 1, 1)
@@ -79,14 +79,14 @@ par(mfrow=c(3,2), cex=1.0)
 
 Marsh sediment budgets are a geographically integrated measure of opposing constructive and destructive forces: a surplus of sediment can lead to vertical growth and/or lateral expansion, while a shortfall can lead to drowning and/or lateral contraction [@ganju_spatially_2017]. Many estuarine marshes face sediment deficits along the shoreline as a result of increased edge erosion. Edge degradation causes morphological changes that make it easier for waves to propagate to the marsh borders and promote the resuspension and export of sediments from the estuary [@li_wave-driven_2019].
 
-A relative change in velocity from a baselin condition is used as a proxy for more complex edge erosion processes. This assumes that all things being equal, if currents and velocities increase significantly then erosion is likely to increase as well. We assume that any increase in average velocity beyond 10% is detrimental, and that increases beyond 30% would fundamentally alter the character of a given marsh.
+A relative change in velocity from a baseline condition is used as a proxy for more complex edge erosion processes. This assumes that all things being equal, if currents and velocities increase significantly then erosion is likely to increase as well. We assume that any increase in high velocity conditions beyond 10% is detrimental, and that increases beyond 30% would fundamentally alter the character of a given marsh. High velocity conditions are identied as the 90th percentile velocity over a period of record, which would generally correlate with storm conditions when erosion would be likely.
 
 $$erosion = \begin{pmatrix} 1.0 & vel_{delta}<10\\
 -0.05*vel_{delta}+1.5 & vel_{delta}=10-30\\
 0.0 & vel_{delta}>30
 \end{pmatrix}$$
 
-Where $erosion$ is a suitability index relative to edge erosion and $vel_{delta}$ is the percent change in velocity relative to a baseline condition.
+Where $erosion$ is a suitability index relative to edge erosion and $vel_{delta}$ is the percent change in high velocity relative to a baseline condition.
 
 
 ### Vegetation Cover
@@ -121,15 +121,19 @@ Where $deposition$ is a suitability index relative to episodic sediment depositi
 
 ### Developement of Adjacent Upland
 
-The development of uplands within a watershed can have a direct and indirect impact on a variety of essential aspects in estuarine intertidal ecosystems. The combination of coastal erosion and upland development causes a “coastal squeeze,” in which low-lying, intertidal regions, that would usually recede inland in the face of sea-level rise, are diminished because man-made structures (e.g. shoreline armoring) prevent such retreat [@prosser_impacts_2018]. This means that tidal marshes will need to shift upslope onto nearby uplands to survive during a period of rapid sea-level rise. Land management methods on the tidal marsh's upland border can help or hinder ecosystem migration in response to increasing sea levels [@anisfeld_upslope_2017].
+Land use intensity corresponds to the degree of land transformation caused by technological and economic measures, in addition to urbanization (Ge et al., 2021). Changes in land use intensity can have major impacts on the carbon, nitrogen, and water cycles, and biodiversity and ecological services (Yan et al., 2017). Estuaries serve as a natural buffer between an upland and the coastal areas by filtering urban and agricultural runoff and trapping sediments that can harm aquatic life, absorbing and slowing floodwaters, absorbing wave energy and slowing down currents via wetland plants, all of which prevent erosion and stabilize the shoreline (Ji, 2007). A wetland’s value is also greater if it is located near other natural habitats, and that value increases with the degree of connectivity to and complexity of associated habitats (Mckinney et al., 2009a).
 
-For the NYBEM, habitat suitability is modeled as a function of urban development for adjacent uplands. When the percentage of adjacent urban land uses is greater than 50%, habitat suitability in the estuarine intertidal ecosystem declines. When the development of adjacent upland reaches 100% of the estuarine intertidal ecosystem, the habitat is no longer be considered suitable. 
+Furthermore, the development of uplands within a watershed can have a direct and indirect impact on a variety of essential aspects in estuarine intertidal ecosystems. The combination of coastal erosion and upland development causes a “coastal squeeze,” in which low-lying, intertidal regions, that would usually recede inland in the face of sea-level rise, are diminished because man-made structures (e.g. shoreline armoring) prevent such retreat [@prosser_impacts_2018]. Land management methods on the tidal marsh's upland border can help or hinder ecosystem migration in response to increasing sea levels [@anisfeld_upslope_2017].
 
-$$land.use = \begin{pmatrix} 1.0 & urban_{per}=0-50\\
--0.02*urban_{per}+2 & urban_{per}=50-100
+Heavy pressure from residential development can also alter system salinity and induce a shift in community types (Anthony et al., 2009). Neighboring land use intensity can conservatively be estimated by the relative amount of anthropocentric development pressures within a given buffer from a site. Generally, undeveloped uplands have a positive impact on the resilience of an ecosystem. Inversely, adjacency to developed uplands is correlated with a decrease in ecosystem health associated with a greater degree of fragmentation between systems (Wolanski et al., 2009), with a decreases in habitat suitability beyond 10% of adjacent uplands developed.
+
+For the NYBEM, habitat suitability is modeled as a function of urban development for adjacent uplands. When the percentage of adjacent urban land uses is greater than 10%, habitat suitability in the estuarine intertidal ecosystem declines. When the development of adjacent upland reaches 100% of the estuarine intertidal ecosystem, the habitat is no longer be considered suitable. 
+
+$$land.use = \begin{pmatrix} 1.0 & urban_{per}=0-10\\
+-0.011*urban_{per}+1.11 & urban_{per}=10-100
 \end{pmatrix}$$ 
 
-Where $land.use$ is a suitability index relative to adjacent upland land uses and $urban_{per}$ is the percent of adjancent upland in developed (i.e., urban) land uses within 500m.
+Where $land.use$ is a suitability index relative to adjacent upland land uses and $urban_{per}$ is the percent of adjacent upland in developed (i.e., urban) land uses within 100m.
 
 ### Shoreline Armoring 
 
