@@ -3,7 +3,7 @@
 
 Marine, intertidal ecosystems include the areas of high salinity (> 28 psu) bracketed by tidal limits of the mean higher high water (MHHW) and mean lower low water (MLLW). In the context of NYBEM, these systems tend to directly front the Atlantic Ocean as beaches or occur in high salinity zones near inlets. 
 
-Figure 4.10 presents a conceptual model of the marine, intertidal ecosystem. For NYBEM, we focus the assessment of habitat quality primarily on sandy beaches due to the large extent of this habitat type in the region. This nearshore ecosystem is strongly influenced by two major pressures, the physical drivers of the ocean environment (e.g., currents, sediment transport) and human uses of the system (e.g., beaches and associated upland development). Ecologically, this ecosystem hosts a variety of species of management interest such as seabeach amaranth, horseshoe crabs, and shorebirds (e.g., piping plover, terns, red knot).  
+Figure 4.10 presents a conceptual model of the marine, intertidal ecosystem. For NYBEM, we focus the assessment of habitat quality primarily on sandy beaches due to the large extent of this habitat type in the region. This nearshore ecosystem is strongly influenced by two major pressures, the physical drivers of the ocean environment (e.g., currents, sediment transport) and human uses of the system (e.g., beaches and associated upland development). Ecologically, this ecosystem hosts a variety of species of management interest such as horseshoe crabs and shorebirds (e.g., piping plover, terns, red knot).  
 
 Coastal storm risk management actions have the potential to affect this ecosystem through two primary mechanisms. First, some risk management actions (e.g., storm surge barriers) could be directly constructed in this area. Second, large-scale features have the potential to alter coastal dynamics indirectly, although this affect may occur to a lesser extent given the overarching dominance of ocean effects.
 
@@ -15,7 +15,7 @@ knitr::include_graphics("ZZ_Fig04.10_Mar.Int_ConModel.png")
 The tension between human uses of this landscape and ecological outcomes has long been acknowledged, and many models have been developed to assess ecological outcomes in marine, intertidal zones of the region, specifically for sandy beaches. This submodel drew heavily from four general bodies of knowledge, specifically:
 
 - USFWS Habitat Evaluation Procedure models: tern [@carreker_habitat_1985, @us_fish_and_wildlife_service_usfws_gulf_2001], Plover [@us_fish_and_wildlife_service_usfws_gulf_2001], Horseshoe Crab [@us_fish_and_wildlife_service_usfws_gulf_2001], and Red Knot [@us_fish_and_wildlife_service_usfws_gulf_2001].
-- Other habitat suitability models: Plover [@farmer_habitat_2000, @seavey_effect_2011], Horseshoe Crab [@avissar_modeling_2006, @nancy_jackson_armoring_2010, @lathrope_mapping_2013], and amaranth [@sellars_habitat_2007]  
+- Other habitat suitability models: Plover [@farmer_habitat_2000, @seavey_effect_2011], Horseshoe Crab [@avissar_modeling_2006, @nancy_jackson_armoring_2010, @lathrope_mapping_2013], and amaranth [@sellars_habitat_2007] (upper intertidal only)  
 - Fire Island to Montauk Point Habitat Evaluation Procedure OceanBeach Sub-Model [@usace_evaluation_2009].  
 - Empirical studies of the system: Virginia Tech shorebird program [@herman_unpacking_2019], Rutgers Horseshoe Crab Mapping [@lathrope_mapping_2013], and International Shorebird Survey (Manomet).
 
@@ -31,24 +31,24 @@ Four classes of processes and dynamics were identified from a review of these mo
 The overall habitat suitability of the marine, intertidal zone may then be aggregated into a single metric via an arithmetic mean of suitability indices for these metrics.
 
 
-$I_{mar.int} = \frac{beach.slope + exp.dur + land.use + shoreline}{5}$ 
+$I_{mar.int} = \frac{beach.slope + exp.dur + land.use + shoreline}{4}$ 
 
 Where $I_{mar.int}$ is an overarching index of ecosystem quality for the marine intertidal zone, $beach.slope$ is a suitability index relative to beach slope, $exp.dur$ is a suitability index relative to the duration of beach exposure, $land.use$ is a suitability index relative to adjacent upland land uses, and $shoreline$ is a suitability index relative to shoreline armoring. All indices are quality metrics scaled from 0 to 1, where 0 is unsuitable and 1 is ideal.
 
 
 ```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for the marine, intertidal zone."}
 #Create data frame with mar.int submodel
-NYBEM.mar.int <- data.frame(matrix(NA,nrow=3,ncol=8))
+NYBEM.mar.int <- data.frame(matrix(NA,nrow=4,ncol=8))
 colnames(NYBEM.mar.int) <- c("beach.slope.per", "beach.slope.SIV", "trel", "exp.dur.SIV",
                              "land.use.per", "land.use.SIV", "shoreline.m", "shoreline.SIV")
-NYBEM.mar.int$beach.slope.per <- c(0, 10, 30)
-NYBEM.mar.int$beach.slope.SIV <- c(1, 1, 0)
-NYBEM.mar.int$trel <- c(0, 50, 100)
-NYBEM.mar.int$exp.dur.SIV <- c(0, 1, 0)
-NYBEM.mar.int$land.use.per <- c(0, 10, 100)
-NYBEM.mar.int$land.use.SIV <- c(1, 1, 0)
-NYBEM.mar.int$shoreline.m <- c(0, 100, 500)
-NYBEM.mar.int$shoreline.SIV <- c(0, 1, 1)
+NYBEM.mar.int$beach.slope.per <- c(0, 10, 30, NA)
+NYBEM.mar.int$beach.slope.SIV <- c(1, 1, 0, NA)
+NYBEM.mar.int$trel <- c(0, 0.25, 0.75, 1.00)
+NYBEM.mar.int$exp.dur.SIV <- c(0, 1, 1, 0)
+NYBEM.mar.int$land.use.per <- c(0, 10, 100, NA)
+NYBEM.mar.int$land.use.SIV <- c(1, 1, 0, NA)
+NYBEM.mar.int$shoreline.m <- c(0, 100, 500, NA)
+NYBEM.mar.int$shoreline.SIV <- c(0, 1, 1, NA)
 
 ##########
 #Create summary figure for mar.int submodel
@@ -62,7 +62,7 @@ par(mfrow=c(3,2), cex=1.0)
   lines(NYBEM.mar.int$beach.slope.per, NYBEM.mar.int$beach.slope.SIV, lwd=3)
   
   #exp.dur.per
-  plot(NYBEM.mar.int$trel, NYBEM.mar.int$exp.dur.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+  plot(NYBEM.mar.int$trel, NYBEM.mar.int$exp.dur.SIV, xlim=c(0,1), ylim=c(0,1), type="l",
        xlab="Relative duration of exposure (trel)", ylab="Suitability Index (exp.dur)")
   abline(h=seq(0,1,0.1), lty=3)
   points(NYBEM.mar.int$trel, NYBEM.mar.int$exp.dur.SIV, pch=19, cex=2)
@@ -87,10 +87,9 @@ par(mfrow=c(3,2), cex=1.0)
 ### Beach Slope
 
 
-Beach morphology directly affects habitat use by multiple focal taxa (e.g., shorebirds, turtles, horseshoe crab). Beach shape and morphologic character can be described through parameters of width, slope, elevation, and other summaries of topography [@bridges_use_2015]. Beach width is indirectly captured in NYBEM through metrics of habitat quantity and patch size and is not considered here. Beach slope integrates morphologic outcomes and is directly tied to grain size and wave environment [@lodder_chapter_2021]. Beach slope, thus, provides an important and synthetic metric of marine, intertidal habitat quality.
+Beach morphology directly affects habitat use by multiple focal taxa (e.g., shorebirds, turtles, horseshoe crab). Beach shape and morphologic character can be described through parameters of width, slope, elevation, and other summaries of topography [@bridges_use_2015]. Beach width is indirectly captured in NYBEM through metrics of habitat quantity and patch size and is not considered here. Beach slope integrates morphologic outcomes and is directly tied to grain size and wave environment [@lodder_chapter_2021]. Beach slope, thus, provides an important and synthetic metric of marine, intertidal habitat quality. Beach slope would only be directly altered for actions in the intertidal zone, but it is included here as a general proxy for intertidal ecosystem condition.
 
-
-Beach slope is identified as a general indicator of ecosystem condition for Long Island ecosystems (@usace_evaluation_2009), and as an important driving component of habitat use by multiple taxa in the New York Bight. For example, seabeach amaranth (_Amaranthus pumilus_) typically occurs in low slope environments [@sellars_habitat_2007], while habitat is most suitable for horseshoe crabs between ~5-10% slopes [@brady_habitat_1996]. Notably, not all taxa may respond in kind to these generalization. Merging these regional models, NYBEM assesses suitability relative to beach slope as follows:
+Beach slope is identified as a general indicator of ecosystem condition for Long Island ecosystems (@usace_evaluation_2009), and as an important driving component of habitat use by multiple taxa in the New York Bight. Specifically, habitat is most suitable for horseshoe crabs between ~5-10% slopes [@brady_habitat_1996]. Notably, not all taxa may respond in kind to these generalization. NYBEM assesses suitability relative to beach slope as follows:
 
 $$beach.slope = \begin{pmatrix} 1.0 & slope_{per}=0-10\\
 -0.05*slope_{per}+1.5 & slope_{per}=10-30\\
@@ -103,17 +102,17 @@ Where $beach.slope$ is a suitability index relative to beach slope and $slope_{p
 ### Exposure Duration
 
 
-Intertidal zones are a key foraging habitat for shorebirds. The benthic food availability is related in part to soil moisture [@brady_habitat_1996] and the time to forage in these zones. Soil moisture is also a key determinant of horseshoe crab spawning [@avissar_modeling_2006]. For NYBEM, a proxy variable is used to account for these processes. Specifically, a ratio of depth ranges to the tidal range is used as a relative duration of exposure, which we calculate as follows:
+Intertidal zones are a key foraging habitat for shorebirds. The benthic food availability is related in part to soil moisture [@brady_habitat_1996] and the time to forage in these zones. Soil moisture is also a key determinant of horseshoe crab spawning [@avissar_modeling_2006]. For instance, in the lower intertidal, we would anticipate higher density of food but less exposure time for foraging; conversely, the higher intertidal would experience lower density of benthic resources but longer exposure time. For NYBEM, a proxy variable is used to account for these processes. Specifically, a ratio of depth ranges to the tidal range is used as a relative duration of exposure, which we calculate as follows:
 
 $$t_{rel} = \frac{H_{max} - H_{min}}{MHHW-MLLW}$$ 
 
 Where $t_{rel}$ is a relative duration of exposure, $H_{max}$ is the maximum depth observed over a hydrodynamic simulation period, $H_{min}$ is the minimum depth observed over a hydrodynamic simulation period, $MHHW$ is mean higher high water, and $MLLW$ is mean lower low water.
 
-This metric provides a relative accounting for the amount of exposure a given path experiences. For instance, $t_{rel}>1$ occurs in portions of the intertidal that remain underwater most of the time, and $t_{rel}=0$ occurs in areas where the elevation exceeds the intertidal range. In terms of habitat suitability, we assume that ideal values of this metric occur around 0.5 (near the mean tide level) and suitability declines on either side of this threshold as follows: 
+This metric provides a relative accounting for the amount of exposure a given path experiences. For instance, $t_{rel}>1$ occurs in portions of the intertidal that remain underwater most of the time, and $t_{rel}=0$ occurs in areas where the elevation exceeds the intertidal range. In terms of habitat suitability, we assume that ideal values of this metric occur near the mean tide level ($0.25<t_{rel}<0.75$) and suitability declines on either side of this plateau as follows: 
 
-$$exp.dur = \begin{pmatrix} 0.02*t_{rel} & t_{rel}<0.5\\
--0.02*t_{rel}+2 & t_{rel}>0.5\\
-0.0 & t_{rel}>1.0
+$$exp.dur = \begin{pmatrix} 0.04*t_{rel} & t_{rel}<0.25\\
+1.0 & 0.25<t_{rel}<0.75\\
+-0.04*t_{rel}+4.0 & t_{rel}>0.75
 \end{pmatrix}$$ 
 
 Where $exp.dur$ is a suitability index relative to exposure duration.

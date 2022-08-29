@@ -1,7 +1,7 @@
 ## Marine, Deepwater Zone
 
 
-The marine, deepwater ecosystem considers areas with salinity values greater or equal to 30 psu and depths from 2 to 20 m. Physical, biological and chemical variables may be compounded by anthropogenic and climatic pressures to influence the overall integrity of this system. Figure 4.14 presents a conceptual model of the marine, deepwater ecosystem, which is strongly dominated by large-scale oceanographic processes and less so by potential coastal storm risk management features. Ecologically, this ecosystem hosts a variety of species of management interest such as mammals, turtles, surf clams, migratory fish, and flounder (winter). 
+The marine, deepwater ecosystem considers areas with salinity values greater or equal to 28 psu and depths from 2 to 20 m. Physical, biological and chemical variables may be compounded by anthropogenic and climatic pressures to influence the overall integrity of this system. Figure 4.14 presents a conceptual model of the marine, deepwater ecosystem, which is strongly dominated by large-scale oceanographic processes and less so by potential coastal storm risk management features. Ecologically, this ecosystem hosts a variety of species of management interest such as mammals, turtles, surf clams, migratory fish, and flounder (winter). 
 
 
 ```{r, fig.cap="Conceptual model for the marine, deepwater submodel."}

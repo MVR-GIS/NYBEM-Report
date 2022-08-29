@@ -6,7 +6,7 @@ Model evaluation is the process for ensuring that numerical tools are scientific
 The NYBEM underwent USACE review and certification from April through August 2022. An April 2022 version of the models were reviewed by four reviewers representing coastal ecology (two USACE New England District biologists, "Reviewer-1" and "Reviewer-2"), an experienced R-programmer (USACE Environmental Laboratory, "Reviewer-3"), and a modeling policy expert (USACE Ecosystem Restoration Planning Center of Expertise, "Reviewer-4"). All comments follow the four-part comment structure of: (1) identify the problem, (2) describe the technical basis for the comment, (3) rate the significance or impact of the problem, and (4) recommend a mechanism for resolution. Comments and author responses are provided for transparency in review processes and long-term archival. 
 
 
-**Reviewer-1**
+## Reviewer-1
 
 *Comment 1.1: Section 3.2 - The Coastal and Marine Ecological Classification Standard ([CMECS](https://iocm.noaa.gov/standards/cmecs-home.html)) was endorsed by the Federal Geographic Data Committee (FGDC) in 2012. As an FGDC standard, federally funded projects working with environmental data in coastal and marine settings should attempt to use CMECS as their primary classification system or attempt to crosswalk their system.*  
 
@@ -120,7 +120,7 @@ The NYBEM underwent USACE review and certification from April through August 202
 - _Author Response_: **Non-concur**. NYBEM was constructed in the method recommended. A series of workshops with technical stakeholders were held in 2019 to identify key processes and indicator taxa. The models presented here represent a blended approach, which uses proxy variables from numerous sources and balances those variables with a need to assess outcomes across a large spatial scale.
 
 
-**Reviewer-2**
+## Reviewer-2
 
 *Comment 2.1: Section 3.2 and 4.1 - “The ecosystem types were adopted from a combination of two existing classifications: (Cowardin et al. 1979; USFWS 1997).” Adopt existing ecosystem classifications.*  
 - _Basis_: The use and modification of less broadly used systems creates confusion and leads to some metrics being applied inappropriately, particularly with the use of salinity, which is very variable, as a classification factor. The model output in Section 6.3 shows what would generally be classified as estuarine habitat as marine habitat.  
@@ -171,95 +171,157 @@ It seems like it would be a pretty complex thing to figure out the percent of th
 - _Author Response_: **Non-concur**. The NYBEM seeks to develop generalized metrics of ecosystem condition that reflect multiple aspects of ecological structure and function. The formula for this system provides one such example.
 
 
-*Comment 2.7: Documentation text: 4.3 Estuarine, Intertidal Zone, 4.3.1 Edge Erosion “We assume that any increase in average velocity beyond 10% is detrimental, and that increases beyond 30% would fundamentally alter the character of a given marsh.”* 
-*Some theoretical justification should be provided for this metric and statement. Edge erosion will depend on the characteristics of the marsh and the composition of the sediment, and since it’s a percentage metric, existing current speeds. The potential outcomes are that:*
-*Velocity stays the same under existing conditions = 1.0 SI.*
-*Velocity increases in the FWOPC without a tide gate at some point decreasing the SI.*
-*Velocity may increase less with a tide gate giving a lower decrease in SI than FWOPC or an increase in the SI.*  
-* _Basis_: Given the potential outcomes and the fact that this may say that having the barrier will have a better ecological outcome for this metric, it should have sufficient justification.  
-* _Significance_: High.  
-* _Recommended Resolution_: Provide theoretical justification for the breakpoints in the curve.  
-* _Author Response_: **Insert**.
+*Comment 2.7: Section 4.3.1 Edge Erosion - “We assume that any increase in average velocity beyond 10% is detrimental, and that increases beyond 30% would fundamentally alter the character of a given marsh.” Some theoretical justification should be provided for this metric and statement.*  
+
+- _Basis_: Edge erosion will depend on the characteristics of the marsh and the composition of the sediment, and since it’s a percentage metric, existing current speeds. The potential outcomes are that: (a) velocity stays the same under existing conditions = 1.0 SI, (b) velocity increases in the FWOP without a tide gate at some point decreasing the SI, and (c) velocity may increase less with a tide gate giving a lower decrease in SI than FWOP or an increase in the SI. Given the potential outcomes and the fact that this may say that having the barrier will have a better ecological outcome for this metric, it should have sufficient justification.  
+- _Significance_: High.  
+- _Recommended Resolution_: Provide theoretical justification for the breakpoints in the curve.  
+- _Author Response_: **Concur**. Text was augmented to bolster this description. See also response to Comment 1.3.
 
 
-*Comment 2.8: 4.3.2 Vegetation Cover – This metric also needs more explanation other than the fact that it is adopted from a comparable suitability curve from the Wetland Value Assessment in the Gulf Coast. Ponds and pannes on salt marshes add wildlife value. I assume that’s not a consideration for this model and that it’s intended to document change as the result of changes in hydraulics with the floodgate alternatives. Any assumptions about coverage of ponds and pannes should be explained and/or reflected in the graph. The documentation should also explain how it considers any deterioration in marsh vegetation due to sea level rise.*
-*It would help to indicate where the inputs for these metrics come from – i.e., for this one, the documentation should describe how the predictions about changes in percent cover are being made to be input to this model.*  
-* _Basis_: Need to know the basis for the shape of the line in the graph.  
-* _Significance_: Medium.  
-* _Recommended Resolution_: Provide additional justification for the shape of the line and where inputs come from.  
-* _Author Response_: **Insert**.
+*Comment 2.8: 4.3.2 Vegetation Cover – This metric also needs more explanation other than the fact that it is adopted from a comparable suitability curve from the Wetland Value Assessment in the Gulf Coast.*  
+- _Basis_: Need to know the basis for the shape of the line in the graph. Ponds and pannes on salt marshes add wildlife value. I assume that’s not a consideration for this model and that it’s intended to document change as the result of changes in hydraulics with the floodgate alternatives. Any assumptions about coverage of ponds and pannes should be explained and/or reflected in the graph. The documentation should also explain how it considers any deterioration in marsh vegetation due to sea level rise. It would help to indicate where the inputs for these metrics come from – i.e., for this one, the documentation should describe how the predictions about changes in percent cover are being made to be input to this model.  
+- _Significance_: Medium.  
+- _Recommended Resolution_: Provide additional justification for the shape of the line and where inputs come from.  
+- _Author Response_: **Concur**. Text was augmented to better describe the logic of this variable.
 
 
 *Comment 2.9: 4.3.3 Episodic Sediment Deposition – see comments on section 4.2.3. This section describes the complex interactions of sediment transport on marshes, but settles on a simple metric without and transitional explanation.*  
-* _Basis_: This section should contain the reasons or basis for why you have the concern described above.  
-* _Significance_: High.  
-* _Recommended Resolution_: See comments on section 4.2.3.  
-* _Author Response_: **Insert**.
+- _Basis_: This section should contain the reasons or basis for why you have the concern described above.  
+- _Significance_: High.  
+- _Recommended Resolution_: See comments on section 4.2.3.  
+- _Author Response_: **Concur**. Text edited accordingly. See response to Comment 2.5.
 
 
-*Comment 2.10: 4.3.4 Development of Adjacent Upland. The documentation doesn’t provide sufficient justification for this graph. It doesn’t explain how the adjacent development affects the quality of the salt marsh. Is it about “the ability for multiple taxa to use the shoreline as migratory pathways” or is it about allowing for marsh expansion with SLR? The SLAMM Model assesses the capacity of salt marshes to migrate with SLR.* 
-*“For the NYBEM, habitat suitability is modeled as a function of urban development for adjacent uplands. When the percentage of adjacent urban land uses is greater than 50%, habitat suitability in the estuarine intertidal ecosystem declines. When the development of adjacent upland reaches 100% of the estuarine intertidal ecosystem, the habitat is no longer be considered suitable.” The first sentence needs a citation or additional information to support its use. The documentation should say what it is being considered suitable for. Salt marshes within 100 meters of development may have more value in terms of environmental justice values, and as much value for aquatic and semi-aquatic organisms.* 
-*This means that any patch of salt marsh or intertidal flats within 100 meters of development will be valued lower, but patches within the same marsh >100 m from the development will be valued higher. Is that practical?* 
-*Also, it’s not clear how this metric would change with the various scenarios – FWOPC, structures, floodgates, and, given the nature of the areas to which the model will be applied (most likely increasing the size and height of existing structures), maybe it’s not necessary.*  
-* _Basis_: See above.  
-* _Significance_: High.  
-* _Recommended Resolution_: Provide clearer documentation or delete the metric.  
-* _Author Response_: **Insert**.
+*Comment 2.10: 4.3.4 Development of Adjacent Upland - The documentation doesn’t provide sufficient justification for this suitability curve.*  
+
+- _Basis_: The model documentation does not explain how the adjacent development affects the quality of the salt marsh. Is it about “the ability for multiple taxa to use the shoreline as migratory pathways” or is it about allowing for marsh expansion with SLR? The SLAMM Model assesses the capacity of salt marshes to migrate with SLR. “For the NYBEM, habitat suitability is modeled as a function of urban development for adjacent uplands. When the percentage of adjacent urban land uses is greater than 50%, habitat suitability in the estuarine intertidal ecosystem declines. When the development of adjacent upland reaches 100% of the estuarine intertidal ecosystem, the habitat is no longer be considered suitable.” The first sentence needs a citation or additional information to support its use. The documentation should say what it is being considered suitable for. Salt marshes within 100 meters of development may have more value in terms of environmental justice values, and as much value for aquatic and semi-aquatic organisms. This means that any patch of salt marsh or intertidal flats within 100 meters of development will be valued lower, but patches within the same marsh >100 m from the development will be valued higher. Is that practical? Also, it’s not clear how this metric would change with the various scenarios – FWOPC, structures, floodgates, and, given the nature of the areas to which the model will be applied (most likely increasing the size and height of existing structures), maybe it’s not necessary.  
+- _Significance_: High.  
+- _Recommended Resolution_: Provide clearer documentation or delete the metric.  
+- _Author Response_: **Concur**. The model initially used a threshold of 50% urban development to avoid penalizing marshes in urban areas. However, the threshold was reduced to 10% to better align with observed declines in ecological condition in the region and general changes in performance in other ecosystems (e.g., stream ecosystems typically degrade beyond ~10% urban development). Additional text was added to justify this change. See also response to Comment 1.4.
 
 
-*Comment 2.11: 4.3.5 Shoreline Armoring – “For the NYBEM, the distance to the nearest armored shoreline is used to derive information about the ability for multiple taxa to use the shoreline as migratory pathways.” There’s a lot of description of shoreline armoring in the documentation, but then the model settles on interruption of migratory pathways as the reason for the graph and formula, so suitability in this case means the capacity of the shoreline to allow animals to travel between the estuarine habitat (e.g., salt marsh, mudflat, beach) and the adjacent uplands. The reasoning would then be that wildlife that can’t fly can’t migrate between the estuarine habitat and the upland habitat. Somehow that makes the quality of the marsh half to as high as habitats without armoring within the first 100 meters. The justification for the relationship needs to be provided. Since any project would have a structure at all distances (0-100 m) between the structure and the habitat, this should be a bar graph with some value for 0-100 m, rather than a line.*
-*It seems like this metric would only provide useful information to assess the effects of shoreline armoring structures. Any NNBF alternative would have to consider the specific effects at the location because the NNBF feature would have to allow for migratory pathways to reduce the effect of armoring – i.e., not just be placed in front an armored shoreline. For a shoreline that already has armoring where the alternative would increase its size, it would not change the rating. For sites without armoring, it would reduce the value of the nearest 100 meters.* 
-*As for the Developed Area metric, I don’t think there’s a strong case to decrease the value of a salt marsh because it’s near a structure given the project alternatives. We could use the SALM model, but I don’t think there are a lot of locations where we’re going to have salt marshes migrating inland in any significant way.*  
-* _Basis_: See above.  
-* _Significance_: High.  
-* _Recommended Resolution_: Add documentation to support the metric, delete the metric, or consider combining it with the Developed Area metric. I recommend deleting it.  
-* _Author Response_: **Insert**.
+*Comment 2.11: 4.3.5 Shoreline Armoring – “For the NYBEM, the distance to the nearest armored shoreline is used to derive information about the ability for multiple taxa to use the shoreline as migratory pathways.” Additional description of the logic is required.*  
+
+- _Basis_: There’s a lot of description of shoreline armoring in the documentation, but then the model settles on interruption of migratory pathways as the reason for the graph and formula. Therefore, suitability in this case means the capacity of the shoreline to allow animals to travel between the estuarine habitat (e.g., salt marsh, mudflat, beach) and the adjacent uplands. The reasoning would then be that wildlife that can’t migrate between the estuarine habitat and the upland habitat. Somehow that makes the quality of the marsh half as high as habitats without armoring within the first 100 meters. The justification for the relationship needs to be provided. Since any project would have a structure at all distances (0-100 m) between the structure and the habitat, this should be a bar graph with some value for 0-100 m, rather than a line. It seems like this metric would only provide useful information to assess the effects of shoreline armoring structures. Any NNBF alternative would have to consider the specific effects at the location because the NNBF feature would have to allow for migratory pathways to reduce the effect of armoring – i.e., not just be placed in front an armored shoreline. For a shoreline that already has armoring where the alternative would increase its size, it would not change the rating. For sites without armoring, it would reduce the value of the nearest 100 meters. I don’t think there’s a strong case to decrease the value of a salt marsh because it’s near a structure given the project alternatives.  
+- _Significance_: High.  
+- _Recommended Resolution_: Add documentation to support the metric, delete the metric, or consider combining it with the Developed Area metric. I recommend deleting it.  
+- _Author Response_: **Non-concur**. The metric is a proxy for many ecological effects of shoreline armoring and human development intensity. Armored shorelines can disconnect migratory paths for animals, inhibit marsh migration, and serve as an indirect metric of other issues like stormwater input. As the reviewer describes, the metric would respond to changes in shoreline based measures like seawalls, but it also serves as a general metric of current condition. The metric is designed as a continuous variable (rather than the categorical bar chart recommended) to avoid unsupported thresholds in model behavior (i.e., a sudden drop in suitability from 101 m to 100 m).
 
 
-*Comment 2.12: 4.4 Estuarine, Subtidal Zone – 4.4.1 Hard Bottom Habitats - “Here, we use a historical map of oyster reef extent as a proxy for hard bottom with the assumption that hard substrate is relatively immobile and these locations would likely have higher potential for oyster reestablishment.”*
-*It doesn’t seem like a good idea to use oysters, which aren’t presently occupying the site to assess the quality of the habitat. I assume there is hard bottom distributed through the estuaries where this will be applied. By applying the salinity requirements for oysters, the model will reduce the value of some hard bottom habitats for a species that’s not even there. It’s also unlikely to be affected by the project alternatives. It’s hard to imagine one of the alternatives seriously affecting hard bottom habitat in a way you could measure and consider the ultimate effects in this model.*
-*How can hard bottom be a factor in evaluating hard bottom? Isn’t that a mapping factor? Interspersion is usually considered a good thing for habitat quality. Redicuing the quality rating of the habitat because it has other habitats interspersed doesn’t seem to be supported scientifically.*  
-* _Basis_: See above.  
-* _Significance_: High.  
-* _Recommended Resolution_: I suggest dropping this metric unless the model is applied to s site with a lot of oyster habitat.  
-* _Author Response_: **Insert**.
+*Comment 2.12: 4.4.1 Hard Bottom Habitats - “Here, we use a historical map of oyster reef extent as a proxy for hard bottom with the assumption that hard substrate is relatively immobile and these locations would likely have higher potential for oyster reestablishment.” Revisit the assumption of hard bottom habitat mapping and oysters as a proxy for condition.*  
+
+- _Basis_: It doesn’t seem like a good idea to use oysters, which are not presently occupying the site to assess the quality of the habitat. I assume there is hard bottom distributed through the estuaries where this will be applied. By applying the salinity requirements for oysters, the model will reduce the value of some hard bottom habitats for a species that’s not even there. It’s also unlikely to be affected by the project alternatives. It’s hard to imagine one of the alternatives seriously affecting hard bottom habitat in a way you could measure and consider the ultimate effects in this model. How can hard bottom be a factor in evaluating hard bottom? Isn’t that a mapping factor? Interspersion is usually considered a good thing for habitat quality. Reducing the quality rating of the habitat because it has other habitats interspersed doesn’t seem to be supported scientifically. 
+- _Significance_: High.  
+- _Recommended Resolution_: I suggest dropping this metric unless the model is applied to sites with a lot of oyster habitat.  
+- _Author Response_: **Non-concur**. Oyster reefs and hard bottom habitats are an important part of the New York Bight ecosystem, particularly in the New Jersey Back Bays. The reviewer correctly notes the circular logic of delineating the ecosystem based on substrate and using substrate in assessment of ecosystem quality. However, substrate data are limited, and distinguishing these two parallel data sets was not possible for this region. The oyster model was adapted from a prior model and the cultch variable was left in this formulation to avoid confusion with other versions. Notably, the cultch variable was assessed with a binary input for hard bottom, which leads to a suitability of one for all hard bottoms relative to the cultch metric.
 
 
-*Comment 2.13: 4.4.2 Soft Bottom Habitats*
-*4.4.2.1 Submerged Aquatic Vegetation Module. Having the SAV Fine Substrate curve go down to 0.0 SI for 100% fine sediment composition doesn’t seem appropriate. The documentation should provide additional information to support this formula.*
-*“New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach (Lake George Association 2022). This general target aligns with ranges of observations of Secchi depth for the region (DEP 2017).” The documentation should provide justification for applying swimming beach water quality to that needed to maintain eelgrass. The whole section on light seems to need more justification. It doesn’t wrap back to a link between the final criteria and eelgrass requirements. The Ecology of Eelgrass Meadows of the Atlantic Coast: A Community Profile has a graph that appears to show optimum PAR and indicates that there are upper limits to suitable levels of PAR for eelgrass that don’t match the NYBEM graph.*
-*Using vessel traffic as a proxy for human disturbance is not sufficiently justified in the documentation. There are many instances of federal channels with eelgrass adjacent to and within the channel. Also, I don’t see where the project alternatives will affect vessel traffic – except in the extreme case with sea level rise where the barrier is closed permanently. I recommend deleting this metric.*
-*If the fine substrate and percent light metrics are correct and sustained, the relationship should be the lowest of substrate.sav or light, rather than adding and dividing by the number of parameters as they would be requirements.*
-*4.4.2.2 Hard Clam Module – It’s unclear if the NYBEM applies the entire Hard Clam Model. The documentation should indicate whether that is the case. (I didn’t see the Thompson reference in the References section. It’s hard to envision how the team will have enough data to determine the salinity at any particular site, but if that’s possible, it’s fine.*
-*This statement doesn’t appear to match the graph or the formula: “Similar to seagrass and oysters, substrate is a critical parameter for hard clam viability. Optimal substrate is shelly soft bottom. As the substrate composition increases in sand and/or mud, the substrate is less suitable for clams.” The graph says 100% sand gets the highest SI.*
-*The way the soft bottom sub-model is structured, it seems like large areas of the estuaries won’t have a habitat quality rating – maybe that’s ok.*
-*“As a proxy for seagrass coverage, we use the index of seagrass suitability (Iclam).” You can’t really do this. There are huge areas that look like they could support eelgrass, but don’t.*  
+*Comment 2.13: 4.4.2.1 Submerged Aquatic Vegetation Module - Having the SAV Fine Substrate curve go down to 0.0 SI for 100% fine sediment composition doesn’t seem appropriate.*
+- _Basis_: See above.  
+- _Significance_: High.  
+- _Recommended Resolution_: The documentation should provide additional information to support this formula.  
+- _Author Response_: **Concur**. The model was modified to reflect a suitability index of 0.1 when fines equal 100%, and text was edited accordingly.
+
+
+*Comment 2.14: 4.4.2.1 Submerged Aquatic Vegetation Module - “New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach (Lake George Association 2022). This general target aligns with ranges of observations of Secchi depth for the region (DEP 2017).” The documentation should provide justification for applying swimming beach water quality to that needed to maintain eelgrass.*
+- _Basis_: The whole section on light seems to need more justification. It doesn’t wrap back to a link between the final criteria and eelgrass requirements. [The Ecology of Eelgrass Meadows of the Atlantic Coast: A Community Profile](https://digitalmedia.fws.gov/digital/collection/document/id/1732/) has a graph that appears to show optimum PAR and indicates that there are upper limits to suitable levels of PAR for eelgrass that don’t match the NYBEM graph.  
+- _Significance_: High.  
+- _Recommended Resolution_: Revisit and revise suitability curves for light.  
+- _Author Response_: **Concur**. The logic of the light suitability index was further clarified with a particular emphasis on secchi targets. We specifically highlighted the need to revisit the secchi depth used to estimate Kd. Notably, an upper limit to light exposure was not included in the models in the interest of parsimony and to preserve the emphasis on the more likely condition where lack of limit is a limiting factor.
+
+
+*Comment 2.15: 4.4.2.1 Submerged Aquatic Vegetation Module - Using vessel traffic as a proxy for human disturbance is not sufficiently justified in the documentation.*
+- _Basis_: There are many instances of federal channels with eelgrass adjacent to and within the channel. Also, I don’t see where the project alternatives will affect vessel traffic – except in the extreme case with sea level rise where the barrier is closed permanently. I recommend deleting this metric.  
+- _Significance_: High.  
+- _Recommended Resolution_: Revisit model justification for vessel density.  
+- _Author Response_: **Concur**. The justification for vessel traffic was insufficient and has been clarified.
+
+
+*Comment 2.16: 4.4.2.1 Submerged Aquatic Vegetation Module - Reexamine the overarching index equation for SAV.*
+- _Basis_: If the fine substrate and percent light metrics are correct and sustained, the relationship should be the lowest of substrate.sav or light, rather than adding and dividing by the number of parameters as they would be requirements.  
+- _Significance_: High.  
+- _Recommended Resolution_: Examine equation and add justification accordingly.  
+- _Author Response_: **Non-concur**. The reviewer is proposing that the equation should reflect limiting factors for SAV growth. The NYBEM is not intended to reflect a particular taxa, and the index equation intends to capture a general condition index for this system.
+
+
+*Comment 2.17: 4.4.2.2 Hard Clam Module – It’s unclear if the NYBEM applies the entire Hard Clam Model.*
+- _Basis_: The documentation should indicate whether that is the case. (I didn’t see the Thompson reference in the References section. It’s hard to envision how the team will have enough data to determine the salinity at any particular site, but if that’s possible, it’s fine.  
+- _Significance_: High.  
+- _Recommended Resolution_: Clarify use of Thompson et al.  
+- _Author Response_: **Concur**. The partial use of this model was clarified in the text.
+
+
+*Comment 2.18: 4.4.2.2 Hard Clam Module – This statement doesn’t appear to match the graph or the formula: “Similar to seagrass and oysters, substrate is a critical parameter for hard clam viability. Optimal substrate is shelly soft bottom. As the substrate composition increases in sand and/or mud, the substrate is less suitable for clams.”*
+- _Basis_: The graph says 100% sand gets the highest SI..  
+- _Significance_: High.  
+- _Recommended Resolution_: Resolve discrepancy.  
+- _Author Response_: **Concur**. The suitability curve was incorrect, and the model was modified to better reflect response of hard clam to fine sediment composition.
+
+
+*Comment 2.19: 4.4.2.2 Hard Clam Module – The way the soft bottom sub-model is structured, it seems like large areas of the estuaries won’t have a habitat quality rating – maybe that’s ok.*
+- _Basis_: See above.  
+- _Significance_: High.  
+- _Recommended Resolution_: Address habitat coverage.  
+- _Author Response_: **Non-concur**. All areas in the estuary receive a habitat suitability index. The estuarine subtidal covers all hard and soft bottom habitats based on hard bottom presence-absence.
+
+
+*Comment 2.20: 4.4.2.2 Hard Clam Module – “As a proxy for seagrass coverage, we use the index of seagrass suitability (Iclam).” You can’t really do this. There are huge areas that look like they could support eelgrass, but don’t.*  
+- _Basis_: See above.  
+- _Significance_: High.  
+- _Recommended Resolution_: None.  
+- _Author Response_: **Non-concur**. The connection between the seagrass and hard clam models follows the logic of Thompson et al. (2021). Given a lack of comprehensive seagrass mapping in the region, we use the seagrass habitat suitability as a proxy. The text has been clarified to emphasize this use of a proxy.
+
+
+*Comment 2.21: 4.5.1 Beach Slope – Remove irrelevant references.*
+- _Basis_: Seabeach amaranth doesn’t grow in the marine intertidal zone. This also seems to include a model for southeast Florida. Need to indicate how alternatives would affect beach slope.  
+- _Significance_: High.  
+- _Recommended Resolution_: Remove inappropriate citations.  
+- _Author Response_: **Concur**. Seabeach amaranth and sea turtle models were initiatilly included as examples of model structure for this system. Text was edited accordingly.
+
+
+*Comment 2.22: 4.5.2 Exposure Duration – Revise suitability curve to better reflect ecological importance.*
+- _Basis_: The graph doesn’t appear to be ecologically supported. The areas below the midpoint would be just as valuable as the midpoint, if not more valuable because it is likely to contain more benthic organisms even if it’s not available as long.  
+- _Significance_: High.  
+- _Recommended Resolution_: Edit suitability curve.  
+- _Author Response_: **Concur**. The range of optimal suitability was expanded to trel from 0.25-0.75.
+
+*Comment 2.23: 4.5.3 Upland Land Use – see previous comments on upland land use metric.*
+- _Basis_: See above.  
+- _Significance_: High.  
+- _Recommended Resolution_: None.  
+- _Author Response_: **Concur**. See also response to Comments 1.4 and 2.10.
+
+
+*Comment 2.24: 4.5.4 Vegetation Cover – Remove variable from model.*
+- _Basis_: There shouldn’t be any vegetation (other than algae and maybe extremely rare eelgrass) in the marine intertidal zone. The tern reference applies to beaches, not intertidal.  
+- _Significance_: High.  
+- _Recommended Resolution_: Remove variable from model.  
+- _Author Response_: **Concur**. See also response Comment 1.10. Variable removed from model.
+
+
+*Comment 2.25: 4.5.5 Shoreline Armoring – see previous comments.*  
 * _Basis_: See above.  
 * _Significance_: High.  
 * _Recommended Resolution_: None.  
-* _Author Response_: **Insert**.
+* _Author Response_: **Non-concur**. See response to comment 2.11.
 
 
-*Comment 2.14: 4.5 Marine, Intertidal Zone*
-*4.5.1 Beach Slope – seabeach amaranth doesn’t grow in the marine intertidal zone. This also seems to include a model for southeast Florida. Need to indicate how alternatives would affect beach slope.*
-*4.5.2 Exposure Duration – The graph doesn’t appear to be ecologically supported. The areas below the midpoint would be just as valuable as the midpoint, if not more valuable because it is likely to contain more benthic organisms even if it’s not available as long.*
-*4.5.3 Upland Land Use – see previous comments on upland land use metric.*
-*4.5.4 Vegetation Cover – there shouldn’t be any vegetation (other than algae and maybe extremely rare eelgrass) in the marine intertidal zone. The tern reference applies to beaches, not intertidal.*
-*4.5.5 Shoreline Armoring – see previous comments.*  
+*Comment 2.26: 4.6 Marine, Subtidal Zone - Suitability curves need additional justification.*  
 * _Basis_: See above.  
 * _Significance_: High.  
 * _Recommended Resolution_: None.  
-* _Author Response_: **Insert**.
+* _Author Response_: **Concur**. Models were modified according to Comments 1.11 and 1.12, and text was edited for clarity and rationale was bolstered.
 
 
-*Comment 2.15: 4.6 Marine, Subtidal Zone - 4.6.1 Velocity, 4.6.2 Substrate, 4.6.3 Light, and 4.6.4 Vessel Density and all of 4.7 Marine, Deepwater Zone – Need additional justification.*  
+*Comment 2.27: 4.7 Marine, Deepwater Zone - Suitability curves need additional justification*  
 * _Basis_: See above.  
 * _Significance_: High.  
 * _Recommended Resolution_: None.  
-* _Author Response_: **Insert**.
+* _Author Response_: **Concur**. Models were modified according to Comment 1.13, and text was edited for clarity and rationale was bolstered.
 
 
-**Reviewer-3**
+## Reviewer-3
 
 *Comment 3.1: All functions within the `nybem` R package should have proper documentation, sample data, and provide a basic example of its functionality.*
 
@@ -296,14 +358,14 @@ It seems like it would be a pretty complex thing to figure out the percent of th
 - _Author Response_: **Non-concur**. The reviewer makes an excellent point about calling variables directly. However, the `nybem` code was written to mirror variable structure from an existing package (`ecorest`). Variable calls were double-checked to ensure consistency in look-up referencing.
 
 
-**Reviewer-4**
+## Reviewer-4
 
 *Comment 4.1: Given the potential phased approach for these studies and the model, we need to make sure we have a good method for tracking the model and model documentation version(s).*  
 
 - _Basis_: We need to avoid a situation where potential model users, reviewers, etc. are unclear on what version of the model is being used and whether or not that version is certified.  
 - _Significance_: Medium – potential inadvertent use of uncertified model.  
 - _Recommended Resolution_: As discussed during our mid-review webex, recommend clear communication in the model documentation of the model version, certification status, any changes made since certification, etc. Also agree with the recommendation of using the CRAN website for version tracking of the R software package(s).  
-- _Author Response_: **Concur**. The certified version of the model will be uploaded to [CRAN}(https://cran.r-project.org/web/packages/available_packages_by_name.html), and the associated documentation will be peer-reviewed and published as an ERDC technical report. The model code and documents will be clearly labeled as version 1.0.0, and any subsequent revisions will be identified from new version numbering. Web-based model documents will be labeled and linked accordingly.
+- _Author Response_: **Concur**. Following review, the certified version of the model will be uploaded to [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html), and the associated documentation will be peer-reviewed and published as an ERDC technical report. The model code and documents will be clearly labeled as version 1.0.0, and any subsequent revisions will be identified from new version numbering. Web-based model documents will be labeled and linked accordingly.
 
 
 *Comment 4.2: Section 4.4.2.2 indicates that optimal clam substrate is shelly soft bottom and as the substrate composition increases in sand and/or mud, the substrate is less suitable for clams. This is contradicted by the HSI curve which indicates increasing suitability as sand composition increases.*  

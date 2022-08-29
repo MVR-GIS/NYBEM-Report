@@ -127,9 +127,9 @@ NYBEM.est.sub.soft.sav <- data.frame(matrix(NA,nrow=4,ncol=6))
 colnames(NYBEM.est.sub.soft.sav) <- c("substrate.sav", "substrate.sav.SIV", "light.PLA", "light.SIV",
                                       "vessel.density", "vessel.density.SIV")
 NYBEM.est.sub.soft.sav$substrate.sav <- c(0, 70, 100, NA)
-NYBEM.est.sub.soft.sav$substrate.sav.SIV <- c(1, 1, 0, NA)
-NYBEM.est.sub.soft.sav$light.PLA <- c(0, 10, 22, NA)
-NYBEM.est.sub.soft.sav$light.SIV <- c(0, 0, 1, NA)
+NYBEM.est.sub.soft.sav$substrate.sav.SIV <- c(1, 1, 0.1, NA)
+NYBEM.est.sub.soft.sav$light.PLA <- c(0, 10, 22, 100)
+NYBEM.est.sub.soft.sav$light.SIV <- c(0, 0, 1, 1)
 NYBEM.est.sub.soft.sav$vessel.density <- c(0, 1000, 10000, NA)
 NYBEM.est.sub.soft.sav$vessel.density.SIV <- c(1, 1, 0.1, NA)
 
@@ -161,10 +161,10 @@ par(mfrow=c(2,2), cex=1.0)
 ```
 
 
-Substrate is represented as the presence of soft-bottom sediments conducive for SAV  growth. Based on Short et al. (2002), optimal conditions for growth were identified as non-cobble substrates with less than 70% fine sediment. Soft-bottom, non-cobble substrates with greater than 70% fine sediment were considered sub-optimal/adequate. Suitability scores for SAV substrate are represented as follows:
+Substrate is represented as the presence of soft-bottom sediments conducive for SAV  growth. Based on Short et al. (2002), optimal conditions for growth were identified as non-cobble substrates with less than 70% fine sediment. Soft-bottom, non-cobble substrates with greater than 70% fine sediment were considered sub-optimal/adequate. Notably, the suitability index is 0.1 when fines are 100% to indicate the value of fine sediment patches as part of a habitat mosaic (Kritzer et al. 2016). Suitability scores for SAV substrate are represented as follows:
 
 $$substrate.sav = \begin{pmatrix} 1.0 & fines_{per}=0-70\\
--0.033*fines_{per}-3.33 & fines_{per}>70\\
+-0.030*fines_{per}+3.10 & fines_{per}>70\\
 \end{pmatrix}$$ 
 
 Where $substrate.sav$ is a suitability index relative to fine substrate and $fines_{per}$ is the percent of fine substrate (silt and clay).
@@ -175,13 +175,13 @@ $$I_{z} = PAR * exp(-K_{d}*z)$$
 
 where $PAR$ represents the photosynthetically active radiation at the surface, $K_{d}$ is the light attenuation coefficient for water clarity matching the conditions of the study site, and $z$ is water depth. 
 
-Light attenuation in aquatic systems is a long studied process, although direct measurement of an extinction coefficient ($K_{d}$) remains less common. However, Secchi disk depth ($z_{sd}$) is a common surrogate for light extinction, and Kd is often estimated (Idso and Gilbert 1974) as:
+Light attenuation in aquatic systems is a long studied process, although direct measurement of an extinction coefficient ($K_{d}$) remains less common. However, Secchi disk depth ($z_{sd}$) is a common surrogate for light extinction, and $K_{d}$ is often estimated (Idso and Gilbert 1974) as:
 
 $$K_{d} = 1.7 / z_{sd}$$
 
 Where $z_{sd}$ is Secchi depth in meters.
 
-Secchi depth would vary depending on algal productivity, sediment load, water color, and other factors. However, we adopt a regional guideline as a general boundary condition for desirable water clarity. New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach [@lake_george_water_2022]. This general target aligns with ranges of observations of Secchi depth for the region [@DEP_harbor_2017]. Using this standard as a generalized guide for the region, light extinction may be calculated as shown below. 
+Secchi depth would vary depending on algal productivity, sediment load, water color, and other factors. However, we adopt a regional guideline as a general boundary condition for desirable water clarity. New York State does not have an official standard for Secchi depth, but the state Department of Health requires 1.22 meters (4 feet) of clarity to locate a swimming beach [@lake_george_water_2022]. This depth does not represent growth requirements of seagrasses, but it does provide a regionally specific goal for what is perceived as "good" water clarity. This assumption should be revisited in future model applications. This general target aligns with ranges of observations of Secchi depth for the region [@DEP_harbor_2017]. Using this standard as a generalized guide for the region, light extinction may be calculated as shown below. 
 
 $$K_{d} = 1.7 / 1.22 = 1.39$$
 
@@ -193,16 +193,16 @@ Light at the plant surface is converted to a percent of light available (PLA) at
 
 $$PLA = \frac{I_{z}}{PAR} * 100$$ 
 
-The relationship between PLA and its suitability index for SAV is represented as follows:
+The relationship between PLA and its suitability index for SAV is represented as follows. Notably, some studies have indicated a potential saturation effect of light at extremely high PLA (Thayer and Fonseca 1984); however, light is more likely to be limiting and the suitability curve reflects the more parsimonious situation in which lack of light is a limiting factor.
 
 $$light = \begin{pmatrix} 0.0 & PLA<10\\
-0.0833*PLA-0.83 & PLA>70\\
+0.0833*PLA-0.83 & 10<PLA<22\\
 1.0 & PLA>22\\
 \end{pmatrix}$$ 
 
 Where $light$ is a suitability index relative to light penetration and $PLA$ is percent light available.
 
-Human-mediated disturbances (e.g., urban development, increased vessel traffic, etc.) can negatively impact SAV abundance. We quantify these disturbances through a proxy of vessel traffic per year. Vessel traffic is obtained from the Automatic Identification System database. Lower traffic (less than 1,000 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows: 
+Human-mediated disturbances can negatively impact SAV abundance. Many metrics of human disturbance exist quantifying issues like upland urban development, waterway usage, fishing pressures, water quality, and other outcomes. For the purpose of NYBEM, a simple metric of vessel density is used as a proxy for waterway use with the assumption that, all things being equal, a more used waterway is likely to have other anthropogenic pressures (e.g., spills, boat induced waves, etc.). We quantify these disturbances through a proxy of vessel traffic per year. Vessel traffic is obtained from the Automatic Identification System (AIS) database. Thresholds in use were determined by visually inspecting AIS data. Lower traffic (less than 1,000 tracks per year) is considered optimal and the suitability decreases with increasing vessel traffic. Suitability scores for are quantified as follows: 
 
 $$vessel.density = \begin{pmatrix} 1.0 & ves_{AIS}=0-1000\\
 -0.0001*ves_{AIS}+1.1 & ves_{AIS}=1000-10000\\
@@ -214,7 +214,7 @@ Where $vessel.density$ is a suitability index relative to ship traffic and $ves_
 
 #### Hard Clam Module
 
-The clam habitat suitability submodel is based on Thompson et al. (2021). Ideal depth for hard clams has been reported as 4 to 8 m, however hard clams can be found in shallower depths, but the habitat is considered suboptimal. This submodel consists of three variables (1) salinity, (2) substrate, and (3) SAV suitability. 
+The hard clam habitat suitability submodel is based on an adaptation of Thompson et al. ([2021](https://chnep.wateratlas.usf.edu/upload/documents/Final_Report_Hard_Clam_Suitability_Model_SCCF.pdf)). These authors map hard clam habitat suitability based on salinity, seagrass coverage, flow rates, substrate, cholophyll a, harvesting rates, depth, dissolved oxygen, and temperature. They report ideal depth for hard clams as 4 to 8 m with marginal outcomes in shallower depths, but for this model, depth is assumed to span the entire subtidal range. Only three of the variables recommended by Thompson et al. (2021) were feasible in this analysis: (1) salinity, (2) substrate, and (3) SAV suitability. Data limited the use of all other variables across the large spatial domain of NYBEM. All variables were translated from categorical to continuous suitability scales as follows: optimal (1.0), acceptable (0.75), marginal (0.25), and unsuitable (0.0). The three variables were combined into a single index of ecosystem condition as follows:
 
 $I_{clam} = \frac{salinity.clam + substrate.clam + sav.prob}{3}$ 
 
@@ -224,12 +224,12 @@ Where $I_{clam}$ is an overarching index of ecosystem quality relative to hard c
 ```{r echo=FALSE, fig.width=8, fig.height=8, fig.cap="Suitability index curves for clams in soft bottom habitats in the esturaine, subtidal zone."}
 #Create data frame with est.sub.soft.clam submodel
 NYBEM.est.sub.soft.clam <- data.frame(matrix(NA,nrow=7,ncol=6))
-colnames(NYBEM.est.sub.soft.clam) <- c("salinity.clam", "salinity.clam.SIV", "substrate.clam.sand", "substrate.clam.SIV", 
+colnames(NYBEM.est.sub.soft.clam) <- c("salinity.clam", "salinity.clam.SIV", "substrate.clam.fines", "substrate.clam.SIV", 
                                       "Isav", "Isav.SIV")
 NYBEM.est.sub.soft.clam$salinity.clam <- c(0, 12, 12.5, 20, 25, 35, 45)
-NYBEM.est.sub.soft.clam$salinity.clam.SIV <- c(0, 0, 0.25, 0.5, 1, 1, 0)
-NYBEM.est.sub.soft.clam$substrate.clam.sand <- c(0, 30, 70, 100, NA, NA, NA)
-NYBEM.est.sub.soft.clam$substrate.clam.SIV <- c(0, 0.25, 0.75, 1, NA, NA, NA)
+NYBEM.est.sub.soft.clam$salinity.clam.SIV <- c(0, 0, 0.25, 0.75, 1, 1, 0)
+NYBEM.est.sub.soft.clam$substrate.clam.fines <- c(0, 50, 90, 100, NA, NA, NA)
+NYBEM.est.sub.soft.clam$substrate.clam.SIV <- c(1, 0.75, 0.25, 0, NA, NA, NA)
 NYBEM.est.sub.soft.clam$Isav <- c(0, 0.2, 0.8, 1, NA, NA, NA)
 NYBEM.est.sub.soft.clam$Isav.SIV <- c(1, 1, 0, 0, NA, NA, NA)
 
@@ -239,18 +239,17 @@ par(mfrow=c(2,2), cex=1.0)
 
   #salinity.clam
   plot(NYBEM.est.sub.soft.clam$salinity.clam, NYBEM.est.sub.soft.clam$salinity.clam.SIV, xlim=c(0,45), ylim=c(0,1), type="l",
-       xlab="Salinity (psu)", ylab="Suitability Index (light)")
+       xlab="Salinity (psu)", ylab="Suitability Index (salinity)")
   abline(h=seq(0,1,0.1), lty=3)
   points(NYBEM.est.sub.soft.clam$salinity.clam, NYBEM.est.sub.soft.clam$salinity.clam.SIV, pch=19, cex=2)
   lines(NYBEM.est.sub.soft.clam$salinity.clam, NYBEM.est.sub.soft.clam$salinity.clam.SIV, lwd=3)
   
   #substrate.clam
-  plot(NYBEM.est.sub.soft.clam$substrate.clam.sand, NYBEM.est.sub.soft.clam$substrate.clam.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
-       xlab="Sand Composition (%sand)", ylab="Suitability Index (substrate.sav)")
+  plot(NYBEM.est.sub.soft.clam$substrate.clam.fines, NYBEM.est.sub.soft.clam$substrate.clam.SIV, xlim=c(0,100), ylim=c(0,1), type="l",
+       xlab="Fine Sediment Composition (%fines)", ylab="Suitability Index (substrate.sav)")
   abline(h=seq(0,1,0.1), lty=3)
-  points(NYBEM.est.sub.soft.clam$substrate.clam.sand, NYBEM.est.sub.soft.clam$substrate.clam.SIV, pch=19, cex=2)
-  lines(NYBEM.est.sub.soft.clam$substrate.clam.sand, NYBEM.est.sub.soft.clam$substrate.clam.SIV, lwd=3)
-  
+  points(NYBEM.est.sub.soft.clam$substrate.clam.fines, NYBEM.est.sub.soft.clam$substrate.clam.SIV, pch=19, cex=2)
+  lines(NYBEM.est.sub.soft.clam$substrate.clam.fines, NYBEM.est.sub.soft.clam$substrate.clam.SIV, lwd=3)
 
   #Isav
   plot(NYBEM.est.sub.soft.clam$Isav, NYBEM.est.sub.soft.clam$Isav.SIV, xlim=c(0,1), ylim=c(0,1), type="l",
@@ -274,16 +273,16 @@ $$salinity.clam = \begin{pmatrix} 0.0 & MAS=0-12\\
 
 Where $salinity.clam$ is a suitability index relative to salinity and $MAS$ is mean annual salinity.
 
-Similar to seagrass and oysters, substrate is a critical parameter for hard clam viability. Optimal substrate is shelly soft bottom. As the substrate composition increases in sand and/or mud, the substrate is less suitable for clams. Suitability scores for clam substrate are quantified as follows:
+Similar to seagrass and oysters, substrate is a critical parameter for hard clam viability. Optimal substrate is shelly soft bottom. As the substrate composition increases in fine sediment composition, the substrate becomes less suitable for clams. Suitability scores for clam substrate are quantified as follows:
 
-$$substrate.clam = \begin{pmatrix} 0.0083*sand_{per} & sand_{per}=0-30\\
-0.0125*sand_{per}-0.13 & sand_{per}=30-70\\
-0.0083*sand_{per}+0.17 & sand_{per}=70-100
+$$substrate.clam = \begin{pmatrix} 0.0050*fines_{per}+1.00 & fines_{per}=0-50\\
+-0.0125*fines_{per}+1.38 & fines_{per}=50-90\\
+-0.0250*fines_{per}+2.50 & fines_{per}=90-100
 \end{pmatrix}$$ 
 
-Where $substrate.clam$ is a suitability index relative to fine substrate and $sav.prob$ is sand composition of the substrate (%sand).
+Where $substrate.clam$ is a suitability index relative to fine substrate and $fines_{per}$ is fine sediment composition of the substrate (%fines).
 
-Optimal habitat for hard clams is sandy bottom without seagrass. As seagrass coverage increases, the suitability for clams decreases. As a proxy for seagrass coverage, we use the index of seagrass suitability ($I_{clam}$). The relationship between seagrass suitability and hard clam suitability is formulated as follows:
+Optimal habitat for hard clams is sandy bottom without seagrass. As seagrass coverage increases, the suitability for clams decreases. Given a lack of comprehensive seagrass mapping in the region and an ability to forecast through time, we use the seagrass habitat suitability as a proxy ($I_{SAV}$). The relationship between seagrass suitability and hard clam suitability is formulated as follows:
 
 $$sav.prob = \begin{pmatrix} 1.0 & I_{sav}=0-0.2\\
 -1.667*I_{sav}+1.33 & I_{sav}=0.2-0.8\\
@@ -294,7 +293,7 @@ Where $sav.prob$ is an overarching index of ecosystem quality relative to submer
 
 #### Potential extension of estuarine, subtidal model
 
-As described, the estuarine subtidal ecosystem is a complex environment with multiple ecological outcomes of interest. Any model represents a simplifying set of assumptions, and future modeling could be extended in multiple ways.  
+As described, the estuarine subtidal ecosystem is a complex environment with multiple ecological outcomes of interest. Any model represents a simplifying set of assumptions, and future modeling could be extended in multiple ways. This submodel makes extensive use of indicator species (i.e., oyster, clam, seagrass), and the use of those taxa and alignment with management objectives should be examined.  
 
 Th hard bottom model relies on an oyster habitat suitability model, although mean salinity during spawning season was omitted from the NYBEM formulation. This process reflects the higher optimal salinities required for spawning and larval stages (@butler_summary_1954,@cake_habitat_1983) and is an important part of the OHSIM framework, which could be expanded with a more temporally distributed view of processes within NYBEM.  
 
