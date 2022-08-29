@@ -291,7 +291,7 @@ $$sav.prob = \begin{pmatrix} 1.0 & I_{sav}=0-0.2\\
 
 Where $sav.prob$ is an overarching index of ecosystem quality relative to submerged aquatic vegetation coverage and $I_{clam}$ is an overarching index of ecosystem quality relative to submerged aquatic vegetation coverage.
 
-#### Potential extension of estuarine, subtidal model
+### Potential extension of estuarine, subtidal model
 
 As described, the estuarine subtidal ecosystem is a complex environment with multiple ecological outcomes of interest. Any model represents a simplifying set of assumptions, and future modeling could be extended in multiple ways. This submodel makes extensive use of indicator species (i.e., oyster, clam, seagrass), and the use of those taxa and alignment with management objectives should be examined.  
 

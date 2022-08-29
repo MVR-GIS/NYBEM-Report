@@ -1,4 +1,4 @@
-# Conceptualization
+# Conceptualization 
 
 The foundation of ecological modeling is a clear conceptualization of the ecosystem and an approach for translating the conceptual model into a numerical representation. This chapter describes an overarching conceptual model for the ecosystems of the New York Bight. A strategy is then presented for assessing these ecosystems relative to a habitat-style modeling approach, where the quantity and quality of each ecosystem type are computed separately and combined into an index of ecosystem integrity (i.e., a "habitat unit"). 
 
