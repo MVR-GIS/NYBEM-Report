@@ -10,9 +10,11 @@ output:
     df_print: paged
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [Draftbooksubmodel.bib, packages.bib]
+bibliography:
+- Draftbooksubmodel.bib
+- packages.bib
 biblio-style: apalike
-link-citations: yes
+link-citations: no
 description: The U.S. Army Corps of Engineers (USACE) is conducting three large-scale coastal storm risk management feasibility studies in the New York Bight ecosystem. This report documents the development of this tool, including information on model scoping, the development process, conceptualization, quantification, and evaluation.
 github-repo: MVR-GIS/NYBEM-Report
 ---
