@@ -376,5 +376,3 @@ It seems like it would be a pretty complex thing to figure out the percent of th
 - _Author Response_: **Concur**. Text and figures were aligned.
 
 
-# References {-}
-
