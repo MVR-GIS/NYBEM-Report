@@ -1,4 +1,4 @@
-#  Future Model Development
+# Future Model Development
 
 This report has presented the development and application of the New York Bight Ecological Model (NYBEM, “nigh-bem”). The models currently apply an index-based modeling framework (i.e., a habitat-suitability-style, quantity-quality approach) to assess patch-scale effects for six ecosystem types (e.g., estuarine intertidal zones). This report documents technical details, use, and relevant information for USACE model certification (EC 1105-2-412, PB 2013-02). In all applications, models represent incomplete abstractions of reality, and opportunities exist for future development of this toolkit. Specifically, the following items were identified as important topics for potential expansion:
 
