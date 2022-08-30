@@ -120,7 +120,8 @@ The third verification analysis examines the overall predictions of NYBEM at lar
 ## Results
 
 
-NYBEM model verification was conducted separately for each sub-model. The following sections summarize verification analyses and discuss the efficacy of the NYBEM as indicated by these outcomes.
+NYBEM model verification was conducted separately for each sub-model. The following sections summarize verification analyses and discuss the efficacy of the NYBEM as indicated by these outcomes. **Notably, model results currently represent an April 2022 version of NYBEM. All modeled outcomes will be updated to reflect this document in September 2022.**
+
 
 ### Freshwater Tidal Model
 

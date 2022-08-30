@@ -55,6 +55,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -270,7 +334,7 @@ div.csl-indent {
 <h3><span class="header-section-number">B.1.3</span> Parameter Forecasting<a href="model-verification.html#parameter-forecasting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>These data sets each represent trade-offs deemed acceptable for this application of the NYBEM. However, different applications could compel use of other data sources. For instance, the NYBEM spatial scale required heavy reliance on regional and national data sets. However, more local applications (e.g., a single bay) could have access to higher resolution data (e.g., locally mapped substrate or shoreline armoring). Data quality and resolution are a common challenge in large scale modeling, and future applications could consider alternative approaches. For this analysis, all data sets were rasterized at the 10m resolution and aligned based on the AdH hydrodynamic data. Table B.1 summarizes all data compilation sources and pre-processing steps. Models were then applied as described in Chapter 4 of this manual.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-1">Table B.1: </span>Table B.1. Summary of data compilation, pre-processing, and forecasting assumptions. Use in NYBEM indicates the module or function as follows: zone mapping (zone), freshwater tidal (fre.tid), estuarine intertidal (est.int), estuarine subtidal (est.sub), marine intertidal (mar.int), marine subtidal (mar.sub), and marine deepwater (mar.deep)</caption>
+<caption><span id="tab:unnamed-chunk-35">Table B.1: </span>Table B.1. Summary of data compilation, pre-processing, and forecasting assumptions. Use in NYBEM indicates the module or function as follows: zone mapping (zone), freshwater tidal (fre.tid), estuarine intertidal (est.int), estuarine subtidal (est.sub), marine intertidal (mar.int), marine subtidal (mar.sub), and marine deepwater (mar.deep)</caption>
 <colgroup>
 <col width="28%" />
 <col width="17%" />
@@ -415,7 +479,7 @@ div.csl-indent {
 <p>NYBEM contains seven sub-models addressing different habitat types (Chapter 4). Four sub-models were verified against independent data sets, specifically: freshwater tidal, estuarine intertidal, estuarine subtidal - hard bottom, and estuarine subtidal - soft bottom. The marine models were not verified due to a lack of a single direct empirical analog data set (e.g., a wetland map), although these models will be verified in the future against multiple data sets (e.g., species distribution observations, water quality metrics).</p>
 <p>For each sub-model in the analysis, appropriate verification data sets were identified (Table B.2). Specifically, the New Jersey 2012 land use codes (<a href="https://www.nj.gov/dep/gis/digidownload/metadata/lulc12/codelist2012.html">fields</a>, <a href="https://www.nj.gov/dep/gis/digidownload/metadata/lulc12/anderson2012.html">description</a>) and the National Wetland Inventory(<a href="https://www.fws.gov/sites/default/files/documents/wetlands-and-deepwater-map-code-diagram.pdf">fields</a>) served as the primary verification sources. Key attributes or properties of these data sets were extracted for the analysis. All data were aligned with the NYBEM raster mask described above for direct comparison between NYBEM outputs and verification data.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-2">Table B.2: </span>Table B.2. Summary of verification data used with each NYBEM sub-model</caption>
+<caption><span id="tab:unnamed-chunk-36">Table B.2: </span>Table B.2. Summary of verification data used with each NYBEM sub-model</caption>
 <colgroup>
 <col width="30%" />
 <col width="14%" />
@@ -482,54 +546,96 @@ div.csl-indent {
 </div>
 <div id="results" class="section level2 hasAnchor" number="9.3">
 <h2><span class="header-section-number">B.3</span> Results<a href="model-verification.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>NYBEM model verification was conducted separately for each sub-model. The following sections summarize verification analyses and discuss the efficacy of the NYBEM as indicated by these outcomes.</p>
+<p>NYBEM model verification was conducted separately for each sub-model. The following sections summarize verification analyses and discuss the efficacy of the NYBEM as indicated by these outcomes. <strong>Notably, model results currently represent an April 2022 version of NYBEM. All modeled outcomes will be updated to reflect this document in September 2022.</strong></p>
 <div id="freshwater-tidal-model" class="section level3 hasAnchor" number="9.3.1">
 <h3><span class="header-section-number">B.3.1</span> Freshwater Tidal Model<a href="model-verification.html#freshwater-tidal-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The freshwater tidal sub-model was verified against the State of New Jersey’s land use classes and the National Wetland Inventory. Table B.3 presents results of the efficacy of model classification for the New Jersey Back Bays system. <strong>These analyses indicate…</strong></p>
 <table>
-<caption><span id="tab:unnamed-chunk-3">Table B.3: </span>NYBEM classification efficacy summarized via a confusion matrix.</caption>
+<caption>
+<span id="tab:unnamed-chunk-37">Table B.3: </span>NYBEM classification efficacy summarized via a confusion matrix.
+</caption>
 <thead>
-<tr class="header">
-<th align="center">Data</th>
-<th align="center">TruePositive</th>
-<th align="center">FalsePositive</th>
-<th align="center">FalseNegative</th>
-<th align="center">TrueNegative</th>
+<tr>
+<th style="text-align:center;">
+Data
+</th>
+<th style="text-align:center;">
+TruePositive
+</th>
+<th style="text-align:center;">
+FalsePositive
+</th>
+<th style="text-align:center;">
+FalseNegative
+</th>
+<th style="text-align:center;">
+TrueNegative
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="center">NJ</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0.0000000</td>
-<td align="center">1.0000000</td>
+<tr>
+<td style="text-align:center;">
+NJ
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+<td style="text-align:center;">
+1.0000000
+</td>
 </tr>
-<tr class="even">
-<td align="center">NWI</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0.0000000</td>
-<td align="center">1.0000000</td>
+<tr>
+<td style="text-align:center;">
+NWI
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+<td style="text-align:center;">
+1.0000000
+</td>
 </tr>
-<tr class="odd">
-<td align="center">NWI.Emergent</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0.0969951</td>
-<td align="center">0.9030049</td>
+<tr>
+<td style="text-align:center;">
+NWI.Emergent
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.0969951
+</td>
+<td style="text-align:center;">
+0.9030049
+</td>
 </tr>
 </tbody>
 </table>
 <p>The freshwater tidal habitat suitability index was examined relative to the presence and absence of the New Jersey wetland data set (Figure B.1). This analysis indicates that NYBEM strongly differentiates habitat quality in patches with and without existing wetlands. Specifically, the mean HSI value for patches with existing wetlands is 0.505 with an interquartile range (IQR) of 0.501-0.553, whereas the mean HSI value for patches without existing wetlands is 0.266 with an interquartile range (IQR) of 0.203-0.240.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-38"></span>
 <img src="ZZ_Fig04.01_NYBEM.Architecture.png" alt="NYBEM fresh.tid verification relative to the presence and absence of observed wetland habitats." width="924" />
 <p class="caption">
 Figure B.1: NYBEM fresh.tid verification relative to the presence and absence of observed wetland habitats.
 </p>
 </div>
 <p>The final verification analysis examines the aggregate predictions of habitat extent across large-scales. Specifically, the extent of habitat predicted by NYBEM relative to observed habitat on an inlet-by-inlet basis. Figure B.2A shows NYBEM predictions of habitat area only, which over-predicts habitat extent as anticipated. Figure B.2B shows habitat quantity and quality via the combined habitat unit, which produces high predictive accuracy. Notably, all areas are converted to acres for consistency with standard presentation of habitat units. <strong>Based on the three analyses presented, the NYBEM’s outcomes are deemed useful for…</strong></p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-39"></span>
 <img src="ZZ_Fig04.01_NYBEM.Architecture.png" alt="NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets." width="924" />
 <p class="caption">
 Figure B.2: NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets.
@@ -615,6 +721,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
