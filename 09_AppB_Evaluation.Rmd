@@ -132,11 +132,11 @@ The freshwater tidal sub-model was verified against the State of New Jersey's la
 load("confusion.Rdata")
 
 #Isolate the freshwater tidal rows
-TableB3 <- confusion[1:3,2:6]
-rownames(TableB3) <- NULL
+#TableB3 <- confusion[1:3,2:6]
+#rownames(TableB3) <- NULL
 
 #Send output table rows into a single matrix
-knitr::kable(TableB3, caption="NYBEM classification efficacy summarized via a confusion matrix.", align="c") 
+#knitr::kable(TableB3, caption="NYBEM classification efficacy summarized via a confusion matrix.", align="c") 
 ```
 
 
@@ -157,11 +157,29 @@ knitr::include_graphics("ZZ_Fig04.01_NYBEM.Architecture.png")
 
 ### Estuarine Intertidal Model
 
-Note about the input data sets. Presence-absence data and confusion analysis (Table B.4).
+The estuatine intertidal sub-model was verified against the State of New Jersey's land use classes and the National Wetland Inventory. Table B.3 presents results of the efficacy of model classification for the New Jersey Back Bays system. **These analyses indicate...**
 
-Suitability analysis and boxplot / violin plot (Figure B.3).
+```{r, echo=FALSE}
+#Isolate the estuarine intertidal rows
+#TableB3 <- confusion[1:3,2:6]
+#rownames(TableB4) <- NULL
 
-Bulk prediction across inlets (Figure B.4).
+#Send output table rows into a single matrix
+#knitr::kable(TableB4, caption="NYBEM classification efficacy for the est.int submodel summarized via a confusion matrix.", align="c") 
+```
+
+The freshwater tidal habitat suitability index was examined relative to the presence and absence of the New Jersey wetland data set (Figure B.3). This analysis indicates that NYBEM strongly differentiates habitat quality in patches with and without existing wetlands. Specifically, the mean HSI value for patches with existing wetlands is 0.505 with an interquartile range (IQR) of 0.501-0.553, whereas the mean HSI value for patches without existing wetlands is 0.266 with an interquartile range (IQR) of 0.203-0.240. 
+
+```{r, echo=FALSE, fig.cap="NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets."}
+knitr::include_graphics("ZZ_FigB03_est.int.boxplot.jpeg")
+```
+
+The final verification analysis examines the aggregate predictions of habitat extent across large-scales. Specifically, the extent of habitat predicted by NYBEM relative to observed habitat on an inlet-by-inlet basis. Figure B.4A shows NYBEM predictions of habitat area only, which over-predicts habitat extent as anticipated. Figure B.4B shows habitat quantity and quality via the combined habitat unit, which produces high predictive accuracy. Notably, all areas are converted to acres for consistency with standard presentation of habitat units. **Based on the three analyses presented, the NYBEM's outcomes are deemed useful for...**
+
+
+```{r, echo=FALSE, fig.cap="NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets."}
+knitr::include_graphics("ZZ_FigB04_est.int.ByInlet.jpeg")
+```
 
 
 ### Estuarine Subtidal Model

@@ -159,7 +159,7 @@ div.csl-indent {
 <li><a href="./">New York Bight Ecological Model</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#front-matter">Front Matter<span></span></a>
+<li><a href="index.html#preface">Preface<span></span></a>
 <ul>
 <li><a href="index.html#abstract">Abstract<span></span></a></li>
 <li><a href="index.html#acknowledgements">Acknowledgements<span></span></a></li>
@@ -550,83 +550,6 @@ div.csl-indent {
 <div id="freshwater-tidal-model" class="section level3 hasAnchor" number="9.3.1">
 <h3><span class="header-section-number">B.3.1</span> Freshwater Tidal Model<a href="model-verification.html#freshwater-tidal-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The freshwater tidal sub-model was verified against the State of New Jersey’s land use classes and the National Wetland Inventory. Table B.3 presents results of the efficacy of model classification for the New Jersey Back Bays system. <strong>These analyses indicate…</strong></p>
-<table>
-<caption>
-<span id="tab:unnamed-chunk-37">Table B.3: </span>NYBEM classification efficacy summarized via a confusion matrix.
-</caption>
-<thead>
-<tr>
-<th style="text-align:center;">
-Data
-</th>
-<th style="text-align:center;">
-TruePositive
-</th>
-<th style="text-align:center;">
-FalsePositive
-</th>
-<th style="text-align:center;">
-FalseNegative
-</th>
-<th style="text-align:center;">
-TrueNegative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-NJ
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.0000000
-</td>
-<td style="text-align:center;">
-1.0000000
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-NWI
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.0000000
-</td>
-<td style="text-align:center;">
-1.0000000
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-NWI.Emergent
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.0969951
-</td>
-<td style="text-align:center;">
-0.9030049
-</td>
-</tr>
-</tbody>
-</table>
 <p>The freshwater tidal habitat suitability index was examined relative to the presence and absence of the New Jersey wetland data set (Figure B.1). This analysis indicates that NYBEM strongly differentiates habitat quality in patches with and without existing wetlands. Specifically, the mean HSI value for patches with existing wetlands is 0.505 with an interquartile range (IQR) of 0.501-0.553, whereas the mean HSI value for patches without existing wetlands is 0.266 with an interquartile range (IQR) of 0.203-0.240.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-38"></span>
 <img src="ZZ_Fig04.01_NYBEM.Architecture.png" alt="NYBEM fresh.tid verification relative to the presence and absence of observed wetland habitats." width="924" />
@@ -644,9 +567,21 @@ Figure B.2: NYBEM fresh.tid verification relative to the extent of habitat predi
 </div>
 <div id="estuarine-intertidal-model" class="section level3 hasAnchor" number="9.3.2">
 <h3><span class="header-section-number">B.3.2</span> Estuarine Intertidal Model<a href="model-verification.html#estuarine-intertidal-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Note about the input data sets. Presence-absence data and confusion analysis (Table B.4).</p>
-<p>Suitability analysis and boxplot / violin plot (Figure B.3).</p>
-<p>Bulk prediction across inlets (Figure B.4).</p>
+<p>The estuatine intertidal sub-model was verified against the State of New Jersey’s land use classes and the National Wetland Inventory. Table B.3 presents results of the efficacy of model classification for the New Jersey Back Bays system. <strong>These analyses indicate…</strong></p>
+<p>The freshwater tidal habitat suitability index was examined relative to the presence and absence of the New Jersey wetland data set (Figure B.3). This analysis indicates that NYBEM strongly differentiates habitat quality in patches with and without existing wetlands. Specifically, the mean HSI value for patches with existing wetlands is 0.505 with an interquartile range (IQR) of 0.501-0.553, whereas the mean HSI value for patches without existing wetlands is 0.266 with an interquartile range (IQR) of 0.203-0.240.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-41"></span>
+<img src="ZZ_FigB03_est.int.boxplot.jpeg" alt="NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets." width="2400" />
+<p class="caption">
+Figure B.3: NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets.
+</p>
+</div>
+<p>The final verification analysis examines the aggregate predictions of habitat extent across large-scales. Specifically, the extent of habitat predicted by NYBEM relative to observed habitat on an inlet-by-inlet basis. Figure B.4A shows NYBEM predictions of habitat area only, which over-predicts habitat extent as anticipated. Figure B.4B shows habitat quantity and quality via the combined habitat unit, which produces high predictive accuracy. Notably, all areas are converted to acres for consistency with standard presentation of habitat units. <strong>Based on the three analyses presented, the NYBEM’s outcomes are deemed useful for…</strong></p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
+<img src="ZZ_FigB04_est.int.ByInlet.jpeg" alt="NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets." width="3200" />
+<p class="caption">
+Figure B.4: NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets.
+</p>
+</div>
 </div>
 <div id="estuarine-subtidal-model" class="section level3 hasAnchor" number="9.3.3">
 <h3><span class="header-section-number">B.3.3</span> Estuarine Subtidal Model<a href="model-verification.html#estuarine-subtidal-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
