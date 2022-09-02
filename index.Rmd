@@ -1,8 +1,8 @@
 --- 
-title: "New York Bight Ecological Model (NYBEM)"
+title: "New York Bight Ecological Model (NYBEM), Version 1.0.0"
 author: S. Kyle McKay, Vanessa Mahan, Michael P. Dougherty, Todd M. Swannack, Candice
   Hall, Christina L. Saltus, Molly K. Reif, Steve Allen
-date: "August 2022"
+date: "September 2022"
 output: bookdown::gitbook
 site: bookdown::bookdown_site
 documentclass: book
@@ -23,7 +23,7 @@ Phone: 970-980-9747
 Environmental Laboratory  
 New York, NY 10278
 
-<span style="color: red;">DRAFT FOR MODEL CERTIFICATION AND HATS AGENCY REVIEW</span>
+<span style="color: red;">DRAFT REPORT UNDERGOING REVIEW AND USACE CERTIFICATION</span>
 
 ## Abstract {-}
 
