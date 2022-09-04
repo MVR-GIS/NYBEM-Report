@@ -476,14 +476,14 @@ div.csl-indent {
 </div>
 <div id="methods" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">B.2</span> Methods<a href="model-verification.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>NYBEM contains seven sub-models addressing different habitat types (Chapter 4). Four sub-models were verified against independent data sets, specifically: freshwater tidal, estuarine intertidal, estuarine subtidal - hard bottom, and estuarine subtidal - soft bottom. The marine models were not verified due to a lack of a single direct empirical analog data set (e.g., a wetland map), although these models will be verified in the future against multiple data sets (e.g., species distribution observations, water quality metrics).</p>
-<p>For each sub-model in the analysis, appropriate verification data sets were identified (Table B.2). Specifically, the New Jersey 2012 land use codes (<a href="https://www.nj.gov/dep/gis/digidownload/metadata/lulc12/codelist2012.html">fields</a>, <a href="https://www.nj.gov/dep/gis/digidownload/metadata/lulc12/anderson2012.html">description</a>) and the National Wetland Inventory(<a href="https://www.fws.gov/sites/default/files/documents/wetlands-and-deepwater-map-code-diagram.pdf">fields</a>) served as the primary verification sources. Key attributes or properties of these data sets were extracted for the analysis. All data were aligned with the NYBEM raster mask described above for direct comparison between NYBEM outputs and verification data.</p>
+<p>NYBEM contains seven sub-models addressing different habitat types (Chapter 4). Three sub-models were verified against independent data sets, specifically: freshwater tidal, estuarine intertidal, and estuarine subtidal. The marine models were not verified due to a lack of a single direct empirical analog data set (e.g., a wetland map), although these models will be verified in the future against multiple data sets (e.g., species distribution observations, water quality metrics).</p>
+<p>For each sub-model in the analysis, verification data sets were identified (Table B.2). Specifically, the New Jersey 2012 land use codes (<a href="https://www.nj.gov/dep/gis/digidownload/metadata/lulc12/codelist2012.html">fields</a>, <a href="https://www.nj.gov/dep/gis/digidownload/metadata/lulc12/anderson2012.html">description</a>) and the National Wetland Inventory(<a href="https://www.fws.gov/sites/default/files/documents/wetlands-and-deepwater-map-code-diagram.pdf">fields</a>) served as the primary verification sources. Key attributes or properties of these data sets were extracted for the analysis. All data were aligned with the NYBEM raster mask described above for direct comparison between NYBEM outputs and verification data.</p>
 <table>
 <caption><span id="tab:unnamed-chunk-36">Table B.2: </span>Table B.2. Summary of verification data used with each NYBEM sub-model</caption>
 <colgroup>
-<col width="36%" />
-<col width="16%" />
-<col width="46%" />
+<col width="29%" />
+<col width="26%" />
+<col width="43%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -509,24 +509,14 @@ div.csl-indent {
 <td align="center">All estuarine, intertidal systems (E2)</td>
 </tr>
 <tr class="even">
-<td align="center">Estuarine Subtidal - Hard Bottom (est.sub.hard)</td>
+<td align="center">Estuarine Subtidal (est.sub)</td>
 <td align="center">National Wetland Inventory</td>
-<td align="center">Estuarine, subtidal, rock bottom (E1RB) and estuarine, subtidal reef (E1RF)</td>
-</tr>
-<tr class="odd">
-<td align="center">Estuarine Subtidal - Soft Bottom - SAV (est.sub.soft.SAV)</td>
-<td align="center">National Wetland Inventory</td>
-<td align="center">Estuarine, subtidal, aquatic bed (E1AB)</td>
-</tr>
-<tr class="even">
-<td align="center">Estuarine Subtidal - Soft Bottom - clam (est.sub.soft.clam)</td>
-<td align="center">National Wetland Inventory</td>
-<td align="center">Estuarine, subtidal, unconsolidated bed (E1UB)</td>
+<td align="center">Estuarine, subtidal (E1)</td>
 </tr>
 </tbody>
 </table>
-<p>Three families of analyses were undertaken for each sub-model and verification data set. First, observed habitats were translate into presence and absence outcomes for every grid cell in the NJBB domain (i.e., 1 and 0, respectively). Modeled habitat zones were also translate into presence-absence data for comparison. These data were used to verify the efficacy of NYBEM’s classification methods. For instance, was a given patch correctly or incorrectly categorized as a freshwater tidal ecosystem in the NYBEM relative to a mapped wetland layer? Model results were collected using confusion matrices, which summarize outcomes relative to true positive, false positive, false negative, and true negative classifications. These summary metrics are provided for the entire NJBB domain for each data set. Notably, NYBEM’s habitat zonation algorithm would be expected to over-predict the extent of a given habitat type because only salinity and tidal limits are considered without consideration of other suitability factors reducing errors; therefore, a high rate of false positives would be anticipated.</p>
-<p>The second family of verification analyses focused on NYBEM’s habitat suitability predictions. For every patch in a given NYBEM habitat type (e.g., fresh.tid), the overall habitat suitability index (a continuous 0-1 score) was examined relative to presence-absence outcomes from the verification data set. For instance, what was the habitat suitability for all freshwater wetland patches in the verification data set? Ideally, NYBEM would predict high suitability for cells with existing wetlands and low suitability for cells without existing wetlands. Data are summarized for all cells in the NJBB domain with boxplots.</p>
+<p>Three families of preliminary analyses were undertaken for each sub-model and verification data set. First, observed habitats were translate into presence and absence outcomes for every grid cell in the NJBB domain (i.e., 1 and 0, respectively). Modeled habitat zones were also translate into presence-absence data for comparison. These data were used to verify the efficacy of NYBEM’s classification methods. For instance, was a given patch correctly or incorrectly categorized as a freshwater tidal ecosystem in the NYBEM relative to a mapped wetland layer? Model results were collected using confusion matrices, which summarize outcomes relative to true positive, false positive, false negative, and true negative classifications. These summary metrics are provided for the entire NJBB domain for each data set.</p>
+<p>The second family of verification analyses focused on NYBEM’s habitat suitability predictions. For every patch in a given NYBEM habitat type (e.g., fresh.tid), the overall habitat suitability index (a continuous 0-1 score) was examined relative to presence-absence outcomes from the verification data set. For instance, what was the habitat suitability for all freshwater wetland patches in the verification data set? Ideally, NYBEM would predict high suitability for cells with existing wetlands and low suitability for cells without existing wetlands. Data are summarized for all cells in the NJBB domain with violin diagrams showing the distribution of HSI outcomes relative to presence-absence observations.</p>
 <p>The third verification analysis examines the overall predictions of NYBEM at large-scales. The total extent of habitat predicted by NYBEM was summarize in both acreage and habitat units (acreage * habitat suitability) for each of the eleven inlets in the NJBB domain. Ideally, NYBEM would predict the same order-of-magnitude of habitat as observed in each inlet. Data are summarized in plots of observed and modeled estimates of acreage and habitat units. Again, the NYBEM’s habitat zonation would be expected to over-predict habitat extent, although the predictions should be closer to observations for the habitat units.</p>
 </div>
 <div id="results" class="section level2 hasAnchor" number="9.3">
@@ -535,7 +525,7 @@ div.csl-indent {
 <div id="freshwater-tidal-model" class="section level3 hasAnchor" number="9.3.1">
 <h3><span class="header-section-number">B.3.1</span> Freshwater Tidal Model<a href="model-verification.html#freshwater-tidal-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The freshwater tidal sub-model was verified against National Wetland Inventory data, specifically the the riverine tidal class (code: R1). Presence-absence outcomes for each cell in the NJBB domain were used to assess the relative rate of classification error. True positive, false positive, false negative, and true negative rates were 0.0%, 9.70%, 0.01%, and 90.29%, respectively. These analyses indicate high rates of false positivity and dramatic overprediction of the extent of freshwater tidal habitat.</p>
-<p>The freshwater tidal habitat suitability index was examined relative to the presence and absence of the New Jersey wetland data set (Figure B.1). This analysis indicates that NYBEM weakly differentiates habitat quality in patches with and without existing wetlands. Specifically, the mean HSI value for patches with existing wetlands is 0.040 (n=1,555), whereas the mean HSI value for patches without existing wetlands is 0.042 (n=11,705,193).</p>
+<p>The freshwater tidal habitat suitability index was examined relative to the presence and absence of National Wetland Inventory data (Figure B.1). This analysis indicates that NYBEM weakly differentiates habitat quality in patches with and without existing wetlands. Specifically, the mean HSI value for patches with existing wetlands is 0.040 (n=1,555), whereas the mean HSI value for patches without existing wetlands is 0.042 (n=11,705,193).</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
 <img src="ZZ_FigB01_freshwater.violin.jpeg" alt="NYBEM fresh.tid verification relative HSI outcomes in observed NWI patches." width="1200" />
 <p class="caption">
@@ -561,25 +551,40 @@ Figure B.2: NYBEM fresh.tid verification relative to the extent of habitat predi
 Figure B.3: NYBEM fresh.tid verification relative HSI outcomes in observed NJ and NWI patches.
 </p>
 </div>
-<p>The aggregate predictions of estuarine intertidal ecosystems across inlets also indicates high model utility (Figure B.4). Total extent of the ecosystem generally aligns well with observed mapping with a bias toward under-prediction (Figures B.4A and B.4C), although some data points deviate significantly (e.g., NYBEM estimates at Barnegat Inlet are lower than NWI observations). NYBEM habitat quality estimates are systematically biased toward under-prediction of wetlands in both the NJ and NWI data (Figures B.4A and B.4C). Notably, the mapped wetlands are not intending to assess quality of given patches. The NYBEM predictions also demonstrate utility in distinguishing the relative amounts of this ecosystem type across inlets, which would indicate strong utility for assessing relative comparisons with the model (e.g., without and with project conditions).</p>
+<p>The aggregate predictions of estuarine intertidal ecosystems across inlets also indicates high model utility (Figure B.4). Total extent of the ecosystem generally aligns well with observed mapping with a bias toward under-prediction (Figures B.4A and B.4C), although some data points deviate significantly (e.g., NYBEM estimates at Barnegat Inlet are lower than NWI observations). NYBEM habitat quality estimates are systematically biased toward under-prediction of wetlands in both the NJ and NWI data (Figures B.4B and B.4D). Notably, the mapped wetlands are not intending to assess quality of given patches. The NYBEM predictions also demonstrate utility in distinguishing the relative amounts of this ecosystem type across inlets, which would indicate strong utility for assessing relative comparisons with the model (e.g., without and with project conditions).</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-40"></span>
-<img src="ZZ_FigB04_est.int.ByInlet.jpeg" alt="NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets." width="2400" />
+<img src="ZZ_FigB04_est.int.ByInlet.jpeg" alt="NYBEM est.int verification relative to the extent of habitat predicted across eleven inlets." width="2400" />
 <p class="caption">
-Figure B.4: NYBEM fresh.tid verification relative to the extent of habitat predicted across eleven inlets.
+Figure B.4: NYBEM est.int verification relative to the extent of habitat predicted across eleven inlets.
 </p>
 </div>
 <p>Based on these outcomes, the est.int model reasonably predicts ecosystem extent relative to both binary (i.e., presence-absence) and continuous (i.e., HSI) outcomes. As such, the model could provide a useful framework for estimating a general range of numerical estimates of habitat quantity and quality, and the spread of estimates across inlets indicates high utility for relative comparison between actions at large scales.</p>
 </div>
 <div id="estuarine-subtidal-model" class="section level3 hasAnchor" number="9.3.3">
 <h3><span class="header-section-number">B.3.3</span> Estuarine Subtidal Model<a href="model-verification.html#estuarine-subtidal-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Note about the input data sets. Presence-absence data and confusion analysis.</p>
-<p>Suitability analysis and boxplot / violin plot (Figure B.5).</p>
-<p>Bulk prediction across inlets (Figure B.6).</p>
+<p>The estuarine subtidal sub-model was verified against the National Wetland Inventory (code: E1). Presence-absence outcomes for each cell in the NJBB domain were used to assess the relative rate of classification error. For the National Wetland Inventory, true positive, false positive, false negative, and true negative rates were 39.57%, 6.05%, 11.15%, and 43.23%, respectively. These analyses indicate high rates of correct classification (i.e., &gt;82%) and low rates of misclassification (i.e., &lt;18%).</p>
+<p>The estuarine subtidal habitat suitability index was examined relative to the presence and absence of the NWI data sets (Figure B.5). This analysis indicates that NYBEM strongly differentiates habitat quality in patches with and without existing wetlands. Specifically, the mean HSI value for NWI wetlands is 0.630 (n=5,937,692), whereas the mean HSI value for patches without existing wetlands is 0.108 (n=5,769,056). Figure B.5 also visualizes the misclassification rates discussed above, where false positives appear in the absence data with high HSI (&gt;0.70) and false negatives appear in the presence data with low HSI (~0.0).</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-41"></span>
+<img src="ZZ_FigB05_est.sub.violin.jpeg" alt="NYBEM est.sub verification relative HSI outcomes in observed NWI patches." width="1200" />
+<p class="caption">
+Figure B.5: NYBEM est.sub verification relative HSI outcomes in observed NWI patches.
+</p>
+</div>
+<p>The aggregate predictions of estuarine subtidal ecosystems across inlets also indicates high model utility (Figure B.6). Total extent of the ecosystem generally aligns well with observed mapping with a bias toward under-prediction (Figure B.6A). NYBEM habitat quality estimates are systematically biased toward under-prediction of wetlands in the NWI data (Figure B.6B). Notably, the mapped NWI wetlands are not intending to assess quality of given patches. The NYBEM predictions also demonstrate utility in distinguishing the relative amounts of this ecosystem type across inlets, which would indicate strong utility for assessing relative comparisons with the model (e.g., without and with project conditions).</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
+<img src="ZZ_FigB06_est.sub.ByInlet.jpeg" alt="NYBEM est.sub verification relative to the extent of habitat predicted across eleven inlets." width="2400" />
+<p class="caption">
+Figure B.6: NYBEM est.sub verification relative to the extent of habitat predicted across eleven inlets.
+</p>
+</div>
+<p>Based on these outcomes, the est.sub model reasonably predicts ecosystem extent relative to both binary (i.e., presence-absence) and continuous (i.e., HSI) outcomes. As such, the model could provide a useful framework for estimating a general range of numerical estimates of habitat quantity and quality, and the spread of estimates across inlets indicates high utility for relative comparison between actions at large scales.</p>
 </div>
 </div>
 <div id="summary" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">B.4</span> Summary<a href="model-verification.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Insert notes on the utility of the NYBEM relative to verification analysis. Note that these analyses provide a blunt view of verification and future analyses will include more nuanced methods such as spatial auto-correlation.</p>
+<p>The preliminary verification presented here generally lends confidence to the use of NYBEM for relative prediction at large spatial scales. More specifically, the analyses show similar ranges of modeled and observed acreages for the est.int and est.sub models. However, the freshwater tidal model dramatically over-predicts ecosystem extent. This is likely due to the model not limiting outcomes to tidal systems (which were used in verification), but instead including all freshwater wetlands. Analyses are underway to better understand the poor rate of classification.</p>
+<p>The est.int and est.sub models also strongly differentiate habitat suitability predictions among sites with and without wetlands. This finding indicates that the models generally distinguish between features strongly, and the HSI formulation may provide value for distinguishing ecosystem condition.</p>
+<p>Importantly, the analyses presented here are merely preliminary forms of verification being pursued for NYBEM. First, the marine models were not included in this analysis, and data compilation is underway for validating those models. Second, the approaches used here are somewhat blunt tools in the large spectrum of spatially explicit model validation methods. For instance, more nuanced methods addressing issues such as spatial autocorrelation will be pursued as models develop. Third, more sophisticated verification data sets will be used like the NWI sub-classes, rather than simply the tidal and salinity criteria. These additional analyses will be published in peer-reviewed journals to vet the utility of the NYBEM framework for large-scale prediction and comparison of ecosystem condition.</p>
 
 </div>
 </div>
